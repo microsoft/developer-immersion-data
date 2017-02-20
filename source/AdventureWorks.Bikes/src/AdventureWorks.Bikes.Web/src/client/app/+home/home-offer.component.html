@@ -1,0 +1,70 @@
+
+<div *ngIf="PictureAtRight" class="featured-banner-item col-sm-12">
+	<div class="item-img col-sm-7"
+	[class.col-md-5]="Bike.discount>=40"
+	>
+		<a [routerLink]="['/products', Bike.productId]"><img src="{{ImageUrl}}" title="{{Bike.name}}" alt="{{Bike.name}}" /></a>
+	</div>
+	<div class="item-desc left col-sm-5"
+	[class.col-md-4]="Bike.discount>=40"
+	>
+		<div class="item-desc-offer col-sm-12">
+			<span class="offer-quantity">{{Bike.discount}}%</span>
+			<span class="offer-label-off">off</span>
+		</div>
+		<span class="item-name col-xs-12">{{Bike.name}}</span>
+		<span class="item-original-price col-xs-12">{{Bike.originalPrice| currency:'USD':true}}</span>
+		<span class="item-offer-price col-xs-12">{{Bike.finalPrice| currency:'USD':true}}</span>
+		<span class="separator-line-gray col-xs-12"></span>
+		<span class="item-link col-xs-12">
+			<a [routerLink]="['/stores', Bike.storeId]" >go to <strong>{{Bike.storeName}}</strong></a>
+		</span>
+	</div>
+	<div *ngIf="Bike.discount>=40" class="item-banner-info dark-gray-box col-md-3 hidden-sm">
+		<div class="item-banner-info-wrapper left">
+			<div class="item-banner-info-content">
+				<span class="banner-info-sales-label">Sales</span>
+				<span class="banner-info-upto-label">Up to</span>
+				<span class="banner-info-offer-label">{{Bike.discount}}%</span>
+				<span class="banner-info-off-label">Off</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="!PictureAtRight" class="featured-banner-item col-sm-12">
+	
+	<div *ngIf="Bike.discount>=40" class="item-banner-info dark-gray-box col-md-3 hidden-sm">
+		<div class="item-banner-info-wrapper right">
+			<div class="item-banner-info-content">
+				<span class="banner-info-sales-label">Sales</span>
+				<span class="banner-info-upto-label">Up to</span>
+				<span class="banner-info-offer-label">{{Bike.discount}}%</span>
+				<span class="banner-info-off-label">Off</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="item-desc col-sm-5 right"	
+	[class.col-md-4]="Bike.discount>=40"
+	>
+		<div class="item-desc-offer col-xs-12">
+			<span class="offer-quantity">{{Bike.discount}}%</span>
+			<span class="offer-label-off">off</span>
+		</div>
+		<span class="item-name col-xs-12">{{Bike.name}}</span>
+		<span class="item-original-price col-xs-12">{{Bike.originalPrice| currency:'USD':true}}</span>
+		<span class="item-offer-price col-xs-12">{{Bike.finalPrice| currency:'USD':true}}</span>
+		<span class="separator-line-gray col-xs-12"></span>
+		<span class="item-link col-xs-12">
+			<a [routerLink]="['/stores', Bike.storeId]" >go to <strong>{{Bike.storeName}}</strong></a>
+		</span>
+	</div>
+	
+	<div class="item-img col-sm-7"	
+	[class.col-md-5]="Bike.discount>=40"
+	>
+		<a [routerLink]="['/products', Bike.productId]"><img src="{{ImageUrl}}" title="{{Bike.name}}" alt="{{Bike.name}}" /></a>
+	</div>
+	
+</div>

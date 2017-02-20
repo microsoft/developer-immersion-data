@@ -1,0 +1,27 @@
+
+<li class="home-grid-item product-grid-item col-md-4 col-sm-6">
+	<div class="grid-item-img">
+		<a [routerLink]="['/products', Product.productId]">
+            <img src="{{ImageUrl}}" class="img-responsive" title="{{Product.name}}" alt="{{Product.name}}">
+       	</a>
+		<div class="float-grid-stock red" [ngClass]="{'label-info': Product.remainingUnits>=10, 'label-danger': Product.remainingUnits<10}">
+			<span class="stock-value" >{{Product.remainingUnits}}</span>
+			<span class="stock-left-label">Left</span>
+		</div>
+		<div class="float-grid-offer">
+			<div class="float-grid-offer-border">
+				<span class="offer-value">{{Product.discount}}%</span>
+				<span class="offer-off-label">Off</span>
+			</div>
+		</div>
+		<span class="view-details"><a [routerLink]="['/products', Product.productId]">View details</a></span>
+
+	</div>
+	<span class="separator-line-gray col-xs-12"></span>
+	<span class="grid-item-name col-xs-12"><a [routerLink]="['/products', Product.productId]">{{Product.name}}</a></span>
+	<div class="grid-item-prices col-xs-12">
+		<span class="grid-item-original-price">{{Product.originalPrice| currency:'USD':true}}</span>
+		<span class="grid-item-offer-price">{{Product.finalPrice| currency:'USD':true}}</span>
+	</div>
+</li>
+

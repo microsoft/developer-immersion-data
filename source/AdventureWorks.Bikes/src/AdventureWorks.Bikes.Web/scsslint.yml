@@ -1,0 +1,22 @@
+linters:
+  Indentation:
+    enabled: true
+    width: 4
+  ImportantRule: 
+    enabled: false
+  HexNotation:
+    enabled: true
+    style: uppercase
+  SelectorDepth:
+    enabled: true
+    max_depth: 4
+  SelectorFormat:
+    enabled: false
+    condition: ^(_)?[a-z]+-[a-z0-9-_]+((_{2}|-{2})?[a-z0-9-_]+)?(-{2}[a-z0-9-]+)?[a-z0-9]
+    convention_explanation: module-block_name-element--modifier
+  NestingDepth:
+    enabled: true
+    max_depth: 4
+  QualifyingElement:
+    enabled: false
+    

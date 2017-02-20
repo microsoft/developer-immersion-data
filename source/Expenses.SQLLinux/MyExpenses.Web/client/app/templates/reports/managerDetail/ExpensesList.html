@@ -1,0 +1,16 @@
+﻿<section class="me-module">
+    <section class="list-filters">
+        <div class="search-filter">
+            <input ng-model="query"
+                   mc-keyup-throttle="search()"
+                   autofocus="autofocus"
+                   type="text"
+                   placeholder="Search expenses...">
+        </div>
+    </section>
+    <section ng-show="!expenses.length" class="list-no-items">
+        This report has no expenses!
+    </section>
+    <section ng-show="expenses.length"
+             ng-include="'/reports/managerDetail/ExpenseDetails.html'"></section>
+</section>

@@ -1,0 +1,68 @@
+<aw-store-header *ngIf="Store" [Store]="Store"></aw-store-header>
+
+
+<section id="product-detail-breadcrumb" class="container" *ngIf="Product">
+	<ul>
+		<li class="bc-item-home"><a [routerLink]="['/']">Home</a></li>
+		<li class="bc-separator">></li>
+		<li class="bc-item"><a [routerLink]="['/stores', Product.storeId]">{{Product.storeName}}</a></li>
+		<li class="bc-separator">></li>
+		<li class="bc-item-current">{{Product.name}}</li>
+	</ul>
+</section>
+
+<section id="product-detail-block" class="container" *ngIf="Product">
+	<div id="product-detail-img" class="col-sm-7">
+		<img src="{{ImageUrl}}" alt="{{Product.name}}"/>
+	</div>
+	<div id="product-detail-info" class="col-sm-5">
+		<span class="pd-title col-xs-12">{{Product.name}}</span>
+		<span class="pd-original-price col-xs-12">{{Product.originalPrice| currency:'USD':true}}</span>
+		<span class="pd-offer-price col-xs-12">{{Product.finalPrice| currency:'USD':true}}</span>
+		<div class="pd-stock-offer col-xs-12">
+			<div class="pd-stock-block"  [ngClass]="{'label-info': Product.remainingUnits>=10, 'label-danger': Product.remainingUnits<10}">
+				<span class="stock-value">{{Product.remainingUnits}}</span>
+				<span class="stock-left-label">Left</span>
+			</div>
+			<div class="pd-offer-block">
+				<div class="pd-offer-border">
+					<span class="offer-value">{{Product.discount}}%</span>
+					<span class="offer-off-label">Off</span>
+				</div>
+			</div>
+		</div>
+		<div class="pd-desc col-xs-12">
+			<p>{{Product.description|truncate:120}}</p>
+		</div>
+		<div class="pd-add-to-cart col-xs-12"><span class="click-available" (click)="AddToCart()">Add to Cart</span></div>
+	</div>
+</section>
+
+<section id="product-detail-tabs" class="container" *ngIf="Product">
+	<ul>
+		<li [class.active]="Section=='related'" >
+			<span><a  (click)="Section='related'">Related</a></span>
+		</li>
+		<li [class.active]="Section=='details'" >
+			<span><a  (click)="Section='details'">Product Details</a></span>
+		</li>
+	</ul>
+</section>
+
+<section *ngIf="Section=='related'" id="product-detail-related-items-grid" class="container product-grid">
+	<ul>
+		<product-card *ngFor="let product of Related" [Product]="product"></product-card>
+	</ul>
+</section>
+
+<section *ngIf="Section=='details' && Product" id="product-detail-description" class="container">
+	<div id="product-detail-description-text">
+		<p>{{Product.description}}</p>
+	</div>
+	<div *ngIf="Product && Product.specs" id="product-detail-description-specifications">
+		<h2>Specifications</h2>
+		<span *ngFor="let spec of Product.specs">{{spec}}</span>
+	</div>
+</section>
+
+<aw-cart-modal *ngIf="Product" [Product]="Product"></aw-cart-modal>

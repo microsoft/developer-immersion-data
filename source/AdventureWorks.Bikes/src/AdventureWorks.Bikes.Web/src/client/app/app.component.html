@@ -1,0 +1,65 @@
+<header class="row" [class.home]="isActiveRoute('/')">
+	<div id="top-header" class="container">
+		
+		<aw-global-message></aw-global-message>
+
+
+
+		<div id="brand-logo" class="col-md-5"><a [routerLink]="['/']"><img src="../assets/img/commons/brand-logo.jpg" alt="Adventure Works" /></a></div>
+
+		<ul id="top-menu" class="col-md-7 nav nav-pills pull-right">
+			<li id="tm-sign-in" class="click-available" *ngIf="!Security.User">
+				<a (click)="ModalConfig.openLogin()">Sign in</a>
+			</li>
+			<li id="tm-user-name" *ngIf="Security.User">
+				<a [routerLink]="['/backoffice']">{{Security.User.fullName}}</a>    
+			</li>
+			<li id="tm-sell-on-store" class="hidden-xs hidden-sm">Sell on Store</li>
+			<li class="separator-vertical hidden-xs hidden-sm">.</li>
+			<li role="presentation" class="dropdown hidden-xs hidden-sm" id="tm-lang">
+				<a>English</a>
+			</li>
+			<li role="presentation" class="dropdown hidden-xs hidden-sm" id="tm-currency">
+				<a>US Dollar</a>
+			</li>
+		</ul>
+
+		
+
+	</div>
+
+	<top-subnavbar></top-subnavbar>
+
+</header>
+    
+    
+    <router-outlet></router-outlet>
+
+	<footer class="row">
+		<div id="footer-content" class="container">
+			<div id="footer-logo" class="footer-block col-md-2">
+				<a [routerLink]="['/']"><img src="../assets/img/commons/brand-logo-footer.png" alt="AdventureWorks" /></a>
+			</div>
+			<div id="footer-copy" class="footer-block col-md-5">
+				<p>&copy; Adventureworks.com Ltd. All rights reserved.</p>
+			</div>
+			<div id="footer-menu" class="footer-block hidden-xs col-md-5">
+				<ul>
+					<li class="fm-item">
+						<a href="">Home</a>
+					</li>
+					<li class="fm-item">
+						<a href="">Stores</a>
+					</li>
+					<li class="fm-item">
+						<a href="">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+
+
+    <aw-login-modal></aw-login-modal>
+
+    

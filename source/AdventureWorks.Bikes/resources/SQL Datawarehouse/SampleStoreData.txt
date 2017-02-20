@@ -1,0 +1,100 @@
+1,20160626,Mountain-100 Silver,454
+2,20160627,HL Mountain Frame: Black,137
+3,20160625,Touring-2000 Blue,433
+4,20160629,HL Mountain Frame: Black,52
+5,20160624,Touring-2000 Blue,155
+6,20160627,Mountain-100 Silver,127
+7,20160624,HL Mountain Frame: Black,164
+8,20160627,Mountain-100 Silver,68
+9,20160628,Mountain-100 Silver,394
+10,20160629,Road-250 Black,296
+11,20160629,Touring-1000 Blue,239
+12,20160627,Touring-2000 Blue,298
+13,20160625,HL Mountain Frame: Black,468
+14,20160626,Touring-1000 Blue,84
+15,20160625,HL Mountain Frame: Black,386
+16,20160625,Touring-1000 Blue,60
+17,20160626,HL Mountain Frame: Black,276
+18,20160628,HL Mountain Frame: Black,171
+19,20160626,Touring-1000 Blue,492
+20,20160625,Touring-2000 Blue,148
+21,20160626,Mountain-100 Silver,454
+22,20160628,HL Mountain Frame: Black,102
+23,20160627,Touring-2000 Blue,62
+24,20160625,Touring-1000 Blue,302
+25,20160628,Road-250 Black,133
+26,20160629,Mountain-100 Silver,282
+27,20160626,Road-250 Black,473
+28,20160625,Mountain-100 Silver,188
+29,20160629,Touring-1000 Blue,417
+30,20160629,Touring-2000 Blue,206
+31,20160627,Touring-1000 Blue,412
+32,20160627,Touring-1000 Blue,73
+33,20160628,Road-250 Black,52
+34,20160627,HL Mountain Frame: Black,293
+35,20160624,Mountain-100 Silver,82
+36,20160624,Touring-1000 Blue,246
+37,20160629,Touring-2000 Blue,51
+38,20160626,Road-250 Black,370
+39,20160626,Touring-1000 Blue,11
+40,20160627,Touring-2000 Blue,121
+41,20160626,Road-250 Black,5
+42,20160625,HL Mountain Frame: Black,447
+43,20160625,Mountain-100 Silver,332
+44,20160629,Touring-1000 Blue,90
+45,20160626,Mountain-100 Silver,222
+46,20160626,Mountain-100 Silver,474
+47,20160628,HL Mountain Frame: Black,455
+48,20160626,HL Mountain Frame: Black,2
+49,20160628,HL Mountain Frame: Black,293
+50,20160629,Touring-2000 Blue,22
+51,20160629,Mountain-100 Silver,150
+52,20160624,HL Mountain Frame: Black,300
+53,20160627,Touring-2000 Blue,293
+54,20160628,HL Mountain Frame: Black,122
+55,20160625,Touring-1000 Blue,171
+56,20160624,Touring-1000 Blue,306
+57,20160628,Touring-1000 Blue,72
+58,20160629,Touring-2000 Blue,71
+59,20160628,HL Mountain Frame: Black,215
+60,20160629,Road-250 Black,457
+61,20160628,Mountain-100 Silver,193
+62,20160627,Touring-1000 Blue,84
+63,20160624,Road-250 Black,299
+64,20160624,Mountain-100 Silver,194
+65,20160626,Touring-1000 Blue,461
+66,20160627,Road-250 Black,50
+67,20160627,Touring-2000 Blue,113
+68,20160624,Mountain-100 Silver,150
+69,20160624,HL Mountain Frame: Black,206
+70,20160629,Road-250 Black,83
+71,20160628,Road-250 Black,439
+72,20160625,Touring-1000 Blue,235
+73,20160624,Touring-2000 Blue,482
+74,20160628,HL Mountain Frame: Black,182
+75,20160629,Road-250 Black,103
+76,20160625,Mountain-100 Silver,187
+77,20160628,Mountain-100 Silver,257
+78,20160628,Touring-2000 Blue,8
+79,20160625,Touring-2000 Blue,455
+80,20160629,Mountain-100 Silver,471
+81,20160625,Mountain-100 Silver,33
+82,20160626,Mountain-100 Silver,105
+83,20160627,Mountain-100 Silver,490
+84,20160626,Touring-1000 Blue,152
+85,20160629,Road-250 Black,171
+86,20160624,Touring-1000 Blue,165
+87,20160629,HL Mountain Frame: Black,170
+88,20160629,Touring-1000 Blue,431
+89,20160627,Touring-1000 Blue,114
+90,20160624,Touring-1000 Blue,312
+91,20160627,Mountain-100 Silver,245
+92,20160629,Road-250 Black,159
+93,20160628,Road-250 Black,390
+94,20160624,Touring-2000 Blue,10
+95,20160626,Mountain-100 Silver,427
+96,20160628,HL Mountain Frame: Black,427
+97,20160625,Touring-1000 Blue,188
+98,20160627,Touring-1000 Blue,285
+99,20160627,Mountain-100 Silver,393
+100,20160628,Mountain-100 Silver,417

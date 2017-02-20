@@ -1,0 +1,13 @@
+{
+  "name": "my-expenses-data-generator-node",
+  "version": "0.0.0",
+  "description": "MyExpenses.DataGenerator",
+  "main": "app.js",
+  "author": {
+    "name": "Anxo"
+  },
+  "dependencies": {
+    "sequelize": "3.29.0",
+    "tedious": "1.14.0"
+  }
+}

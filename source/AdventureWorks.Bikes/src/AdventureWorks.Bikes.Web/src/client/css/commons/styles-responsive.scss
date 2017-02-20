@@ -1,0 +1,88 @@
+
+/* R */
+  
+  @media (max-width:767px) {
+    /* SmartDevices Common */
+
+    footer #footer-logo{
+      img{
+        max-width: 220px!important;
+        height: auto;
+      }
+    }
+
+    .product-grid ul li .grid-item-img{
+        
+        > a{
+          display: block;
+          text-align: center;
+          img{
+            max-height: 220px!important;
+            display: inline-block;
+          }   
+        }
+    }
+    
+    header {  
+      top-subnavbar {
+      }
+      #float-header {
+        bottom: -45px !important;
+        #main-menu {
+          
+          ul {
+            
+            li {
+              margin-right: 15px!important;
+            }
+          }
+        }
+        #cart-block {
+          margin-right: 15px;
+        }
+      } 
+    }
+    
+    @media (orientation: landscape) {
+      /* SmartDevices Landscape */
+    }
+    @media (orientation: portrait) {
+      /* SmartDevices Portrait */
+
+    }
+  }
+  /* R */
+  
+  @media (min-width: 768px) and (max-width: 1199px) {
+    /* SmartDevices Common */
+    
+    .product-grid ul li .grid-item-img {
+        height: 235px;
+    }
+
+    
+    #float-header #main-menu ul li, footer #footer-content #footer-menu ul li {
+        margin-right: 20px!important;
+    }
+
+    footer #footer-logo{
+      img{
+        max-width: 220px!important;
+        height: auto;
+      }
+    }
+    
+    #float-header #cart-block, #float-header #main-menu {
+      margin-right: 20px;
+      padding-top: 15px;
+    }
+    
+    @media (orientation: landscape) {
+      /* SmartDevices Landscape */
+
+    }
+    @media (orientation: portrait) {
+      /* SmartDevices Portrait */
+
+    }
+  }

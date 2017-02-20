@@ -1,0 +1,53 @@
+<section id="stores-top-slider" class="row">
+	<div id="stores-slider-content" class="container">
+		<span id="stores-slider-text">
+			Find your nearests stores and <a href="">takes the best deals</a>
+		</span>
+	</div>
+</section>
+
+<section id="stores-title" class="row" *ngIf="LocationAvailable">
+	<div id="stores-title-content" class="container">
+		<h2 id="stores-title" class="col-xs-12">Nearests Stores</h2>
+		<span id="your-geo">from {{PlaceName}}</span>
+	</div>
+	<div *ngIf="LoadingNearest">loading...</div>
+	<div id="stores-content" class="row" *ngIf="!LoadingNearest">
+		<div class="store-preview-block row" *ngFor="let store of Nearest">
+			<div class="store-preview-header container">
+				<div class="store-preview-header-content col-xs-12 col-sm-9">
+					<span class="store-preview-title col-xs-12">{{store.name}}</span>
+					<span class="store-preview-geo col-xs-12" *ngIf="store.distance">{{Meters2Miles(store.distance)|number:'1.0-2'}}mi, {{store.address}}</span>
+				</div>			
+				<span class="store-preview-link col-xs-12 col-sm-3">
+					<a [routerLink]="['/stores', store.storeId]">Go to store</a>
+				</span>
+			</div>
+			<div class="store-preview-items-grid product-grid container">
+				<ul>
+					<product-card *ngFor="let product of store.products" [Product]="product"></product-card>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+<section id="stores-grid-items" class="container">
+	<div id="stores-grid-items-title">
+		<h2>New Stores</h2>
+	</div>
+	<div *ngIf="LoadingLatests">loading...</div>
+	<div class="row">
+		<ul>
+			<li class="store-item col-xs-12 col-sm-4" *ngFor="let store of Latests">
+				<div class="store-item">
+					<a [routerLink]="['/stores', store.storeId]">
+						<span>{{store.name}}</span>
+					</a>
+				</div>
+				
+			</li>
+		</ul>
+	</div>
+</section>

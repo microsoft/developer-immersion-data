@@ -1,0 +1,204 @@
+{
+  "value": [
+    {
+      "@search.score": 1,
+      "id": "1",
+      "Name": "HL Mountain Frame, Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 242,
+      "StoreId": "1"
+    },
+    {
+      "@search.score": 1,
+      "id": "2",
+      "Name": "HL Mountain Frame, Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 641,
+      "StoreId": "1"
+    },
+    {
+      "@search.score": 1,
+      "id": "3",
+      "Name": "Mountain-100 Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 212,
+      "StoreId": "1"
+    },
+    {
+      "@search.score": 1,
+      "id": "4",
+      "Name": "Touring-2000 Blue",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Amazing advanced seat technology provides comfort all day.",
+      "OriginalPrice": 415,
+      "StoreId": "1"
+    },
+    {
+      "@search.score": 1,
+      "id": "5",
+      "Name": "Road-250 Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 572,
+      "StoreId": "1"
+    },
+    {
+      "@search.score": 1,
+      "id": "6",
+      "Name": "Touring-1000 Blue",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 326,
+      "StoreId": "2"
+    },
+    {
+      "@search.score": 1,
+      "id": "7",
+      "Name": "HL Mountain Frame, Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 490,
+      "StoreId": "2"
+    },
+    {
+      "@search.score": 1,
+      "id": "8",
+      "Name": "Mountain-100 Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 369,
+      "StoreId": "2"
+    },
+    {
+      "@search.score": 1,
+      "id": "9",
+      "Name": "Mountain-100 Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 711,
+      "StoreId": "2"
+    },
+    {
+      "@search.score": 1,
+      "id": "10",
+      "Name": "HL Mountain Frame, Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 522,
+      "StoreId": "2"
+    },
+    {
+      "@search.score": 1,
+      "id": "11",
+      "Name": "HL Mountain Frame, Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 450,
+      "StoreId": "3"
+    },
+    { 
+      "@search.score": 1,
+      "id": "12",
+      "Name": "Touring-2000 Blue",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 638,
+      "StoreId": "3"
+    },
+    {
+      "@search.score": 1,
+      "id": "13",
+      "Name": "Mountain-100 Silver",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 424,
+      "StoreId": "3"
+    },
+    {
+      "@search.score": 1,
+      "id": "14",
+      "Name": "HL Mountain Frame, Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 371,
+      "StoreId": "3"
+    },
+    {
+      "@search.score": 1,
+      "id": "15",
+      "Name": "Road-250 Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 242,
+      "StoreId": "3"
+    },
+    {
+      "@search.score": 1,
+      "id": "16",
+      "Name": "HL Mountain Frame, Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 761,
+      "StoreId": "4"
+    },
+    {
+      "@search.score": 1,
+      "id": "17",
+      "Name": "HL Mountain Frame, Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 352,
+      "StoreId": "4"
+    },
+    {
+      "@search.score": 1,
+      "id": "18",
+      "Name": "HL Mountain Frame, Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 686,
+      "StoreId": "4"
+    },
+    {
+      "@search.score": 1,
+      "id": "19",
+      "Name": "Touring-2000 Blue",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 426,
+      "StoreId": "4"
+    },
+    {
+      "@search.score": 1,
+      "id": "20",
+      "Name": "Touring-2000 Blue",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 328,
+      "StoreId": "4"
+    },
+    {
+      "@search.score": 1,
+      "id": "21",
+      "Name": "Mountain-100 Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 709,
+      "StoreId": "5"
+    },
+    {
+      "@search.score": 1,
+      "id": "22",
+      "Name": "HL Mountain Frame, Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 300,
+      "StoreId": "5"
+    },
+    {
+      "@search.score": 1,
+      "id": "23",
+      "Name": "Road-250 Black",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 474,
+      "StoreId": "5"
+    },
+    {
+      "@search.score": 1,
+      "id": "24",
+      "Name": "Mountain-100 Silver",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 600,
+      "StoreId": "5"
+    },
+    {
+      "@search.score": 1,
+      "id": "25",
+      "Name": "Mountain-100 Silver",
+      "Description": "Cross-train, race, or just socialize on a sleek, aerodynamic bike designed for a woman. Advanced seat technology provides comfort all day.",
+      "OriginalPrice": 454,
+      "StoreId": "5"
+    }
+  ]
+}

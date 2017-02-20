@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>
+    <%= APP_TITLE %>
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"></script>
+  <!-- Latest compiled and minified CSS -->
+
+  <!-- inject:css -->
+  <!-- endinject -->
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/assets/img/commons/favicon.png" />
+</head>
+
+<body> 
+  <sd-app>Loading...</sd-app>
+
+  <script>
+  // Fixes undefined module function in SystemJS bundle
+  function module() {}
+  </script>
+
+  <!-- shims:js -->
+  <!-- endinject -->
+
+  <% if (ENV === 'dev') { %>
+    <script>
+    System.config(<%=
+      JSON.stringify(SYSTEM_CONFIG, null, 2)
+    %>)
+    </script>
+  <% } %>
+
+    <!-- libs:js -->
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <!-- endinject -->
+
+    <% if (ENV === 'dev') { %>
+      <script>
+        System.import('<%= BOOTSTRAP_MODULE %>')
+          .catch(function (e) {
+            console.error(e,
+              'Report this error at https://github.com/mgechev/angular2-seed/issues');
+          });
+      </script>
+    <% } %>
+
+</body>
+
+</html>

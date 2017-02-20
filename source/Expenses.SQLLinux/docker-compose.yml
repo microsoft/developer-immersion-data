@@ -1,0 +1,39 @@
+
+version: '2'
+
+services:
+  sqlserveronlinux:
+    image: "microsoft/mssql-server-linux"
+    ports:
+      - "11433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P2ssw0rd
+
+  myexpenses.datagenerator:
+    image: myexpenses.datagenerator:latest
+    build:
+      context: ./myexpenses.datagenerator
+      dockerfile: Dockerfile
+    environment:
+      - databaseServer=db
+      - databasePort=1433
+    depends_on:
+      - sqlserveronlinux
+    links:
+      - "sqlserveronlinux:db"
+
+  myexpenses.web:
+    image: myexpenses.web:latest
+    build:
+      context: ./myexpenses.web
+      dockerfile: Dockerfile
+    environment:
+      - databaseServer=db
+      - databasePort=1433
+    depends_on:
+      - myexpenses.datagenerator
+    ports:
+      - 8000:8000
+    links:
+      - "sqlserveronlinux:db"

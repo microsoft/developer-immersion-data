@@ -1,0 +1,41 @@
+<div id="login-pop-wrapper" [class.open]="ModalConfig.LoginModal" (click)="ModalConfig.closeLogin()">
+	<div id="login-pop-block" [class.open]="ModalConfig.LoginModal" (click)="remainOpen($event)">
+		<span class="login-title">Sign In</span>
+		<form #loginForm="ngForm" id="login-form">
+            <div class="panel-body">
+            	<div class="form-group">
+					<div [hidden]="username.valid || username.pristine" class="error-msg">
+						Username is required
+					</div>
+					<input [(ngModel)]="Username" 
+								type="text" 
+								ngControl="username"  
+								#username="ngForm" 
+								class="form-control" placeholder="User name ..." required>
+	            </div>
+	            <div class="form-group">
+					<div [hidden]="password.valid || username.pristine" class="error-msg">
+						Password is required
+					</div>
+					<input [(ngModel)]="Password" 
+									type="password" 
+									ngControl="password"  
+									#password="ngForm" 
+									class="form-control" placeholder="Password ..." required>
+	            </div>
+            </div>
+			
+			<div class="panel-footer"  >
+				<button 
+	                            [disabled]="Checking || !loginForm.form.valid" 
+	                            class="btn btn-primary"
+	                            [class.ng-invalid]="Error" 
+								[class.ng-touched]="Error" 
+	                            (click)="doLogin()">
+	                            {{Error ? 'Login error' : Checking ? 'Checking...' : 'Login'}}  
+	             	            </button>
+	             
+            </div>
+		</form>
+	</div>
+</div>

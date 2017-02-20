@@ -1,0 +1,83 @@
+<aw-store-header *ngIf="Store" [Store]="Store"></aw-store-header>
+
+<section id="admin-customers-list-tabs" class="container">
+    <ul>
+        <li [class.active]="Section=='customers'">
+            <span class="click-available" (click)="Section='customers';LoadCustomers()">Customers</span>
+        </li>
+        <li [class.active]="Section=='orders'">
+            <span class="click-available" (click)="Section='orders';LoadOrders()">Orders & Invoices</span>
+        </li>
+    </ul>
+</section>
+
+<section *ngIf="Section=='customers'"
+         id="admin-customers-list-items"
+         class="container">
+
+    <div *ngIf="LoadingCustomers" class="alert alert-warning">Loading..</div>
+
+    <div id="customers-list-filter" class="col-xs-12">
+        Filter by name: <input type="text" (keyup.enter)="LoadCustomersByName($event)" />
+    </div>
+
+    <div id="customers-list-header" class="col-xs-12">
+        <span id="customers-header-name" class="col-sm-3">Customer</span>
+        <span id="customers-header-email" class="col-sm-2">Email</span>
+        <span id="customers-header-email" class="col-sm-2">Credit Card</span>
+        <span id="customers-header-sales" class="col-sm-1">Sales</span>
+        <span id="customers-header-registration" class="col-sm-2">Registration</span>
+        <span id="customers-header-last-visit" class="col-sm-2">Last visit</span>
+    </div>
+
+    <div *ngIf="Customers.length==0"><h4>There is no customers yet</h4></div>
+
+
+
+    <div *ngFor="let customer of Customers; let ic = index"
+         class="customers-list-item col-xs-12"
+         [ngClass]="{'even': ic%2==1, 'odd': ic%2==0}">
+        <span class="customer-item-name col-sm-3">{{customer.firstName}} {{customer.lastName}}</span>
+        <span class="customer-item-email col-sm-2">{{customer.email}}</span>
+        <span class="customer-item-email col-sm-2">{{customer.creditCardNumber}}</span>
+        <span class="customer-item-sales col-sm-1">{{customer.sales}}</span>
+        <span class="customer-item-registration col-sm-2">{{customer.registrationDateHidrated|date}}</span>
+        <span class="customer-item-last-visit col-sm-2">{{customer.lastOrderHidrated|date}}</span>
+    </div>
+
+</section>
+
+<section *ngIf="Section=='orders'"
+         id="admin-orders-list-items"
+         class="container">
+
+    <div *ngIf="LoadingOrders" class="alert alert-warning">Loading..</div>
+
+    <div id="orders-list-header" class="col-xs-12">
+        <span id="orders-header-id" class="col-sm-1">ID</span>
+        <span id="orders-header-customer" class="col-sm-4">Customer</span>
+        <span id="orders-header-total" class="col-sm-2">Total</span>
+        <span id="orders-header-date" class="col-sm-2">Date</span>
+        <span id="orders-header-status" class="col-sm-2">Status</span>
+        <span id="orders-header-invoice" class="col-sm-1">Invoice</span>
+    </div>
+
+
+    <div *ngIf="Orders.length==0"><h4>There is no orders yet</h4></div>
+
+
+
+    <div *ngFor="let order of Orders; let io = index"
+         class="orders-list-item odd col-xs-12"
+         [ngClass]="{'even': io%2==1, 'odd': io%2==0}">
+
+        <span class="orders-item-id col-sm-1">{{order.orderId}}</span>
+        <span class="orders-item-customer col-sm-4">{{order.customer}}</span>
+        <span class="orders-item-total col-sm-2">{{order.totalPrice|currency:'USD':true}}</span>
+        <span class="orders-item-date col-sm-2">{{order.dateHidrated|date}}</span>
+        <span class="orders-item-status col-sm-2">{{getStatusName(order.status)}}</span>
+        <span class="orders-item-invoice col-sm-1"><a class="invoice-download"><img src="../../assets/img/commons/download-icon.png" title="Download Invoice" /></a></span>
+    </div>
+
+</section>
+

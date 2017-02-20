@@ -1,0 +1,5 @@
+﻿DROP DATABASE IF EXISTS [Expenses]
+GO
+
+CREATE DATABASE [Expenses];
+GO

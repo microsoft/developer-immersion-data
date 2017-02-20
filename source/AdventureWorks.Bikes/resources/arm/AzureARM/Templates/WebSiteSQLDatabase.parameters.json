@@ -1,0 +1,33 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "webUsername": {
+      "value": "Store1"
+    },
+    "webUserFullName": {
+      "value": "Andrew Davis"
+    },
+    "webPassword": {
+      "value": "P2ssw0rd@1"
+    },
+    "databaseName": {
+      "value": "adventureworks.bikes.Store1"
+    },
+    "authDatabaseName": {
+      "value": "adventureworks.bikes.Auth"
+    },
+    "administratorLogin": {
+      "value": "bikes"
+    },
+    "administratorLoginPassword": {
+      "value": "P2ssw0rd"
+    },
+    "skuCapacityAzureSearch": {
+      "value": "free"
+    },
+    "documentDBOfferType": {
+      "value": "standard"
+    }
+  }
+}

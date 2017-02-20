@@ -1,0 +1,33 @@
+<nav id="float-header">
+
+	<div class="container">
+
+		<div id="main-menu" [class.home]="isActiveRoute('/')">
+			<ul>
+				<li>
+					<a  class="root" 
+						[routerLink]="['/']"
+						[class.active]="isActiveRoute('/')">Home</a>
+				</li>
+				<li>
+					<a class="not_root"  [routerLink]="['/stores']">Stores</a>
+				</li>
+				<li>
+					<a class="not_root"  href="#">Contact</a>
+				</li>
+			</ul>
+		</div>
+		
+		<div id="cart-block">
+			<a [routerLink]="['/cart']">
+				<span id="cart-block-icon"><img src="../assets/img/commons/icon-bag-white.png" title="" /></span>
+				<span id="cart-block-counter" *ngIf="cart.Count>0">{{cart.Count}}</span>
+			</a>
+		</div>
+
+
+	</div>
+
+	
+</nav>
+	

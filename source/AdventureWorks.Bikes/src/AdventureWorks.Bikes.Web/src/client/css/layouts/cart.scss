@@ -1,0 +1,117 @@
+#cart-content-and-controls {
+  margin-bottom: 50px;
+  margin-top: 50px;
+  padding-bottom: 400px;
+  #cart-continue-shopping, #cart-checkout {
+    display: block;
+    text-align: right;
+    > span {
+      display: inline-block;
+      text-align: center;
+      color: #FFFFFF;
+      padding: 15px;
+      width: 255px;
+    }
+  }
+  
+  #cart-continue-shopping {
+    
+    margin-bottom: 65px;
+    > span {
+      background-color: #51c0e8;
+    }
+  }
+  
+  #cart-list-items {
+    
+    #cart-no-items {
+      padding-bottom: 50px;
+    }
+    
+    #cart-list-header {
+      border-bottom: 1px solid #8b8384;
+      margin-bottom: 15px;
+      padding: 0 0 10px;      
+      > span {
+        padding: 0px;
+        font-size: 16px;
+        color: rgba( 64, 64, 64, 0.6 );
+        text-transform: uppercase;
+        text-align: left;    
+      }
+      #cart-header-img-name {}
+      #cart-header-price {
+        text-align: center;
+      }
+      #cart-header-quantity {
+        text-align: center;
+      }
+      #cart-header-final-price {
+        text-align: center;
+      }
+    }
+    
+    #cart-list-item {
+      padding: 0 0 10px;
+      border-bottom: 1px solid #c5bfc0; 
+      > span,
+      > div {
+        line-height: 125px;
+        padding: 0px;
+        font-size: 14px;
+        color: rgb( 64, 64, 64 );
+        text-transform: uppercase;
+        text-align: left;
+      }
+      .cart-item-img {
+        
+        > img {
+          width: 100%;
+        }
+      }
+      .cart-item-name {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      .cart-item-original-price {
+        text-align: center;
+      }
+      .cart-item-quantity {
+        text-align: center;
+        > span {}
+        .quantity-less, 
+        .quantity-more {
+          border: 1px solid #ababab;
+          color: #ababab;
+          height: 5px;
+          line-height: 10px;
+          margin: 5px;
+          padding: 0 4px;
+          width: 10px;
+        }
+        .quantity-value {}
+        .quantity-more {}
+      }
+      
+      .cart-item-final-price {
+        font-size: 28px;
+        color: rgb( 245, 56, 42 );
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+    }
+  } 
+
+  
+  #cart-checkout {
+    
+    margin-top: 65px;
+    > span {      
+      background-color: #000000;
+    }
+  }
+   
+  
+}

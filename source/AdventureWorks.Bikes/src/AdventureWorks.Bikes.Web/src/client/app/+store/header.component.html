@@ -1,0 +1,17 @@
+<section id="product-top-slider"class="row">
+	<div class="slider-image col-md-4" 
+	     *ngFor="let image of BackgroundImageUrl; let i = index"
+			 [class.hidden-xs]="i != 1">
+		<img src="{{image}}" alt="" *ngIf="image !== undefined" />
+	</div>
+</section>
+
+<section id="products-list-title" class="container">
+	<div id="products-list-title-content" *ngIf="Store">
+		<h2 id="shop-title" class="col-xs-12">{{Store.name}}</h2>
+		<p id="shop-desc" class="col-xs-12">{{Store.description}}</p>
+	</div>
+	<div class="text-center" *ngIf="!Store">
+	  loading...
+	</div>
+</section>

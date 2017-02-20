@@ -1,0 +1,13 @@
+<section id="search-result-title" class="container">
+	<div id="search-result-title-content">
+		<span id="result-quantity">{{TotalResults}} results</span>
+		<span id="result-value-search" > from {{Term}}</span>
+	</div>
+</section>
+
+<section id="search-result-items-grid" class="product-grid container">
+	<div *ngIf="IsRefreshing">Loading...</div>
+	<ul *ngIf="!IsRefreshing">
+		<product-card *ngFor="let product of Items" [Product]="product"></product-card>
+	</ul>
+</section>

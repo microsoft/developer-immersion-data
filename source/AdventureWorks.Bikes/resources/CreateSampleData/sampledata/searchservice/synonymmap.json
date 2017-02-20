@@ -1,0 +1,7 @@
+{
+   "format":"solr",
+   "synonyms": "
+      incredible, unbelievable, fabulous, amazing 
+      Washington, Wash., WA => WA
+      pet => cat, dog, puppy, kitten, pet"
+}

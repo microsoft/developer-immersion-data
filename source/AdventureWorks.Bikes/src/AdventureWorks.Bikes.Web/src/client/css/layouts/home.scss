@@ -1,0 +1,236 @@
+$font-icon : 'FontAwesome';
+$font-ultralight : 'Raleway', sans-serif;
+
+#main-menu {
+  a {
+    color: #FFFFFF;
+  }
+}
+
+header.home {
+  
+  top-subnavbar {
+    background-color: transparent!important;
+    height: 15px!important;
+    position: relative;
+  }
+  #float-header {
+    position: absolute;
+    bottom: -43px;
+    width: 100%;
+  } 
+}
+
+
+
+#home-top-slider {
+  background: url("../../assets/img/pages/home/home-banner-bg.jpg") no-repeat center center scroll; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 510px;
+  #float-search-control {
+    
+    margin-top: 220px;
+    text-align: center;
+    input {
+      background: #ffffff url("../../assets/img/pages/home/search-icon.gif") no-repeat scroll 98% center;
+      border: 1px solid #cacaca;
+      border-radius: 4px;
+      font-size: 22px;
+      height: 50px;
+      padding-left: 30px;
+      padding-right: 50px;
+      width: 630px;
+      display: inline-block;
+    }
+
+  }
+}
+
+#home-lastest-stores {
+  
+  
+  .title{
+    margin-top: 10px;
+  }
+  
+  h3,
+  ul {    
+    text-align: left;
+    display: inline-block;
+  }
+  
+  h3,
+  ul > li {
+    margin: 0;
+    color: #605f63;
+    font-size: 14px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    text-align: left;
+    text-transform: uppercase;
+  }
+  
+  h3 {
+    font-weight: normal;
+  }
+  ul {
+    padding: 0px;
+    li {
+      display: inline-block;
+      font-weight: 700;
+      list-style: outside none none;
+      margin-left: 50px;
+      width: auto;
+      > span {
+        float:right;
+        width: auto;
+        a {
+          
+        background: rgba(0, 0, 0, 0) url("../../assets/img/commons/menu-mini-arrow.gif") no-repeat scroll right 12px;
+        border: 0 none;
+        color: #605f63;
+        padding-right: 30px;
+        }
+      }
+    }
+    
+  }
+  
+}
+
+
+
+#home-featured-items-banner {
+   background: url('../../assets/img/pages/home/home-featured-bottom-decoration.jpg') scroll no-repeat center bottom #f5f5f5;
+   padding-top: 60px;
+   padding-bottom: 60px;
+  .featured-banner-item {
+    margin-bottom: 75px;
+    .item-img {
+      text-align: center;
+      img {
+        display: inline-block; 
+        width: auto;
+        height: 250px;
+      }
+    }
+  }
+  .item-desc.left {
+    * {
+      text-align: left;
+    }
+    .separator-line-gray {
+      margin-left: 15px;
+      float: left;
+    }
+  }
+  .item-desc.right {
+    * {
+      text-align: right;
+    }
+    .separator-line-gray {
+      margin-right: 15px;
+      float: right;
+    }
+  }
+  .item-desc {
+    padding-top: 20px;
+    > span {
+      padding-top: 10px;
+    }
+    .separator-line-gray {
+      background-color: #8e8181;
+      display: inline-block;
+      height: 1px;
+      margin-bottom: 5px;
+      margin-top: 10px;
+      padding-bottom: 0 !important;
+      padding-top: 0 !important;
+      width: 255px;
+    }
+  }
+  .item-desc-offer {
+    .offer-quantity {
+      font-family: 'montserratultra_light';
+      font-size: 70px;
+      display: inline-block;
+    }
+    .offer-label-off {
+      font-family: 'montserratultra_light';
+      font-size: 40px;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+  }
+  .item-original-price {
+    font-size: 18px;
+    color: rgba( 64, 64, 64, 0.6 );
+    text-transform: uppercase;
+
+  }
+
+  .item-offer-price {
+    font-size: 28px;
+    color: rgb( 245, 56, 42 );
+    font-weight: bold;
+    text-transform: uppercase;
+
+  }
+  .separator-line-gray {
+    width: 255px;
+    display: inline-block;
+    height: 1px;
+    background-color: #8e8181;
+  }
+  
+  .item-link {
+    a {
+      font-size: 16px;
+      font-family: "Montserrat";
+      color: rgb( 64, 64, 64 );
+
+    }
+   }
+   
+    .item-banner-info.dark-gray-box {
+     
+      .item-banner-info-wrapper {
+        max-width: 320px;
+        background-color: #292728;
+        padding: 15px; 
+        .item-banner-info-content {
+          border: 1px solid #ffffff;
+          display: block;
+          padding: 25px 20px;
+         > span {
+          display: block;
+          width: 100%;
+          color: rgb( 255, 255, 255 );
+          text-transform: uppercase;
+           text-align: left;
+         }
+         .banner-info-sales-label {
+           font-family: 'montserratultra_light';
+          font-size: 40px;
+         }
+  
+         .banner-info-offer-label {
+           font-size: 48px;
+         }
+  
+         .banner-info-off-label {
+           font-family: 'montserratultra_light';
+           font-size: 40px;
+         }
+        }
+     
+     }
+   }
+}
+
+#home-featured-items-grid {
+  padding-bottom: 400px;
+}

@@ -1,0 +1,10 @@
+# CONCLUSION
+
+Modern applications produce, consume and therefore must respond quickly to very large volumes of data. These applications evolve very rapidly and so does the underlying data schema. In response to this, developers have increasingly chosen schema-free NoSQL databases as simple, fast, scalable solutions to store and process data while preserving the ability to quickly iterate over application data models and unstructured data feeds. However, many schema-free databases do not allow for complex queries and transactional processing, making advanced data management difficult. This is where 
+DocumentDB comes in. Microsoft developed DocumentDB to fulfill these requirements when managing data for today's applications.
+
+DocumentDB is a true schema-free NoSQL database service designed for modern mobile, web, gaming, and IoT applications. DocumentDB delivers consistently fast reads and writes, schema flexibility, and the ability to easily scale a database in and out on demand. It does not assume or require any schema for the JSON documents that it indexes. By default, it automatically indexes all the documents in the database and does not expect or require any schema or creation of secondary indexes. DocumentDB enables complex ad hoc queries using a SQL language, supports well defined consistency levels, and offers JavaScript language integrated, multi-document transaction processing using the familiar programming model of stored procedures, triggers, and UDFs.
+
+As a JSON database, DocumentDB natively supports JSON documents enabling easy iteration of application schema, and support applications that need key-value, document or tabular data models. DocumentDB embraces the ubiquity of JSON and JavaScript, eliminating mismatches between application defined objects and database schema. Deep integration of JavaScript also allows developers to execute application logic efficiently and directly - within the database engine in a database transaction.
+
+<a href="..\README.md">Next</a>

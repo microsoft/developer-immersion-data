@@ -1,0 +1,48 @@
+<section id="home-top-slider"class="row">
+
+  <div id="float-search-control" class="col-xs-12">
+    <input id="fs-input" 
+      type="search" 
+      class="form-control" 
+      placeholder="search your bike..." 
+      [(ngModel)]="SearchTerm"
+      (keypress)="SearchKeyPress($event.keyCode)">
+  </div>
+
+</section>
+
+<section id="home-lastest-stores" class="container" *ngIf="!LoadingStores && Stores.length > 0">
+  <div class="text-center" *ngIf="LoadingStores">loading...</div>
+	
+		
+  	<span class="title col-md-2 hidden-xs hidden-sm"><h3>Latests Stores</h3></span>
+		<ul class="col-md-10 col-sm-12">
+			<li *ngFor="let store of Stores" class="col-md-3 col-sm-4">
+				<span class="store-title">
+					<a [routerLink]="['/stores', store.storeId]" 
+					    class="btn btn-default btn-block">
+									{{store.name}}
+					</a>
+				</span>
+			</li>
+		</ul>
+	
+ 
+</section>
+ 
+<section id="home-featured-items-banner" class="row hidden-xs">
+	<div class="content-block container">
+	    <aw-home-offer *ngFor="let bike of Offers;let i = index" 
+	                  [PictureAtRight]="!i%2" 
+	                  [Bike]="bike"></aw-home-offer>
+   </div>
+</section>
+
+<section id="home-featured-items-grid" class="product-grid container">
+
+  <div *ngIf="LoadingBikes">loading...</div>
+  <ul *ngIf="!LoadingBikes">
+      <product-card *ngFor="let product of Bikes" [Product]="product"></product-card>
+  </ul>
+
+</section>

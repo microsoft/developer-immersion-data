@@ -1,0 +1,4 @@
+CREATE STATISTICS stat_<YOUR_AZURE_SQL_DATA_WAREHOUSE_NAME>_dbo_StoreTransactionsExternal_Model ON dbo.StoreTransactionsExternal ([Model]) WITH FULLSCAN;
+CREATE STATISTICS stat_<YOUR_AZURE_SQL_DATA_WAREHOUSE_NAME>_dbo_StoreTransactionsExternal_Price ON dbo.StoreTransactionsExternal ([Price]) WITH FULLSCAN;
+CREATE STATISTICS stat_<YOUR_AZURE_SQL_DATA_WAREHOUSE_NAME>_dbo_StoreTransactionsExternal_TransactionDate ON dbo.StoreTransactionsExternal ([TransactionDate]) WITH FULLSCAN;
+CREATE STATISTICS stat_<YOUR_AZURE_SQL_DATA_WAREHOUSE_NAME>_dbo_StoreTransactionsExternal_TransactionId ON dbo.StoreTransactionsExternal ([TransactionId]) WITH FULLSCAN;

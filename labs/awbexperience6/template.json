@@ -1,0 +1,56 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sqlserverAdminLogin": {
+      "type": "string",
+      "defaultValue": "devimmersion",
+      "minLength": 1
+    },
+    "sqlserverAdminLoginPassword": {
+      "type": "securestring",
+      "defaultValue": "P2ssw0rd@Dev"
+    }
+  },
+  "variables": {
+    "sqlserverName": "[concat('sqlserver', uniqueString(resourceGroup().id))]",
+    "databaseName": "myexpenses",
+    "databaseEdition": "Basic",
+    "databaseCollation": "SQL_Latin1_General_CP1_CI_AS",
+    "databaseRequestedServiceObjectiveName": "Basic"
+  },
+  "resources": [
+    {
+      "name": "[variables('sqlserverName')]",
+      "type": "Microsoft.Sql/servers",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2014-04-01-preview",
+      "dependsOn": [],
+      "tags": {
+        "displayName": "sqlserver"
+      },
+      "properties": {
+        "administratorLogin": "[parameters('sqlserverAdminLogin')]",
+        "administratorLoginPassword": "[parameters('sqlserverAdminLoginPassword')]"
+      },
+      "resources": [
+        {
+          "name": "AllowAllIps",
+          "type": "firewallrules",
+          "location": "[resourceGroup().location]",
+          "apiVersion": "2014-04-01-preview",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', variables('sqlserverName'))]"
+          ],
+          "properties": {
+            "startIpAddress": "0.0.0.0",
+            "endIpAddress": "255.255.255.255"
+          }
+        }
+      ]
+    }
+  ],
+  "outputs": {
+   
+  }
+}

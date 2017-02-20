@@ -1,0 +1,99 @@
+#product-top-slider {
+  
+  .slider-image {
+    height: 230px;
+    overflow: hidden;
+    padding: 0px;
+    > img {
+      width: 100%;
+    }
+  }
+}
+
+#products-list-title {
+  
+  display: block;
+  text-align: center;
+  
+  #products-list-title-content {
+    
+    background-color: #fff;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: -55px;
+    max-width: 730px;
+    min-width: 600px;
+    padding: 6px 20px 5px;
+    position: relative;
+
+    
+    #shop-title,
+    #shop-desc {
+      font-family: 'montserratlight';
+      color: rgba(64,64,64,0.6);
+      text-transform: uppercase;
+      text-align: center;
+    }
+    
+    #shop-title {
+      font-size: 22px;
+      font-weight: 400;
+      color: rgba(64,64,64, 0.9);
+    }
+    #shop-desc {
+      font-size: 14px;
+    }
+  }
+}
+
+
+
+#products-list-tabs {
+  
+  > ul {
+    
+    padding: 0px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 20px;
+    
+    > li.active {
+      
+      a {
+        color: rgb( 64, 64, 64 );
+        border-bottom: 2px solid #f44336;
+      }
+
+      a:hover{
+        text-decoration: none;
+      }
+    }
+    > li {
+      
+      margin: 25px;
+      display: inline-block;
+      text-align: center;
+      list-style: none;
+      
+      > a {
+      font-size: 18px;
+      color: rgba( 64, 64, 64, 0.6 );
+      text-transform: uppercase;
+      text-align: center;
+      cursor: pointer;
+
+        > span {
+          
+        }
+      }
+
+      > a:hover{
+        text-decoration: none;
+        border-bottom: 2px solid #f44336;
+      }
+    }
+  }
+  
+}

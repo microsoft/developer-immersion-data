@@ -1,0 +1,82 @@
+﻿// Extract the file.
+
+// Azure Logs schema
+//@visitsLog =
+//    EXTRACT date DateTime,
+//            time DateTime,
+//            s_sitename string,
+//            cs_method string,
+//            cs_uri_stem string,
+//            cs_uri_query string,
+//            s_port string,
+//            cs_username string,
+//            c_ip string,
+//            cs_user_agen string,
+//            cs_cooki string,
+//            cs_refere string,
+//            cs_host string,
+//            sc_status string,
+//            sc_substatus string,
+//            sc_win32_status string,
+//            sc_bytes string,
+//            cs_bytes string,
+//            time_taken string
+//    FROM "/ex160822.log"
+//    USING Extractors.Text(delimiter : ' ', skipFirstNRows : 2);
+
+// Local IIS server schema
+@visitsLog =
+    EXTRACT date DateTime,
+            time DateTime,
+            s_ip string,
+            cs_method string,
+            cs_uri_stem string,
+            cs_uri_query string,
+            s_port string,
+            cs_username string,
+            c_ip string,
+            cs_user_agent string,
+            cs_referer string,
+            sc_status string,
+            sc_substatus string,
+            sc_win32_status string,
+            time_taken string
+    FROM "/iislog.log"
+    USING Extractors.Text(delimiter : ' ', skipFirstNRows : 2);
+
+@productDetailsData =
+    SELECT DISTINCT c_ip,
+                    DataLakeCustomerAnalysis.Udfs.GetProductId(cs_uri_stem) AS cs_uri_stem,
+                    cs_method
+    FROM @visitsLog
+    WHERE DataLakeCustomerAnalysis.Udfs.IsProductDetailsPageOrPurchase(cs_uri_stem);
+
+@productVisits =
+    SELECT cs_uri_stem,
+            ((double)COUNT(cs_uri_stem)) AS ProductVisits
+    FROM @productDetailsData
+    WHERE cs_method == "GET"
+    GROUP BY cs_uri_stem;
+
+@productPurchases =
+    SELECT cs_uri_stem,
+           ((double)COUNT(cs_uri_stem)) AS ProductPurchases
+		   
+    FROM @productDetailsData
+    WHERE cs_method == "POST"
+    GROUP BY cs_uri_stem;
+
+@conversionRate =
+    SELECT a.cs_uri_stem AS Product,
+           ProductVisits,
+           ProductPurchases,
+           DataLakeCustomerAnalysis.Udfs.GetConversionRate(ProductVisits,ProductPurchases) AS ConversionRate
+    FROM @productVisits AS a
+         LEFT JOIN
+             @productPurchases AS b
+         ON a.cs_uri_stem == b.cs_uri_stem;
+
+
+OUTPUT @conversionRate
+TO "/output/conversionRate.txt"
+USING Outputters.Text();

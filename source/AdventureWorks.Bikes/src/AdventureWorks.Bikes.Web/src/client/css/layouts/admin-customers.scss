@@ -1,0 +1,107 @@
+
+#admin-customers-list-tabs {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  > ul {
+    display: block;
+    text-align: center;
+    > li {
+      display: inline-block;
+      margin: 15px;
+      > span {
+        font-size: 18px;
+        color: rgba( 64, 64, 64, 0.6 );
+        text-transform: uppercase;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+    > li.active {
+     
+      > span {
+         color: rgb( 64, 64, 64 );
+        padding-bottom : 2px;
+        border-bottom: 2px solid #f44336;
+      }
+    }
+    
+  }
+}
+
+#admin-customers-list-items {
+  padding-bottom: 400px;
+  margin-bottom: 50px;
+  #customers-list-header {
+    border-bottom: 1px solid #8b8687;
+    margin-bottom: 10px;
+    padding: 0 0 20px;
+    > span {
+      padding: 0px;
+      font-size: 14px;
+      color: rgb( 64, 64, 64 );
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    #customers-header-name {}
+    #customers-header-email {}
+    #customers-header-sales {}
+    #customers-header-registration {}
+    #customers-header-last-visit {}
+  }
+
+  #customers-list-filter{
+    margin-bottom: 10px;
+    padding: 0 0 20px;
+  }
+  
+  
+  .customers-list-item.odd {
+    background-color: #f5f5f5;
+  }
+  .customers-list-item.even {
+    background-color: #ffffff;
+  }
+  .customers-list-item {
+    padding: 0px;
+    > span {
+      font-size: 13px;
+      color: rgb( 64, 64, 64 );
+      line-height: 3.429;
+      text-align: left;
+      padding: 0px;
+    }
+    .customer-item-name {
+      
+    }
+    .customer-item-email {}
+    .customer-item-sales {}
+    .customer-item-registration {}
+    .customer-item-last-visit {}
+  }
+  
+  
+  
+  #orders-list-item-load-more {
+    display: inline-block;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+  #load-more-orders-control {
+    background-color: #292728;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 18px;
+    height: auto;
+    padding: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 250px;
+  }
+}
+}
+
+
+
+
+

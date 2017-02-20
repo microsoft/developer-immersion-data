@@ -1,0 +1,65 @@
+﻿<article class="list-item" ng-repeat="expense in expenses track by expense.id">
+    <div class="col-xs-1 no-padding no-margin font-0">
+        <div mc-expense-ico="{{expense.iconClass}}"></div>
+    </div>
+    <div class="col-xs-4">
+        <span class="data highlight">{{expense.title}}</span>
+        <span class="data">{{expense.category}}</span>
+    </div>
+    <div class="col-xs-3">
+        <span class="data highlight">{{expense.date}}</span>
+        <span class="data">{{expense.recurrent}}</span>
+    </div>
+    <div class="col-xs-2 separator">
+        <span class="data">Total</span>
+        <span class="data highlight big"><strong>{{expense.total | currency}}</strong></span>
+    </div>
+    <div class="col-xs-2 no-padding no-margin font-0">
+        <button type="button" class="button-box-unique button-details" ng-click="showExpenseDetail(expense)" title="Show details"></button>
+    </div>
+    <section class="list-item-detail animate-show" ng-show="expense.showDetails">
+        <div class="col-xs-2">
+            <img class="receipt-preview" ng-src="{{expense.receiptUrl}}">
+        </div>
+        <div class="col-xs-2 col-md-3">
+            {{expense.details.notes}}
+        </div>
+        <div class="col-xs-4 col-md-3 categories">
+            <ul>
+                <li class="category">
+                    <div class="category-wrapper">
+                        <span class="category-name">Amount</span>
+                    </div>
+                    <span class="category-amount">{{expense.details.amount | currency}}</span>
+                </li>
+                <li class="category">
+                    <div class="category-wrapper">
+                        <span class="category-name">Total bonus</span>
+                    </div>
+                    <span class="category-amount">{{expense.details.totalBonus | currency}}</span>
+                </li>
+                <li ng-hide="expense.details.recurrentDays===0" class="category category-total">
+                    <div class="category-wrapper">
+                        <span class="category-name">Subtotal</span>
+                    </div>
+                    <span class="category-amount">{{expense.details.subtotal | currency}}</span>
+                </li>
+                <li ng-hide="expense.details.recurrentDays===0" class="category">
+                    <div class="category-wrapper">
+                        <span class="category-name">Recurrent days</span>
+                    </div>
+                    <span class="category-amount">x{{expense.details.recurrentDays}}</span>
+                </li>
+                <li class="category category-total">
+                    <div class="category-wrapper">
+                        <span class="category-name">Total</span>
+                    </div>
+                    <span class="category-amount">{{expense.total | currency}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-4 company-points separator">
+            <mc-company-points info="expense.details"></mc-company-points>
+        </div>
+    </section>
+</article>

@@ -1,0 +1,40 @@
+
+<section id="cart-content-and-controls" class="container">
+	
+	<div id="cart-continue-shopping" class="col-xs-12">
+		<span class="click-available">Continue Shopping</span>
+	</div>
+	
+	<div id="cart-list-items" class="col-xs-12">
+		<div id="cart-list-header" class="col-xs-12">
+			<span id="cart-header-img-name" class="col-sm-5">Product</span>
+			<span id="cart-header-store" class="col-sm-2">Store</span>
+			<span id="cart-header-price" class="col-sm-1">Price</span>
+			<span id="cart-header-quantity" class="col-sm-2">Quantity</span>
+			<span id="cart-header-final-price" class="col-sm-2">Final Price</span>
+		</div>
+
+		<div id="cart-no-items" class="col-xs-12" *ngIf="!Cart.Count">
+			<h4>There is not items in your shopping cart</h4>
+		</div>
+	
+		<div *ngFor="let orderItem of Cart.getItems()" id="cart-list-item" class="col-xs-12" >
+			<span class="cart-item-img col-sm-2"><img src="{{GetProductImage(orderItem.Product)}}" alt="{{orderItem.Product.name}}" /></span>
+			<span class="cart-item-name col-sm-3">{{orderItem.Product.name}}</span>
+			<span class="cart-item-store col-sm-2">{{orderItem.Product.storeName}}</span>
+			<span class="cart-item-original-price col-sm-1 ">{{orderItem.Product.finalPrice| currency:'USD':true}}</span>
+			<div class="cart-item-quantity col-sm-2 ">
+				<span class="quantity-less click-available" (click)="SubtractItem(orderItem)">-</span>
+				<span class="quantity-value">{{orderItem.Quantity}}</span>
+				<span class="quantity-more click-available" (click)="SumItem(orderItem)">+</span>
+			</div>
+			<span class="cart-item-final-price col-sm-2 ">{{Cart.Total| currency:'USD':true}}</span>
+		</div>
+		
+	</div>
+	
+	<div id="cart-checkout" class="col-xs-12">
+		<span class="click-available">Checkout</span>
+	</div>
+	
+</section>

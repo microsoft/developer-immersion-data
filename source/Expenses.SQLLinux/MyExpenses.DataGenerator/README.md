@@ -1,0 +1,3 @@
+﻿# MyExpenses.DataGenerator
+
+

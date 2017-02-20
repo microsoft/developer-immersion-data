@@ -1,0 +1,70 @@
+
+
+/* R */
+  
+  @media (max-width:767px) {
+    /* SmartDevices Common */
+    #products-list-title 
+    {
+      #products-list-title-content {
+        background-color: #fff;
+        border-radius: 4px;
+        display: inline-block;
+        margin-top: 0;
+        min-width: auto;
+        padding: 0 20px 5px;
+        position: relative;
+      }
+    }
+    
+    #product-detail-tabs {
+       > ul {
+        display: block;
+        margin-top: 50px;
+        padding: 0;
+        text-align: center;
+        > li {
+          display: inline-block;
+          margin: 0 25px 25px;
+        }
+      }
+      
+    }
+    
+    #stores-top-slider #stores-slider-text {
+      padding-left: 10px;
+    }
+    
+    #stores-title {
+      margin: 0px;
+    }
+    #stores-content {
+      margin: 0px;
+    }
+    
+    .product-grid ul li {
+        margin-bottom: 180px !important;
+    }
+      
+    @media (orientation: landscape) {
+      /* SmartDevices Landscape */
+    }
+    @media (orientation: portrait) {
+      /* SmartDevices Portrait */
+
+    }
+  }
+  /* R */
+  
+  @media (min-width: 768px) and (max-width: 1199px) {
+    /* SmartDevices Common */
+    
+    @media (orientation: landscape) {
+      /* SmartDevices Landscape */
+
+    }
+    @media (orientation: portrait) {
+      /* SmartDevices Portrait */
+
+    }
+  }

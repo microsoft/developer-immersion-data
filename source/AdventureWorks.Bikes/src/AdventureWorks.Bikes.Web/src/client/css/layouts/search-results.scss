@@ -1,0 +1,22 @@
+#search-result-title {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  
+  #search-result-title-content {
+    display:block;
+    text-align: center;
+    >span {
+      display: inline-block;
+      font-size: 18px;
+      color: rgb( 64, 64, 64 );
+      text-transform: uppercase;
+    }
+    #result-quantity {
+      font-weight: bold;
+    }
+    
+    #result-value-search {}
+  }
+}
+
+#search-result-items-grid {}

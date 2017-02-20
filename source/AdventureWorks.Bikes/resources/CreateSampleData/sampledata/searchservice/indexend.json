@@ -1,0 +1,70 @@
+{
+  "name": "products",
+  "fields": [
+    {
+      "name": "id",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": true,
+      "sortable": true,
+      "facetable": false,
+      "key": true,
+      "retrievable": true,
+      "analyzer": ""
+    },
+    {
+      "name": "Name",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": true,
+      "sortable": true,
+      "facetable": false,
+      "key": false,
+      "retrievable": true,
+      "analyzer": "en.lucene"
+    },
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "retrievable": true,
+      "analyzer": "en.lucene",
+      "synonymMaps": [
+        "bikesmap"
+      ]
+    },
+    {
+      "name": "StoreId",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": true,
+      "sortable": false,
+      "facetable": false,
+      "key": false,
+      "retrievable": true,
+      "analyzer": ""
+    },
+    {
+      "name": "OriginalPrice",
+      "type": "Edm.Int32",
+      "searchable": false,
+      "filterable": true,
+      "sortable": true,
+      "facetable": true,
+      "key": false,
+      "retrievable": true,
+      "analyzer": ""
+    }
+  ],
+  "suggesters": [
+    {
+      "name": "products",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": ["Name", "Description"]
+    }
+  ]
+}

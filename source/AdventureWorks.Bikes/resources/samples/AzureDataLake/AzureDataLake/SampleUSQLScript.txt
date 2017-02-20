@@ -1,0 +1,17 @@
+﻿@searchlog =
+    EXTRACT 
+		Date DateTime,
+		Query string			
+    FROM "/samples/SampleSearchData.tsv"
+    USING Extractors.Tsv();
+
+@result = SELECT 
+            Query, 
+            COUNT(*) AS Count
+        FROM @searchlog
+        GROUP BY Query;
+
+OUTPUT @result   
+    TO "/samples/Output/MostSearchedBike.csv"
+ORDER BY Count DESC
+USING Outputters.Csv();

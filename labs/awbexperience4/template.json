@@ -1,0 +1,430 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "webUsername": {
+      "type": "string",
+      "defaultValue": "Store1",
+      "minLength": 1
+    },
+    "webUserFullName": {
+      "type": "string",
+      "defaultValue": "Andrew Davis",
+      "minLength": 1
+    },
+    "webPassword": {
+      "type": "string",
+      "defaultValue": "P2ssw0rd@1",
+      "minLength": 1
+    },
+    "databaseName": {
+      "type": "string",
+      "defaultValue": "adventureworks.bikes.Store1",
+      "minLength": 1
+    },
+    "authDatabaseName": {
+      "type": "string",
+      "defaultValue": "adventureworks.bikes.Auth",
+      "minLength": 1
+    },
+    "skuName": {
+      "type": "string",
+      "defaultValue": "B1",
+      "allowedValues": [
+        "F1",
+        "D1",
+        "B1",
+        "B2",
+        "B3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "metadata": {
+        "description": "Describes plan's pricing tier and instance size. Check details at https://azure.microsoft.com/en-us/pricing/details/app-service/"
+      }
+    },
+    "skuCapacity": {
+      "type": "int",
+      "defaultValue": 1,
+      "minValue": 1,
+      "metadata": {
+        "description": "Describes plan's instance count"
+      }
+    },
+    "administratorLogin": {
+      "type": "string",
+      "defaultValue": "bikes"
+
+    },
+    "administratorLoginPassword": {
+      "type": "securestring",
+      "defaultValue": "P2ssw0rd"
+    },
+    "skuCapacityAzureSearch": {
+      "type": "string",
+      "defaultValue": "free",
+      "metadata": {
+        "description": "The SKU of the search service you want to create. E.g. free, basic or standard"
+      }
+    },
+    "replicaCount": {
+      "type": "int",
+      "minValue": 1,
+      "maxValue": 12,
+      "defaultValue": 1,
+      "metadata": {
+        "description": "Replicas distribute search workloads across the service. You need 2 or more to support high availability (applies to Basic and Standard only)."
+      }
+    },
+    "partitionCount": {
+      "type": "int",
+      "allowedValues": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        12
+      ],
+      "defaultValue": 1,
+      "metadata": {
+        "description": "Partitions allow for scaling of document count as well as faster indexing by sharding your index over multiple Azure Search units."
+      }
+    },
+    "documentDBOfferType": {
+      "type": "string",
+      "defaultValue": "Standard"
+    },
+    "webPackage": {
+      "type": "string",
+      "defaultValue": "https://adventureworksartifacts.blob.core.windows.net/artifacts/Bikes.Web.zip"
+    }
+  },
+  "variables": {
+    "sqlserverName": "[concat('sql', uniqueString(resourceGroup().id))]",
+    "webSiteName": "[concat('webbegin', uniqueString(resourceGroup().id))]",
+    "webSiteNameEnd": "[concat('webend', uniqueString(resourceGroup().id))]",
+    "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
+    "azureSearchName": "[concat('search', uniqueString(resourceGroup().id))]",
+    "documentDBAccountName": "[concat('documentdb', uniqueString(resourceGroup().id))]",
+    "documentDBdatabaseId": "adventureworks.bikes",
+    "documentDBdatabaseIdEnd": "adventureworks.bikes.end"
+  },
+  "resources": [
+    {
+      "name": "[variables('sqlserverName')]",
+      "type": "Microsoft.Sql/servers",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "SqlServer"
+      },
+      "apiVersion": "2014-04-01-preview",
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+        "version": "12.0"
+      },
+      "resources": [
+        {
+          "type": "firewallrules",
+          "apiVersion": "2014-04-01-preview",
+          "dependsOn": [
+            "[concat('Microsoft.Sql/servers/', variables('sqlserverName'))]"
+          ],
+          "location": "[resourceGroup().location]",
+          "name": "AllowAllWindowsAzureIps",
+          "properties": {
+            "endIpAddress": "0.0.0.0",
+            "startIpAddress": "0.0.0.0"
+          }
+        },
+        {
+          "type": "firewallrules",
+          "apiVersion": "2014-04-01-preview",
+          "dependsOn": [
+            "[concat('Microsoft.Sql/servers/', variables('sqlserverName'))]"
+          ],
+          "location": "[resourceGroup().location]",
+          "name": "AllowAll",
+          "properties": {
+            "endIpAddress": "255.255.255.255",
+            "startIpAddress": "0.0.0.0"
+          }
+        }
+      ]
+    },
+    {
+      "apiVersion": "2015-08-01",
+      "name": "[variables('hostingPlanName')]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "HostingPlan"
+      },
+      "sku": {
+        "name": "[parameters('skuName')]",
+        "capacity": "[parameters('skuCapacity')]"
+      },
+      "properties": {
+        "name": "[variables('hostingPlanName')]"
+      }
+    },
+    {
+      "apiVersion": "2015-08-01",
+      "name": "[variables('webSiteName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]",
+        "[concat('Microsoft.Search/searchServices/', variables('azureSearchName'))]",
+        "[concat('Microsoft.DocumentDB/databaseAccounts/', variables('documentDBAccountName'))]"
+      ],
+      "tags": {
+        "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty",
+        "displayName": "Website Begin"
+      },
+      "properties": {
+        "name": "[variables('webSiteName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+      },
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2015-08-01",
+          "dependsOn": [
+            "[concat('Microsoft.Web/sites/', variables('webSiteName'))]"
+          ],
+          "tags": {
+            "displayName": "AppSettings"
+          },
+          "properties": {
+            "ApplicationInsights:InstrumentationKey": "[reference(concat('Microsoft.Insights/components/', variables('webSiteName'))).InstrumentationKey]",
+            "SearchConfig:ServiceName": "[variables('azureSearchName')]",
+            "SearchConfig:ApiKey": "[listAdminKeys(resourceId('Microsoft.Search/searchServices', variables('azureSearchName')), '2015-02-28').primaryKey]",
+            "SearchConfig:Indexer": "products",
+            "SearchConfig:Suggester": "products",
+            "DocumentDB:EndpointUri": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('documentDBAccountName'))).documentEndpoint]",
+            "DocumentDB:Key": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('documentDBAccountName')), '2015-04-08').primaryMasterKey]",
+            "DefaultUsername": "[parameters('webUsername')]",
+            "DefaultFullName": "[parameters('webUserFullName')]",
+            "DefaultPassword": "[parameters('webPassword')]",
+            "Security:Authority": "[concat('http://', variables('webSiteName'), '.azurewebsites.net/')]",
+            "Security:Audience": "[concat('http://', variables('webSiteName'), '.azurewebsites.net/')]",
+            "DocumentDB:DatabaseId": "[variables('documentDBdatabaseId')]"
+          }
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "type": "config",
+          "name": "connectionstrings",
+          "dependsOn": [
+            "[concat('Microsoft.Web/Sites/', variables('webSiteName'))]"
+          ],
+          "properties": {
+            "DefaultConnection": {
+              "value": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('databaseName'), ';User Id=', parameters('administratorLogin'), '@', variables('sqlserverName'), ';Password=', parameters('administratorLoginPassword'), ';')]",
+              "type": "SQLServer"
+            },
+            "IdentityConnection": {
+              "value": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('authDatabaseName'), ';User Id=', parameters('administratorLogin'), '@', variables('sqlserverName'), ';Password=', parameters('administratorLoginPassword'), ';')]",
+              "type": "SQLServer"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "name": "[variables('webSiteName')]",
+      "type": "Microsoft.Insights/components",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[concat('Microsoft.Web/sites/', variables('webSiteName'))]"
+      ],
+      "tags": {
+        "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('webSiteName'))]": "Resource",
+        "displayName": "AppInsightsComponent"
+      },
+      "properties": {
+        "ApplicationId": "[variables('webSiteName')]"
+      }
+    },
+    {
+      "apiVersion": "2015-08-01",
+      "name": "[variables('webSiteNameEnd')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]",
+        "[concat('Microsoft.Search/searchServices/', variables('azureSearchName'))]",
+        "[concat('Microsoft.DocumentDB/databaseAccounts/', variables('documentDBAccountName'))]"
+      ],
+      "tags": {
+        "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty",
+        "displayName": "Website End"
+      },
+      "properties": {
+        "name": "[variables('webSiteNameEnd')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+        "siteConfig": {
+          "AlwaysOn": true
+        }
+      },
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2015-08-01",
+          "dependsOn": [
+            "[concat('Microsoft.Web/sites/', variables('webSiteNameEnd'))]",
+            "[concat('Microsoft.Web/sites/', variables('webSiteNameEnd'), '/Extensions/MSDeploy')]"
+          ],
+          "tags": {
+            "displayName": "AppSettings"
+          },
+          "properties": {
+            "ApplicationInsights:InstrumentationKey": "[reference(concat('Microsoft.Insights/components/', variables('webSiteNameEnd'))).InstrumentationKey]",
+            "SearchConfig:ServiceName": "[variables('azureSearchName')]",
+            "SearchConfig:ApiKey": "[listAdminKeys(resourceId('Microsoft.Search/searchServices', variables('azureSearchName')), '2015-02-28').primaryKey]",
+            "SearchConfig:Indexer": "productsend",
+            "SearchConfig:Suggester": "productsend",
+            "DocumentDB:EndpointUri": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('documentDBAccountName'))).documentEndpoint]",
+            "DocumentDB:Key": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('documentDBAccountName')), '2015-04-08').primaryMasterKey]",
+            "DefaultUsername": "[parameters('webUsername')]",
+            "DefaultFullName": "[parameters('webUserFullName')]",
+            "DefaultPassword": "[parameters('webPassword')]",
+            "Security:Authority": "[concat('http://', variables('webSiteNameEnd'), '.azurewebsites.net/')]",
+            "Security:Audience": "[concat('http://', variables('webSiteNameEnd'), '.azurewebsites.net/')]",
+            "DocumentDB:DatabaseId": "[variables('documentDBdatabaseIdEnd')]",
+            "Server": "[concat('http://', variables('webSiteNameEnd'), '.azurewebsites.net')]",
+            "SleepTimeout": "5000"
+          }
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "type": "config",
+          "name": "connectionstrings",
+          "dependsOn": [
+            "[concat('Microsoft.Web/Sites/', variables('webSiteNameEnd'))]",
+            "[concat('Microsoft.Web/sites/', variables('webSiteNameEnd'), '/Extensions/MSDeploy')]"
+          ],
+          "properties": {
+            "DefaultConnection": {
+              "value": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('databasename'), ';User Id=', parameters('administratorLogin'), '@', variables('sqlserverName'), ';Password=', parameters('administratorLoginPassword'), ';')]",
+              "type": "SQLServer"
+            },
+            "IdentityConnection": {
+              "value": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('authDatabaseName'), ';User Id=', parameters('administratorLogin'), '@', variables('sqlserverName'), ';Password=', parameters('administratorLoginPassword'), ';')]",
+              "type": "SQLServer"
+            }
+          }
+        },
+        {
+            "name": "MSDeploy",
+            "type": "extensions",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2015-08-01",
+            "dependsOn": [
+                "[concat('Microsoft.Web/sites/', variables('webSiteNameEnd'))]"
+            ],
+            "tags": {
+                "displayName": "WebDeploy"
+            },
+          "properties": {
+            "packageUri": "[parameters('webPackage')]",
+            "dbType": "None",
+            "connectionString": "",
+            "setParameters": {
+
+            }
+          }
+        }
+      ]
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "name": "[variables('webSiteNameEnd')]",
+      "type": "Microsoft.Insights/components",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[concat('Microsoft.Web/sites/', variables('webSiteNameEnd'))]"
+      ],
+      "tags": {
+        "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('webSiteNameEnd'))]": "Resource",
+        "displayName": "AppInsightsComponent End"
+      },
+      "properties": {
+        "ApplicationId": "[variables('webSiteNameEnd')]"
+      }
+    },
+    {
+      "apiVersion": "2015-02-28",
+      "name": "[variables('azureSearchName')]",
+      "type": "Microsoft.Search/searchServices",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "Search Service"
+      },
+      "properties": {
+        "sku": {
+          "name": "[toLower(parameters('skuCapacityAzureSearch'))]"
+        },
+        "replicaCount": "[parameters('replicaCount')]",
+        "partitionCount": "[parameters('partitionCount')]"
+      }
+    },
+    {
+      "apiVersion": "2015-04-08",
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "name": "[variables('documentDBAccountName')]",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "DocumentDB"
+      },
+      "properties": {
+        "name": "[variables('documentDBAccountName')]",
+        "databaseAccountOfferType": "[parameters('documentDBOfferType')]"
+      }
+    }
+  ],
+  "outputs": {
+    "webAppNameEnd": {
+      "type": "string",
+      "value": "[variables('webSiteNameEnd')]"
+    },
+    "defaultConnectionString": {
+      "type": "string",
+      "value": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('databaseName'), ';User Id=', parameters('administratorLogin'), '@', variables('sqlserverName'), ';Password=', parameters('administratorLoginPassword'), ';')]"
+    },
+    "identityConnection": {
+      "type": "string",
+      "value": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('authDatabaseName'), ';User Id=', parameters('administratorLogin'), '@', variables('sqlserverName'), ';Password=', parameters('administratorLoginPassword'), ';')]"
+    },
+    "searchServiceName": {
+      "type": "string",
+      "value": "[variables('azureSearchName')]"
+    },
+    "searchServiceApiKey": {
+      "type": "string",
+      "value": "[listAdminKeys(resourceId('Microsoft.Search/searchServices', variables('azureSearchName')), '2015-02-28').primaryKey]"
+    },
+    "documentDBEndpointUri": {
+      "type": "string",
+      "value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('documentDBAccountName'))).documentEndpoint]"
+    },
+    "documentDBKey": {
+      "type": "string",
+      "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('documentDBAccountName')), '2015-04-08').primaryMasterKey]"
+    },
+    "applicationInsightsKey": {
+      "type": "string",
+      "value": "[reference(concat('Microsoft.Insights/components/', variables('webSiteName'))).InstrumentationKey]"
+    }
+  }
+}

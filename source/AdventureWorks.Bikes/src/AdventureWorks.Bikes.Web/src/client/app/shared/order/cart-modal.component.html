@@ -1,0 +1,21 @@
+<div id="checkout-pop-wrapper" [class.open]="ModalConfig.CartNoticeModal">
+	<div id="checkout-pop-block" [class.open]="ModalConfig.CartNoticeModal">
+		<div id="checkout-pop-content" class="col-xs-12">
+			<span class="checkout-title">Added to your shopping cart</span>
+			<div id="checkout-product-info">
+				<div id="product-pop-img" class="col-xs-4" *ngIf="Image">
+					<img class="img-responsive" src="{{Image}}" alt="{{Product.name}}" />
+				</div>
+				<div id="product-pop-info"class="col-xs-8">
+					<span id="product-pop-name" class="col-xs-12">{{Product.name}}</span>
+					<span id="product-pop-original-price" class="col-xs-12">{{Product.originalPrice| currency:'USD':true}}</span>
+					<span id="product-pop-final-price" class="col-xs-12">{{Product.finalPrice| currency:'USD':true}}</span>
+				</div>
+			</div>
+			<div id="checkout-buttons-block" class="col-xs-12">
+				<span id="checkout-continue-shopping" class="checkout-button"><a class="click-available" (click)="ModalConfig.closeCartNotice()">Continue Shopping</a></span>
+				<span id="checkout-cart" class="checkout-button"><a class="click-available" [routerLink]="['/cart']" (click)="ModalConfig.closeCartNotice()">View Cart</a></span>
+			</div>			
+		</div>		
+	</div>
+</div>

@@ -1,0 +1,37 @@
+﻿// File extraction
+@visitsLog =
+    EXTRACT date DateTime,
+            time DateTime,
+            s_ip string,
+            cs_method string,
+            cs_uri_stem string,
+            cs_uri_query string,
+            s_port string,
+            cs_username string,
+            c_ip string,
+            cs_user_agent string,
+            cs_referer string,
+            sc_status string,
+            sc_substatus string,
+            sc_win32_status string,
+            time_taken string
+    FROM "/iislog.log"
+    USING Extractors.Text(delimiter : ' ', skipFirstNRows : 2);
+
+@products =
+    EXTRACT id string,
+            productName string
+    FROM "/products.txt"
+    USING Extractors.Text(delimiter : ',');
+
+// Separate product visits and product added to the cart.
+
+//@productDetailsData = ...
+//@productPurchasesData = ...
+
+// Process the previous data to measure the time spent since visiting the product until it was added to the cart.
+
+//@timeMeasuring = ...
+
+//Output generation
+

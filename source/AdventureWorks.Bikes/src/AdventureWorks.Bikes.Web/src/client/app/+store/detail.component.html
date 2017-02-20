@@ -1,0 +1,34 @@
+<aw-store-header *ngIf="Store" [Store]="Store"></aw-store-header>
+
+<section id="products-list-tabs" class="container">
+	<ul>
+		<li [class.active]="Section=='featured'">
+			<a (click)="Load('featured', 1)"><span>Featured</span></a>
+		</li>
+		<li [class.active]="Section=='arrivals'">
+			<a (click)="Load('arrivals', 1)"><span>New Arrivals</span></a>
+		</li>
+		<li [class.active]="Section=='trends'">
+			<a (click)="Load('trends', 1)"><span>Trends</span></a>
+		</li>
+	</ul>
+</section>
+
+
+<section id="store-featured-items-grid" class="product-grid container"  *ngIf="Section=='featured'">
+	  <ul>
+	  	<product-card *ngFor="let product of Featured" [Product]="product"></product-card>
+	  </ul>
+</section>
+
+<section id="store-arrivals-items-grid" class="product-grid container" *ngIf="Section=='arrivals'">
+	  <ul>
+      	<product-card *ngFor="let product of Arrivals" [Product]="product"></product-card>
+	  </ul>
+</section>
+
+<section id="store-trends-featured-items-grid" class="product-grid container" *ngIf="Section=='trends'">
+	  <ul>      
+      	<product-card *ngFor="let product of Trending" [Product]="product"></product-card>
+	  </ul>
+</section>
