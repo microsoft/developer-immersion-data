@@ -1,0 +1,30 @@
+﻿<section id="purchasesHistory" class="me-module">
+    <h2 class="purchase-title">This is your purchase history</h2>
+    <section class="col-xs-12 purchase">
+        <section ng-if="!historyItems.length" class="list-no-items">
+            You don't have any purchase yet.
+        </section>
+        <section ng-if="historyItems.length">
+            <table class="table table-condensed table-striped purchase-table">
+                <thead>
+                    <tr>
+                        <th class="col-md-2 purchase-head-col">Date</th>
+                        <th class="col-md-7 purchase-head-col">Product</th>
+                        <th class="col-md-1 table-right purchase-head-col">Price</th>
+                        <th class="col-md-1 table-right purchase-head-col">Quantity</th>
+                        <th class="col-md-1 table-right purchase-head-col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="purchase-row" ng-repeat="item in historyItems">
+                        <td class="list-item purchase-head-val">{{item.date | mcdate}}</td>
+                        <td class="list-item purchase-head-val">{{item.productName}}</td>
+                        <td class="table-right list-item purchase-head-val">{{item.price | number:2}}</td>
+                        <td class="table-right list-item purchase-head-val">{{item.quantity}}</td>
+                        <td class="table-right list-item" style="padding-top:10px;line-height:1em;vertical-align:top"><span class="data currency highlight big" style="line-height: 1em;">$&nbsp;{{item.total | number:2}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </section>
+</section>

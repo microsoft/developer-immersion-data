@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SQLServer">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=experience1sql.northeurope.cloudapp.azure.com;Initial Catalog=ExpensesDWH</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>0e69102a-86ab-4378-8e7a-3282315f1afb</DataSourceID>
+</RptDataSource>

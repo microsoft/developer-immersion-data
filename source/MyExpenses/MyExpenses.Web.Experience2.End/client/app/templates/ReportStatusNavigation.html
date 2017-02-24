@@ -1,0 +1,6 @@
+﻿<ul class="report-filters">
+    <li ng-repeat="status in statuses | orderBy:'order'">
+        <a href ng-if="status.active===false" ng-bind-template="{{status.title}} ({{status.count}})" ng-click="navigateToStatus(status.status)"></a>
+        <span class="active-status" ng-if="status.active" ng-bind-template="{{status.title}} ({{status.count}})"></span>
+    </li>
+</ul>

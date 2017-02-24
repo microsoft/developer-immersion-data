@@ -1,0 +1,76 @@
+﻿<section id="my-expenses">
+    <section class="col-xs-12 status-filter">
+        <mc-report-status-navigation></mc-report-status-navigation>
+    </section>
+    <section class="col-xs-12 me-module report-list">
+        <section class="list-filters list-filters-report-list">
+            <div class="search-filter">
+                <input ng-model="query"
+                       mc-keyup-throttle="search()"
+                       autofocus="autofocus"
+                       type="text"
+                       placeholder="Search reports...">
+                <span class="filter-icon icon-search"></span>
+            </div>
+            <button ng-click="createReport()" class="button-primary button-icon-add report-button">+ New report</button>
+        </section>
+        <section ng-show="!reports.length" class="list-no-items">
+            Sorry, no reports have been found.
+        </section>
+        <section ng-show="reports.length">
+            <article class="list-item titles">
+                <div class="col-xs-6 titles">
+                    Title & description
+                </div>
+
+                <div class="col-xs-1 titles text-center">
+                </div>
+
+                <div class="col-xs-2 titles">
+                    Last update
+                </div>
+
+                <div class="col-xs-3 titles report-list-total-col">
+                    Total
+                </div>
+            </article>
+            <article class="list-item report-list-item"
+                     ng-class="{ 'report-expanded-bg': report.showDetails }"
+                     ng-repeat="report in reports track by report.sequenceNumber">
+                <div class="col-xs-6" style="padding-left: 0;">
+                    <a ng-href="{{report.url}}" title="View report details">{{report.purpose}} - {{report.sequenceNumber}}</a>
+                    <span class="data block report-description" ng-show="!report.showDetails">{{report.description}}</span>
+                </div>
+
+                <div class="list-item-delete col-xs-1 text-center">
+                    <span class="icon icon-trash_icon" ng-show="showDelete(report)"
+                          ng-click="deleteReport(report)"></span>
+                </div>
+
+                <div class="col-xs-2 text-left">
+                    <span class="date">{{report.submissionDate}}</span>
+                    <span class="status {{report.status}}">{{report.status}}</span>
+                </div>
+
+                <div class="col-xs-3 ">
+                    <span ng-if="!report.chargeInPoints" class="data currency highlight big text-right">$&nbsp;{{report.total | number:2}}</span>
+                    <span ng-if="report.chargeInPoints" class="data highlight big brand text-right"><span class="points-currency">Cp&nbsp;</span>{{report.points | number:2}}</span>
+                    <span class="list-item-show icon icon-arrow_open"
+                          ng-show="!report.showDetails"
+                          ng-click="toggleReportSummary(report);"></span>
+                </div>
+
+                <div ng-include="'reports/employeeList/' + report.status + '.html'"></div>
+                <hr />
+            </article>
+            
+        </section>
+    </section>
+    <ul class="list-pagination">
+        <li ng-click="previousPage()" type="button" class="pagination-item arrow" ng-class="{'arrow--disabled': !paginationInfo.hasPreviousPage}" ng-disabled="!paginationInfo.hasPreviousPage">&laquo;</li>
+        <li class="pagination-item" ng-repeat="page in pages">
+            <a ng-class="{ active : page.current}" href="" ng-click="navigateToPage(page.pageIndex)">{{page.number}}</a>
+        </li>
+        <li ng-click="nextPage()" type="button" class="pagination-item arrow arrow--right" ng-class="{'arrow--disabled': !paginationInfo.hasNextPage}" ng-disabled="!paginationInfo.hasNextPage">&raquo;</li>
+    </ul>
+</section>

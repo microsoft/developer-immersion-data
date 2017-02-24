@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminLogin": {
+      "value": "experience1"
+    },
+    "adminPassword": {
+      "value": "P2ssw0rd"
+    },
+    "JumpHostUsername": {
+      "value": "devimmersion"
+    },
+    "JumpHostPassword": {
+      "value": "P2ssw0rd@Dev"
+    },
+    "PrimaryStorageAccountName": {
+      "value": "config:PrimaryStorageAccountName"
+    },
+    "PrimaryStorageAccountKey": {
+      "value": "config:PrimaryStorageAccountKey"
+    },
+    "JumpHostOSDiskVhdUri": {
+      "value": "blob:awb/20161108/ex1jumphost.vhd"
+    },
+    "ReportZipPath": {
+      "value": "blob:awb/20161108/Reports.zip"
+    },
+    "webPackage": {
+      "value": "blob:awb/20161108/MyExpenses.Web.zip"
+    },
+    "configureJumphostScriptFileLink": {
+      "value": "asset:scripts/ConfigureJumpHost.ps1"
+    },
+    "configureSQLServerScriptFileLink": {
+      "value": "asset:scripts/configureSQLServer.ps1"
+    },
+    "contentPayloadFileLink": {
+      "value": "blob:awb/20161108/Source.zip"
+    },
+    "immersionScriptModuleFileLink": {
+      "value": "blob:platform/20161212/Immersion.psm1"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/ecacd0de3800f4f31a743944bf66faba9a315753/gulp-angular-templatecache/gulp-angular-templatecache.d.ts",
+    "raw": "registry:dt/gulp-angular-templatecache#2.0.0+20160830130006",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/ecacd0de3800f4f31a743944bf66faba9a315753/gulp-angular-templatecache/gulp-angular-templatecache.d.ts"
+  }
+}

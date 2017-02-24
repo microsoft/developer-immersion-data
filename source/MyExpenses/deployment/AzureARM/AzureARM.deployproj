@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>5a3f84a4-d820-41ca-a4c7-469ef6ac6549</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkIdentifier>Deployment</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>1.0</TargetFrameworkVersion>
+    <PrepareForBuildDependsOn>
+    </PrepareForBuildDependsOn>
+  </PropertyGroup>
+  <Import Condition=" Exists('Deployment.targets') " Project="Deployment.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <!-- vertag<:>start tokens<:>maj.min -->
+  <Import Condition=" Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets') " Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets" />
+  <!-- vertag<:>end -->
+  <ItemGroup>
+    <Content Include="CustomScripts\configureJumpHost.ps1" />
+    <Content Include="CustomScripts\configureSQLServer.ps1" />
+    <None Include="Deployment.targets">
+      <Visible>False</Visible>
+    </None>
+    <Content Include="Scripts\Deploy-AzureResourceGroup.ps1" />
+    <Content Include="Templates\azuredeploy.json" />
+    <Content Include="Templates\azuredeploy.parameters.json" />
+    <None Include="Scripts\PublishWebApp.ps1" />
+    <None Include="Templates\azuredeploy.tara.parametersSecondExperience.json" />
+    <None Include="Templates\azuredeploy.tara.parameters.json" />
+    <None Include="Templates\azuredeploy.dev.parametersSecondExperience.json" />
+    <None Include="Templates\azuredeploy.dev.parameters.json" />
+    <None Include="Templates\azuredeploy.parametersSecondExperience.json" />
+    <None Include="Templates\azuredeploySecondExperience.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Tools\AzCopy.exe" />
+    <Content Include="Tools\Microsoft.Data.Edm.dll">
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="Tools\Microsoft.Data.OData.dll">
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="Tools\Microsoft.Data.Services.Client.dll">
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="Tools\Microsoft.WindowsAzure.Storage.dll">
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="Tools\Microsoft.WindowsAzure.Storage.DataMovement.dll">
+      <Visible>False</Visible>
+    </Content>
+  </ItemGroup>
+  <Target Name="GetReferenceAssemblyPaths" />
+</Project>

@@ -1,0 +1,51 @@
+﻿<section class="list-item-detail animate-show" ng-show="report.showDetails">
+    <div class="col-xs-7">
+        <div class="list-item-detail_desc">
+            {{report.details.description}}
+        </div>
+    </div>
+    <div class="col-xs-5">
+        <ul class="categories">
+            <li class="category" ng-repeat="categoryDetail in report.details.expenseCategoryDetails">
+                <span class="col-xs-8 category-name ">{{categoryDetail.category}}</span>
+                <span class="col-xs-4 category-amount report-category-amount">{{categoryDetail.total | currency}}</span>
+            </li>
+            <li class="category category-total">
+                <span class="col-xs-8 category-name ">Total</span>
+                <span class="col-xs-4 category-amount report-category-amount">{{report.details.total | currency}}</span>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="col-xs-6">
+        <div class="company-points">
+            <div class="company-points-container">
+                <span class="company-points-text">
+                    Company Points:
+                </span>
+
+                <span class="company-points-value">
+                    {{report.details.points | number: 2}}
+                </span>
+
+                <span class="company-points-icon">
+                    <span class="icon-CP_icon"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-1">
+    </div>
+
+    <div class="col-xs-5">
+        <div class="list-actions">
+            <a class="button button--positive button--big report-button report-detail-button" href="" ng-click="clone(report)" title="Clone report">Clone</a>
+            <a class="button button--info button--big report-button report-detail-button" ng-href="{{report.url}}" title="View report details">Details</a>
+        </div>
+    </div>
+
+    <span class="list-item-show list-item-show--turn icon icon-arrow_open"
+          ng-click="toggleReportSummary(report);"></span>
+</section>

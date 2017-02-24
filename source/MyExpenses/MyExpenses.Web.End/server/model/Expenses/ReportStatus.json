@@ -1,0 +1,7 @@
+﻿{
+    "UnSubmittedForApproval": 0,
+    "SubmittedForApproval": 1,
+    "Reimbursed": 2,
+    "Rejected": 3,
+    "Approved": 4 
+}

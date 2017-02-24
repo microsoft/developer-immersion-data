@@ -1,0 +1,9 @@
+﻿{
+  "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
+  "webJobName": "MyExpensesDataGenerator",
+  "startTime": "2016-09-20T00:00:00+01:00",
+  "endTime": "2016-09-21T00:00:00+01:00",
+  "jobRecurrenceFrequency": "Minute",
+  "interval": 1,
+  "runMode": "Scheduled"
+}

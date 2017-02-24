@@ -1,0 +1,502 @@
+﻿@import "Variables.less";
+
+@button-width: 170px;
+
+#report {
+    margin-top: -20px;
+}
+
+.receipt-preview {
+    max-width: 100%;
+    max-height: 90%;
+}
+
+.report-title {
+    padding-top: 10px;
+}
+
+.report-info {
+    padding-top: 6px;
+    color: white;
+}
+
+.report-date {
+    padding-left: 30px;
+}
+
+.total-total {
+    margin-top: 6px;
+}
+
+.title-bar {
+    margin-top: 5px;
+    margin-bottom: -20px;
+    width: 100%;
+
+    > div {
+        > * {
+            /*display: inline-block;*/
+            /*vertical-align: middle;*/
+        }
+
+        h2 {
+            color: @font-color-contrast-darker;
+            font-size: 1.4em;
+            margin: 0;
+        }
+
+        div {
+            .total-label {
+                color: @font-color-contrast-darker;
+                font-size: 1.1em;
+            }
+
+            .total {
+                font-weight: bold;
+                color: white;
+                font-size: 1.3em;
+                margin-left: .5em;
+            }
+        }
+    }
+
+    .user-image {
+        max-height: 70px;
+        margin-left: -15px;
+    }
+
+    .submitted-header {
+        margin-bottom: .5em;
+
+        > div {
+            padding: 0;
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        .total-price {
+            color: @black;
+            font-size: 1.5em;
+            float: right;
+        }
+    }
+
+
+
+    .report-info-primary {
+        /*background-color: @module-color-darker;*/
+        color: @font-color-contrast-darker;
+        padding: 0;
+
+        .highlight {
+            font-size: 1.2em;
+            font-weight: bold;
+            line-height: 30px;
+        }
+
+        .padded {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .button-bar {
+            margin: 1em 0;
+        }
+    }
+
+    .report-info-secondary {
+        margin-bottom: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: white;
+        box-shadow: 0 0 4px #ccc;
+
+        .highlight {
+            font-size: 1.2em;
+            color: inherit;
+            font-weight: bold;
+            line-height: 35px;
+        }
+
+        .important {
+            font-weight: bold;
+        }
+    }
+
+    .report-info-approved, .report-info-rejected {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-top: @font-color 1px solid;
+        border-bottom: @font-color 1px solid;
+    }
+
+    .report-info-rejected {
+        color: @red;
+    }
+
+    .total-unsubmitted {
+        padding-top: 26px;
+        padding-bottom: 10px;
+
+        .highlight {
+            font-size: 1.2em;
+            color: inherit;
+            font-weight: bold;
+            line-height: normal;
+        }
+    }
+}
+
+.button-report-save {
+    margin-top: 32px;
+    margin-right: 4px;
+    float: right;
+    border-radius: 2px;
+    padding: .5em 1em;
+    padding-left: 3em;
+    background-repeat: no-repeat;
+    background-position: 7% 50%;
+    transition: background-color .2s linear;
+    background-color: @blue;
+
+    &:hover {
+        background-color: darken(@blue, 5%);
+    }
+
+    background-size: 20px;
+}
+
+.button-bar {
+
+    &.top {
+        margin-top: 5px;
+        margin-bottom: 25px;
+    }
+
+    &.bottom {
+        margin-top: 25px;
+        margin-bottom: 5px;
+    }
+}
+
+h3 {
+    color: black;
+    font-family: @primary-font-light;
+    font-size: 2.5em;
+    margin: .5em 0;
+}
+
+.report-backButton {
+    top: 37px;
+    position: relative;
+    margin-left: 30px;
+    color: #64b0f2;
+
+    &:hover{
+        color: #64b0f2;
+    }
+}
+
+.report-button-modal {
+    margin-left:10px;
+}
+
+.report-editableInfo-container {
+    position: relative;
+    top: 55px;
+    padding-bottom: 30px;
+    background-color:#fdfdfd;
+    z-index: 10;
+    padding-top: 5px!important;
+
+    .important, .highlight {
+        color: @module-color-darker;
+    }
+}
+
+.report-notEditableInfo-container {
+    padding-left: 50px;
+    top: -40px;
+
+    .important{
+        color: @module-color-darker;
+    }
+}
+
+.report-reimbursed-info {
+    margin-top: 50px;
+}
+
+.report-button-bar {
+    position: relative;
+    top: 100px;
+    text-align: right;
+    padding-right: 15px;
+    background-color:#fdfdfd;
+    padding-bottom:20px;
+}
+
+.report-button {
+    width: @button-width;
+}
+
+.report-delete-button {
+    position: relative;
+    top: -50px;
+    .report-button;
+}
+
+.report-unsubmitted-list {
+    position: relative;
+    top: 100px;
+}
+
+.report-currency {
+    font-size: 32px;
+    font-weight: 700;
+    color: black;
+
+    &-simbol {
+        font-size: 15px;
+        font-weight: normal;
+    }
+}
+
+.report-expensesList-header {
+    margin-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.report-expensesList-header-col {
+    vertical-align: middle;
+
+    &-total{
+        text-align: right;
+        padding-right: 100px; 
+    }
+}
+
+.expense-detail-container {
+    height: 390px!important;
+}
+
+.report-expenseDetail-CurrencyFields {
+    padding-right:50px;
+}
+
+.report-expense-list-detail-button {
+    position: absolute;
+    right: 55px;
+    top: 67px;
+}
+
+.report-detail-currency-container {
+    white-space: nowrap;
+    overflow-x: hidden;
+    width: 205px;
+}
+
+.report-expensesList-item {
+    padding-left: 20px;
+}
+
+.report-expenseList-item-title {
+    display: block !important;
+    color: #425264!important;
+}
+
+.report-list-unsubmitted-filters {
+    margin-top: 120px;
+}
+
+.report-list-submitted-filters {
+    margin-top: 120px;
+}
+
+.report-list-reimbursed-filters {
+    margin-top: 120px;
+}
+
+.report-list-approved-filters {
+    margin-top: 120px;
+}
+
+.report-list-rejected-filters {
+    margin-top: 40px;
+}
+
+.report-category-amount {
+    width: 85px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+
+.report-detail-button {
+    float: right;
+    margin-left: 10px;
+    padding: 10px 0;
+    text-align:center;
+    height:40px;
+}
+
+.report-info-cp {
+    padding-right: 32px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    /*width: 200px;*/
+}
+
+.report-form-control {
+    margin-top:10px;
+}
+
+.expense-detail-label {
+    display: inline;
+}
+
+.expense-detail-field {
+    padding-top: 20px;
+}
+
+.expense-detail-value {
+    float:right;
+    font-weight:bold;
+}
+
+.expense-detail-notes-block {
+    height: 350px;
+    padding-left:30px;
+}
+
+.expense-detail {
+    &-cp {
+        position: relative;
+        top: 100px;
+        text-align:right;
+    }
+
+    &-img-container {
+        width: 258px;
+        height: 250px;
+        top: 30px;
+        background-color:#fdfdfd;
+
+    }
+
+    &-img {
+        /*width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 35px;*/
+    }
+
+    &-points-wrapper {
+        display:inline;
+    }
+
+    &-points {
+        display:inline;
+    }
+}
+
+.expense-suspicius {
+    color: #f25e46!important;
+}
+
+.expense-img-warning {
+    position: absolute;
+    top: 30px;
+    margin-left: 35px;
+}
+
+
+.report-status {
+    &-reimbursed {
+        color: #4698f2;
+    }
+
+    &-approved {
+        color: #74cc94;
+    }
+
+    &-rejected {
+        color: #f25e46;
+    }
+
+    &-submitted {
+        color: #f7c21d;
+    }
+}
+
+.report-list-total-col {
+    text-align: right;
+    padding-right: 85px;
+}
+
+.report-list {
+    padding-left:0px;
+    padding-right:0px;
+}
+
+.report-list-item {
+    padding-left:15px;
+    padding-right:15px;
+    margin-bottom: -20px;
+}
+
+.report-expanded-bg {
+    background-color: #fdfdfd;
+}
+
+.report-detail-cp {
+    vertical-align: top;
+}
+
+.team-report-resume {
+    &-label {
+        right: 100px;
+        position: absolute;
+        top: 20px;
+    }
+    
+    &-number {
+        background-color: #64b0f2;
+        padding: 15px 35px 15px 35px;
+        color: white;
+        right: 0;
+        position: absolute;
+        top: 0;
+        font-size: 32px;
+        font-weight:bold;
+    }
+}
+
+.report-points-cp-icon {
+    font-size: 24px;
+    color: #74cc94;
+    vertical-align: super;
+    padding-left: 7px;
+}
+
+hr {
+    width: 100%;
+}
+
+label {
+    font-weight: normal;
+}
+
+.report-description {
+    color: #425264!important;
+}
+
+.expense-status-text {
+    height: 90px;
+    overflow-y: hidden;
+}

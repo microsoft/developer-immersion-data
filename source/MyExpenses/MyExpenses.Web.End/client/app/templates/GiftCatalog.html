@@ -1,0 +1,78 @@
+﻿<section id="giftCatalog">
+    <section class="col-xs-12 me-module me-module--gifts">
+        <section class="list-filters list-filters--gifts">
+            <div class="search-filter">
+                <input ng-model="query"
+                       mc-keyup-throttle="search()"
+                       autofocus="autofocus"
+                       type="text"
+                       placeholder="Search products...">
+                <span class="filter-icon icon-search"></span>
+            </div>
+            <span class="me-module-points">
+                <span class="me-module-points_text">Company Points: </span>
+                <span class="me-module-points_value">{{companyPoints | number:2}}</span>
+                <span class="icon icon-icon_store"></span>
+            </span>
+        </section>
+
+        <section ng-show="!products.length" class="list-no-items">
+            No products have been found.
+        </section>
+
+        <section class="me-module-container product" ng-show="products.length">
+
+            <div class="col-xs-6 product-col-left">
+                <article class="product-item" ng-click="purchaseProduct(product)" ng-repeat="product in products"
+                         ng-if="$index < 4">
+
+                    <div class="product-img" ng-style="{'background-image': 'url(' + product.pictureUrl +')'}"></div>
+
+                    <div class="product-info">{{product.title}}</div>
+                    <span class="product-price" style="text-align:center">
+                        {{product.price |number:2}}
+                        <span class="product-price_icon">
+                            <span class="icon icon-CP_icon"></span>
+                        </span>
+                    </span>
+                </article>
+            </div>
+            <div class="col-xs-6 product-col-right">
+                <article class="product-item product-item--big" ng-click="purchaseProduct(product)" ng-repeat="product in products"
+                         ng-if="$index === 4">
+                    <div class="product-img" ng-style="{'background-image': 'url(' + product.pictureUrl +')'}"></div>
+
+                    <div class="product-info">{{product.title}}</div>
+                    <span class="product-price">
+                        {{product.price |number:2}}
+                        <span class="product-price_icon">
+                            <span class="icon icon-CP_icon"></span>
+                        </span>
+                    </span>
+                </article>
+            </div>
+
+            <div class="col-xs-12">
+                <article class="product-item product-item--small" ng-click="purchaseProduct(product)" ng-repeat="product in products"
+                         ng-if="$index > 4">
+                    <div class="product-img" ng-style="{'background-image': 'url(' + product.pictureUrl +')'}"></div>
+                    <div class="product-info">{{product.title}}</div>
+                    <span class="product-price" style="text-align: center;">
+                        {{product.price |number:2}}
+                        <span class="product-price_icon">
+                            <span class="icon icon-CP_icon"></span>
+                        </span>
+                    </span>
+                </article>
+            </div>
+        </section>
+    </section>
+
+    <ul class="list-pagination">
+        <li ng-click="previousPage()" type="button" class="pagination-item arrow" ng-class="{'arrow--disabled': !paginationInfo.hasPreviousPage}" ng-disabled="!paginationInfo.hasPreviousPage">&laquo;</li>
+        <li class="pagination-item" ng-repeat="page in pages">
+            <a ng-class="{ active : page.current}" href="" ng-click="navigateToPage(page.pageIndex)">{{page.number}}</a>
+        </li>
+        <li ng-click="nextPage()" type="button" class="pagination-item arrow arrow--right" ng-class="{'arrow--disabled': !paginationInfo.hasNextPage}" ng-disabled="!paginationInfo.hasNextPage">&raquo;</li>
+    </ul>
+</section>

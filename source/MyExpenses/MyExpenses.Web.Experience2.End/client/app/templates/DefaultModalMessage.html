@@ -1,0 +1,13 @@
+﻿<div class="modal-header modal-head-title">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class="close custom-modal-close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+</div>
+<div class="modal-body message">
+    <p ng-bind-html="message"></p>
+</div>
+<br />
+<div class="modal-footer">
+    <button type="button" ng-repeat="option in options" ng-click="selectOption(option, $event)" class="button-primary modal-option-button report-button report-button-modal">
+        {{option.text}}
+    </button>
+</div>

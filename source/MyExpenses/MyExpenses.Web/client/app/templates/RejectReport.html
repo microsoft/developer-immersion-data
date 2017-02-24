@@ -1,0 +1,28 @@
+﻿<form name="rejectReport" novalidate role="form">
+    <div class="modal-header modal-head-title">
+        <h4 class="modal-title">{{title}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="reason">Reason: <span class="required">*</span></label>
+            <textarea name="reason"
+                      class="form-control report-form-control"
+                      ng-class="{submitted:submitted}"
+                      ng-model="model.reason"
+                      placeholder="Give a meaningful reason to reject the report..."
+                      required
+                      maxlength="255"></textarea>
+            <small class="error"
+                   ng-show="rejectReport.reason.invalid && submitted">
+                The reason for reject the report is required
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="button-primary modal-option-button report-button report-button-modal"
+                ng-click="cancel()">
+            Cancel
+        </button>
+        <button type="button" class="button-primary modal-option-button report-button report-button-modal" ng-click="confirm(rejectReport)">{{saveText}}</button>
+    </div>
+</form>

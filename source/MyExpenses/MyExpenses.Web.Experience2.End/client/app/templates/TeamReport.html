@@ -1,0 +1,8 @@
+﻿<section id="report" class="me-module">
+    <div class="back">
+        <a ng-href="{{urlToReportsList}}"
+           class="report-backButton">&laquo; Back to team expenses</a>
+    </div>
+    <section ng-include="'reports/managerDetail/' + report.status + '.html'"
+             ng-cloak class="clearfix"></section>
+</section>

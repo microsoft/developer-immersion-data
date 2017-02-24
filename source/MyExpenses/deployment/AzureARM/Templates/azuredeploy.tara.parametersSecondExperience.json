@@ -1,0 +1,45 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminLogin": {
+      "value": "experience2"
+    },
+    "adminPassword": {
+      "value": "P2ssw0rd"
+    },
+    "JumpHostOSDiskVhdUri": {
+      "value": "experience2/exjumphost.vhd"
+    },
+    "JumpHostUsername": {
+      "value": "devimmersion"
+    },
+    "JumpHostPassword": {
+      "value": "P2ssw0rd@Dev"
+    },
+    "immersionScriptModuleFileLink": {
+      "value": "asset:scripts"
+    },
+    "ReportZipPath": {
+      "value": "https://experience1and2.blob.core.windows.net:443/experience2/Reports.zip"
+    },
+    "PrimaryStorageAccountName": {
+      "value": "experience1and2"
+    },
+    "PrimaryStorageAccountKey": {
+      "value": "Bw9WleTZhE0KuTPBx4nMzBunEtSZgLzLGBJfly1soK0437N/BBSN27q8epOAbgFkf0jMnFVJmipFJXKljV2wTQ=="
+    },
+    "webPackage": {
+      "value": "https://experience1and2.blob.core.windows.net:443/experience2/MyExpenses.Web.zip"
+    },
+    "configureJumphostScriptFileLink": {
+      "value": "https://experience1and2.blob.core.windows.net:443/experience2/configureJumpHost.ps1"
+    },
+    "configureSQLServerScriptFileLink": {
+      "value": "https://experience1and2.blob.core.windows.net:443/experience2/configureSQLServer.ps1"
+    },
+    "contentPayloadFileLink": {
+      "value": "https://experience1and2.blob.core.windows.net:443/experience2/Source.zip"
+    }
+  }
+}

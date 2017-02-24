@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/7f1ea1f53f629ace27f44fe3339f374c0cbba695/angularjs/angular-sanitize.d.ts",
+    "raw": "registry:dt/angular-sanitize#1.3.0+20160930125720",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/7f1ea1f53f629ace27f44fe3339f374c0cbba695/angularjs/angular-sanitize.d.ts"
+  }
+}

@@ -1,0 +1,161 @@
+﻿@import url('variables.less');
+
+.list-item {
+    border-bottom:none!important;
+
+    .list-item-detail {
+        @item-height: 315px;
+        clear: both;
+        color: @font-color;
+        padding: 0;
+        overflow: hidden;
+        transition: all linear 0.2s;
+
+        &.animate-show {
+            transition: all linear 0.2s;
+            opacity: 1;
+            height: @item-height;
+            transform: translateY(-42px);
+            overflow: visible;
+
+
+            &.ng-hide-add,
+            &.ng-hide-remove {
+                display: block !important;
+            }
+
+            &.ng-hide {
+                height: 0;
+                opacity: 0;
+                padding: 0;
+            }
+        }
+
+        &_desc {
+            max-height: 209px;
+            max-width: 80%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .list-item-show--turn {
+            background: @module-background-dark;
+            transform: rotate(180deg);
+            position: absolute;
+            bottom: -62px;
+            padding: 14px 10px !important;
+            right: 20px;
+        }
+
+        .list-actions {
+            transform: translateY(80%);
+            display: block;
+            height: 60px;
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .categories {
+            color: @black;
+            transform: translateY(55px);
+            height: 185px;
+            border-top: 2px solid #f7f7f7;
+            border-bottom: 2px solid #f7f7f7;
+            padding: 10px 0;
+
+            .category {
+
+                .category-name, .category-amount {
+                    padding: 3px 0;
+                }
+
+                .category-amount {
+                    font-weight: @font-bold;
+                }
+            }
+        }
+
+
+        .company-points {
+            border-top: 2px solid #f7f7f7;
+            height: 60px;
+            margin-top: 43px;
+            position: relative;
+
+            &-container {
+                position: absolute;
+                top: 20px;
+                right: 10px;
+            }
+
+            &-text {
+                font-size: 0.9em;
+                font-weight: @font-bold;
+                color: @black;
+            }
+
+            &-value {
+                font-size: 2em;
+                font-weight: @font-black;
+                color: @black;
+            }
+
+            &-icon {
+                transform: translateY(-14px);
+                display: inline-block;
+                font-size: 1.2em;
+                color: @button-positive;
+            }
+        }
+    }
+}
+
+.status-unsubmitted {
+    /*background-color: @status-unsubmitted-background-color;*/
+}
+
+.status-submitted {
+    /*background-color: @status-submitted-background-color;*/
+}
+
+.status-reimbursed {
+    /*background-color: @status-reimbursed-background-color;*/
+}
+
+.status-rejected {
+    /*background-color: @status-rejected-background-color;*/
+}
+
+.status-approved {
+    /*background-color: @status-approved-background-color;*/
+}
+
+.report-filters {
+    .active-status {
+        background: @module-color;
+        border-radius: 3px;
+        color: @font-color-contrast;
+    }
+
+    li {
+        float: left;
+        margin-right: 3em;
+
+        @media @half-desktop {
+            margin-right: 2em;
+        }
+
+        span {
+            padding: 0.3em 2.5em;
+        }
+
+        a, span {
+            font-size: 1em;
+            color: @black;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,0 +1,92 @@
+﻿<section class="col-xs-12 report-editableInfo-container">
+    <button ng-click="deleteReport()"
+            class="button-primary button-delete pull-right report-delete-button"
+            title="Delete this report">
+        Delete
+    </button>
+    <form name="updateReportForm" novalidate role="form">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label for="purpose">Name <span class="required">*</span></label>
+                <input name="purpose" type="text" class="form-control" ng-class="{submitted:reportUpdateSubmitted}" ng-model="report.purpose" placeholder="Write the purpose of the report..." required maxlength="250" />
+                <small class="error" ng-show="updateReportForm.purpose.$invalid && reportUpdateSubmitted">
+                    The report purpose is required
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="description">Description <span class="required">*</span></label>
+                <textarea name="description" class="form-control" ng-class="{submitted:reportUpdateSubmitted}" ng-model="report.description" placeholder="Give a meaningful description to the report..." required maxlength="255"></textarea>
+                <small class="error" ng-show="updateReportForm.description.$invalid && reportUpdateSubmitted">
+                    The report description is required
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="costCenter">Cost center <span class="required">*</span></label>
+                <select name="costCenter" ng-class="{submitted:reportUpdateSubmitted}" ng-model="report.costCenter" class="form-control" ng-options="cc.code for cc in costCenters" required>
+                    <option value="">-- Choose the cost center --</option>
+                </select>
+                <small class="error" ng-show="updateReportForm.costCenter.$invalid && reportUpdateSubmitted">
+                    You must associate a cost center with a report
+                </small>
+            </div>
+        </div>
+        <div class="col-xs-6 text-left report-notEditableInfo-container">
+            <div class="col-xs-5" style="padding-top:4px">
+                <div>
+                    Created <br />
+                    <span class="important">{{report.creationDate}}</span>
+                </div>
+                <br />
+                <div>
+                    Status <br />
+                    <span class="important">{{report.status}}</span>
+                </div>
+                <br />
+                <div>
+                    Reimburse in <br />
+                    <span class="important">{{report.chargedIn}}</span>
+                </div>
+            </div>
+            <div class="col-xs-7 text-right">
+                <div class="total-unsubmitted report-expenseDetail-CurrencyFields">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    Total
+                    <div class="report-detail-currency-container"><span class="report-currency"><span class="report-currency-simbol">$ &nbsp;</span>{{report.total | number:2}}</span></div>
+                </div>
+            </div>
+            <hr />
+            <div>
+                <div class="col-xs-5">
+                    <label>Company Points:</label>
+                </div>
+                <div class="col-xs-7 text-right report-info-cp">
+                    <span class="report-currency">{{report.points | number:2}}</span><img class="report-detail-cp" src="../../../images/cp.png" />
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+<hr style="width:95%;" />
+<section class="report-button-bar">
+    <button ng-click="submitReportForAproval()"
+            class="button-primary report-button"
+            title="Submit for approval">
+        Submit for approval
+    </button>
+    <button ng-click="cloneReport()"
+            class="button-primary report-button"
+            title="Clone this report">
+        Clone report
+    </button>
+    <button ng-click="swichPaymentForm()"
+            class="button-primary report-button"
+            title="{{swichPaymentFormText}}">
+        {{swichPaymentFormText}}
+    </button>
+    <button type="button" class="button button--positive report-button" ng-click="editReport(updateReportForm)">Save</button>
+</section>
+<hr style="width:95%;" />
+<section class="report-list-unsubmitted-filters" ng-include="'reports/employeeDetail/EditableExpensesList.html'" class="report-unsubmitted-list"></section>

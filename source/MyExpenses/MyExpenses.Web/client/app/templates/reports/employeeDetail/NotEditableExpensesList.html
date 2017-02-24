@@ -1,0 +1,22 @@
+﻿<section class="me-module">
+    <section class="list-filters">
+        <div class="search-filter">
+            <input ng-model="query"
+                   mc-keyup-throttle="search()"
+                   autofocus="autofocus"
+                   type="text"
+                   placeholder="Search expenses...">
+            <span class="filter-icon icon-search"></span>
+        </div>
+    </section>
+    <section ng-show="!expenses.length" class="list-no-items">
+        This report does not have expenses yet...
+    </section>
+    <div class="report-expensesList-header">
+        <div class="report-expensesList-header-col col-xs-7">Report expenses</div>
+        <div class="report-expensesList-header-col col-xs-2">Last update</div>
+        <div class="report-expensesList-header-col-total col-xs-3">Total</div>
+    </div>
+    <section ng-show="expenses.length"
+             ng-include="'reports/employeeDetail/NotEditableExpenseDetails.html'"></section>
+</section>

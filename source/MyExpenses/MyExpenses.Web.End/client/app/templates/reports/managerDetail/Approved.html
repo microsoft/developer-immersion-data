@@ -1,0 +1,149 @@
+﻿<section class="col-xs-12 report-editableInfo-container">
+    <div class="col-xs-6" ng-class="report.statusClass">
+        <div class="col-xs-6">
+            <div>{{report.employeeName}}.&nbsp;{{report.purpose}}</div>
+            <div class="highlight" ng-bind-template="Report: {{report.sequenceNumber}}"></div>
+            <br />
+            <div>
+                Description<br />
+                <span class="highlight">{{report.description}}</span>
+            </div>
+            <br />
+            <div>
+                Cost center<br />
+                <span class="important">{{report.costCenter}}</span>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div>Submitted on</div>
+            <div class="highlight">{{report.submissionDate}}</div>
+            <br />
+            <div>
+                Reimbursed in<br />
+                <span class="important">{{report.chargedIn}}</span>
+            </div>
+            <br />
+            <div class="expense-status-text">
+                Status<br />
+                {{report.summary}}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 text-left report-notEditableInfo-container">
+        <div class="col-xs-5">
+            <br /><br />
+            <div>
+                Created<br />
+                <span class="important">{{report.creationDate}}</span>
+            </div>
+            <br />
+            <span class="report-status-approved">{{report.status}}</span>
+        </div>
+        <div class="col-xs-7 text-right">
+            <div class="total-unsubmitted report-expenseDetail-CurrencyFields">
+                <br />
+                <br />
+                <br />
+                <br />
+                Total
+                <div class="report-detail-currency-container"><span class="report-currency"><span class="report-currency-simbol">$ &nbsp;</span>{{report.total | number:2}}</span></div>
+            </div>
+        </div>
+        <hr />
+        <div>
+            <div class="col-xs-5">
+                <label>Company Points:</label>
+            </div>
+            <div class="col-xs-7 text-right report-info-cp">
+                <span class="report-currency">{{report.points | number:2}}</span><img class="report-detail-cp" src="../../../images/cp.png" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="report-button-bar">
+    <button ng-click="reimburseReport()"
+            class="button-primary report-button"
+            title="Reimburse the report">
+        Reimburse
+    </button>
+</section>
+<hr style="width:95%;" />
+<section class="me-module report-list-approved-filters">
+    <section class="list-filters">
+        <div class="search-filter">
+            <input ng-model="query"
+                   mc-keyup-throttle="search()"
+                   autofocus="autofocus"
+                   type="text"
+                   placeholder="Search expenses...">
+        </div>
+    </section>
+    <section ng-show="!expenses.length" class="list-no-items">
+        This report has no expenses!
+    </section>
+    <article class="list-item report-expensesList-item" ng-class="{ 'report-expanded-bg': expense.showDetails }" ng-repeat="expense in expenses track by expense.id">
+        <div class="col-xs-6">
+            <div ng-click="editExpense(expense)" class="data highlight report-expenseList-item-title">{{expense.title}}</div>
+            <div class="data report-expenseList-item-title">{{expense.category}}</div>
+        </div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-2">
+            <span class="data">{{expense.recurrent}}</span>
+            <span class="data">{{expense.date}}</span>
+            <img ng-show="expense.isSuspicius" class="expense-img-warning" src="../../../images/icon-warning.svg">
+        </div>
+        <div class="col-xs-3">
+
+            <div class="data highlight big editableExpense" ng-class="{'expense-suspicius': expense.isSuspicius }">
+                <span class="report-currency-simbol">$ &nbsp;</span>
+                <strong>{{expense.total | number:2}}</strong>
+            </div>
+            <div class="list-item-show icon icon-arrow_open report-expense-list-detail-button" ng-show="!expense.showDetails" ng-click="showExpenseDetail(expense)"></div>
+        </div>
+
+        <section class="list-item-detail animate-show expense-detail-container" ng-show="expense.showDetails">
+            <div class="col-xs-3 expense-detail-img-container">
+                <img class="receipt-preview expense-detail-img" ng-if="expense.receiptUrl" http-src="{{expense.receiptUrl}}">
+            </div>
+            <div class="col-xs-4 col-md-4 expense-detail-notes-block">
+                {{expense.details.notes}}
+                <div class="expense-detail-cp">
+                    <hr />
+                    <mc-company-points info="expense.details"></mc-company-points>
+                </div>
+            </div>
+            <div class="col-xs-4 company-points separator">
+                <ul>
+                    <li class="category expense-detail-field">
+                        <div class="category-wrapper expense-detail-label">
+                            <span class="category-name">Amount</span>
+                        </div>
+                        <span class="category-amount expense-detail-value">{{expense.details.amount | currency}}</span>
+                    </li>
+                    <li class="category expense-detail-field">
+                        <div class="category-wrapper expense-detail-label">
+                            <span class="category-name expense-detail-field">Total bonus</span>
+                        </div>
+                        <span class="category-amount expense-detail-value">{{expense.details.totalBonus | currency}}</span>
+                    </li>
+                    <li ng-hide="expense.details.recurrentDays===0" class="category category-total">
+                        <div class="category-wrapper">
+                            <span class="category-name">Subtotal</span>
+                        </div>
+                        <span class="category-amount">{{expense.details.subtotal | currency}}</span>
+                    </li>
+                    <li ng-hide="expense.details.recurrentDays===0" class="category">
+                        <div class="category-wrapper">
+                            <span class="category-name">Recurrent days</span>
+                        </div>
+                        <span class="category-amount">x{{expense.details.recurrentDays}}</span>
+                    </li>
+                </ul>
+
+            </div>
+            <span class="list-item-show list-item-show--turn icon icon-arrow_open" ng-click="showExpenseDetail(expense);"></span>
+        </section>
+        <hr style="width: 98%;margin-bottom:0px;" />
+    </article>
+</section>

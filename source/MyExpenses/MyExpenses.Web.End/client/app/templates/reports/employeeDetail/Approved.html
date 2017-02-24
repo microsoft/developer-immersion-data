@@ -1,0 +1,77 @@
+﻿<section class="col-xs-12 report-editableInfo-container">
+    <div class="col-xs-6" ng-class="report.statusClass">
+        <div class="col-xs-6">
+            <div>{{report.purpose}}</div>
+            <div class="highlight" ng-bind-template="Report: {{report.sequenceNumber}}"></div>
+            <br />
+            <div>
+                Description<br />
+                <span class="highlight">{{report.description}}</span>
+            </div>
+            <br />
+            <div>
+                Cost center<br />
+                <span class="important">{{report.costCenter}}</span>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div>Submitted on</div>
+            <div class="highlight">{{report.submissionDate}}</div>
+            <br />
+            <div>
+                Reimbursed in<br />
+                <span class="important">{{report.chargedIn}}</span>
+            </div>
+            <br />
+            <div class="expense-status-text">
+                Status<br />
+                {{report.summary}}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 text-left report-notEditableInfo-container">
+        <div class="col-xs-5">
+            <br /><br />
+            <div>
+                Created<br />
+                <span class="important">{{report.creationDate}}</span>
+            </div>
+            <br />
+            <span class="report-status-approved">{{report.status}}</span>
+        </div>
+        <div class="col-xs-7 text-right">
+            <div class="total-unsubmitted report-expenseDetail-CurrencyFields">
+                <br />
+                <br />
+                <br />
+                <br />
+                Total
+                <div class="report-detail-currency-container"><span class="report-currency"><span class="report-currency-simbol">$ &nbsp;</span>{{report.total | number:2}}</span></div>
+            </div>
+        </div>
+        <hr />
+        <div>
+            <div class="col-xs-5">
+                <label>Company Points:</label>
+            </div>
+            <div class="col-xs-7 text-right report-info-cp">
+                <span class="report-currency">{{report.points | number:2}}</span><img class="report-detail-cp" src="../../../images/cp.png" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="report-button-bar">
+    <button ng-click="cloneReport()"
+            class="button-primary report-button"
+            title="Clone this report">
+        Clone report
+    </button>
+    <button ng-click="swichPaymentForm()"
+            class="button-primary report-button"
+            title="{{swichPaymentFormText}}">
+        {{swichPaymentFormText}}
+    </button>
+</section>
+<hr style="width:95%;" />
+<section class="report-list-approved-filters" ng-include="'reports/employeeDetail/NotEditableExpensesList.html'"></section>

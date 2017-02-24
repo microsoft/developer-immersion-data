@@ -1,0 +1,35 @@
+﻿<form name="createReport" novalidate role="form">
+    <div class="modal-header modal-head-title">
+        <h4 class="modal-title">{{title}}</h4>
+        <button type="button" class="close custom-modal-close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="purpose">Name <span class="required">*</span></label>
+            <input name="purpose" type="text" class="form-control report-form-control" ng-class="{submitted:submitted}" ng-model="model.purpose" placeholder="Write the purpose of the report..." required maxlength="250" />
+            <small class="error" ng-show="createReport.purpose.$invalid && submitted">
+                The report purpose is required
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="description">Description <span class="required">*</span></label>
+            <textarea name="description" class="form-control report-form-control" ng-class="{submitted:submitted}" ng-model="model.description" placeholder="Give a meaningful description to the report..." required maxlength="255"></textarea>
+            <small class="error" ng-show="createReport.description.$invalid && submitted">
+                The report description is required
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="costCenter">Cost center <span class="required">*</span></label>
+            <select name="costCenter" ng-class="{submitted:submitted}" ng-model="model.costCenter" class="form-control report-form-control" ng-options="cc.code for cc in model.costCenters" required>
+                <option value="">-- Choose the cost center --</option>
+            </select>
+            <small class="error" ng-show="createReport.costCenter.$invalid && submitted">
+                You must associate a cost center with a report
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="button-primary modal-option-button report-button button--big report-button-modal" ng-click="cancel()">Cancel</button>
+        <button type="button" class="button-primary modal-option-button report-button button--big report-button-modal" ng-click="confirm(createReport)">{{saveText}}</button>
+    </div>
+</form>

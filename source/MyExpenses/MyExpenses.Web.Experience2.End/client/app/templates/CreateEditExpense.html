@@ -1,0 +1,165 @@
+﻿<form name="createExpense" novalidate role="form" class="modal-double">
+    <div class="modal-header modal-head-title">
+        <h4 class="modal-title">{{title}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-7 col-lg-9">
+                <div class="form-group">
+                    <label for="title">Title: <span class="required">*</span></label>
+                    <input type="text"
+                           class="form-control report-form-control"
+                           ng-class="{submitted:submitted}"
+                           name="title" ng-model="model.title"
+                           placeholder="Expense title..."
+                           required
+                           maxlength="250" />
+                    <small class="error"
+                           ng-show="createExpense.title.$error.required && submitted">
+                        The expense title is required
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Notes:</label>
+                    <textarea name="notes"
+                              class="form-control report-form-control"
+                              ng-model="model.notes"
+                              placeholder="Expense notes..."
+                              maxlength="250" />
+                </div>
+                <div class="form-group">
+                    <label for="expenseCategory">Category: <span class="required">*</span></label>
+                    <select name="expenseCategory"
+                            class="form-control report-form-control"
+                            ng-class="{submitted:submitted}"
+                            ng-model="model.expenseCategory"
+                            ng-change="setDefaultAmount()"
+                            ng-options="ec.title for ec in model.expenseCategories"
+                            required>
+                        <option value="">-- Choose the category --</option>
+                    </select>
+                    <small class="error"
+                           ng-show="createExpense.expenseCategory.$error.required && submitted">
+                        You must associate a category with an expense
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount: <span class="required">*</span></label>
+                    <input type="number"
+                           class="form-control report-form-control"
+                           ng-class="{submitted:submitted}"
+                           min="1"
+                           name="amount"
+                           ng-model="model.amount"
+                           placeholder="Expense amount..."
+                           required />
+                    <small class="error"
+                           ng-show="createExpense.amount.$error.required && submitted">
+                        The expense amount is required
+                    </small>
+                    <small class="error"
+                           ng-show="createExpense.amount.$error.number && submitted">
+                        The expense amount is not in a valid format
+                    </small>
+                    <small class="error"
+                           ng-show="createExpense.amount.$error.min && submitted">
+                        The minimum valid amount is 1
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date: <span class="required">*</span></label>
+                    <input type="text"
+                           class="form-control report-form-control"
+                           ng-class="{submitted:submitted}"
+                           name="date"
+                           ng-model="model.date"
+                           mc-datepicker
+                           mc-form="createExpense"
+                           mc-is-less-or-equal="recurrentFrom"
+                           mc-is-less-or-equal-when="isRecurrent.value"
+                           placeholder="Expense date..."
+                           required                            
+                            />
+                    <small class="error"
+                           ng-show="createExpense.date.$error.required && submitted">
+                        The expense date is required
+                    </small>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label for="recurrentFrom">Is recurring:</label>
+                        <div style="display:inline; padding-top:2px;">
+                            <input type="checkbox" name="recurrentFrom" style="vertical-align:bottom" ng-model="isRecurrent.value" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group"
+                     ng-show="isRecurrent.value">
+                    <label for="recurrentFrom">From:</label>
+                    <input type="text"
+                           class="form-control report-form-control"
+                           ng-class="{submitted:submitted}"
+                           name="recurrentFrom"
+                           ng-model="model.recurrentFrom"
+                           ng-required='isRecurrent.value'
+                           mc-datepicker
+                           mc-form="createExpense"
+                           mc-is-less-or-equal="recurrentTo"
+                           mc-is-less-or-equal-when="isRecurrent.value"
+                           mc-is-equal-or-greater="date"
+                           mc-is-equal-or-greater-when="isRecurrent.value" />
+                    <small class="error"
+                           ng-show="createExpense.recurrentFrom.$error.required && submitted">
+                        When the expense is recurrent From is required
+                    </small>
+                    <small class="error"
+                           ng-show="createExpense.recurrentFrom.$error.equalOrGreater && submitted">
+                        When the expense is recurrent From must be equal or greater than Date
+                    </small>
+                </div>
+                <div class="form-group"
+                     ng-show="isRecurrent.value">
+                    <label for="recurrentTo">To:</label>
+                    <input type="text"
+                           class="form-control report-form-control"
+                           ng-class="{submitted:submitted}"
+                           name="recurrentTo"
+                           ng-model="model.recurrentTo"
+                           ng-required='isRecurrent.value'
+                           mc-datepicker
+                           mc-form="createExpense"
+                           mc-is-equal-or-greater="recurrentFrom"
+                           mc-is-equal-or-greater-when="isRecurrent.value" />
+                    <small class="error"
+                           ng-show="createExpense.recurrentTo.$error.required && submitted">
+                        When the expense is recurrent To is required
+                    </small>
+                    <small class="error"
+                           ng-show="createExpense.recurrentTo.$error.equalOrGreater && submitted">
+                        When the expense is recurrent To must be equal or greater than From
+                    </small>
+                </div>
+            </div>
+            <div class="col-md-5 col-lg-3">
+                <div class="form-group ">
+                    <label for="newExpenseRecurrentFrom">Receipt:</label>
+                    <br /><br />
+                    <div mc-file-upload
+                         class="text-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button"
+                class="button-primary modal-option-button report-button button--big report-button-modal"
+                ng-click="cancel()">
+            Cancel
+        </button>
+        <button type="button"
+                class="button-primary modal-option-button report-button button--big report-button-modal"
+                ng-click="confirm(createExpense)">
+            {{saveText}}
+        </button>
+    </div>
+</form>

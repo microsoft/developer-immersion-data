@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/40c950b9239ddfc16a3e4b45add90bc9b06f3647/gulp-rename/gulp-rename.d.ts",
+    "raw": "registry:dt/gulp-rename#0.0.0+20160817204333",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/40c950b9239ddfc16a3e4b45add90bc9b06f3647/gulp-rename/gulp-rename.d.ts"
+  }
+}

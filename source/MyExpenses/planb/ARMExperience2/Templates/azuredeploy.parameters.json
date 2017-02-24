@@ -1,0 +1,21 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminLogin": {
+      "value": "experience2"
+    },
+    "adminPassword": {
+      "value": "P2ssw0rd"
+    },
+    "ReportZipPath": {
+      "value": "https://experience1and2.blob.core.windows.net:443/assets/Reports.zip"
+    },
+    "webPackage": {
+      "value": "https://experience1and2.blob.core.windows.net:443/assets/experience2/MyExpenses.Web.zip"
+    },
+    "configureSQLServerScriptFileLink": {
+      "value": "https://experience1and2.blob.core.windows.net/assets/configureSQLServer.ps1"
+    }
+  }
+}

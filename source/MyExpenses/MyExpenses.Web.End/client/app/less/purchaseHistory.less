@@ -1,0 +1,44 @@
+﻿@import "Variables.less";
+
+.table-right {
+    text-align: right;
+}
+
+.purchase {
+    background-color: white;
+
+    &-title {
+        font-size: 22px!important;
+        padding: 14px;
+        color: #64b0f2!important;
+    }
+
+    &-head {
+        &-col {
+            color: #898A8C;
+            font-weight: normal;
+            padding-bottom: 10px !important;
+            padding-top: 10px !important;
+        }
+
+        &-val {
+            padding-bottom: 10px !important;
+            padding-top: 10px !important;
+            vertical-align: middle!important;
+        }
+    }
+
+    &-row {
+        height: 60px;
+        border-bottom: 1px solid #f5f5f5;
+    }
+}
+
+.table > tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    border:none;
+}
+
+.table > tbody > tr:last-child > td {
+  border-bottom: 0;
+}
+
