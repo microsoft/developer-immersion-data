@@ -34,7 +34,7 @@ In this scenario we will re-architect an existing LOB workload for the cloud
     
   Simply click the Deploy to Azure button below and follow the wizard to create the resources. You will need to log in to the Azure Portal.
                                                                      
-  <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Faperezplain%2Ftemplates%2Fmaster%2Ftemplate1data.json" target="_blank">
+  <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Faperezplain%2Ftemplates%2Fmaster%2FazuredeploySecondExperience.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
   </a>
 
