@@ -330,7 +330,7 @@
             productListItem.id = entity.Id;
             productListItem.title = entity.Title;
             productListItem.price = entity.Price;
-            productListItem.pictureUrl = addAuthTokenToUrl(entity.PictureUrl);
+            productListItem.externalPicture = entity.ExternalPicture;
             productListItem.description = entity.Description;
             productListItem.additionalInformation = entity.AdditionalInformation;
             productListItem.genre = entity.Genre;

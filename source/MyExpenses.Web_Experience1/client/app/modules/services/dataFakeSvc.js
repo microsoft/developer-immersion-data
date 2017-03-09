@@ -4,8 +4,11 @@
     angular.module('expensesApp').factory('dataSvc', FakeSvc);
 
     function FakeSvc($q, loggerSvc, modelSvc, settings, dataSvc_des) {
+        var useFakeData = false;
 
-        console.log('WARNING - Fake DATA SVC is active');
+        if (useFakeData) {
+            console.log('WARNING - Fake DATA SVC is active');
+        }
 
         function inform(verb, api) {
             console.log(verb, 'FAKE - Calling to: ' + api);
@@ -306,7 +309,7 @@
 
             var deferred = $q.defer();
             inform('GET', '/api/products');
-            var data = '{"PageIndex":0,"PageSize":9,"TotalCount":14,"TotalPages":2,"Items":[{"Id":6,"Title":"Dead Rising 3 for Xbox One","Price":69.99,"PictureUrl":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":7,"Title":"Dead Rising 3 for Xbox One","Price":69.99,"PictureUrl":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":8,"Title":"Dead Rising 3 for Xbox One","Price":69.99,"PictureUrl":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":9,"Title":"Dead Rising 3 for Xbox One","Price":50, "PictureUrl":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":10,"Title":"Dead Rising 3 for Xbox One","Price":50, "PictureUrl":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":11,"Title":"Dead Rising 3 for Xbox One","Price":50, "PictureUrl":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":12,"Title":"Dead Rising 3 for Xbox One","Price":50, "PictureUrl":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":13,"Title":"Dead Rising 3 for Xbox One","Price":50, "PictureUrl":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":14,"Title":"Dead Rising 3 for Xbox One","Price":50, "PictureUrl":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}],"HasPreviousPage":false,"HasNextPage":true}';
+            var data = '{"PageIndex":0,"PageSize":9,"TotalCount":14,"TotalPages":2,"Items":[{"Id":6,"Title":"Dead Rising 3 for Xbox One","Price":69.99,"ExternalPicture":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":7,"Title":"Dead Rising 3 for Xbox One","Price":69.99,"ExternalPicture":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":8,"Title":"Dead Rising 3 for Xbox One","Price":69.99,"ExternalPicture":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":9,"Title":"Dead Rising 3 for Xbox One","Price":50, "ExternalPicture":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":10,"Title":"Dead Rising 3 for Xbox One","Price":50, "ExternalPicture":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":11,"Title":"Dead Rising 3 for Xbox One","Price":50, "ExternalPicture":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":12,"Title":"Dead Rising 3 for Xbox One","Price":50, "ExternalPicture":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":13,"Title":"Dead Rising 3 for Xbox One","Price":50, "ExternalPicture":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}, {"Id":14,"Title":"Dead Rising 3 for Xbox One","Price":50, "ExternalPicture":"http://i.imgur.com/9Wgvwaz.jpg","Description":"With an immersive open-world experience, intense action and unmatched level of weapon, a new generation of zombie-slaying fun has arrived with Dead Rising 3."}],"HasPreviousPage":false,"HasNextPage":true}';
             data = JSON.parse(data);
             var model = new modelSvc.PaginatedList(data, modelSvc.ProductListItem);
             deferred.resolve(model);
@@ -334,42 +337,53 @@
             return deferred.promise;
         }
 
-        var service = {
-            getLoggedEmployeeInfo: dataSvc_des.getLoggedEmployeeInfo,
-            getReports: dataSvc_des.getReports,
-            getTeamPendingReports: dataSvc_des.getTeamPendingReports,
-            getReportsSummary: dataSvc_des.getReportsSummary,
-            getReport: getReport,
-            getReportDetail: dataSvc_des.getReportDetail,
-            getReportSummary: dataSvc_des.getReportSummary,
-            getTeamReportsSummary: dataSvc_des.getTeamReportsSummary,
-            createReport: dataSvc_des.createReport,
-            updateReport: dataSvc_des.updateReport,
-            deleteReport: dataSvc_des.deleteReport,
-            submitReportForApproval: dataSvc_des.submitReportForApproval,
-            cloneReport: dataSvc_des.cloneReport,
-            reimburseReportInPoints: dataSvc_des.reimburseReportInPoints,
-            reimburseReportInCash: dataSvc_des.reimburseReportInCash,
-            approveReport: dataSvc_des.approveReport,
-            rejectReport: dataSvc_des.rejectReport,
-            reimburseReport: dataSvc_des.reimburseReport,
-            getExpenses: dataSvc_des.getExpenses,
-            getExpense: dataSvc_des.getExpense,
-            getExpenseInfo: getExpenseInfo,
-            getExpenseDetails: dataSvc_des.getExpenseDetails,
-            createExpense: dataSvc_des.createExpense,
-            updateExpense: dataSvc_des.updateExpense,
-            deleteExpense: dataSvc_des.deleteExpense,
-            getCostCenters: dataSvc_des.getCostCenters,
-            getExpenseCategories: dataSvc_des.getExpenseCategories,
-            getCompanyPoints: dataSvc_des.getCompanyPoints,
-            getProducts: dataSvc_des.getProducts,
-            getPurchasesHistory: dataSvc_des.getPurchasesHistory,
-            purchaseProduct: dataSvc_des.purchaseProduct,
-            getReportLink: dataSvc_des.getReportLink,
-            getReportPowerBI: dataSvc_des.getReportPowerBI
+        var service = {};
+        var assignMethod = function (method) {
+            var name = method.name;
+            if (useFakeData) {
+                service[name] = method;
+            } else {
+                service[name] = dataSvc_des[name];
+            }
         };
 
+        // Assign methods based on if we are using fake data or not.
+        assignMethod(getLoggedEmployeeInfo);
+        assignMethod(getReports);
+        assignMethod(getTeamPendingReports);
+        assignMethod(getReportsSummary);
+        assignMethod(getReport);
+        assignMethod(getReportDetail);
+        assignMethod(getReportSummary);
+        assignMethod(getTeamReportsSummary);
+        assignMethod(createReport);
+        assignMethod(updateReport);
+        assignMethod(deleteReport);
+        assignMethod(submitReportForApproval);
+        assignMethod(cloneReport);
+        assignMethod(reimburseReportInPoints);
+        assignMethod(reimburseReportInCash);
+        assignMethod(approveReport);
+        assignMethod(rejectReport);
+        assignMethod(reimburseReport);
+        assignMethod(getExpenses);
+        assignMethod(getExpense);
+        assignMethod(getExpenseInfo);
+        assignMethod(getExpenseDetails);
+        assignMethod(createExpense);
+        assignMethod(updateExpense);
+        assignMethod(deleteExpense);
+        assignMethod(getCostCenters);
+        assignMethod(getExpenseCategories);
+        assignMethod(getCompanyPoints);
+        assignMethod(getProducts);
+        assignMethod(getPurchasesHistory);
+        assignMethod(purchaseProduct);
+
+        // Add methods with non-fake version
+        service.getReportLink = dataSvc_des.getReportLink;
+        service.getReportPowerBI = dataSvc_des.getReportPowerBI;
+        
         return service;
     }
 

@@ -4,7 +4,7 @@ var productService = require('./products.service');
 
 const restify = require('restify');
 
-let getProducts = function(req, res, next) {
+let getProducts = function (req, res, next) {
 
     let filter = req.query.filter;
 
@@ -42,7 +42,7 @@ let getPicture = function (req, res, next) {
         next();
         return;
     }
-   
+
     productService.getPicture(productId, pictureType)
         .then(picture => {
 

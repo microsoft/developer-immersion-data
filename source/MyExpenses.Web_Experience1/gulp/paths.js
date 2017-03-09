@@ -25,7 +25,8 @@ module.exports = {
             roots.libs + '/bootstrap/dist/js/bootstrap.js',
             roots.libs + '/bootstrap-datepicker/dist/js/bootstrap-datepicker.js',
             roots.libs + '/bootstrap-switch/dist/js/bootstrap-switch.js', 
-            roots.libs + '/angular-img-http-src/index.js'
+            roots.libs + '/angular-img-http-src/index.js',
+            roots.src + '/polyfill/Function.name.js'
         ],
 
         css: [

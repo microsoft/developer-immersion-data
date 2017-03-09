@@ -19,7 +19,7 @@
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
     <StartWebBrowser>true</StartWebBrowser>
   </PropertyGroup>
@@ -79,6 +79,7 @@
     <Compile Include="client\app\modules\services\redirectSvc.js" />
     <Compile Include="client\app\modules\services\settings.js" />
     <Compile Include="client\app\modules\services\toastrSvc.js" />
+    <Compile Include="client\app\polyfill\Function.name.js" />
     <Compile Include="client\dist\js\app.js" />
     <Compile Include="client\dist\js\configs.js" />
     <Compile Include="client\dist\js\controllers\createEditExpenseCtrl.js" />
@@ -303,7 +304,6 @@
     <Content Include="client\app\images\simplify-icon.png" />
     <Content Include="client\app\images\updateReceipt.png" />
     <Content Include="client\app\index.html" />
-    <Content Include="client\app\less - Copy\product.less" />
     <Content Include="client\app\less - Copy\purchaseHistory.less" />
     <Content Include="client\app\less - Copy\report.less" />
     <Content Include="client\app\less - Copy\reportForm.less" />
@@ -369,7 +369,6 @@
     <Content Include="client\app\templates\reports\ReportCompanyPoints.html" />
     <Content Include="client\app\templates\TeamExpenses.html" />
     <Content Include="client\app\templates\TeamReport.html" />
-    <Content Include="client\dist\css\app.css" />
     <Content Include="client\dist\css\vendor.css" />
     <Content Include="client\dist\images\addIcon.png" />
     <Content Include="client\dist\images\approve-white.png" />
@@ -457,21 +456,19 @@
     <Folder Include="client\app\fonts\opensans\SemiboldItalic\" />
     <Folder Include="client\app\fonts\opensans\Semibold\" />
     <Folder Include="client\app\images\" />
-    <Folder Include="client\app\less - Copy\" />
     <Folder Include="client\app\less\" />
     <Folder Include="client\app\modules\" />
     <Folder Include="client\app\modules\controllers\" />
     <Folder Include="client\app\modules\directives\" />
     <Folder Include="client\app\modules\filters\" />
     <Folder Include="client\app\modules\services\" />
+    <Folder Include="client\app\polyfill\" />
     <Folder Include="client\app\templates\" />
     <Folder Include="client\app\templates\reports\" />
     <Folder Include="client\app\templates\reports\employeeDetail\" />
     <Folder Include="client\app\templates\reports\employeeList\" />
     <Folder Include="client\app\templates\reports\managerDetail\" />
     <Folder Include="client\app\templates\reports\managerList\" />
-    <Folder Include="client\dist\" />
-    <Folder Include="client\dist\css\" />
     <Folder Include="client\dist\images\" />
     <Folder Include="client\dist\js\" />
     <Folder Include="client\dist\js\controllers\" />
@@ -511,9 +508,6 @@
     <Folder Include="server\locales\" />
     <Folder Include="server\error\" />
     <Folder Include="server\querys\" />
-    <Folder Include="typings\" />
-    <Folder Include="typings\globals\" />
-    <Folder Include="typings\globals\adal-angular\" />
     <Folder Include="typings\globals\angular-animate\" />
     <Folder Include="typings\globals\angular-route\" />
     <Folder Include="typings\globals\angular-sanitize\" />
@@ -557,7 +551,6 @@
     <Folder Include="typings\globals\toastr\" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="typings\globals\adal-angular\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\angular-animate\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\angular-route\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\angular-sanitize\index.d.ts" />
