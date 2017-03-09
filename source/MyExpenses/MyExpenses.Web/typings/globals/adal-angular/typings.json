@@ -1,8 +1,0 @@
-{
-  "resolution": "main",
-  "tree": {
-    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/541e24b685e257ca23b747c231fbeceaf464ae8d/adal/adal-angular.d.ts",
-    "raw": "registry:dt/adal-angular#1.0.8+20160425200225",
-    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/541e24b685e257ca23b747c231fbeceaf464ae8d/adal/adal-angular.d.ts"
-  }
-}

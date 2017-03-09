@@ -1,8 +1,0 @@
-{
-  "resolution": "main",
-  "tree": {
-    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/53539f31f67e79a4ff3e23d5e9761029fabccccd/tedious/tedious.d.ts",
-    "raw": "registry:dt/tedious#1.8.0+20160830130029",
-    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/53539f31f67e79a4ff3e23d5e9761029fabccccd/tedious/tedious.d.ts"
-  }
-}
