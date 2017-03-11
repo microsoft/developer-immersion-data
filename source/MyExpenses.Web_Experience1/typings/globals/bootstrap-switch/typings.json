@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/0539417f63b4ef5fdd732e53f548e7276bef7d78/bootstrap-switch/index.d.ts",
+    "raw": "registry:dt/bootstrap-switch#0.0.0+20161222203549",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/0539417f63b4ef5fdd732e53f548e7276bef7d78/bootstrap-switch/index.d.ts"
+  }
+}
