@@ -1,7 +1,6 @@
 'use strict';
 
 let Expenses = require('../../../model/Expenses');
-let https = require('https');
 
 let Expense = Expenses.Expense;
 let ExpenseReport = Expenses.ExpenseReport;
@@ -77,115 +76,78 @@ let buildReportTeamsList = (expenseReports, pageIndex, pageSize, count, base_url
 };
 
 let getReports = function (ownerEmail, status, filter, pageIndex, pageSize) {
-    return getEmployeeId(ownerEmail).then(id => {
-        return searchReports(filter, pageIndex, pageSize, id).then((reports) => {
-            var conditions = {
-                include: [
-                    {
-                        model: Employee,
-                        include: [Team]
-                    },
-                    {
-                        model: Expense,
-                        attributes: { exclude: ['receiptPicture'] },
-                        include: [ExpenseBonus]
-                    }
-                ],
-                attributes: ['sequenceNumber', 'purpose', 'submissionDate', 'status', 'reimburseInPoints', 'description', 'createdOn'],
-                order: [[sequelize.col('createdOn'), 'DESC']],
-                where: {
-                    id: {
-                        in: reports.ids
-                    }
-                }
-            };
-            conditions.where = conditions.where || {};
-
-            if (status) {
-                conditions.where.status = status;
-            }
-
-            return ExpenseReport.findAll(conditions).then((reports) => {
-                return buildReportList(reports, pageIndex, pageSize, reports.total);
-            });
-        });
-    });
-};
-
-let getEmployeeId = function (ownerEmail) {
-    return Employee.find({
-        where: sequelize.where(sequelize.fn('lower', sequelize.col('Email')), ownerEmail.toLowerCase())
-    }).then((employee) => employee.id);
-};
-
-let searchReports = function (filter, pageIndex, pageSize, employeeId) {
+ 
     let offset = pageIndex * pageSize;
-    // Search filter. '*' means to search everything in the index.
-    let search = filter ? filter : '*';
-    // Path that will be built depending on the arguments passed.
-    let searchPath = encodeURI('/indexes/expensereports/docs?api-version=2015-02-28&$top=' + pageSize + '&search=' + search + '&$filter=EmployeeId eq ' + employeeId);
-    // Request needed to get the total number of documents available, so pagination works as expected.
-    let totalCountPath = encodeURI('/indexes/expensereports/docs?api-version=2015-02-28&$count=true&$filter=EmployeeId eq ' + employeeId);
-    let totalCount;
 
-    if (offset > 0) {
-        searchPath += '&$skip=' + offset;
-    }
-
-    return azureSearchRequest(totalCountPath).then(count => {
-        var parseCount = JSON.parse(count);
-        totalCount = parseCount['@odata.count'];
-        return azureSearchRequest(searchPath).then(responseString => {
-            var responseObject = JSON.parse(responseString);
-            // We return the total number of reports and the array of ids.
-            var reportIds = responseObject.value.map((val) => parseInt(val.Id,10));
-            var reports = {
-                total: totalCount,
-                ids: reportIds
-            };
-            return reports;
-        });
-    });
-};
-
-let azureSearchRequest = function (requestPath) {
-    var options = {
-        hostname: '{YOUR_AZURE_SEARCH_NAME}.search.windows.net',
-        method: 'GET',
-        path: requestPath,
-        headers: {
-            'api-key': '{YOUR_AZURE_SEARCH_KEY}',
-            'Content-Type': 'application/json'
-        },
+    var conditions = {
+        include: [
+            {
+                model: Employee,
+                include: [Team],
+                where: sequelize.where(sequelize.fn('lower', sequelize.col('Email')), ownerEmail.toLowerCase())
+            },
+            {
+                model: Expense,
+                attributes: { exclude: ['receiptPicture'] },
+                include: [ExpenseBonus]
+            }
+        ],
+        attributes: ['sequenceNumber', 'purpose', 'submissionDate', 'status', 'reimburseInPoints', 'description', 'createdOn'],
+        order: [[sequelize.col('createdOn'), 'DESC']],
+        offset: offset, // skip pages
+        limit: pageSize // fetch pageSize
     };
 
-    // Request to get the number of elements.
+    conditions.where = conditions.where || {};
+   
+    if (status) {
+        conditions.where.status = status;       
+    }
 
-    let deferred = new Promise((resolve, reject) => {
-        var req = https.request(options, function (res) {
-            res.setEncoding('utf-8');
+    if (filter) {
+        conditions.where.$or = [
+            { purpose: { $like: '%' + filter + '%' } },
+            { sequencenumber: { $like: '%' + filter + '%' } }];       
+    }
 
-            var responseString = '';
-
-            res.on('data', function (data) {
-                responseString += data;
-            });
-
-            res.on('end', function () {
-                console.log(responseString);
-                resolve(responseString);
+    return sequelize.transaction(function (t) {
+        return sequelize.query('EXEC [Expense].[SetContextInfo] @Email=N\'' + ownerEmail + '\'', { transaction: t }).then(function () {
+            return countReports(ownerEmail, status, filter, t).then(function (c) {
+                conditions.transaction = t;
+                return ExpenseReport.findAll(conditions).then((reports) => {
+                    return buildReportList(reports, pageIndex, pageSize, c);
+                });
             });
         });
+    });            
+};
 
-        req.on('error', function (e) {
-            reject(e);
-            console.error(e);
-        });
+let countReports = function (ownerEmail, status, filter, t) {
 
-        req.end();
-    });
+    var countConditions = {
+        include: [{
+            model: Employee,
+            where: sequelize.where(sequelize.fn('lower', sequelize.col('Email')), ownerEmail.toLowerCase())
+        }]
+    };
+   
+    countConditions.where = countConditions.where || {};
+    
+    if (status) {
+        countConditions.where.status = status;
+    }
 
-    return deferred;
+    if (filter) {
+        countConditions.where.$or = [
+            { purpose: { $like: '%' + filter + '%' } },
+            { sequencenumber: { $like: '%' + filter + '%' } }];
+    }
+
+    if (t) {
+        countConditions.transaction = t;
+    }
+
+    return ExpenseReport.count(countConditions);
 };
 
 let getReportsSummary = function (ownerEmail) {

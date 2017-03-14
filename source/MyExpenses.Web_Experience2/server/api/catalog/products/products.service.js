@@ -1,8 +1,9 @@
 'use strict';
 
 let Catalog = require('../../../model/Catalog');
-let https = require('https');
+
 let Product = Catalog.Product;
+let sequelize = Catalog.sequelize;
 
 let buildProducts = (products, pageIndex, pageSize, baseUrl, counts) => {
     let vm = {};
@@ -89,70 +90,25 @@ let parseAdditionalInformation = function (product) {
 let getProducts = function (filter, pageIndex, pageSize, baseUrl) {
 
     let offset = pageIndex * pageSize;
-    // Search filter. '*' means to search everything in the index.
-    let search = filter ? filter : '*';
-    // Path that will be built depending on the arguments passed.
-    let searchPath = '/indexes/products/docs?api-version=2015-02-28&$top=' + pageSize + '&search=' + search;
-    // Request needed to get the total number of documents available, so pagination works as expected.
-    let totalCountPath = '/indexes/products/docs/$count?api-version=2015-02-28';
 
-    if (offset > 0) {
-        searchPath += '&$skip=' + offset;
-    }
-
-    return azureSearchRequest(totalCountPath).then(count => {
-        return azureSearchRequest(searchPath).then(responseString => {
-            var responseObject = JSON.parse(responseString);
-            // We map the values not to alter the buildProducts function.
-            var mappedResponse = responseObject.value.map((val) => ({
-                id: val.Id,
-                title: val.Title,
-                price: val.Price,
-                description: val.Description
-            }));
-            return buildProducts(mappedResponse, pageIndex, pageSize, baseUrl, parseInt(count,10));
-        });
-    });
-};
-
-let azureSearchRequest = function (requestPath) {
-    var options = {
-        hostname: '{YOUR_AZURE_SEARCH_NAME}.search.windows.net',
-        method: 'GET',
-        path: requestPath,
-        headers: {
-            'api-key': '{YOUR_AZURE_SEARCH_KEY}',
-            'Content-Type': 'application/json'
-        },
+    var conditions = {
+       
+        attributes: { exclude: ['largePicture', 'thumbnailPicture'] },
+        order: [[sequelize.col('title')]],
+        offset: offset, // skip pages
+        limit: pageSize // fecth pageSize
     };
 
-    // Request to get the number of elements.
+    conditions.where = conditions.where || {};
 
-    let deferred = new Promise((resolve, reject) => {
-        var req = https.request(options, function (res) {
-            res.setEncoding('utf-8');
+    if (filter) {
+        conditions.where.title = { $like: '%' + filter + '%' };
+    }
 
-            var responseString = '';
-
-            res.on('data', function (data) {
-                responseString += data;
-            });
-
-            res.on('end', function () {
-                console.log(responseString);
-                resolve(responseString);
-            });
-        });
-
-        req.on('error', function (e) {
-            reject(e);
-            console.error(e);
-        });
-
-        req.end();
+    return Product.findAndCount(conditions).then((res) => {
+        return buildProducts(res.rows, pageIndex, pageSize, baseUrl, res.count);
     });
 
-    return deferred;
 };
 
 let getPicture = function (productId, pType) {

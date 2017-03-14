@@ -1,8 +1,8 @@
 {
   "resolution": "main",
   "tree": {
-    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/773ae6e25d345cf943c108ce7a59e6d9fe43d9e6/bunyan/bunyan.d.ts",
-    "raw": "registry:dt/bunyan#0.0.0+20160412155112",
-    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/773ae6e25d345cf943c108ce7a59e6d9fe43d9e6/bunyan/bunyan.d.ts"
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/39b215bda19e2efded075126f847d5bfb7155f23/bunyan/bunyan.d.ts",
+    "raw": "registry:dt/bunyan#0.0.0+20161019135123",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/39b215bda19e2efded075126f847d5bfb7155f23/bunyan/bunyan.d.ts"
   }
 }

@@ -7,13 +7,10 @@ let config = {
     db: {
         userName: process.env.databaseUsername || 'experience1',
         password: process.env.databasePassword || 'P2ssw0rd',
-        database: process.env.database || 'Expenses.End',
+        database: process.env.database || 'Expenses',
         options: {
-            host: process.env.databaseServer || 'E1SZZYBDRD3GA4Q.northeurope.cloudapp.azure.com',
+            host: process.env.databaseServer || '{YOUR DATABASE SERVER DNS NAME HERE}',
             dialect: 'mssql',
-            dialectOptions: {
-                encrypt: true
-            },
             pool: {
                 max: 5,
                 min: 0,
