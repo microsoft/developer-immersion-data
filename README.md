@@ -1,12 +1,12 @@
 # Data for Development
 
-##Introduction
+## Introduction
 
 Get hands-on and learn how to build secure, performant, scalable and predictive application modernization practice centered 
 around data-driven intelligent apps (using SQL Server 2016 and Azure Database Services), 
 and re-architect on-premises ISV/SaaS apps to Azure for scale, reach.
 
-###Pre-requisites for the lab###
+### Pre-requisites for the lab ###
 
 -   [Visual Studio 2015 Update 3] (https://msdn.microsoft.com/en-in/library/mt613162.aspx)
 
@@ -20,7 +20,7 @@ and re-architect on-premises ISV/SaaS apps to Azure for scale, reach.
 
 -  [SQL Server Management Studio or SQL Data Tools for Visual Studio] (http://go.microsoft.com/fwlink/?LinkID=824938)
 
-###Experiences###
+### Experiences ###
 
 <a href="./labs/awbexperience1">Experience 1: Develop with SQL Server 2016</a>
     
