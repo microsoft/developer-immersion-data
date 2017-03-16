@@ -22,6 +22,16 @@ and re-architect on-premises ISV/SaaS apps to Azure for scale, reach.
 
 ###Experiences###
 
+<a href="./labs/awbexperience1">Experience 1: Develop with SQL Server 2016</a>
+    
+    In this scenario we will learn about the new features of SQL Server 2016, such as Always Encrypted,
+    Dynamic Data Masking or Temporal Tables among others.
+    
+<a href="./labs/awbexperience2">Experience 2: Modernizing LOB apps with intelligence</a>
+    
+    In this scenario we will re-architect an existing LOB workload for the cloud, using Azure SQL Database,
+    Azure ML, Azure Search and Power BI.
+
 <a href="./labs/awbexperience3">Experience 3: Evolving SQL Workloads from Software to SaaS</a>
     
     In this scenario we will build an e-Commerce retail based SaaS (Software as a Service) application 
