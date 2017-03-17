@@ -1,8 +1,0 @@
-{
-  "resolution": "main",
-  "tree": {
-    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/384a53f595cdba08d1398902e53c6901700ec459/toastr/toastr.d.ts",
-    "raw": "registry:dt/toastr#2.1.1+20160510010435",
-    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/384a53f595cdba08d1398902e53c6901700ec459/toastr/toastr.d.ts"
-  }
-}

@@ -1,7 +1,0 @@
-{
-    "primary_template": "template.json",
-    "parameters": {
-        "facilitator": "facilitator.parameters.json",
-        "student": "student.parameters.json"
-    }
-}

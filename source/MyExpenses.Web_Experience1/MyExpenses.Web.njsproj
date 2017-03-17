@@ -1,0 +1,503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>MyExpenses.Web</Name>
+    <RootNamespace>MyExpenses.Web</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>e973edb5-5cad-4551-bed4-429cee17c9cc</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>server.js</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <NodejsPort>1337</NodejsPort>
+    <StartWebBrowser>true</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="client\app\modules\app.js" />
+    <Compile Include="client\app\modules\configs.js" />
+    <Compile Include="client\app\modules\controllers\reportChartCtrl.js" />
+    <Compile Include="client\app\modules\controllers\anomaliesCtrl.js" />
+    <Compile Include="client\app\modules\controllers\createEditExpenseCtrl.js" />
+    <Compile Include="client\app\modules\controllers\createEditReportCtrl.js" />
+    <Compile Include="client\app\modules\controllers\defaultModalMessageCtrl.js" />
+    <Compile Include="client\app\modules\controllers\giftCatalogCtrl.js" />
+    <Compile Include="client\app\modules\controllers\landingCtrl.js" />
+    <Compile Include="client\app\modules\controllers\loginCtrl.js" />
+    <Compile Include="client\app\modules\controllers\mainCtrl.js" />
+    <Compile Include="client\app\modules\controllers\navigationCtrl.js" />
+    <Compile Include="client\app\modules\controllers\purchaseProductCtrl.js" />
+    <Compile Include="client\app\modules\controllers\purchasesHistoryCtrl.js" />
+    <Compile Include="client\app\modules\controllers\rejectReportCtrl.js" />
+    <Compile Include="client\app\modules\controllers\reportCtrl.js" />
+    <Compile Include="client\app\modules\controllers\profileCtrl.js" />
+    <Compile Include="client\app\modules\controllers\reportsListCtrl.js" />
+    <Compile Include="client\app\modules\controllers\reportsListStatusesCtrl.js" />
+    <Compile Include="client\app\modules\controllers\teamExpensesCtrl.js" />
+    <Compile Include="client\app\modules\controllers\teamExpensesStatusesCtrl.js" />
+    <Compile Include="client\app\modules\controllers\teamReportCtrl.js" />
+    <Compile Include="client\app\modules\directives\mc-animate-on-change.js" />
+    <Compile Include="client\app\modules\directives\mc-company-points.js" />
+    <Compile Include="client\app\modules\directives\mc-datepicker.js" />
+    <Compile Include="client\app\modules\directives\mc-expense-ico.js" />
+    <Compile Include="client\app\modules\directives\mc-file-upload.js" />
+    <Compile Include="client\app\modules\directives\mc-keyup-throttle.js" />
+    <Compile Include="client\app\modules\directives\mc-report-status-navigation.js" />
+    <Compile Include="client\app\modules\directives\mc-switch.js" />
+    <Compile Include="client\app\modules\directives\mc-team-report-status-navigation.js" />
+    <Compile Include="client\app\modules\filters\mcdate.js" />
+    <Compile Include="client\app\modules\services\appInsights.js" />
+    <Compile Include="client\app\modules\services\authInterceptor.js" />
+    <Compile Include="client\app\modules\services\authSvc.js" />
+    <Compile Include="client\app\modules\services\constants.js" />
+    <Compile Include="client\app\modules\services\contextSvc.js" />
+    <Compile Include="client\app\modules\services\dataFakeSvc.js" />
+    <Compile Include="client\app\modules\services\dataSvc.js" />
+    <Compile Include="client\app\modules\services\dialogSvc.js" />
+    <Compile Include="client\app\modules\services\expenseReportsSvc.js" />
+    <Compile Include="client\app\modules\services\expensesSvc.js" />
+    <Compile Include="client\app\modules\services\loggerSvc.js" />
+    <Compile Include="client\app\modules\services\menuSvc.js" />
+    <Compile Include="client\app\modules\services\modelSvc.js" />
+    <Compile Include="client\app\modules\services\notificationsSvc.js" />
+    <Compile Include="client\app\modules\services\redirectSvc.js" />
+    <Compile Include="client\app\modules\services\settings.js" />
+    <Compile Include="client\app\modules\services\toastrSvc.js" />
+    <Compile Include="client\app\polyfill\Function.name.js" />
+    <Compile Include="gulpfile.js" />
+    <Compile Include="gulp\paths.js" />
+    <Compile Include="gulp\tasks\app.js" />
+    <Compile Include="gulp\tasks\clean.js" />
+    <Compile Include="gulp\tasks\libs.js" />
+    <Compile Include="gulp\tasks\server.js" />
+    <Compile Include="server.js" />
+    <Compile Include="server\api\catalog\products\products.controller.js" />
+    <Compile Include="server\api\catalog\products\products.router.js" />
+    <Compile Include="server\api\catalog\products\products.service.js" />
+    <Compile Include="server\api\echo\echo.controller.js" />
+    <Compile Include="server\api\echo\echo.router.js" />
+    <Compile Include="server\api\expenses\costcenter\costcenter.controller.js" />
+    <Compile Include="server\api\expenses\costcenter\costcenter.router.js" />
+    <Compile Include="server\api\expenses\costcenter\costcenter.service.js" />
+    <Compile Include="server\api\expenses\employee\employee.controller.js" />
+    <Compile Include="server\api\expenses\employee\employee.router.js" />
+    <Compile Include="server\api\expenses\employee\employee.service.js" />
+    <Compile Include="server\api\expenses\expense\expense.controller.js" />
+    <Compile Include="server\api\expenses\expense\expense.router.js" />
+    <Compile Include="server\api\expenses\expense\expense.service.js" />
+    <Compile Include="server\api\expenses\expense\suspicious\azureml.strategy.js" />
+    <Compile Include="server\api\expenses\expense\suspicious\procedure.strategy.js" />
+    <Compile Include="server\api\expenses\expense\suspicious\suspicious.service.js" />
+    <Compile Include="server\api\powerbi\reportchart.router.js" />
+    <Compile Include="server\api\powerbi\reportchart.controller.js" />
+    <Compile Include="server\api\powerbi\reportchart.service.js" />
+    <Compile Include="server\config\suspicious.config.json" />
+    <Compile Include="server\error\ApplicationError.js" />
+    <Compile Include="server\error\ErrorHandler.js" />
+    <Compile Include="server\model\Expenses\ReportStatus.json" />
+    <Compile Include="server\api\expenses\report\services\detail.service.js" />
+    <Compile Include="server\api\expenses\report\services\index.js" />
+    <Compile Include="server\api\expenses\report\services\report.service.js" />
+    <Compile Include="server\api\purchases\buyer\buyer.controller.js" />
+    <Compile Include="server\api\purchases\buyer\buyer.router.js" />
+    <Compile Include="server\api\purchases\buyer\buyer.service.js" />
+    <Compile Include="server\db\db.sequelize.js" />
+    <Compile Include="server\middlewares\rootUrl.middleware.js" />
+    <Compile Include="server\model\Catalog\index.js" />
+    <Compile Include="server\model\Catalog\Product.js" />
+    <Compile Include="server\model\Catalog\ProductCategory.js" />
+    <Compile Include="server\model\Expenses\Bonification.js" />
+    <Compile Include="server\model\Expenses\CostCenter.js" />
+    <Compile Include="server\model\Expenses\Employee.js" />
+    <Compile Include="server\model\Expenses\Expense.js" />
+    <Compile Include="server\model\Expenses\ExpenseBonus.js" />
+    <Compile Include="server\model\Expenses\ExpenseCategory.js" />
+    <Compile Include="server\model\Expenses\ExpenseReport.js" />
+    <Compile Include="server\model\Expenses\index.js" />
+    <Compile Include="server\model\Expenses\Picture.js" />
+    <Compile Include="server\model\Expenses\SuspiciousExpense.js" />
+    <Compile Include="server\model\Expenses\Team.js" />
+    <Compile Include="server\api\expenses\reportList\reportList.controller.js" />
+    <Compile Include="server\api\expenses\reportList\reportList.router.js" />
+    <Compile Include="server\api\expenses\reportList\reportList.service.js" />
+    <Compile Include="server\api\expenses\report\report.controller.js" />
+    <Compile Include="server\api\expenses\report\report.router.js" />
+    <Compile Include="server\api\expenses\report\services\summary.service.js" />
+    <Compile Include="server\api\purchases\history\history.controller.js" />
+    <Compile Include="server\api\purchases\history\history.router.js" />
+    <Compile Include="server\api\purchases\history\history.service.js" />
+    <Compile Include="server\auth\auth.filter.js" />
+    <Compile Include="server\auth\auth.strategy.js" />
+    <Compile Include="server\auth\index.js" />
+    <Compile Include="server\client\client.router.js" />
+    <Compile Include="server\config\index.js" />
+    <Compile Include="server\db\db.types.js" />
+    <Compile Include="server\db\index.js" />
+    <Compile Include="server\model\Expenses\Bonification.js" />
+    <Compile Include="server\model\Expenses\CostCenter.js" />
+    <Compile Include="server\model\Expenses\Employee.js" />
+    <Compile Include="server\model\Expenses\Expense.js" />
+    <Compile Include="server\model\Expenses\ExpenseBonus.js" />
+    <Compile Include="server\model\Expenses\ExpenseCategory.js" />
+    <Compile Include="server\model\Expenses\ExpenseReport.js" />
+    <Compile Include="server\model\Expenses\index.js" />
+    <Compile Include="server\model\Expenses\Picture.js" />
+    <Compile Include="server\model\Expenses\Team.js" />
+    <Compile Include="server\model\Purchase\AccountMovement.js" />
+    <Compile Include="server\model\Purchase\BuyerCategory.js" />
+    <Compile Include="server\model\Purchase\EmployeePurchase.js" />
+    <Compile Include="server\model\Purchase\index.js" />
+    <Compile Include="server\model\Purchase\PurchaseOrder.js" />
+    <Compile Include="server\model\Purchase\PurchaseOrderItem.js" />
+    <Compile Include="server\querys\query.employee.js" />
+    <Compile Include="server\querys\query.report.js" />
+    <Content Include=".eslintrc.json" />
+    <Content Include="client\app\fonts\icons\icomoon.eot" />
+    <Content Include="client\app\fonts\icons\icomoon.svg" />
+    <Content Include="client\app\fonts\icons\icomoon.ttf" />
+    <Content Include="client\app\fonts\icons\icomoon.woff" />
+    <Content Include="client\app\fonts\icons\svg\arrow_combo.svg" />
+    <Content Include="client\app\fonts\icons\svg\arrow_open.svg" />
+    <Content Include="client\app\fonts\icons\svg\close_login_icon.svg" />
+    <Content Include="client\app\fonts\icons\svg\CP_icon.svg" />
+    <Content Include="client\app\fonts\icons\svg\giftcatalog_icon.svg" />
+    <Content Include="client\app\fonts\icons\svg\icon_store.svg" />
+    <Content Include="client\app\fonts\icons\svg\myexpenses_icon.svg" />
+    <Content Include="client\app\fonts\icons\svg\search_icon.svg" />
+    <Content Include="client\app\fonts\icons\svg\selection.json" />
+    <Content Include="client\app\fonts\icons\svg\teamexpenses_icon.svg" />
+    <Content Include="client\app\fonts\icons\svg\trash_icon.svg" />
+    <Content Include="client\app\fonts\opensans\BoldItalic\OpenSans-BoldItalic.eot" />
+    <Content Include="client\app\fonts\opensans\BoldItalic\OpenSans-BoldItalic.svg" />
+    <Content Include="client\app\fonts\opensans\BoldItalic\OpenSans-BoldItalic.ttf" />
+    <Content Include="client\app\fonts\opensans\BoldItalic\OpenSans-BoldItalic.woff" />
+    <Content Include="client\app\fonts\opensans\BoldItalic\OpenSans-BoldItalic.woff2" />
+    <Content Include="client\app\fonts\opensans\Bold\OpenSans-Bold.eot" />
+    <Content Include="client\app\fonts\opensans\Bold\OpenSans-Bold.svg" />
+    <Content Include="client\app\fonts\opensans\Bold\OpenSans-Bold.ttf" />
+    <Content Include="client\app\fonts\opensans\Bold\OpenSans-Bold.woff" />
+    <Content Include="client\app\fonts\opensans\Bold\OpenSans-Bold.woff2" />
+    <Content Include="client\app\fonts\opensans\ExtraBoldItalic\OpenSans-ExtraBoldItalic.eot" />
+    <Content Include="client\app\fonts\opensans\ExtraBoldItalic\OpenSans-ExtraBoldItalic.svg" />
+    <Content Include="client\app\fonts\opensans\ExtraBoldItalic\OpenSans-ExtraBoldItalic.ttf" />
+    <Content Include="client\app\fonts\opensans\ExtraBoldItalic\OpenSans-ExtraBoldItalic.woff" />
+    <Content Include="client\app\fonts\opensans\ExtraBoldItalic\OpenSans-ExtraBoldItalic.woff2" />
+    <Content Include="client\app\fonts\opensans\ExtraBold\OpenSans-ExtraBold.eot" />
+    <Content Include="client\app\fonts\opensans\ExtraBold\OpenSans-ExtraBold.svg" />
+    <Content Include="client\app\fonts\opensans\ExtraBold\OpenSans-ExtraBold.ttf" />
+    <Content Include="client\app\fonts\opensans\ExtraBold\OpenSans-ExtraBold.woff" />
+    <Content Include="client\app\fonts\opensans\ExtraBold\OpenSans-ExtraBold.woff2" />
+    <Content Include="client\app\fonts\opensans\Italic\OpenSans-Italic.eot" />
+    <Content Include="client\app\fonts\opensans\Italic\OpenSans-Italic.svg" />
+    <Content Include="client\app\fonts\opensans\Italic\OpenSans-Italic.ttf" />
+    <Content Include="client\app\fonts\opensans\Italic\OpenSans-Italic.woff" />
+    <Content Include="client\app\fonts\opensans\Italic\OpenSans-Italic.woff2" />
+    <Content Include="client\app\fonts\opensans\LightItalic\OpenSans-LightItalic.eot" />
+    <Content Include="client\app\fonts\opensans\LightItalic\OpenSans-LightItalic.svg" />
+    <Content Include="client\app\fonts\opensans\LightItalic\OpenSans-LightItalic.ttf" />
+    <Content Include="client\app\fonts\opensans\LightItalic\OpenSans-LightItalic.woff" />
+    <Content Include="client\app\fonts\opensans\LightItalic\OpenSans-LightItalic.woff2" />
+    <Content Include="client\app\fonts\opensans\Light\OpenSans-Light.eot" />
+    <Content Include="client\app\fonts\opensans\Light\OpenSans-Light.svg" />
+    <Content Include="client\app\fonts\opensans\Light\OpenSans-Light.ttf" />
+    <Content Include="client\app\fonts\opensans\Light\OpenSans-Light.woff" />
+    <Content Include="client\app\fonts\opensans\Light\OpenSans-Light.woff2" />
+    <Content Include="client\app\fonts\opensans\Regular\OpenSans-Regular.eot" />
+    <Content Include="client\app\fonts\opensans\Regular\OpenSans-Regular.svg" />
+    <Content Include="client\app\fonts\opensans\Regular\OpenSans-Regular.ttf" />
+    <Content Include="client\app\fonts\opensans\Regular\OpenSans-Regular.woff" />
+    <Content Include="client\app\fonts\opensans\Regular\OpenSans-Regular.woff2" />
+    <Content Include="client\app\fonts\opensans\SemiboldItalic\OpenSans-SemiboldItalic.eot" />
+    <Content Include="client\app\fonts\opensans\SemiboldItalic\OpenSans-SemiboldItalic.svg" />
+    <Content Include="client\app\fonts\opensans\SemiboldItalic\OpenSans-SemiboldItalic.ttf" />
+    <Content Include="client\app\fonts\opensans\SemiboldItalic\OpenSans-SemiboldItalic.woff" />
+    <Content Include="client\app\fonts\opensans\SemiboldItalic\OpenSans-SemiboldItalic.woff2" />
+    <Content Include="client\app\fonts\opensans\Semibold\OpenSans-Semibold.eot" />
+    <Content Include="client\app\fonts\opensans\Semibold\OpenSans-Semibold.svg" />
+    <Content Include="client\app\fonts\opensans\Semibold\OpenSans-Semibold.ttf" />
+    <Content Include="client\app\fonts\opensans\Semibold\OpenSans-Semibold.woff" />
+    <Content Include="client\app\fonts\opensans\Semibold\OpenSans-Semibold.woff2" />
+    <Content Include="client\app\images\control-icon.png" />
+    <Content Include="client\app\images\cp.png" />
+    <Content Include="client\app\images\file_picker.PNG" />
+    <Content Include="client\app\images\icon-warning.svg" />
+    <Content Include="client\app\images\imb-top-bg.png" />
+    <Content Include="client\app\images\img-bottom.png" />
+    <Content Include="client\app\images\import-icon.png" />
+    <Content Include="client\app\images\logo.png" />
+    <Content Include="client\app\images\My_expenses.png" />
+    <Content Include="client\app\images\simplify-icon.png" />
+    <Content Include="client\app\images\updateReceipt.png" />
+    <Content Include="client\app\index.html" />
+    <Content Include="client\app\less\fonts.less" />
+    <Content Include="client\app\less\icons.less" />
+    <Content Include="client\app\less\list.less" />
+    <Content Include="client\app\less\purchaseHistory.less" />
+    <Content Include="client\app\less\product.less" />
+    <Content Include="client\app\less\landing.less" />
+    <Content Include="client\app\less\report.less" />
+    <Content Include="client\app\less\reportForm.less" />
+    <Content Include="client\app\less\reportsList.less" />
+    <Content Include="client\app\less\site.less" />
+    <Content Include="client\app\less\states.less" />
+    <Content Include="client\app\less\teamReportsList.less" />
+    <Content Include="client\app\less\toastr.less" />
+    <Content Include="client\app\less\variables.less" />
+    <Content Include="client\app\templates\Anomalies.html" />
+    <Content Include="client\app\templates\CreateEditExpense.html" />
+    <Content Include="client\app\templates\CreateEditReport.html" />
+    <Content Include="client\app\templates\DefaultModalMessage.html" />
+    <Content Include="client\app\templates\GiftCatalog.html" />
+    <Content Include="client\app\templates\ReportChart.html" />
+    <Content Include="client\app\templates\PurchaseProduct.html" />
+    <Content Include="client\app\templates\PurchasesHistory.html" />
+    <Content Include="client\app\templates\RejectReport.html" />
+    <Content Include="client\app\templates\Landing.html" />
+    <Content Include="client\app\templates\Report.html" />
+    <Content Include="client\app\templates\Profile.html" />
+    <Content Include="client\app\templates\ReportsList.html" />
+    <Content Include="client\app\templates\ReportStatusNavigation.html" />
+    <Content Include="client\app\templates\reports\employeeDetail\Approved.html" />
+    <Content Include="client\app\templates\reports\employeeDetail\EditableExpenseDetails.html" />
+    <Content Include="client\app\templates\reports\employeeDetail\EditableExpensesList.html" />
+    <Content Include="client\app\templates\reports\employeeDetail\NotEditableExpenseDetails.html" />
+    <Content Include="client\app\templates\reports\employeeDetail\NotEditableExpensesList.html" />
+    <Content Include="client\app\templates\reports\employeeDetail\Reimbursed.html" />
+    <Content Include="client\app\templates\reports\employeeDetail\Rejected.html" />
+    <Content Include="client\app\templates\reports\employeeDetail\Submitted.html" />
+    <Content Include="client\app\templates\reports\employeeDetail\Unavailable.html" />
+    <Content Include="client\app\templates\reports\employeeDetail\Unsubmitted.html" />
+    <Content Include="client\app\templates\reports\employeeList\Approved.html" />
+    <Content Include="client\app\templates\reports\employeeList\Reimbursed.html" />
+    <Content Include="client\app\templates\reports\employeeList\Rejected.html" />
+    <Content Include="client\app\templates\reports\employeeList\Submitted.html" />
+    <Content Include="client\app\templates\reports\employeeList\Unsubmitted.html" />
+    <Content Include="client\app\templates\reports\managerDetail\Approved.html" />
+    <Content Include="client\app\templates\reports\managerDetail\ExpenseDetails.html" />
+    <Content Include="client\app\templates\reports\managerDetail\ExpensesList.html" />
+    <Content Include="client\app\templates\reports\managerDetail\Reimbursed.html" />
+    <Content Include="client\app\templates\reports\managerDetail\Rejected.html" />
+    <Content Include="client\app\templates\reports\managerDetail\Submitted.html" />
+    <Content Include="client\app\templates\reports\managerDetail\Unavailable.html" />
+    <Content Include="client\app\templates\reports\managerDetail\Unsubmitted.html" />
+    <Content Include="client\app\templates\reports\managerList\Approved.html" />
+    <Content Include="client\app\templates\reports\managerList\Submitted.html" />
+    <Content Include="client\app\templates\reports\ReportCompanyPoints.html" />
+    <Content Include="client\app\templates\TeamExpenses.html" />
+    <Content Include="client\app\templates\TeamReport.html" />
+    <Content Include="server\config\passport.config.json" />
+    <Compile Include="server\config\server.config.js" />
+    <Content Include="server\locales\messages.json" />
+    <Content Include="Web.config" />
+    <Content Include="package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="client\" />
+    <Folder Include="client\app\" />
+    <Folder Include="client\app\fonts\" />
+    <Folder Include="client\app\fonts\icons\" />
+    <Folder Include="client\app\fonts\icons\svg\" />
+    <Folder Include="client\app\fonts\opensans\" />
+    <Folder Include="client\app\fonts\opensans\BoldItalic\" />
+    <Folder Include="client\app\fonts\opensans\Bold\" />
+    <Folder Include="client\app\fonts\opensans\ExtraBoldItalic\" />
+    <Folder Include="client\app\fonts\opensans\ExtraBold\" />
+    <Folder Include="client\app\fonts\opensans\Italic\" />
+    <Folder Include="client\app\fonts\opensans\LightItalic\" />
+    <Folder Include="client\app\fonts\opensans\Light\" />
+    <Folder Include="client\app\fonts\opensans\Regular\" />
+    <Folder Include="client\app\fonts\opensans\SemiboldItalic\" />
+    <Folder Include="client\app\fonts\opensans\Semibold\" />
+    <Folder Include="client\app\images\" />
+    <Folder Include="client\app\less\" />
+    <Folder Include="client\app\modules\" />
+    <Folder Include="client\app\modules\controllers\" />
+    <Folder Include="client\app\modules\directives\" />
+    <Folder Include="client\app\modules\filters\" />
+    <Folder Include="client\app\modules\services\" />
+    <Folder Include="client\app\polyfill\" />
+    <Folder Include="client\app\templates\" />
+    <Folder Include="client\app\templates\reports\" />
+    <Folder Include="client\app\templates\reports\employeeDetail\" />
+    <Folder Include="client\app\templates\reports\employeeList\" />
+    <Folder Include="client\app\templates\reports\managerDetail\" />
+    <Folder Include="client\app\templates\reports\managerList\" />
+    <Folder Include="gulp\" />
+    <Folder Include="gulp\tasks\" />
+    <Folder Include="server\" />
+    <Folder Include="server\api\" />
+    <Folder Include="server\api\catalog\products\" />
+    <Folder Include="server\api\echo\" />
+    <Folder Include="server\api\expenses\" />
+    <Folder Include="server\api\expenses\employee\" />
+    <Folder Include="server\api\expenses\costcenter\" />
+    <Folder Include="server\api\expenses\expense\suspicious\" />
+    <Folder Include="server\api\expenses\report\services\" />
+    <Folder Include="server\api\catalog\" />
+    <Folder Include="server\api\powerbi\" />
+    <Folder Include="server\api\purchases\buyer\" />
+    <Folder Include="server\model\" />
+    <Folder Include="server\api\expenses\expense\" />
+    <Folder Include="server\api\expenses\reportList\" />
+    <Folder Include="server\api\expenses\report\" />
+    <Folder Include="server\api\purchases\" />
+    <Folder Include="server\api\purchases\history\" />
+    <Folder Include="server\auth\" />
+    <Folder Include="server\client\" />
+    <Folder Include="server\config\" />
+    <Folder Include="server\db\" />
+    <Folder Include="server\model\Expenses\" />
+    <Folder Include="server\model\Catalog\" />
+    <Folder Include="server\middlewares\" />
+    <Folder Include="server\model\Purchase\" />
+    <Folder Include="server\locales\" />
+    <Folder Include="server\error\" />
+    <Folder Include="server\querys\" />
+    <Folder Include="typings\" />
+    <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\adal-angular\" />
+    <Folder Include="typings\globals\angular-animate\" />
+    <Folder Include="typings\globals\angular-route\" />
+    <Folder Include="typings\globals\angular-sanitize\" />
+    <Folder Include="typings\globals\angular-ui-bootstrap\" />
+    <Folder Include="typings\globals\angular\" />
+    <Folder Include="typings\globals\bluebird\" />
+    <Folder Include="typings\globals\bl\" />
+    <Folder Include="typings\globals\bootstrap-datepicker\" />
+    <Folder Include="typings\globals\bootstrap-switch\" />
+    <Folder Include="typings\globals\bootstrap\" />
+    <Folder Include="typings\globals\bunyan\" />
+    <Folder Include="typings\globals\debug\" />
+    <Folder Include="typings\globals\del\" />
+    <Folder Include="typings\globals\es6-promise\" />
+    <Folder Include="typings\globals\glob\" />
+    <Folder Include="typings\globals\gulp-angular-templatecache\" />
+    <Folder Include="typings\globals\gulp-autoprefixer\" />
+    <Folder Include="typings\globals\gulp-concat\" />
+    <Folder Include="typings\globals\gulp-inject\" />
+    <Folder Include="typings\globals\gulp-less\" />
+    <Folder Include="typings\globals\gulp-ng-annotate\" />
+    <Folder Include="typings\globals\gulp-rename\" />
+    <Folder Include="typings\globals\gulp-uglify\" />
+    <Folder Include="typings\globals\gulp\" />
+    <Folder Include="typings\globals\inherits\" />
+    <Folder Include="typings\globals\jquery\" />
+    <Folder Include="typings\globals\jsesc\" />
+    <Folder Include="typings\globals\mkdirp\" />
+    <Folder Include="typings\globals\modernizr\" />
+    <Folder Include="typings\globals\moment\" />
+    <Folder Include="typings\globals\ms\" />
+    <Folder Include="typings\globals\node-uuid\" />
+    <Folder Include="typings\globals\node\" />
+    <Folder Include="typings\globals\npm\" />
+    <Folder Include="typings\globals\passport-strategy\" />
+    <Folder Include="typings\globals\passport\" />
+    <Folder Include="typings\globals\restify\" />
+    <Folder Include="typings\globals\run-sequence\" />
+    <Folder Include="typings\globals\sequelize\" />
+    <Folder Include="typings\globals\tedious\" />
+    <Folder Include="typings\globals\toastr\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="typings\globals\adal-angular\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\angular-animate\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\angular-route\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\angular-sanitize\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\angular-ui-bootstrap\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\angular\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\bluebird\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\bl\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\bootstrap-datepicker\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\bootstrap-switch\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\bunyan\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\debug\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\del\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\es6-promise\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\glob\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\gulp-angular-templatecache\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\gulp-autoprefixer\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\gulp-concat\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\gulp-inject\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\gulp-less\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\gulp-ng-annotate\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\gulp-rename\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\gulp-uglify\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\gulp\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\inherits\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jquery\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jsesc\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\mkdirp\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\modernizr\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\moment\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\ms\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\node-uuid\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\npm\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\passport-strategy\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\passport\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\restify\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\run-sequence\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\sequelize\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\tedious\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\toastr\index.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

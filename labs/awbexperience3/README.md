@@ -46,4 +46,4 @@ In this scenario we will build an e-Commerce retail based SaaS (Software as a Se
   and data security.
 
 
-<a href="story_a_elasticdatabasepools//Intro.md">Start</a>
+<a href="story_a_elasticdatabasepools//intro.md">Start</a>

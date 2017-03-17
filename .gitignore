@@ -250,3 +250,6 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+source/MyExpenses.Web_Experience1/client/dist/
+source/MyExpenses.Web_Experience2/client/dist/

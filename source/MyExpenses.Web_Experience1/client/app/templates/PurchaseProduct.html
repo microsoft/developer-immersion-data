@@ -1,0 +1,111 @@
+﻿<div class="modal-header modal-head-title" style="width:1108px!important;color:#898A8C">
+    <h4 class="modal-title">
+        {{model.title}}
+    </h4>
+    <button type="button" class="close custom-modal-close" data-dismiss="modal" ng-click="cancel()">&times;</button>
+</div>
+<div class="row purschase-product-body">
+    <div class="col-xs-6">
+        <img class="purchase-dialog-image" ng-src="{{largeImageUrl}}" />
+    </div>
+    <div class="col-xs-6">
+        <form name="purchaseProduct" style="margin-top:0" class="form-horizontal purchase-dialog-form" novalidate role="form">
+            <div class="modal-body purchase">
+                <span class="product-item-title">{{model.title}}</span>
+                <br /><br />
+                <div class="product-description">
+                    {{model.description}}
+                </div>
+                <div ng-show="model.genre">
+                    <span class="product-label">Genre</span><br />
+                    <span class="important">{{model.genre}}</span>
+                </div>
+                <br/>
+                <div ng-show="model.esrb">
+                    <span class="product-label">ESRB</span><br />
+                    <span class="important">{{model.esrb}}</span>
+                </div>
+                <br />
+                <div ng-show="model.developer">
+                    <span class="product-label">Developer</span><br />
+                    <span class="important">{{model.developer}}</span>
+                </div>
+                <br /><br />
+                <div class="purchase-summary">
+                    <div class="row modal-border">
+                        <div class="col-xs-4">
+                            <div class="final-price">
+                                <span class="product-price">
+                                    {{finalPrice |number:2}}
+                                    <span class="product-price_icon">
+                                        <span class="icon icon-CP_icon"></span>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="col-xs-4">
+                                <label for="units">
+                                    Units
+                                </label>
+                            </div>
+                            <div class="col-xs-8">
+                                <span class="modal-input">
+                                    <input type="number"
+                                           class="form-control"
+                                           ng-class="{submitted:submitted}"
+                                           min="1"
+                                           max="15"
+                                           name="units"
+                                           ng-model="model.units"
+                                           ng-pattern="/^[0-9]+$/"
+                                           required />
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <button class="button button--info button--big"
+                                    type="button"
+                                    ng-disabled="notEnoughPoints || !purchaseProduct.$valid"
+                                    ng-click="confirm(purchaseProduct)">
+                                Purchase
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="final-points">
+                                <span class="company-points" ng-class="{error:notEnoughPoints}">{{pointsAfterPurchase | number:2}} </span> <small>Points after purchase </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <small class="error"
+                                  ng-show="purchaseProduct.units.$error.required">
+                                Required. Only numbers allowed
+                            </small>
+                            <small class="error"
+                                  ng-show="purchaseProduct.units.$error.number">
+                                Required. Only numbers allowed
+                            </small>
+                            <small class="error"
+                                  ng-show="purchaseProduct.units.$error.min">
+                                You must purchase at least 1 unit
+                            </small>
+                            <small class="error"
+                                  ng-show="purchaseProduct.units.$error.max">
+                                You can purchase up to 15 units
+                            </small>
+                            <small class="error"
+                                  ng-show="purchaseProduct.units.$error.pattern">
+                                Required. Only numbers allowed
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
