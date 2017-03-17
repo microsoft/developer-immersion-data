@@ -32,7 +32,7 @@
             .when('/purchases-history', { controller: 'PurchasesHistoryCtrl', templateUrl: 'PurchasesHistory.html', requireADLogin: true })
             .when('/profile', { controller: 'ProfileCtrl', templateUrl: 'Profile.html', requireADLogin: true })
             .when('/anomalies', { controller: 'AnomaliesCtrl', templateUrl: 'Anomalies.html', requireADLogin: true })
-            // .when('/report-chart', { controller: 'ReportChartCtrl', templateUrl: 'ReportChart.html', requireADLogin: true })
+            //.when('/report-chart', { controller: 'ReportChartCtrl', templateUrl: 'ReportChart.html', requireADLogin: true })
             .when('/login', { controller: 'LoginCtrl', template: ''})
             .otherwise({ templateUrl: '404.html' });
 

@@ -287,7 +287,7 @@ let cloneReport = function (req, res, next) {
 let sendLink = function (req, res, next) {
 
     try {
-        let link = process.env.link || '{YOUR REPORT SERVER DNS NAME HERE}';
+        let link = process.env.link || ''; // <-- YOUR REPORT SERVER DNS NAME HERE
         res.header('Content-Type', 'text/plain');
         res.send(200, link);
         next();

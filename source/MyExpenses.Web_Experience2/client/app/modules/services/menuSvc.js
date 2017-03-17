@@ -42,10 +42,11 @@
                     },
                     {
                         display: 'Report Charts',
-                        url: link, //'http://experience1sql.northeurope.cloudapp.azure.com/Reports',
+                        url: link,
+                        target: '_blank',
                         iconClass: 'icon-chart',
                         visible: existEmployee,
-                        controllers: ['ReportChartCtrl']
+                        controllers: []
                     }
                 ];
 

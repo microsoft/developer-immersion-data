@@ -23,7 +23,8 @@ let buildProducts = (products, pageIndex, pageSize, baseUrl, counts) => {
             Id: p.id,
             Title: p.title,
             Price: p.price,
-            PictureUrl: baseUrl + '/api/products/' + p.id + '/picture',
+            ExternalPicture: moreInfo.picture,
+            // PictureUrl: baseUrl + '/api/products/' + p.id + '/picture',
             Description: p.description,           
             Genre: moreInfo.genre,
             Developer: moreInfo.developer,
@@ -71,6 +72,14 @@ let getGenre = function (addInfo) {
     }
 };
 
+let getPic = function (addInfo) {
+    try {
+        return addInfo.Data.baseImgUrl + addInfo.Data.Game.Images.boxart['-thumb'];
+    } catch (e) {
+        return '';
+    }
+};
+
 let parseAdditionalInformation = function (product) {
 
     var parsedAddInfo = {};
@@ -80,6 +89,7 @@ let parseAdditionalInformation = function (product) {
         parsedAddInfo.genre = getGenre(moreInfo);
         parsedAddInfo.developer = getDeveloper(moreInfo);
         parsedAddInfo.esrb = getEsrb(moreInfo);
+        parsedAddInfo.picture = getPic(moreInfo);
 
         return parsedAddInfo;
     } else {
@@ -117,9 +127,8 @@ let getPicture = function (productId, pType) {
 
         if (!prod)
             return null;
-
+        
         var picType = pType ? pType : '1';
-
         if (picType == '1') {
             return prod.thumbnailPicture;
         } else {

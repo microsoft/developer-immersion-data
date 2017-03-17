@@ -8,10 +8,15 @@
         'dataSvc',
         'dialogSvc',
         'toastrSvc',
+        'authSvc',
         giftCatalogCtrl
     ]);
 
-    function giftCatalogCtrl($scope, $location, constants, dataSvc, dialogSvc, toastrSvc) {
+    function giftCatalogCtrl($scope, $location, constants, dataSvc, dialogSvc, toastrSvc, authSvc) {
+
+        function generateImageUrl(productId) {
+            return '/api/products/' + productId + '/picture?access_token=' + authSvc.getAuthToken();
+        }
 
         var cleanupContainer = [];
 
@@ -44,7 +49,10 @@
             dataSvc.getProducts($scope.query, pageIndex).then(
                 function (result) {
                     var products = result.items;
-                    $scope.products = products;
+                    $scope.products = products.map(function (p) {
+                        p.pictureUrl = p.externalPicture || generateImageUrl(p.id);
+                        return p;
+                    });
                     $scope.pages = result.pages;
                     $scope.paginationInfo = result.paginationInfo;
                     $scope.hideLoading();
@@ -83,7 +91,8 @@
                 currentPoints: $scope.companyPoints,
                 genre: product.genre,
                 esrb: product.esrb,
-                developer: product.developer
+                developer: product.developer,
+                pictureUrl: product.externalPicture
             };
 
             var config = {

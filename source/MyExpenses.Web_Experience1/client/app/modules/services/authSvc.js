@@ -10,7 +10,7 @@
         }
 
         function getAuthToken() {
-            adalAuthenticationService.getCachedToken(global.configs.clientId)
+            return adalAuthenticationService.getCachedToken(global.configs.clientId)
         }
 
         function login() {

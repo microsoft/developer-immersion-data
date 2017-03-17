@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------
-// AdalJS v1.0.12
+// AdalJS v1.0.11
 // @preserve Copyright (c) Microsoft Open Technologies, Inc.
 // All Rights Reserved
 // Apache License 2.0
@@ -55,7 +55,6 @@
                     }
                     configOptions.redirectUri = configOptions.redirectUri || pathDefault;
                     configOptions.postLogoutRedirectUri = configOptions.postLogoutRedirectUri || pathDefault;
-                    configOptions.isAngular = true;
 
                     if (httpProvider && httpProvider.interceptors) {
                         httpProvider.interceptors.push('ProtectedResourceInterceptor');
@@ -73,7 +72,7 @@
 
             // special function that exposes methods in Angular controller
             // $rootScope, $window, $q, $location, $timeout are injected by Angular
-            this.$get = ['$rootScope', '$window', '$q', '$location', '$timeout','$injector', function ($rootScope, $window, $q, $location, $timeout,$injector) {
+            this.$get = ['$rootScope', '$window', '$q', '$location', '$timeout', function ($rootScope, $window, $q, $location, $timeout) {
 
                 var locationChangeHandler = function (event, newUrl, oldUrl) {
                     _adal.verbose('Location change event from ' + oldUrl + ' to ' + newUrl);
@@ -85,28 +84,34 @@
                         var requestInfo = _adal.getRequestInfo(hash);
                         _adal.saveTokenFromHash(requestInfo);
 
+                        if (requestInfo.requestType !== _adal.REQUEST_TYPE.LOGIN) {
+                            _adal.callback = $window.parent.AuthenticationContext().callback;
+                            if (requestInfo.requestType === _adal.REQUEST_TYPE.RENEW_TOKEN) {
+                                _adal.callback = $window.parent.callBackMappedToRenewStates[requestInfo.stateResponse];
+                            }
+                        }
+
                         // Return to callback if it is sent from iframe
                         if (requestInfo.stateMatch) {
-                            if (requestInfo.requestType === _adal.REQUEST_TYPE.RENEW_TOKEN) {
-                                var callback = $window.parent.callBackMappedToRenewStates[requestInfo.stateResponse];
+                            if (typeof _adal.callback === 'function') {
                                 // since this is a token renewal request in iFrame, we don't need to proceed with the location change.
                                 event.preventDefault();
 
                                 // Call within the same context without full page redirect keeps the callback
-                                if (callback && typeof callback === 'function') {
+                                if (requestInfo.requestType === _adal.REQUEST_TYPE.RENEW_TOKEN) {
                                     // id_token or access_token can be renewed
                                     if (requestInfo.parameters['access_token']) {
-                                        callback(_adal._getItem(_adal.CONSTANTS.STORAGE.ERROR_DESCRIPTION), requestInfo.parameters['access_token']);
+                                        _adal.callback(_adal._getItem(_adal.CONSTANTS.STORAGE.ERROR_DESCRIPTION), requestInfo.parameters['access_token']);
                                         return;
                                     } else if (requestInfo.parameters['id_token']) {
-                                        callback(_adal._getItem(_adal.CONSTANTS.STORAGE.ERROR_DESCRIPTION), requestInfo.parameters['id_token']);
+                                        _adal.callback(_adal._getItem(_adal.CONSTANTS.STORAGE.ERROR_DESCRIPTION), requestInfo.parameters['id_token']);
                                         return;
                                     } else if (requestInfo.parameters['error']) {
-                                        callback(_adal._getItem(_adal.CONSTANTS.STORAGE.ERROR_DESCRIPTION), null);
+                                        _adal.callback(_adal._getItem(_adal.CONSTANTS.STORAGE.ERROR_DESCRIPTION), null);
                                         return;
                                     }
                                 }
-                            } else if (requestInfo.requestType === _adal.REQUEST_TYPE.LOGIN) {
+                            } else {
                                 // normal full login redirect happened on the page
                                 updateDataFromCache(_adal.config.loginResource);
                                 if (_oauthData.userName) {
@@ -116,26 +121,21 @@
                                         $rootScope.userInfo = _oauthData;
                                     }, 1);
 
-                                    $rootScope.$broadcast('adal:loginSuccess', _adal._getItem(_adal.CONSTANTS.STORAGE.IDTOKEN));
+                                    $rootScope.$broadcast('adal:loginSuccess');
                                 } else {
                                     $rootScope.$broadcast('adal:loginFailure', _adal._getItem(_adal.CONSTANTS.STORAGE.ERROR_DESCRIPTION));
                                 }
 
-                                if (_adal.callback && typeof _adal.callback === 'function')
-                                    _adal.callback(_adal._getItem(_adal.CONSTANTS.STORAGE.ERROR_DESCRIPTION), _adal._getItem(_adal.CONSTANTS.STORAGE.IDTOKEN));
-
-                                event.preventDefault();
                                 // redirect to login start page
-                                if (!_adal.popUp) {
-                                    var loginStartPage = _adal._getItem(_adal.CONSTANTS.STORAGE.LOGIN_REQUEST);
-                                    if (loginStartPage) {
-                                        // prevent the current location change and redirect the user back to the login start page
-                                        _adal.verbose('Redirecting to start page: ' + loginStartPage);
-                                        if (!$location.$$html5 && loginStartPage.indexOf('#') > -1) {
-                                            $location.url(loginStartPage.substring(loginStartPage.indexOf('#') + 1));
-                                        }
-                                        $window.location = loginStartPage;
+                                var loginStartPage = _adal._getItem(_adal.CONSTANTS.STORAGE.LOGIN_REQUEST);
+                                if (loginStartPage) {
+                                    // prevent the current location change and redirect the user back to the login start page
+                                    _adal.verbose('Redirecting to start page: ' + loginStartPage);
+                                    event.preventDefault();
+                                    if (!$location.$$html5 && loginStartPage.indexOf('#') > -1) {
+                                        $location.url(loginStartPage.substring(loginStartPage.indexOf('#') + 1));
                                     }
+                                    $window.location = loginStartPage;
                                 }
                             }
                         }
@@ -197,29 +197,6 @@
                     return false;
                 }
 
-                function getStates(toState) {
-                    var state = null;
-                    var states = [];
-                    if (toState.hasOwnProperty('parent')) {
-                        state = toState;
-                        while (state) {
-                            states.unshift(state);
-                            state = $injector.get('$state').get(state.parent);
-                        }
-                    }
-                    else {
-                        var stateNames = toState.name.split('.');
-                        for (var i = 0, stateName = stateNames[0]; i < stateNames.length; i++) {
-                            state = $injector.get('$state').get(stateName);
-                            if (state) {
-                                states.push(state);
-                            }
-                            stateName += '.' + stateNames[i + 1];
-                        }
-                    }
-                    return states;
-                }
-
                 var routeChangeHandler = function (e, nextRoute) {
                     if (nextRoute && nextRoute.$$route) {
                         if (isADLoginRequired(nextRoute.$$route, _adal.config)) {
@@ -231,15 +208,8 @@
                             }
                         }
                         else {
-                            var nextRouteUrl;
-                            if(typeof nextRoute.$$route.templateUrl === "function") {
-                                nextRouteUrl = nextRoute.$$route.templateUrl(nextRoute.params);
-                            } else {
-                                nextRouteUrl = nextRoute.$$route.templateUrl;
-                            }
-
-                            if (nextRouteUrl && !isAnonymousEndpoint(nextRouteUrl)) {
-                                _adal.config.anonymousEndpoints.push(nextRouteUrl);
+                            if (nextRoute.$$route.templateUrl && !isAnonymousEndpoint(nextRoute.$$route.templateUrl)) {
+                                _adal.config.anonymousEndpoints.push(nextRoute.$$route.templateUrl);
                             }
                         }
                     }
@@ -247,29 +217,17 @@
 
                 var stateChangeHandler = function (e, toState, toParams, fromState, fromParams) {
                     if (toState) {
-                        var states = getStates(toState);
-                        var state = null;
-                        for (var i = 0; i < states.length; i++) {
-                            state = states[i];
-                            if (isADLoginRequired(state, _adal.config)) {
-                                if (!_oauthData.isAuthenticated) {
-                                    if (!_adal._renewActive && !_adal.loginInProgress()) {
-                                        _adal.info('State change event for:' + $location.$$url);
-                                        loginHandler();
-                                    }
+                        if (isADLoginRequired(toState, _adal.config)) {
+                            if (!_oauthData.isAuthenticated) {
+                                if (!_adal._renewActive && !_adal.loginInProgress()) {
+                                    _adal.info('State change event for:' + $location.$$url);
+                                    loginHandler();
                                 }
                             }
-                            else if (state.templateUrl) {
-                                var nextStateUrl;
-                                if (typeof state.templateUrl === 'function'){
-                                    nextStateUrl = state.templateUrl(toParams);
-                                }
-                                else {
-                                    nextStateUrl = state.templateUrl;
-                                }
-                                if (nextStateUrl && !isAnonymousEndpoint(nextStateUrl)) {
-                                    _adal.config.anonymousEndpoints.push(nextStateUrl);
-                                }
+                        }
+                        else {
+                            if (toState.templateUrl && !isAnonymousEndpoint(toState.templateUrl)) {
+                                _adal.config.anonymousEndpoints.push(toState.templateUrl);
                             }
                         }
                     }
@@ -386,23 +344,9 @@
                         else {
                             // Cancel request if login is starting
                             if (authService.loginInProgress()) {
-                                if (authService.config.popUp) {
-                                    authService.info('Url: ' + config.url + ' will be loaded after login is successful');
-                                    var delayedRequest = $q.defer();
-                                    $rootScope.$on('adal:loginSuccess', function (event, token) {
-                                        if (token) {
-                                            authService.info('Login completed, sending request for ' + config.url);
-                                            config.headers.Authorization = 'Bearer ' + tokenStored;
-                                            delayedRequest.resolve(config);
-                                        }
-                                    });
-                                    return delayedRequest.promise;
-                                }
-                                else {
-                                    authService.info('login is in progress.');
-                                    config.data = 'login in progress, cancelling the request for ' + config.url;
-                                    return $q.reject(config);
-                                }
+                                authService.info('login is in progress.');
+                                config.data = 'login in progress, cancelling the request for ' + config.url;
+                                return $q.reject(config);
                             }
                             else {
                                 // delayed request to return after iframe completes

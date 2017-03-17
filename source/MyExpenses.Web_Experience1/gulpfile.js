@@ -1,4 +1,4 @@
-/// <binding BeforeBuild='client, server' />
+/// <binding BeforeBuild='default' />
 'use strict';
 
 var gulp = require('gulp');

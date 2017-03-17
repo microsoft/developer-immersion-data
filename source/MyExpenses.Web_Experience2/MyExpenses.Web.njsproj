@@ -11,8 +11,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{38f76e13-b2e7-466a-910b-40dd1b561c41}</ProjectGuid>
-    <ProjectHome>
-    </ProjectHome>
+    <ProjectHome>.</ProjectHome>
     <StartupFile>server.js</StartupFile>
     <SearchPath>
     </SearchPath>
@@ -20,7 +19,7 @@
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
     <StartWebBrowser>true</StartWebBrowser>
   </PropertyGroup>
@@ -80,65 +79,7 @@
     <Compile Include="client\app\modules\services\redirectSvc.js" />
     <Compile Include="client\app\modules\services\settings.js" />
     <Compile Include="client\app\modules\services\toastrSvc.js" />
-    <Compile Include="client\dist\js\app.js" />
-    <Compile Include="client\dist\js\configs.js" />
-    <Compile Include="client\dist\js\controllers\createEditExpenseCtrl.js" />
-    <Compile Include="client\dist\js\controllers\createEditReportCtrl.js" />
-    <Compile Include="client\dist\js\controllers\defaultModalMessageCtrl.js" />
-    <Compile Include="client\dist\js\controllers\giftCatalogCtrl.js" />
-    <Compile Include="client\dist\js\controllers\loginCtrl.js" />
-    <Compile Include="client\dist\js\controllers\mainCtrl.js" />
-    <Compile Include="client\dist\js\controllers\navigationCtrl.js" />
-    <Compile Include="client\dist\js\controllers\purchaseProductCtrl.js" />
-    <Compile Include="client\dist\js\controllers\purchasesHistoryCtrl.js" />
-    <Compile Include="client\dist\js\controllers\rejectReportCtrl.js" />
-    <Compile Include="client\dist\js\controllers\reportCtrl.js" />
-    <Compile Include="client\dist\js\controllers\reportsListCtrl.js" />
-    <Compile Include="client\dist\js\controllers\reportsListStatusesCtrl.js" />
-    <Compile Include="client\dist\js\controllers\teamExpensesCtrl.js" />
-    <Compile Include="client\dist\js\controllers\teamExpensesStatusesCtrl.js" />
-    <Compile Include="client\dist\js\controllers\teamReportCtrl.js" />
-    <Compile Include="client\dist\js\directives\mc-animate-on-change.js" />
-    <Compile Include="client\dist\js\directives\mc-company-points.js" />
-    <Compile Include="client\dist\js\directives\mc-datepicker.js" />
-    <Compile Include="client\dist\js\directives\mc-expense-ico.js" />
-    <Compile Include="client\dist\js\directives\mc-file-upload.js" />
-    <Compile Include="client\dist\js\directives\mc-keyup-throttle.js" />
-    <Compile Include="client\dist\js\directives\mc-report-status-navigation.js" />
-    <Compile Include="client\dist\js\directives\mc-switch.js" />
-    <Compile Include="client\dist\js\directives\mc-team-report-status-navigation.js" />
-    <Compile Include="client\dist\js\filters\mcdate.js" />
-    <Compile Include="client\dist\js\services\appInsights.js" />
-    <Compile Include="client\dist\js\services\authInterceptor.js" />
-    <Compile Include="client\dist\js\services\authSvc.js" />
-    <Compile Include="client\dist\js\services\constants.js" />
-    <Compile Include="client\dist\js\services\contextSvc.js" />
-    <Compile Include="client\dist\js\services\dataSvc.js" />
-    <Compile Include="client\dist\js\services\dialogSvc.js" />
-    <Compile Include="client\dist\js\services\expenseReportsSvc.js" />
-    <Compile Include="client\dist\js\services\expensesSvc.js" />
-    <Compile Include="client\dist\js\services\loggerSvc.js" />
-    <Compile Include="client\dist\js\services\menuSvc.js" />
-    <Compile Include="client\dist\js\services\modelSvc.js" />
-    <Compile Include="client\dist\js\services\notificationsSvc.js" />
-    <Compile Include="client\dist\js\services\redirectSvc.js" />
-    <Compile Include="client\dist\js\services\settings.js" />
-    <Compile Include="client\dist\js\services\toastrSvc.js" />
-    <Compile Include="client\dist\js\vendor\adal-angular.js" />
-    <Compile Include="client\dist\js\vendor\adal.js" />
-    <Compile Include="client\dist\js\vendor\angular-animate.js" />
-    <Compile Include="client\dist\js\vendor\angular-route.js" />
-    <Compile Include="client\dist\js\vendor\angular-sanitize.js" />
-    <Compile Include="client\dist\js\vendor\angular.js" />
-    <Compile Include="client\dist\js\vendor\bootstrap-datepicker.js" />
-    <Compile Include="client\dist\js\vendor\bootstrap-switch.js" />
-    <Compile Include="client\dist\js\vendor\bootstrap.js" />
-    <Compile Include="client\dist\js\vendor\jquery.dotdotdot.js" />
-    <Compile Include="client\dist\js\vendor\jquery.js" />
-    <Compile Include="client\dist\js\vendor\moment.js" />
-    <Compile Include="client\dist\js\vendor\toastr.js" />
-    <Compile Include="client\dist\js\vendor\ui-bootstrap-tpls.js" />
-    <Compile Include="client\dist\templates\dist-tpls.js" />
+    <Compile Include="client\app\polyfill\Function.name.js" />
     <Compile Include="gulpfile.js" />
     <Compile Include="gulp\paths.js" />
     <Compile Include="gulp\tasks\app.js" />
@@ -304,17 +245,6 @@
     <Content Include="client\app\images\simplify-icon.png" />
     <Content Include="client\app\images\updateReceipt.png" />
     <Content Include="client\app\index.html" />
-    <Content Include="client\app\less - Copy\list.less" />
-    <Content Include="client\app\less - Copy\product.less" />
-    <Content Include="client\app\less - Copy\purchaseHistory.less" />
-    <Content Include="client\app\less - Copy\report.less" />
-    <Content Include="client\app\less - Copy\reportForm.less" />
-    <Content Include="client\app\less - Copy\reportsList.less" />
-    <Content Include="client\app\less - Copy\site.less" />
-    <Content Include="client\app\less - Copy\states.less" />
-    <Content Include="client\app\less - Copy\teamReportsList.less" />
-    <Content Include="client\app\less - Copy\toastr.less" />
-    <Content Include="client\app\less - Copy\variables.less" />
     <Content Include="client\app\less\fonts.less" />
     <Content Include="client\app\less\icons.less" />
     <Content Include="client\app\less\list.less" />
@@ -371,70 +301,6 @@
     <Content Include="client\app\templates\reports\ReportCompanyPoints.html" />
     <Content Include="client\app\templates\TeamExpenses.html" />
     <Content Include="client\app\templates\TeamReport.html" />
-    <Content Include="client\dist\css\app.css" />
-    <Content Include="client\dist\css\vendor.css" />
-    <Content Include="client\dist\images\addIcon.png" />
-    <Content Include="client\dist\images\approve-white.png" />
-    <Content Include="client\dist\images\approved.png" />
-    <Content Include="client\dist\images\btnAddImageOut.png" />
-    <Content Include="client\dist\images\btnAddImageOver.png" />
-    <Content Include="client\dist\images\btnDeleteOut.png" />
-    <Content Include="client\dist\images\btnDeleteOver.png" />
-    <Content Include="client\dist\images\btnEditOut.png" />
-    <Content Include="client\dist\images\btnEditOver.png" />
-    <Content Include="client\dist\images\btnOkOut.png" />
-    <Content Include="client\dist\images\btnOkOver.png" />
-    <Content Include="client\dist\images\clone.png" />
-    <Content Include="client\dist\images\delete.png" />
-    <Content Include="client\dist\images\error-background.png" />
-    <Content Include="client\dist\images\icoAddExpenses.png" />
-    <Content Include="client\dist\images\icoAlert.png" />
-    <Content Include="client\dist\images\icoApproved.png" />
-    <Content Include="client\dist\images\icoArrow.png" />
-    <Content Include="client\dist\images\icoBackReport.png" />
-    <Content Include="client\dist\images\IcoBed.png" />
-    <Content Include="client\dist\images\icoCalendar.png" />
-    <Content Include="client\dist\images\icoCp.png" />
-    <Content Include="client\dist\images\icoCpBigGreen.png" />
-    <Content Include="client\dist\images\icoCpBigWhite.png" />
-    <Content Include="client\dist\images\icoCreateRepOut.png" />
-    <Content Include="client\dist\images\icoCreateRepOver.png" />
-    <Content Include="client\dist\images\IcoCup.png" />
-    <Content Include="client\dist\images\icoDate.png" />
-    <Content Include="client\dist\images\icoDelete.png" />
-    <Content Include="client\dist\images\icoEdit.png" />
-    <Content Include="client\dist\images\icoExcel.png" />
-    <Content Include="client\dist\images\icoEye.png" />
-    <Content Include="client\dist\images\icoGiftOut.png" />
-    <Content Include="client\dist\images\icoGiftOver.png" />
-    <Content Include="client\dist\images\icoHistoryOut.png" />
-    <Content Include="client\dist\images\icoHistoryOver.png" />
-    <Content Include="client\dist\images\icoinbox.png" />
-    <Content Include="client\dist\images\icoMyExpOut.png" />
-    <Content Include="client\dist\images\icoMyExpOver.png" />
-    <Content Include="client\dist\images\icoMyExpUserOut.png" />
-    <Content Include="client\dist\images\icoMyExpUserOver.png" />
-    <Content Include="client\dist\images\icoOrder.png" />
-    <Content Include="client\dist\images\icoPDF.png" />
-    <Content Include="client\dist\images\icoPlaner.png" />
-    <Content Include="client\dist\images\icoRefuse.png" />
-    <Content Include="client\dist\images\icoSearch.png" />
-    <Content Include="client\dist\images\IcoShield.png" />
-    <Content Include="client\dist\images\icoTrain.png" />
-    <Content Include="client\dist\images\list.png" />
-    <Content Include="client\dist\images\logo.png" />
-    <Content Include="client\dist\images\reimburse.png" />
-    <Content Include="client\dist\images\reimbursed.png" />
-    <Content Include="client\dist\images\reject-white.png" />
-    <Content Include="client\dist\images\rejected.png" />
-    <Content Include="client\dist\images\save.png" />
-    <Content Include="client\dist\images\searchIcon.png" />
-    <Content Include="client\dist\images\separator.png" />
-    <Content Include="client\dist\images\submit.png" />
-    <Content Include="client\dist\images\submitted.png" />
-    <Content Include="client\dist\images\unsubmitted.png" />
-    <Content Include="client\dist\images\updateReceipt.png" />
-    <Content Include="client\dist\index.html" />
     <Content Include="server\config\passport.config.json" />
     <Compile Include="server\config\server.config.js" />
     <Content Include="server\locales\messages.json" />
@@ -459,29 +325,19 @@
     <Folder Include="client\app\fonts\opensans\SemiboldItalic\" />
     <Folder Include="client\app\fonts\opensans\Semibold\" />
     <Folder Include="client\app\images\" />
-    <Folder Include="client\app\less - Copy\" />
     <Folder Include="client\app\less\" />
     <Folder Include="client\app\modules\" />
     <Folder Include="client\app\modules\controllers\" />
     <Folder Include="client\app\modules\directives\" />
     <Folder Include="client\app\modules\filters\" />
     <Folder Include="client\app\modules\services\" />
+    <Folder Include="client\app\polyfill\" />
     <Folder Include="client\app\templates\" />
     <Folder Include="client\app\templates\reports\" />
     <Folder Include="client\app\templates\reports\employeeDetail\" />
     <Folder Include="client\app\templates\reports\employeeList\" />
     <Folder Include="client\app\templates\reports\managerDetail\" />
     <Folder Include="client\app\templates\reports\managerList\" />
-    <Folder Include="client\dist\" />
-    <Folder Include="client\dist\css\" />
-    <Folder Include="client\dist\images\" />
-    <Folder Include="client\dist\js\" />
-    <Folder Include="client\dist\js\controllers\" />
-    <Folder Include="client\dist\js\directives\" />
-    <Folder Include="client\dist\js\filters\" />
-    <Folder Include="client\dist\js\services\" />
-    <Folder Include="client\dist\js\vendor\" />
-    <Folder Include="client\dist\templates\" />
     <Folder Include="gulp\" />
     <Folder Include="gulp\tasks\" />
     <Folder Include="server\" />

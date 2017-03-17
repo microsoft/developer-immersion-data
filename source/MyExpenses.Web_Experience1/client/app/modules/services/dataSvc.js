@@ -18,7 +18,7 @@
 
         function handleError(deferred, data, message) {
 
-            var errorMessage = data.Message || data;
+            var errorMessage = (data && data.Message) || data;
 
             if (errorMessage) {
                 log(message + ': ' + errorMessage);

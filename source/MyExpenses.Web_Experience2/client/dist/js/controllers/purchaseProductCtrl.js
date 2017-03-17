@@ -38,7 +38,7 @@
 
         $scope.model = model;
 
-        $scope.largeImageUrl = generateImageUrl(model.id);
+        $scope.largeImageUrl = model.pictureUrl || generateImageUrl(model.id);
 
         $scope.finalPrice = 0;
 
