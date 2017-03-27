@@ -10,6 +10,7 @@
             "name": "Launch Program",
             "program": "${workspaceRoot}/app.js",
             "cwd": "${workspaceRoot}",
+            "env": { },
             "console": "externalTerminal"
         },
         {
