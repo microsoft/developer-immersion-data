@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AdventureWorks.Bikes.Infrastructure.DocumentDB")]
+[assembly: AssemblyTitle("AdventureWorks.Bikes.Infrastructure.CosmosDB")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AdventureWorks.Bikes.Infrastructure.DocumentDB")]
+[assembly: AssemblyProduct("AdventureWorks.Bikes.Infrastructure.CosmosDB")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

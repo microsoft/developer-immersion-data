@@ -7,7 +7,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Infrastructure.Sql", "src\A
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Infrastructure.SearchService", "src\AdventureWorks.Bikes.Infrastructure.SearchService\Infrastructure.SearchService.xproj", "{E4A68FC0-8360-42B0-A6E8-39B6103FE5EC}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Infrastructure.DocumentDB", "src\AdventureWorks.Bikes.Infrastructure.DocumentDB\Infrastructure.DocumentDB.xproj", "{DABECE5C-AAB7-4F81-9D3A-B41494C771BC}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Infrastructure.CosmosDB", "src\AdventureWorks.Bikes.Infrastructure.CosmosDB\Infrastructure.CosmosDB.xproj", "{DABECE5C-AAB7-4F81-9D3A-B41494C771BC}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "API", "src\AdventureWorks.Bikes.API\API.xproj", "{DA180BAB-5069-4422-A065-4C881A996463}"
 EndProject

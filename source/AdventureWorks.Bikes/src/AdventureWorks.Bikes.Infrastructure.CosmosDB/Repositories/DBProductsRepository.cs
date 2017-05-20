@@ -1,15 +1,15 @@
 ﻿
-using AdventureWorks.Bikes.Infrastructure.DocumentDB.Helpers;
-using AdventureWorks.Bikes.Infrastructure.DocumentDB.Model;
+using AdventureWorks.Bikes.Infrastructure.CosmosDB.Helpers;
+using AdventureWorks.Bikes.Infrastructure.CosmosDB.Model;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AdventureWorks.Bikes.Infrastructure.DocumentDB.Repositories
+namespace AdventureWorks.Bikes.Infrastructure.CosmosDB.Repositories
 {
-    public class DBProductsRepository : DocumentDBRequest
+    public class DBProductsRepository : CosmosDBRequest
     {
         public DBProductsRepository(IConfigurationRoot configuration) 
             : base(configuration)

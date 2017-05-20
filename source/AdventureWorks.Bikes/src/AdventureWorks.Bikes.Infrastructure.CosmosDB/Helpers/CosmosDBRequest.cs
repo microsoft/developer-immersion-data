@@ -7,20 +7,20 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventureWorks.Bikes.Infrastructure.DocumentDB.Helpers
+namespace AdventureWorks.Bikes.Infrastructure.CosmosDB.Helpers
 {
-    public abstract class DocumentDBRequest
+    public abstract class CosmosDBRequest
     {
         protected string _EndpointUrl = string.Empty;
         protected string _Key = string.Empty;
         protected string _DatabaseId = string.Empty;
         private readonly string utc_date = string.Empty;
 
-        public DocumentDBRequest(IConfigurationRoot configuration)
+        public CosmosDBRequest(IConfigurationRoot configuration)
         {
-            _EndpointUrl = configuration["DocumentDB:EndpointUri"];
-            _Key = configuration["DocumentDB:Key"];
-            _DatabaseId = configuration["DocumentDB:DatabaseId"];
+            _EndpointUrl = configuration["CosmosDB:EndpointUri"];
+            _Key = configuration["CosmosDB:Key"];
+            _DatabaseId = configuration["CosmosDB:DatabaseId"];
             utc_date = DateTime.UtcNow.ToString("r");
         }
 

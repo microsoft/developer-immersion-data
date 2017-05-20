@@ -8,7 +8,7 @@
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
     <ProjectGuid>dabece5c-aab7-4f81-9d3a-b41494c771bc</ProjectGuid>
-    <RootNamespace>AdventureWorks.Bikes.Infrastructure.DocumentDB</RootNamespace>
+    <RootNamespace>AdventureWorks.Bikes.Infrastructure.CosmosDB</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>

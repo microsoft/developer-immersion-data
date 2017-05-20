@@ -1,5 +1,5 @@
-﻿using AdventureWorks.Bikes.Infrastructure.DocumentDB.Helpers;
-using AdventureWorks.Bikes.Infrastructure.DocumentDB.Model;
+﻿using AdventureWorks.Bikes.Infrastructure.CosmosDB.Helpers;
+using AdventureWorks.Bikes.Infrastructure.CosmosDB.Model;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -9,9 +9,9 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventureWorks.Bikes.Infrastructure.DocumentDB.Initializer
+namespace AdventureWorks.Bikes.Infrastructure.CosmosDB.Initializer
 {
-    public class DocumentDBDataInitializer
+    public class CosmosDBDataInitializer
     {
         private string _EndpointUrl = string.Empty;
         private string _Key = string.Empty;
@@ -19,17 +19,17 @@ namespace AdventureWorks.Bikes.Infrastructure.DocumentDB.Initializer
         static readonly string utc_date = DateTime.UtcNow.ToString("r");
         private static readonly Random Randomize = new Random(12345); // Stable seed for repeatable data generation
 
-        public DocumentDBDataInitializer(IConfigurationRoot configuration)
+        public CosmosDBDataInitializer(IConfigurationRoot configuration)
         {
-            _EndpointUrl = configuration["DocumentDB:EndpointUri"];
-            _Key = configuration["DocumentDB:Key"];
-            _DatabaseId = configuration["DocumentDB:DatabaseId"];
+            _EndpointUrl = configuration["CosmosDB:EndpointUri"];
+            _Key = configuration["CosmosDB:Key"];
+            _DatabaseId = configuration["CosmosDB:DatabaseId"];
         }
 
-        public DocumentDBDataInitializer(IConfigurationRoot configuration, string databaseKey)
+        public CosmosDBDataInitializer(IConfigurationRoot configuration, string databaseKey)
         {
-            _EndpointUrl = configuration["DocumentDB:EndpointUri"];
-            _Key = configuration["DocumentDB:Key"];
+            _EndpointUrl = configuration["CosmosDB:EndpointUri"];
+            _Key = configuration["CosmosDB:Key"];
             _DatabaseId = databaseKey;
         }
 

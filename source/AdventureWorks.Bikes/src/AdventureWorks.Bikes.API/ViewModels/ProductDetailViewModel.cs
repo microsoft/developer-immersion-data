@@ -1,5 +1,5 @@
 ﻿
-using AdventureWorks.Bikes.Infrastructure.DocumentDB.Model;
+using AdventureWorks.Bikes.Infrastructure.CosmosDB.Model;
 
 namespace AdventureWorks.Bikes.API.ViewModels
 {

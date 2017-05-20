@@ -2,7 +2,7 @@
 using System.Text;
 using System.Text.Encodings.Web;
 
-namespace AdventureWorks.Bikes.Infrastructure.DocumentDB.Helpers
+namespace AdventureWorks.Bikes.Infrastructure.CosmosDB.Helpers
 {
     public static class DocumentAuthorization
     {

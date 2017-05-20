@@ -1,6 +1,6 @@
 ﻿
 
-namespace AdventureWorks.Bikes.Infrastructure.DocumentDB.Helpers
+namespace AdventureWorks.Bikes.Infrastructure.CosmosDB.Helpers
 {
     public static class BikesConstants
     {

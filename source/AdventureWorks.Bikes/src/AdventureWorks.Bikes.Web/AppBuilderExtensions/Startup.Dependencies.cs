@@ -1,5 +1,5 @@
-﻿using AdventureWorks.Bikes.Infrastructure.DocumentDB.Initializer;
-using AdventureWorks.Bikes.Infrastructure.DocumentDB.Repositories;
+﻿using AdventureWorks.Bikes.Infrastructure.CosmosDB.Initializer;
+using AdventureWorks.Bikes.Infrastructure.CosmosDB.Repositories;
 using AdventureWorks.Bikes.Infrastructure.SearchService.Initializer;
 using AdventureWorks.Bikes.Infrastructure.SearchService.Services;
 using AdventureWorks.Bikes.Infrastructure.Sql;
@@ -24,7 +24,7 @@ namespace AdventureWorks.Bikes.Web.AppBuilderExtensions
             services.AddScoped<SearchServiceDataInitializer>();
             services.AddScoped<SearchServiceProductsRepository>();
 
-            services.AddScoped<DocumentDBDataInitializer>();
+            services.AddScoped<CosmosDBDataInitializer>();
 
             services.AddScoped<DBStoresRepository>();
             services.AddScoped<DBProductsRepository>();

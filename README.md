@@ -40,7 +40,7 @@ and re-architect on-premises ISV/SaaS apps to Azure for scale, reach.
 <a href="./labs/awbexperience4">Experience 4: Modernizing cloud-based web apps</a>
 
     In this scenario we will evolve and grow the e-Commerce web application by adding datalake, 
-    data warehouse, DocumentDB (NoSQL), Azure Search capabilities.
+    data warehouse, Cosmos DB, Azure Search capabilities.
 
 <a href="./labs/awbexperience5">Experience 5: SQL Linux on Windows</a>
 

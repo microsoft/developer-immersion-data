@@ -1,5 +1,5 @@
 ﻿using AdventureWorks.Bikes.API.ViewModels;
-using AdventureWorks.Bikes.Infrastructure.DocumentDB.Repositories;
+using AdventureWorks.Bikes.Infrastructure.CosmosDB.Repositories;
 using AdventureWorks.Bikes.Infrastructure.Sql.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -11,15 +11,15 @@ namespace AdventureWorks.Bikes.API.Controllers
     public class UsersController : Controller
     {
         private readonly SqlUsersRepository _SqlUsersRepository;
-        private readonly DBStoresRepository _DocumentDBStoresRepository = null;
+        private readonly DBStoresRepository _CosmosDBStoresRepository = null;
         private readonly IConfigurationRoot _Configuration = null;
         private readonly string _DefaultStore = "1";
 
         public UsersController(SqlUsersRepository sqlUsersRepository,
-            DBStoresRepository documentDBStoresRepository, IConfigurationRoot configuration)
+            DBStoresRepository cosmosDBStoresRepository, IConfigurationRoot configuration)
         {
             _SqlUsersRepository = sqlUsersRepository;
-            _DocumentDBStoresRepository = documentDBStoresRepository;
+            _CosmosDBStoresRepository = cosmosDBStoresRepository;
             _Configuration = configuration;
         }
 
@@ -34,7 +34,7 @@ namespace AdventureWorks.Bikes.API.Controllers
         public async Task<StoreDetailViewModel> GetStoreAsync()
         {
             // TODO: get the storeId for the logged user.
-            var store = await _DocumentDBStoresRepository.GetAsync(_DefaultStore);
+            var store = await _CosmosDBStoresRepository.GetAsync(_DefaultStore);
             return new StoreDetailViewModel(store);
         }
 

@@ -96,7 +96,7 @@
         "description": "Partitions allow for scaling of document count as well as faster indexing by sharding your index over multiple Azure Search units."
       }
     },
-    "documentDBOfferType": {
+    "CosmosDBOfferType": {
       "type": "string",
       "defaultValue": "Standard"
     },
@@ -111,9 +111,9 @@
     "webSiteNameEnd": "[concat('webend', uniqueString(resourceGroup().id))]",
     "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
     "azureSearchName": "[concat('search', uniqueString(resourceGroup().id))]",
-    "documentDBAccountName": "[concat('documentdb', uniqueString(resourceGroup().id))]",
-    "documentDBdatabaseId": "adventureworks.bikes",
-    "documentDBdatabaseIdEnd": "adventureworks.bikes.end"
+    "CosmosDBAccountName": "[concat('cosmosdb', uniqueString(resourceGroup().id))]",
+    "CosmosDBdatabaseId": "adventureworks.bikes",
+    "CosmosDBdatabaseIdEnd": "adventureworks.bikes.end"
   },
   "resources": [
     {
@@ -182,7 +182,7 @@
       "dependsOn": [
         "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]",
         "[concat('Microsoft.Search/searchServices/', variables('azureSearchName'))]",
-        "[concat('Microsoft.DocumentDB/databaseAccounts/', variables('documentDBAccountName'))]"
+        "[concat('Microsoft.DocumentDb/databaseAccounts/', variables('CosmosDBAccountName'))]"
       ],
       "tags": {
         "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty",
@@ -209,14 +209,17 @@
             "SearchConfig:ApiKey": "[listAdminKeys(resourceId('Microsoft.Search/searchServices', variables('azureSearchName')), '2015-02-28').primaryKey]",
             "SearchConfig:Indexer": "products",
             "SearchConfig:Suggester": "products",
-            "DocumentDB:EndpointUri": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('documentDBAccountName'))).documentEndpoint]",
-            "DocumentDB:Key": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('documentDBAccountName')), '2015-04-08').primaryMasterKey]",
+            "CosmosDB:EndpointUri": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('CosmosDBAccountName'))).documentEndpoint]",
+            "CosmosDB:Key": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('CosmosDBAccountName')), '2015-04-08').primaryMasterKey]",
+            "DocumentDB:EndpointUri": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('CosmosDBAccountName'))).documentEndpoint]",
+            "DocumentDB:Key": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('CosmosDBAccountName')), '2015-04-08').primaryMasterKey]",
             "DefaultUsername": "[parameters('webUsername')]",
             "DefaultFullName": "[parameters('webUserFullName')]",
             "DefaultPassword": "[parameters('webPassword')]",
             "Security:Authority": "[concat('http://', variables('webSiteName'), '.azurewebsites.net/')]",
             "Security:Audience": "[concat('http://', variables('webSiteName'), '.azurewebsites.net/')]",
-            "DocumentDB:DatabaseId": "[variables('documentDBdatabaseId')]"
+            "CosmosDB:DatabaseId": "[variables('CosmosDBdatabaseId')]",
+            "DocumentDB:DatabaseId": "[variables('CosmosDBdatabaseId')]"
           }
         },
         {
@@ -263,7 +266,7 @@
       "dependsOn": [
         "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]",
         "[concat('Microsoft.Search/searchServices/', variables('azureSearchName'))]",
-        "[concat('Microsoft.DocumentDB/databaseAccounts/', variables('documentDBAccountName'))]"
+        "[concat('Microsoft.DocumentDb/databaseAccounts/', variables('CosmosDBAccountName'))]"
       ],
       "tags": {
         "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty",
@@ -294,14 +297,17 @@
             "SearchConfig:ApiKey": "[listAdminKeys(resourceId('Microsoft.Search/searchServices', variables('azureSearchName')), '2015-02-28').primaryKey]",
             "SearchConfig:Indexer": "productsend",
             "SearchConfig:Suggester": "productsend",
-            "DocumentDB:EndpointUri": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('documentDBAccountName'))).documentEndpoint]",
-            "DocumentDB:Key": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('documentDBAccountName')), '2015-04-08').primaryMasterKey]",
+            "CosmosDB:EndpointUri": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('CosmosDBAccountName'))).documentEndpoint]",
+            "CosmosDB:Key": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('CosmosDBAccountName')), '2015-04-08').primaryMasterKey]",
+            "DocumentDB:EndpointUri": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('CosmosDBAccountName'))).documentEndpoint]",
+            "DocumentDB:Key": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('CosmosDBAccountName')), '2015-04-08').primaryMasterKey]",
             "DefaultUsername": "[parameters('webUsername')]",
             "DefaultFullName": "[parameters('webUserFullName')]",
             "DefaultPassword": "[parameters('webPassword')]",
             "Security:Authority": "[concat('http://', variables('webSiteNameEnd'), '.azurewebsites.net/')]",
             "Security:Audience": "[concat('http://', variables('webSiteNameEnd'), '.azurewebsites.net/')]",
-            "DocumentDB:DatabaseId": "[variables('documentDBdatabaseIdEnd')]",
+            "CosmosDB:DatabaseId": "[variables('CosmosDBdatabaseIdEnd')]",
+            "DocumentDB:DatabaseId": "[variables('CosmosDBdatabaseIdEnd')]",
             "Server": "[concat('http://', variables('webSiteNameEnd'), '.azurewebsites.net')]",
             "SleepTimeout": "5000"
           }
@@ -326,16 +332,16 @@
           }
         },
         {
-            "name": "MSDeploy",
-            "type": "extensions",
-            "location": "[resourceGroup().location]",
-            "apiVersion": "2015-08-01",
-            "dependsOn": [
-                "[concat('Microsoft.Web/sites/', variables('webSiteNameEnd'))]"
-            ],
-            "tags": {
-                "displayName": "WebDeploy"
-            },
+          "name": "MSDeploy",
+          "type": "extensions",
+          "location": "[resourceGroup().location]",
+          "apiVersion": "2015-08-01",
+          "dependsOn": [
+            "[concat('Microsoft.Web/sites/', variables('webSiteNameEnd'))]"
+          ],
+          "tags": {
+            "displayName": "WebDeploy"
+          },
           "properties": {
             "packageUri": "[parameters('webPackage')]",
             "dbType": "None",
@@ -381,15 +387,15 @@
     },
     {
       "apiVersion": "2015-04-08",
-      "type": "Microsoft.DocumentDB/databaseAccounts",
-      "name": "[variables('documentDBAccountName')]",
+      "type": "Microsoft.DocumentDb/databaseAccounts",
+      "name": "[variables('CosmosDBAccountName')]",
       "location": "[resourceGroup().location]",
       "tags": {
-        "displayName": "DocumentDB"
+        "displayName": "CosmosDB"
       },
       "properties": {
-        "name": "[variables('documentDBAccountName')]",
-        "databaseAccountOfferType": "[parameters('documentDBOfferType')]"
+        "name": "[variables('CosmosDBAccountName')]",
+        "databaseAccountOfferType": "[parameters('CosmosDBOfferType')]"
       }
     }
   ],
@@ -414,13 +420,13 @@
       "type": "string",
       "value": "[listAdminKeys(resourceId('Microsoft.Search/searchServices', variables('azureSearchName')), '2015-02-28').primaryKey]"
     },
-    "documentDBEndpointUri": {
+    "CosmosDBEndpointUri": {
       "type": "string",
-      "value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('documentDBAccountName'))).documentEndpoint]"
+      "value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('CosmosDBAccountName'))).documentEndpoint]"
     },
-    "documentDBKey": {
+    "CosmosDBKey": {
       "type": "string",
-      "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('documentDBAccountName')), '2015-04-08').primaryMasterKey]"
+      "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('CosmosDBAccountName')), '2015-04-08').primaryMasterKey]"
     },
     "applicationInsightsKey": {
       "type": "string",

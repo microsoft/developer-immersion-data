@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace AdventureWorks.Bikes.Infrastructure.DocumentDB.Model
+namespace AdventureWorks.Bikes.Infrastructure.CosmosDB.Model
 {
     public class DBStoreDistance
     {

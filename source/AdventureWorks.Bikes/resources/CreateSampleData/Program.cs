@@ -30,14 +30,14 @@ namespace CreateSampleData
 
             var dataInitializer = new BikesDataInitializer();
             var searchDataInitializer = new SearchServiceDataInitializer(Configuration);
-            var documentDBDataInitializer = new DocumentDBDataInitializer(Configuration);
+            var cosmosDBDataInitializer = new CosmosDBDataInitializer(Configuration);
 
             Console.WriteLine("Creating Search Service sample data");
             searchDataInitializer.Initialize().Wait();
             searchDataInitializer.Initialize("products", "index.json", false).Wait();
 
-            Console.WriteLine("Creating DocumentDB sample data");
-            documentDBDataInitializer.Initialize().Wait();
+            Console.WriteLine("Creating Cosmos DB sample data");
+            cosmosDBDataInitializer.Initialize().Wait();
 
             Console.WriteLine("Creating SQL Database sample data");
             dataInitializer.InitializeDatabase(serviceProvider, Directory.GetCurrentDirectory()).Wait();

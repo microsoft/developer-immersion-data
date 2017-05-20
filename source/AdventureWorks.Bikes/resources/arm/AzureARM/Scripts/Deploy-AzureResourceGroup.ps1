@@ -123,8 +123,8 @@ if ($results)
 	& $replacescript -Pattern 'YOUR_IDENTITY_CONNECTION' -Replacement $results.Outputs.identityConnection.value -Overwrite -Path $configPath
 	& $replacescript -Pattern 'YOUR_SEARCH_SERVICE_NAME' -Replacement $results.Outputs.searchServiceName.value -Overwrite -Path $configPath
 	& $replacescript -Pattern 'YOUR_SEARCH_SERVICE_KEY' -Replacement $results.Outputs.searchServiceApiKey.value -Overwrite -Path $configPath
-	& $replacescript -Pattern 'YOUR_DOCUMENTDB_ENDPOINT' -Replacement $results.Outputs.documentDBEndpointUri.value -Overwrite -Path $configPath
-	& $replacescript -Pattern 'YOUR_DOCUMENTDB_KEY' -Replacement $results.Outputs.documentDBKey.value -Overwrite -Path $configPath
+	& $replacescript -Pattern 'YOUR_COSMOSDB_ENDPOINT' -Replacement $results.Outputs.cosmosDBEndpointUri.value -Overwrite -Path $configPath
+	& $replacescript -Pattern 'YOUR_COSMOSDB_KEY' -Replacement $results.Outputs.cosmosDBKey.value -Overwrite -Path $configPath
 	& $replacescript -Pattern 'YOUR_INSTRUMENTATION_KEY' -Replacement $results.Outputs.applicationInsightsKey.value -Overwrite -Path $configPath
 
 	$configRelativePath = "..\..\..\..\..\..\..\CreateSampleData\appsettings.json"
@@ -135,8 +135,8 @@ if ($results)
 	& $replacescript -Pattern 'YOUR_IDENTITY_CONNECTION' -Replacement $results.Outputs.identityConnection.value -Overwrite -Path $configPath
 	& $replacescript -Pattern 'YOUR_SEARCH_SERVICE_NAME' -Replacement $results.Outputs.searchServiceName.value -Overwrite -Path $configPath
 	& $replacescript -Pattern 'YOUR_SEARCH_SERVICE_KEY' -Replacement $results.Outputs.searchServiceApiKey.value -Overwrite -Path $configPath
-	& $replacescript -Pattern 'YOUR_DOCUMENTDB_ENDPOINT' -Replacement $results.Outputs.documentDBEndpointUri.value -Overwrite -Path $configPath
-	& $replacescript -Pattern 'YOUR_DOCUMENTDB_KEY' -Replacement $results.Outputs.documentDBKey.value -Overwrite -Path $configPath
+	& $replacescript -Pattern 'YOUR_COSMOSDB_ENDPOINT' -Replacement $results.Outputs.cosmosDBEndpointUri.value -Overwrite -Path $configPath
+	& $replacescript -Pattern 'YOUR_COSMOSDB_KEY' -Replacement $results.Outputs.cosmosDBKey.value -Overwrite -Path $configPath
 	& $replacescript -Pattern 'YOUR_INSTRUMENTATION_KEY' -Replacement $results.Outputs.applicationInsightsKey.value -Overwrite -Path $configPath
 
 

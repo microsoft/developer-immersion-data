@@ -22,7 +22,7 @@
     "Microsoft.AspNetCore.Session": "1.0.0",
     "Microsoft.IdentityModel.Tokens": "5.0.0",
     "AdventureWorks.Bikes.API": "1.0.0-*",
-    "AdventureWorks.Bikes.Infrastructure.DocumentDB": "1.0.0-*",
+    "AdventureWorks.Bikes.Infrastructure.CosmosDB": "1.0.0-*",
     "AdventureWorks.Bikes.Infrastructure.SearchService": "1.0.0-*",
     "AdventureWorks.Bikes.Infrastructure.Sql": "1.0.0-*",
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
