@@ -43,7 +43,7 @@ Azure Search capabilities.
 
 ###Modules###
 
-<a href="./story_a_documentdb/Intro.md">Module 1: Build globally-distributed, multi-model database service for mission-critical applications using Cosmos DB</a>
+<a href="./story_a_cosmosdb/Intro.md">Module 1: Build globally-distributed, multi-model database service for mission-critical applications using Cosmos DB</a>
     
   Azure Cosmos DB offers turnkey global distribution across any number of Azure regions by transparently scaling and replicating your data wherever your users are.
 
