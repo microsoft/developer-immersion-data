@@ -1,5 +1,5 @@
 ﻿using AdventureWorks.Bikes.API.ViewModels;
-using AdventureWorks.Bikes.Infrastructure.DocumentDB.Repositories;
+using AdventureWorks.Bikes.Infrastructure.CosmosDB.Repositories;
 using AdventureWorks.Bikes.Infrastructure.SearchService.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -16,10 +16,10 @@ namespace AdventureWorks.Bikes.API.Controllers
         private readonly SearchServiceProductsRepository _ServiceServiceProductsService = null;
         private const int _recommendationsCount = 3;
 
-        public ProductsController(DBProductsRepository documentDBProductsRepository,
+        public ProductsController(DBProductsRepository cosmosDBProductsRepository,
             SearchServiceProductsRepository searchService)
         {
-            _DBProductsRepository = documentDBProductsRepository;
+            _DBProductsRepository = cosmosDBProductsRepository;
             _ServiceServiceProductsService = searchService;
         }
 

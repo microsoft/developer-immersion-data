@@ -5,7 +5,7 @@
   },
 
   "dependencies": {
-    "AdventureWorks.Bikes.Infrastructure.DocumentDB": "1.0.0-*",
+    "AdventureWorks.Bikes.Infrastructure.CosmosDB": "1.0.0-*",
     "AdventureWorks.Bikes.Infrastructure.SearchService": "1.0.0-*",
     "AdventureWorks.Bikes.Infrastructure.Sql": "1.0.0-*",
     "Microsoft.Extensions.DependencyInjection": "1.0.0",

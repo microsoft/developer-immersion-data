@@ -1,6 +1,6 @@
 # Modernizing cloud-based web apps
 
-In this scenario we will evolve and grow the e-Commerce web application by adding datalake, data warehouse, DocumentDB (NoSQL), 
+In this scenario we will evolve and grow the e-Commerce web application by adding datalake, data warehouse, Cosmos DB, 
 Azure Search capabilities.
 
 ###Pre-requisites for the lab###
@@ -43,9 +43,9 @@ Azure Search capabilities.
 
 ###Modules###
 
-<a href="./story_a_documentdb/Intro.md">Module 1: Accelerate your development using schema free data store- DocumentDB</a>
+<a href="./story_a_cosmosdb/Intro.md">Module 1: Build globally-distributed, multi-model database service for mission-critical applications using Cosmos DB</a>
     
-  DocumentDB, Partition Scale, Geo databases, JSON store, Geo-Spatial..
+  Azure Cosmos DB offers turnkey global distribution across any number of Azure regions by transparently scaling and replicating your data wherever your users are.
 
 <a href="./story_b_azureseach/Intro.md">Module 2: Build scalable search experiences for your web apps</a>
     

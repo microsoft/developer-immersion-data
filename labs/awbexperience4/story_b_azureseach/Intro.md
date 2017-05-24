@@ -7,7 +7,7 @@ AdventureWorks needs to provide a rich and fluid search experience to make it si
 
 The public web portal uses Search Service to provide the best experience for the customer.
 
-**NOTE:** Before starting this lab you should complete first the DocumentDB lab.
+**NOTE:** Before starting this lab you should complete first the Cosmos DB lab.
 
 ![](img/image1.jpg)
  
@@ -40,7 +40,7 @@ Some of out-of-the-box features provided by Azure Search are:
     - `YOUR_INSTRUMENTATION_KEY` 
     - `YOUR_SEARCH_SERVICE_NAME` 
     - `YOUR_SEARCH_SERVICE_KEY` 
-    - `YOUR_DOCUMENTDB_ENDPOINT` 
-    - `YOUR_DOCUMENTDB_KEY` 
+    - `YOUR_COSMOSDB_ENDPOINT` 
+    - `YOUR_COSMOSDB_KEY` 
 
 <a href="0.Tour.md">Next</a>

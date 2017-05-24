@@ -13,7 +13,7 @@ using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using AspNet.Security.OAuth.Validation;
 using AdventureWorks.Bikes.Infrastructure.SearchService.Initializer;
-using AdventureWorks.Bikes.Infrastructure.DocumentDB.Initializer;
+using AdventureWorks.Bikes.Infrastructure.CosmosDB.Initializer;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdventureWorks.Bikes.Web
@@ -83,7 +83,7 @@ namespace AdventureWorks.Bikes.Web
             ILoggerFactory loggerFactory,
             AuthorizationProvider authorizationProvider,
             BikesDataInitializer dataInitializer, SearchServiceDataInitializer searchDataInitializer,
-            DocumentDBDataInitializer documentDBDataInitializer)
+            CosmosDBDataInitializer cosmosDBDataInitializer)
         {
             // Add Application Insights monitoring to the request pipeline as a very first middleware.
             app.UseApplicationInsightsRequestTelemetry();
@@ -128,7 +128,7 @@ namespace AdventureWorks.Bikes.Web
             app.UseSwaggerUi();
 
             await searchDataInitializer.Initialize();
-            await documentDBDataInitializer.Initialize();
+            await cosmosDBDataInitializer.Initialize();
             await dataInitializer.InitializeDatabase(app.ApplicationServices, env.ContentRootPath);
         }
     }

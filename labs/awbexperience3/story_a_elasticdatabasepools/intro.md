@@ -71,8 +71,8 @@ Also, SQL Database helps you build secure apps in the cloud by providing built i
     - `YOUR_INSTRUMENTATION_KEY` 
     - `YOUR_SEARCH_SERVICE_NAME` 
     - `YOUR_SEARCH_SERVICE_KEY` 
-    - `YOUR_DOCUMENTDB_ENDPOINT` 
-    - `YOUR_DOCUMENTDB_KEY` 
+    - `YOUR_COSMOSDB_ENDPOINT` 
+    - `YOUR_COSMOSDB_KEY` 
 
 <a href="0.Tour.md">Next</a>
 
