@@ -2,7 +2,7 @@
 
 In this scenario we will learn about the new features of SQL Server 2016
 
-###Pre-requisites for the lab###
+### Pre-requisites for the lab ###
 
 -   [Visual Studio 2015 Update 3] (https://msdn.microsoft.com/en-in/library/mt613162.aspx)
 
@@ -34,13 +34,13 @@ In this scenario we will learn about the new features of SQL Server 2016
     
   Simply click the Deploy to Azure button below and follow the wizard to create the resources. You will need to log in to the Azure Portal.
                                                                      
-  <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Faperezplain%2Ftemplates%2Fmaster%2Ftemplate1data.json" target="_blank">
+  <a href="" target="_blank">https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Faperezplain%2Ftemplates%2Fmaster%2Ftemplate1data.json
     <img src="http://azuredeploy.net/deploybutton.png"/>
   </a>
 
   The resources will be deployed to a Resource Group. You can delete the resource group in order to remove all the created resources at any time.
 
-###Modules###
+### Modules ###
 
 <a href="./story_0_setup/intro.md">Preliminary Setup</a>
     
