@@ -5,7 +5,7 @@
      path: 'api',
      serverName: 'DemoExpenses',
      db: {
-         userName: process.env.databaseUsername || 'experience1',
+         userName: process.env.databaseUsername || 'experience2',
          password: process.env.databasePassword || 'P2ssw0rd@Dev',
          database: process.env.database || 'Expenses',
          options: {

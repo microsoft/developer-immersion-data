@@ -6,7 +6,7 @@ let config = {
     serverName: 'DemoExpenses',
     db: {
         userName: process.env.databaseUsername || 'experience1',
-        password: process.env.databasePassword || 'P2ssw0rd',
+        password: process.env.databasePassword || 'P2ssw0rd@Dev',
         database: process.env.database || 'Expenses',
         options: {
             host: process.env.databaseServer || '{YOUR DATABASE SERVER DNS NAME HERE}',
