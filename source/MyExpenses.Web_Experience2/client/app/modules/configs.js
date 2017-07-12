@@ -1,6 +1,6 @@
-﻿(function(global) {
+﻿(function (global) {
     var configs = {
-        clientId: '4f5aa6d8-70a9-4baa-822d-977e99cae6ac'
+        clientId: 'a086d595-e92f-4d5e-86ed-fdd3b8c99d9d'
     };
 
     global.configs = global.configs || configs;

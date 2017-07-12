@@ -16,6 +16,6 @@ Basic steps to start the Hands-On-Lab are:
 - Update the connection strings in your local app. 
 
 To access to MyExpenses app, you can use the following users:
-- Andrew.Davis@experiencehol.onmicrosoft.com
-- Robin.Count@experiencehol.onmicrosoft.com
-- Password for both users: P2ssw0rd
+- Andrew.Davis@holexperiences.onmicrosoft.com
+- Robin.Count@holexperiences.onmicrosoft.com
+- Password for both users: P2ssw0rd@User

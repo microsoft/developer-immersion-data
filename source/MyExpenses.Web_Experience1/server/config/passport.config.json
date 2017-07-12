@@ -1,5 +1,5 @@
 {
-  "clientID": "dee5bca6-72d8-427e-958d-f4aa05c7f9bb",
-  "identityMetadata": "https://login.microsoftonline.com/6d616a77-3912-4c78-9b0b-c41249555dd7/.well-known/openid-configuration",
-  "audience": "4f5aa6d8-70a9-4baa-822d-977e99cae6ac"
+  "clientID": "d0f286aa-7737-4689-8eae-3c111afc9217",
+  "identityMetadata": "https://login.microsoftonline.com/807409ad-6e7a-48fb-8470-1dd93a0869a7/.well-known/openid-configuration",
+  "audience": "a086d595-e92f-4d5e-86ed-fdd3b8c99d9d"
 }
