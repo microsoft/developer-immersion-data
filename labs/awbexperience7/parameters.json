@@ -1,15 +1,51 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "CosmosDBWithDocumentDB": {
-      "value": "ContosoWithSqlAPI"
-    },
-    "CosmosDBWithMongoDB": {
-      "value": "ContosowithMongoDBAPI"
-    },
-    "AzureFunctionName": {
-      "value": "ContosoAirAppAF"
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "southcentralus"
+        },
+        "virtualMachineName": {
+            "value": "testVM"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_DS1_v2"
+        },
+        "adminUsername": {
+            "value": "shrutika"
+        },
+        "virtualNetworkName": {
+            "value": "contosonet"
+        },
+        "networkInterfaceName": {
+            "value": "testvm561"
+        },
+        "networkSecurityGroupName": {
+            "value": "testVM-nsg"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "rg611739diag719"
+        },
+        "diagnosticsStorageAccountType": {
+            "value": "Standard_LRS"
+        },
+        "diagnosticsStorageAccountId": {
+            "value": "Microsoft.Storage/storageAccounts/rg611739diag719"
+        },
+        "subnetName": {
+            "value": "Subnet-1"
+        },
+        "publicIpAddressName": {
+            "value": "testVM-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        }
     }
-  }
 }
