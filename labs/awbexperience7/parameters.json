@@ -2,50 +2,23 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "apiVersion": {
+            "value": "2016-04-30-preview"
+        },
+        "name": {
+            "value": "demolabavaset1"
+        },
+        "faultDomains": {
+            "value": 2
+        },
+        "updateDomains": {
+            "value": 5
+        },
         "location": {
             "value": "southcentralus"
         },
-        "virtualMachineName": {
-            "value": "testVM"
-        },
-        "virtualMachineSize": {
-            "value": "Standard_DS1_v2"
-        },
-        "adminUsername": {
-            "value": "shrutika"
-        },
-        "virtualNetworkName": {
-            "value": "contosonet"
-        },
-        "networkInterfaceName": {
-            "value": "testvm561"
-        },
-        "networkSecurityGroupName": {
-            "value": "testVM-nsg"
-        },
-        "adminPassword": {
-            "value": null
-        },
-        "diagnosticsStorageAccountName": {
-            "value": "rg611739diag719"
-        },
-        "diagnosticsStorageAccountType": {
-            "value": "Standard_LRS"
-        },
-        "diagnosticsStorageAccountId": {
-            "value": "Microsoft.Storage/storageAccounts/rg611739diag719"
-        },
-        "subnetName": {
-            "value": "Subnet-1"
-        },
-        "publicIpAddressName": {
-            "value": "testVM-ip"
-        },
-        "publicIpAddressType": {
-            "value": "Dynamic"
-        },
-        "publicIpAddressSku": {
-            "value": "Basic"
+        "sku": {
+            "value": "Aligned"
         }
     }
 }
