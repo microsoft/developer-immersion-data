@@ -1,0 +1,106 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "CosmosDBWithDocumentDB": {
+      "type": "string",
+      "defaultValue": "ContosoWithSqlAPI",
+      "metadata": {
+        "description": "Name of DocumentDB."
+      }
+    },
+    "CosmosDBWithMongoDB": {
+      "type": "string",
+      "defaultValue": "ContosowithMongoDBAPI",
+      "metadata": {
+        "description": "Name of MongoDB."
+      }
+    },
+    "AzureFunctionName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of Azure Function."
+      }
+    }
+  },
+  "variables": {
+    "storageNames": "[concat('storage', uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "kind": "GlobalDocumentDB",
+      "name": "[toLower(parameters('CosmosDBWithDocumentDB'))]",
+      "apiVersion": "2015-04-08",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "scale": null,
+      "properties": {
+        "databaseAccountOfferType": "Standard"
+      },
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.DocumentDb/databaseAccounts",
+      "kind": "MongoDB",
+      "name": "[toLower(parameters('CosmosDBWithMongoDB'))]",
+      "apiVersion": "2015-04-08",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "databaseAccountOfferType": "Standard"
+      },
+      "tags": {}
+    },
+    {
+      "apiVersion": "2016-03-01",
+      "name": "[parameters('AzureFunctionName')]",
+      "type": "Microsoft.Web/sites",
+      "properties": {
+        "name": "[parameters('AzureFunctionName')]",
+        "siteConfig": {
+          "appSettings": [
+            {
+              "name": "AzureWebJobsDashboard",
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageNames'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageNames')), '2015-05-01-preview').key1)]"
+            },
+            {
+              "name": "AzureWebJobsStorage",
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageNames'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageNames')), '2015-05-01-preview').key1)]"
+            },
+            {
+              "name": "FUNCTIONS_EXTENSION_VERSION",
+              "value": "~1"
+            },
+            {
+              "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageNames'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageNames')), '2015-05-01-preview').key1)]"
+            },
+            {
+              "name": "WEBSITE_CONTENTSHARE",
+              "value": "[concat(toLower(parameters('AzureFunctionName')), '9868')]"
+            },
+            {
+              "name": "WEBSITE_NODE_DEFAULT_VERSION",
+              "value": "6.5.0"
+            }
+          ]
+        },
+        "clientAffinityEnabled": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageNames'))]"
+      ],
+      "location": "[resourceGroup().location]",
+      "kind": "functionapp"
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageNames')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
+    }
+  ]
+}
