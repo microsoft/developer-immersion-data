@@ -4,21 +4,6 @@
     "parameters": {
         "apiVersion": {
             "value": "2016-04-30-preview"
-        },
-        "name": {
-            "value": "demolabuser1"
-        },
-        "faultDomains": {
-            "value": 2
-        },
-        "updateDomains": {
-            "value": 5
-        },
-        "location": {
-            "value": "centralindia"
-        },
-        "sku": {
-            "value": "Aligned"
         }
     }
 }
