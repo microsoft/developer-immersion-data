@@ -4,38 +4,24 @@
     "parameters": {
         "apiVersion": {
             "type": "string"
-        },
-        "name": {
-            "type": "string"
-        },
-        "faultDomains": {
-            "type": "int"
-        },
-        "updateDomains": {
-            "type": "int"
-        },
-        "location": {
-            "type": "string"
-        },
-        "sku": {
-            "type": "string"
         }
     },
+    "variables": {
+        "CosmosDBWithDocumentDB": "[concat('contosoairdbansible', uniqueString(resourceGroup().id))]"
+    },  
     "resources": [
         {
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "kind": "GlobalDocumentDB",
+            "name": "[toLower(variables('CosmosDBWithDocumentDB'))]",
             "apiVersion": "[parameters('apiVersion')]",
-            "type": "Microsoft.Compute/availabilitySets",
-            "name": "[parameters('name')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "platformUpdateDomainCount": "[parameters('updateDomains')]",
-                "platformFaultDomainCount": "[parameters('faultDomains')]",
-                "virtualMachines": []
-            },
+            "location": "[resourceGroup().location]",
             "tags": {},
-            "sku": {
-                "name": "[parameters('sku')]"
-            }
+            "properties": {
+                "databaseAccountOfferType": "Standard",
+                "name": "[toLower(variables('CosmosDBWithDocumentDB'))]"
+            },
+            "dependsOn": []
         }
     ]
 }
