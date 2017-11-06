@@ -1,0 +1,375 @@
+{
+  "id": "story://Content-Private/content/dfd/SP-GDA/gdaexpericence5/story_a_azurebotservice_with_cosmosdb",
+  "registryId": "story://Content-Private/content/dfd/SP-GDA/gdaexpericence5/story_a_azurebotservice_with_cosmosdb",
+  "permissions": [
+    "Everybody"
+  ],
+  "audiences": [
+    "Developer"
+  ],
+  "topics": [
+    "Database",
+    "Insights",
+    "Collections"
+  ],
+  "products": [
+    "Azure Document DB",
+    "Bot Service",
+    "Web App"
+  ],
+  "jobroles": [
+    "Application Developer"
+  ],
+  "tags": null,
+  "level": "Intermediate",
+  "duration_minutes": 120,
+  "access_time_minutes": 150,
+  "marketo_product_code": null,
+  "title": "Building Intelligent Bot using Azure Bot Service and Cosmos DB",
+  "short_title": null,
+  "description": "Connect with Skype Bot for Flight Reschedule, Flight Status, Ticket E-Checkin and Terminal Map.",
+  "regions": [
+    "southcentralus"
+  ],
+  "date_created": "2017-10-23",
+  "story_type": "HandsOnLab",
+  "persona_role": "Developer",
+  "resources": {
+    "launch_azure_portal": {
+      "helper": "launchie",
+      "arguments": [
+        "https://portal.azure.com/"
+      ]
+    },
+    "start_visualstudio": {
+      "helper": "launchvisualstudio",
+      "reset_to": "none",
+      "solution_file": "%userprofile%\\documents\\E1A1_BusinessIntelligence\\BusinessIntelligence.sln"
+    }
+  },
+  "target_presenter": null,
+  "primary_template": "template.json",
+  "depends_on": null,
+  "parameters": {
+    "StandAlone": "template_facilitator.parameters.json",
+    "Student": "template_facilitator.parameters.json",
+    "Facilitator": "template_facilitator.parameters.json"
+  },
+  "secondary_templates": {},
+  "pre_deploy_script": null,
+  "post_deploy_script": "SetUserRole.ps1",
+  "requires_licenses": null,
+  "requires_long_running_script_sentinel": false,
+  "requires_office365_trial": false,
+  "warmup_time_minutes": 15,
+  "deployment_time_minutes": 45,
+  "assets": {
+    "icon": null,
+    "intro": {
+      "title": "Introduction",
+      "path": "content/intro.md",
+      "type": "Intro",
+      "persona_role": "Developer"
+    },
+    "conclusion": {
+      "title": "Conclusion",
+      "path": "content/conclusion.md",
+      "type": "Conclusion",
+      "persona_role": "Developer"
+    },
+    "pages": [
+      {
+        "title": "Creating Azure Bot",
+        "path": "content/0.md",
+        "type": "Page",
+        "persona_role": "Developer"
+      },
+      {
+        "title": "Creating Cosmos DB collection",
+        "path": "content/1.md",
+        "type": "Page",
+        "persona_role": "Developer"
+      },
+      {
+        "title": "Playing around the Visual Studio code",
+        "path": "content/2.md",
+        "type": "Page",
+        "persona_role": "Developer"
+      }
+    ],
+    "clicksteps": [],
+    "scripts": [],
+    "assets": [
+      {
+        "path": "content/img/AddCollection.png"
+      },
+      {
+        "path": "content/img/AddCollectionScreenWithDatabase.png"
+      },
+      {
+        "path": "content/img/AlternativeFlights.png"
+      },
+      {
+        "path": "content/img/apiEnd.png"
+      },
+      {
+        "path": "content/img/ApiEndpoint.png"
+      },
+      {
+        "path": "content/img/APIEndpointCopy.png"
+      },
+      {
+        "path": "content/img/APIEndpoints.png"
+      },
+      {
+        "path": "content/img/architecturediagram.png"
+      },
+      {
+        "path": "content/img/azure_portal.png"
+      },
+      {
+        "path": "content/img/Bookings.png"
+      },
+      {
+        "path": "content/img/bot-cosmos-db.png"
+      },
+      {
+        "path": "content/img/botbuilder.png"
+      },
+      {
+        "path": "content/img/BotFrameworkEmulator.png"
+      },
+      {
+        "path": "content/img/BotFrameworkLogo.png"
+      },
+      {
+        "path": "content/img/BotWebapp.png"
+      },
+      {
+        "path": "content/img/Build.png"
+      },
+      {
+        "path": "content/img/Collection.png"
+      },
+      {
+        "path": "content/img/CommandPromptScreen.png"
+      },
+      {
+        "path": "content/img/Config.jsfile.png"
+      },
+      {
+        "path": "content/img/ConnectButton.png"
+      },
+      {
+        "path": "content/img/ContinueDebug.png"
+      },
+      {
+        "path": "content/img/ContinueDebugging.png"
+      },
+      {
+        "path": "content/img/Contoso1.png"
+      },
+      {
+        "path": "content/img/Contoso2.png"
+      },
+      {
+        "path": "content/img/Contoso3.png"
+      },
+      {
+        "path": "content/img/Contoso4.png"
+      },
+      {
+        "path": "content/img/Contoso5.png"
+      },
+      {
+        "path": "content/img/ContosoAirBot.png"
+      },
+      {
+        "path": "content/img/ContosoAirService.png"
+      },
+      {
+        "path": "content/img/ContosoAirXamarinSln.png"
+      },
+      {
+        "path": "content/img/CreateMicrosoftAppIDandpassword.png"
+      },
+      {
+        "path": "content/img/createnewprofile.PNG"
+      },
+      {
+        "path": "content/img/DataExplorer.png"
+      },
+      {
+        "path": "content/img/debugInternetExplorer.PNG"
+      },
+      {
+        "path": "content/img/DebugSimpleEchoBot.png"
+      },
+      {
+        "path": "content/img/DebugUWP.png"
+      },
+      {
+        "path": "content/img/DestinationFileExists.png"
+      },
+      {
+        "path": "content/img/ExtractAll.PNG"
+      },
+      {
+        "path": "content/img/ExtractZip.PNG"
+      },
+      {
+        "path": "content/img/FinishandgobacktoBotFramework.png"
+      },
+      {
+        "path": "content/img/firewall.PNG"
+      },
+      {
+        "path": "content/img/FirewallNodeJs.png"
+      },
+      {
+        "path": "content/img/Flights.png"
+      },
+      {
+        "path": "content/img/Generateanapppasswordtocontinue.png"
+      },
+      {
+        "path": "content/img/GetPublishProfile.png"
+      },
+      {
+        "path": "content/img/gitClone.png"
+      },
+      {
+        "path": "content/img/HambergerIcon.png"
+      },
+      {
+        "path": "content/img/importprofile.PNG"
+      },
+      {
+        "path": "content/img/installButton.png"
+      },
+      {
+        "path": "content/img/installButton1.png"
+      },
+      {
+        "path": "content/img/InternetExplorer.png"
+      },
+      {
+        "path": "content/img/Key.png"
+      },
+      {
+        "path": "content/img/LicenceAccept.png"
+      },
+      {
+        "path": "content/img/localmac.png"
+      },
+      {
+        "path": "content/img/LocalMAchine.png"
+      },
+      {
+        "path": "content/img/MicrosoftEdgeButton.png"
+      },
+      {
+        "path": "content/img/MigrationTool.png"
+      },
+      {
+        "path": "content/img/overviewoption.PNG"
+      },
+      {
+        "path": "content/img/previewchanges.png"
+      },
+      {
+        "path": "content/img/Publish1.png"
+      },
+      {
+        "path": "content/img/publish2.png"
+      },
+      {
+        "path": "content/img/PublishButtonImportOption.png"
+      },
+      {
+        "path": "content/img/ReadOnlyKeysScreen.png"
+      },
+      {
+        "path": "content/img/ReleaseContosoService.png"
+      },
+      {
+        "path": "content/img/releaseInternetExplorer.PNG"
+      },
+      {
+        "path": "content/img/ReleaseSimpleEchoBot.png"
+      },
+      {
+        "path": "content/img/Security.PNG"
+      },
+      {
+        "path": "content/img/securityWarning.PNG"
+      },
+      {
+        "path": "content/img/Select.png"
+      },
+      {
+        "path": "content/img/ServiceSolution.png"
+      },
+      {
+        "path": "content/img/SignInButton.png"
+      },
+      {
+        "path": "content/img/skype1.png"
+      },
+      {
+        "path": "content/img/Skype2.png"
+      },
+      {
+        "path": "content/img/skype3.png"
+      },
+      {
+        "path": "content/img/skype4.png"
+      },
+      {
+        "path": "content/img/SkypeIcon.png"
+      },
+      {
+        "path": "content/img/solutionWindow.png"
+      },
+      {
+        "path": "content/img/solutionWindowfinal.png"
+      },
+      {
+        "path": "content/img/StopDebugging.png"
+      },
+      {
+        "path": "content/img/StopDebuggingButton.png"
+      },
+      {
+        "path": "content/img/TargetInformation.png"
+      },
+      {
+        "path": "content/img/Test.png"
+      },
+      {
+        "path": "content/img/TestBotOnline.png"
+      },
+      {
+        "path": "content/img/TestBotOnlineFinal.png"
+      },
+      {
+        "path": "content/img/ValidateConnection.png"
+      },
+      {
+        "path": "content/img/VerifyConnection.png"
+      },
+      {
+        "path": "content/img/visualStudio.PNG"
+      },
+      {
+        "path": "content/img/WebApplicationBot.PNG"
+      },
+      {
+        "path": "content/img/XamarinSolutino.png"
+      }
+    ]
+  },
+  "arm_outputs": [],
+  "hosts_jumphost": true,
+  "jumphost_story": null
+}

@@ -1,0 +1,431 @@
+{
+  "id": "story://Content-Private/content/dfd/SP-GDA/gdaexpericence1/story_a_gda_using_cosmosdb",
+  "registryId": "story://Content-Private/content/dfd/SP-GDA/gdaexpericence1/story_a_gda_using_cosmosdb",
+  "permissions": [
+    "Everybody"
+  ],
+  "audiences": [
+    "Developer"
+  ],
+  "topics": [
+    "Azure Functions",
+    "Cosmos DB with SQL API",
+    "Cosmos DB with Mongo API"
+  ],
+  "products": [
+    "Azure Cosmos DB",
+    "Azure Functions"
+  ],
+  "jobroles": [
+    "Application Developer"
+  ],
+  "tags": null,
+  "level": "Intermediate",
+  "duration_minutes": 120,
+  "access_time_minutes": 150,
+  "marketo_product_code": null,
+  "title": "Build globally distributed applications using Azure Cosmos DB",
+  "short_title": null,
+  "description": "Discover Azure Cosmos DB’s features such as Globally distributed, Consistency, Multi-model API and Partitioning using ContosoAir website along with SQL DB, Mongo DB and Azure Functions.",
+  "regions": [
+    "southcentralus"
+  ],
+  "date_created": "2017-10-23",
+  "story_type": "HandsOnLab",
+  "persona_role": "Developer",
+  "resources": {
+    "launch_azure_portal": {
+      "helper": "launchie",
+      "arguments": [
+        "https://portal.azure.com/"
+      ]
+    },
+    "launch_visual_studio": {
+      "helper": "launchvisualstudio",
+      "reset_to": "generaldevelopmentprofile",
+      "solution_file": "C:\\source\\contosoair\\ContosoAir.Website_and_Services.sln"
+    }
+  },
+  "target_presenter": null,
+  "primary_template": "template.json",
+  "depends_on": null,
+  "parameters": {
+    "StandAlone": "template_facilitator.parameters.json",
+    "Student": "template_facilitator.parameters.json",
+    "Facilitator": "template_facilitator.parameters.json"
+  },
+  "secondary_templates": {},
+  "pre_deploy_script": null,
+  "post_deploy_script": "SetUserRole.ps1",
+  "requires_licenses": null,
+  "requires_long_running_script_sentinel": false,
+  "requires_office365_trial": false,
+  "warmup_time_minutes": 15,
+  "deployment_time_minutes": 45,
+  "assets": {
+    "icon": null,
+    "intro": {
+      "title": "Introduction",
+      "path": "content/intro.md",
+      "type": "Intro",
+      "persona_role": "Developer"
+    },
+    "conclusion": {
+      "title": "Conclusion",
+      "path": "content/conclusion.md",
+      "type": "Conclusion",
+      "persona_role": "Developer"
+    },
+    "pages": [
+      {
+        "title": "Globally distributed application for experiencing low latency",
+        "path": "content/0.md",
+        "type": "Page",
+        "persona_role": "Developer"
+      },
+      {
+        "title": "Consistency",
+        "path": "content/1.md",
+        "type": "Page",
+        "persona_role": "Developer"
+      },
+      {
+        "title": "Multi-model API",
+        "path": "content/2.md",
+        "type": "Page",
+        "persona_role": "Developer"
+      },
+      {
+        "title": "Partitioning",
+        "path": "content/3.md",
+        "type": "Page",
+        "persona_role": "Developer"
+      }
+    ],
+    "clicksteps": [],
+    "scripts": [],
+    "assets": [
+      {
+        "path": "content/img/architechture.jpg"
+      },
+      {
+        "path": "content/img/automaticFailover.jpg"
+      },
+      {
+        "path": "content/img/availabeAndReturn.jpg"
+      },
+      {
+        "path": "content/img/availability.jpg"
+      },
+      {
+        "path": "content/img/AvailableFlights.jpg"
+      },
+      {
+        "path": "content/img/AzureCosmosDB.jpg"
+      },
+      {
+        "path": "content/img/azurefunction.jpg"
+      },
+      {
+        "path": "content/img/AzureFunctionForDeals.jpg"
+      },
+      {
+        "path": "content/img/bash.png"
+      },
+      {
+        "path": "content/img/BellIcon.jpg"
+      },
+      {
+        "path": "content/img/CancelButton.jpg"
+      },
+      {
+        "path": "content/img/centralIndia.jpg"
+      },
+      {
+        "path": "content/img/charts_thruput_menu.png"
+      },
+      {
+        "path": "content/img/cmdpromptIcon.jpg"
+      },
+      {
+        "path": "content/img/collections.jpg"
+      },
+      {
+        "path": "content/img/collectionsConfig2.jpg"
+      },
+      {
+        "path": "content/img/collection_stop1_stop2.png"
+      },
+      {
+        "path": "content/img/CommandPrompt.jpg"
+      },
+      {
+        "path": "content/img/config1.jpg"
+      },
+      {
+        "path": "content/img/config2.jpg"
+      },
+      {
+        "path": "content/img/configfile.jpg"
+      },
+      {
+        "path": "content/img/Config_js_new.jpg"
+      },
+      {
+        "path": "content/img/ConotosoAirAppDB.jpg"
+      },
+      {
+        "path": "content/img/ConsistencyLevel.jpg"
+      },
+      {
+        "path": "content/img/ContosoAirApp.jpg"
+      },
+      {
+        "path": "content/img/contosoairappdb.jpg"
+      },
+      {
+        "path": "content/img/ContosoAirdb.jpg"
+      },
+      {
+        "path": "content/img/ContosoAirServices.jpg"
+      },
+      {
+        "path": "content/img/Copy.jpg"
+      },
+      {
+        "path": "content/img/copyIcon.jpg"
+      },
+      {
+        "path": "content/img/cosistency1.jpg"
+      },
+      {
+        "path": "content/img/cosistency2.jpg"
+      },
+      {
+        "path": "content/img/cosistency3.jpg"
+      },
+      {
+        "path": "content/img/cosmosdbkeys.jpg"
+      },
+      {
+        "path": "content/img/CreateButton.jpg"
+      },
+      {
+        "path": "content/img/CreatingFunctionApp.jpg"
+      },
+      {
+        "path": "content/img/data_index_storage_consume_vs_available.png"
+      },
+      {
+        "path": "content/img/deals.jpg"
+      },
+      {
+        "path": "content/img/DefaultConsistency.jpg"
+      },
+      {
+        "path": "content/img/empirical_portability.png"
+      },
+      {
+        "path": "content/img/explorer.jpg"
+      },
+      {
+        "path": "content/img/failover2.jpg"
+      },
+      {
+        "path": "content/img/fbash.png"
+      },
+      {
+        "path": "content/img/FiveDatabaseParmeters.jpg"
+      },
+      {
+        "path": "content/img/Functions.jpg"
+      },
+      {
+        "path": "content/img/GetFunctionURL.jpg"
+      },
+      {
+        "path": "content/img/GetFunctionURL1.jpg"
+      },
+      {
+        "path": "content/img/getFunctn.jpg"
+      },
+      {
+        "path": "content/img/GetStartedOnYourOwn.jpg"
+      },
+      {
+        "path": "content/img/globaldatabase.jpg"
+      },
+      {
+        "path": "content/img/Graphmultimodel.jpg"
+      },
+      {
+        "path": "content/img/Id.png"
+      },
+      {
+        "path": "content/img/insert.png"
+      },
+      {
+        "path": "content/img/Integrate.jpg"
+      },
+      {
+        "path": "content/img/Intro.jpg"
+      },
+      {
+        "path": "content/img/latency1.jpg"
+      },
+      {
+        "path": "content/img/latency2.jpg"
+      },
+      {
+        "path": "content/img/ManualFailover.jpg"
+      },
+      {
+        "path": "content/img/ManualFailover1.jpg"
+      },
+      {
+        "path": "content/img/MicrosoftLogin.jpg"
+      },
+      {
+        "path": "content/img/mongodatainsert.jpg"
+      },
+      {
+        "path": "content/img/MongoDBSolnExplorer.jpg"
+      },
+      {
+        "path": "content/img/NewConfig_js1.jpg"
+      },
+      {
+        "path": "content/img/NewInputButton.jpg"
+      },
+      {
+        "path": "content/img/newpopup.jpg"
+      },
+      {
+        "path": "content/img/newpopup2.jpg"
+      },
+      {
+        "path": "content/img/ngServer.jpg"
+      },
+      {
+        "path": "content/img/npmstart.jpg"
+      },
+      {
+        "path": "content/img/npmStartnew.jpg"
+      },
+      {
+        "path": "content/img/OKbutton.jpg"
+      },
+      {
+        "path": "content/img/OpenFolderInFileExplorer.jpg"
+      },
+      {
+        "path": "content/img/partioning2.jpg"
+      },
+      {
+        "path": "content/img/Purchase.jpg"
+      },
+      {
+        "path": "content/img/ReplicateDataGlobally.jpg"
+      },
+      {
+        "path": "content/img/ReplicateDataGlobally2.jpg"
+      },
+      {
+        "path": "content/img/ReplicateDataGlobally3.jpg"
+      },
+      {
+        "path": "content/img/ReplicatedDBNearIndia.png"
+      },
+      {
+        "path": "content/img/replication_latency.png"
+      },
+      {
+        "path": "content/img/ResorcGrp.jpg"
+      },
+      {
+        "path": "content/img/ResourceGropus.jpg"
+      },
+      {
+        "path": "content/img/run.jpg"
+      },
+      {
+        "path": "content/img/SaveButton.jpg"
+      },
+      {
+        "path": "content/img/SearchWindows.jpg"
+      },
+      {
+        "path": "content/img/SeatBooking.jpg"
+      },
+      {
+        "path": "content/img/SelectDepartureFlight.jpg"
+      },
+      {
+        "path": "content/img/signIn.jpg"
+      },
+      {
+        "path": "content/img/sign_In_Button.jpg"
+      },
+      {
+        "path": "content/img/SLA.jpg"
+      },
+      {
+        "path": "content/img/SolutionExplorer.png"
+      },
+      {
+        "path": "content/img/sqlDbFlightInsert.jpg"
+      },
+      {
+        "path": "content/img/sqlquery.jpg"
+      },
+      {
+        "path": "content/img/status200.jpg"
+      },
+      {
+        "path": "content/img/storage.jpg"
+      },
+      {
+        "path": "content/img/storage1.jpg"
+      },
+      {
+        "path": "content/img/storage2.jpg"
+      },
+      {
+        "path": "content/img/subs1.png"
+      },
+      {
+        "path": "content/img/Subscription.png"
+      },
+      {
+        "path": "content/img/ThreeDatabaseParameters.jpg"
+      },
+      {
+        "path": "content/img/Throughput1.jpg"
+      },
+      {
+        "path": "content/img/Throughput2.jpg"
+      },
+      {
+        "path": "content/img/Throughput3.jpg"
+      },
+      {
+        "path": "content/img/Throughput4.jpg.png"
+      },
+      {
+        "path": "content/img/ubuntuIcon.png"
+      },
+      {
+        "path": "content/img/url.jpg"
+      },
+      {
+        "path": "content/img/WriteRegion.jpg"
+      },
+      {
+        "path": "content/img/yourSubs.png"
+      }
+    ]
+  },
+  "arm_outputs": [],
+  "hosts_jumphost": true,
+  "jumphost_story": null
+}

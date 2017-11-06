@@ -1,0 +1,260 @@
+{
+  "id": "story://Content-Private/content/dfd/SP-GDA/gdaexpericence3/story_a_notificationservice_with_cosmosdb",
+  "registryId": "story://Content-Private/content/dfd/SP-GDA/gdaexpericence3/story_a_notificationservice_with_cosmosdb",
+  "permissions": [
+    "Everybody"
+  ],
+  "audiences": [
+    "Developer"
+  ],
+  "topics": [
+    "Database",
+    "Collections"
+  ],
+  "products": [
+    "Azure Document DB",
+    "Notification Hub"
+  ],
+  "jobroles": [
+    "Application Developer"
+  ],
+  "tags": null,
+  "level": "Intermediate",
+  "duration_minutes": 90,
+  "access_time_minutes": 120,
+  "marketo_product_code": null,
+  "title": "Developing Xamarin Apps with Azure Cosmos DB and Notification Services",
+  "short_title": null,
+  "description": "After booking flight for minor, the minor's parent would recive all the details of soloservice provider with there existing reviews through notification.",
+  "regions": [
+    "southcentralus"
+  ],
+  "date_created": "2017-10-23",
+  "story_type": "HandsOnLab",
+  "persona_role": "Developer",
+  "resources": {
+    "launch_azure_portal": {
+      "helper": "launchie",
+      "arguments": [
+        "https://portal.azure.com/"
+      ]
+    }
+  },
+  "target_presenter": null,
+  "primary_template": "template.json",
+  "depends_on": null,
+  "parameters": {
+    "StandAlone": "template_facilitator.parameters.json",
+    "Student": "template_facilitator.parameters.json",
+    "Facilitator": "template_facilitator.parameters.json"
+  },
+  "secondary_templates": {},
+  "pre_deploy_script": null,
+  "post_deploy_script": "SetUserRole.ps1",
+  "requires_licenses": null,
+  "requires_long_running_script_sentinel": false,
+  "requires_office365_trial": false,
+  "warmup_time_minutes": 15,
+  "deployment_time_minutes": 45,
+  "assets": {
+    "icon": null,
+    "intro": {
+      "title": "Introduction",
+      "path": "content/intro.md",
+      "type": "Intro",
+      "persona_role": "Developer"
+    },
+    "conclusion": {
+      "title": "Conclusion",
+      "path": "content/conclusion.md",
+      "type": "Conclusion",
+      "persona_role": "Developer"
+    },
+    "pages": [
+      {
+        "title": "Fetching information of staff serving the Flying Solo Service",
+        "path": "content/0.md",
+        "type": "Page",
+        "persona_role": "Developer"
+      },
+      {
+        "title": "Fetching the reviews of staff serving the Flying Solo Service along with star ratings",
+        "path": "content/1.md",
+        "type": "Page",
+        "persona_role": "Developer"
+      },
+      {
+        "title": "Availing Solo Service while booking ticket",
+        "path": "content/2.md",
+        "type": "Page",
+        "persona_role": "Developer"
+      }
+    ],
+    "clicksteps": [],
+    "scripts": [],
+    "assets": [
+      {
+        "path": "content/img/Access_Policies.png"
+      },
+      {
+        "path": "content/img/after_changing_isavailable_parameter.png"
+      },
+      {
+        "path": "content/img/appwithstar.png"
+      },
+      {
+        "path": "content/img/architecture_diagram.png"
+      },
+      {
+        "path": "content/img/Available_Flights.png"
+      },
+      {
+        "path": "content/img/azure_cosmos_db_account.png"
+      },
+      {
+        "path": "content/img/azure_func.png"
+      },
+      {
+        "path": "content/img/azure_function_select.png"
+      },
+      {
+        "path": "content/img/azure_portal.png"
+      },
+      {
+        "path": "content/img/cancelbutton.png"
+      },
+      {
+        "path": "content/img/changeReviews.png"
+      },
+      {
+        "path": "content/img/changeStars.png"
+      },
+      {
+        "path": "content/img/cmd_prmt.png"
+      },
+      {
+        "path": "content/img/config_js.png"
+      },
+      {
+        "path": "content/img/copy.png"
+      },
+      {
+        "path": "content/img/cosmosdbaccountconnection.png"
+      },
+      {
+        "path": "content/img/cosomodb_account_creation.png"
+      },
+      {
+        "path": "content/img/cosomodb_after_datamigration.png"
+      },
+      {
+        "path": "content/img/data_explorer.png"
+      },
+      {
+        "path": "content/img/endpoint.png"
+      },
+      {
+        "path": "content/img/find_flights_page.png"
+      },
+      {
+        "path": "content/img/firewall.png"
+      },
+      {
+        "path": "content/img/Flight_Summary.png"
+      },
+      {
+        "path": "content/img/functions_adding.png"
+      },
+      {
+        "path": "content/img/function_app.png"
+      },
+      {
+        "path": "content/img/getfunctionurl.png"
+      },
+      {
+        "path": "content/img/get_func_URL.png"
+      },
+      {
+        "path": "content/img/httpRequest.png"
+      },
+      {
+        "path": "content/img/key1.png"
+      },
+      {
+        "path": "content/img/keys.png"
+      },
+      {
+        "path": "content/img/localMachine.png"
+      },
+      {
+        "path": "content/img/logicapp1.png"
+      },
+      {
+        "path": "content/img/logicapp2.png"
+      },
+      {
+        "path": "content/img/login_page.png"
+      },
+      {
+        "path": "content/img/migration_tool.png"
+      },
+      {
+        "path": "content/img/migration_tool_step.png"
+      },
+      {
+        "path": "content/img/newbutton.png"
+      },
+      {
+        "path": "content/img/Next_btn.png"
+      },
+      {
+        "path": "content/img/ng_serve_cmd.png"
+      },
+      {
+        "path": "content/img/notification_icon.png"
+      },
+      {
+        "path": "content/img/partc_creating_function_app.png"
+      },
+      {
+        "path": "content/img/partD_hambergericon.png"
+      },
+      {
+        "path": "content/img/partD_isavailable_change.png"
+      },
+      {
+        "path": "content/img/partD_withoutRating.png"
+      },
+      {
+        "path": "content/img/plusicon.png"
+      },
+      {
+        "path": "content/img/purchase_btn.png"
+      },
+      {
+        "path": "content/img/run_npm_cmd.png"
+      },
+      {
+        "path": "content/img/Seat_book_page.png"
+      },
+      {
+        "path": "content/img/sign_in_btn.png"
+      },
+      {
+        "path": "content/img/solutionExplorer.png"
+      },
+      {
+        "path": "content/img/trip_book_page.png"
+      },
+      {
+        "path": "content/img/user_story_image.jpg"
+      },
+      {
+        "path": "content/img/user_story_image_2_without_star.png"
+      }
+    ]
+  },
+  "arm_outputs": [],
+  "hosts_jumphost": true,
+  "jumphost_story": null
+}

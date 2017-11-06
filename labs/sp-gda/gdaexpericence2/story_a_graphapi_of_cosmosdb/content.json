@@ -1,0 +1,262 @@
+{
+  "id": "story://Content-Private/content/dfd/SP-GDA/gdaexpericence2/story_a_graphapi_of_cosmosdb",
+  "registryId": "story://Content-Private/content/dfd/SP-GDA/gdaexpericence2/story_a_graphapi_of_cosmosdb",
+  "permissions": [
+    "Everybody"
+  ],
+  "audiences": [
+    "Developer"
+  ],
+  "topics": [
+    "Collections",
+    "Database"
+  ],
+  "products": [
+    "Azure Cosmos DB Graph API",
+    "Gremlin Query"
+  ],
+  "jobroles": [
+    "Application Developer"
+  ],
+  "tags": null,
+  "level": "Intermediate",
+  "duration_minutes": 120,
+  "access_time_minutes": 150,
+  "marketo_product_code": null,
+  "title": "Analyzing Data relationship using the Power of Azure Cosmos DB Graph API (Gremlin Query)",
+  "short_title": null,
+  "description": "After searching specific flight, user can check codeshare and soloservice details for selected flight in graphical format.",
+  "regions": [
+    "southcentralus"
+  ],
+  "date_created": "2017-10-23",
+  "story_type": "HandsOnLab",
+  "persona_role": "Developer",
+  "resources": {
+    "launch_azure_portal": {
+      "helper": "launchie",
+      "arguments": [
+        "https://portal.azure.com/"
+      ]
+    },
+    "start_visualstudio": {
+      "helper": "launchvisualstudio",
+      "reset_to": "none",
+      "solution_file": "%userprofile%\\documents\\E1A1_BusinessIntelligence\\BusinessIntelligence.sln"
+    }
+  },
+  "target_presenter": null,
+  "primary_template": "template.json",
+  "depends_on": null,
+  "parameters": {
+    "StandAlone": "template_facilitator.parameters.json",
+    "Student": "template_facilitator.parameters.json",
+    "Facilitator": "template_facilitator.parameters.json"
+  },
+  "secondary_templates": {},
+  "pre_deploy_script": null,
+  "post_deploy_script": "SetUserRole.ps1",
+  "requires_licenses": null,
+  "requires_long_running_script_sentinel": false,
+  "requires_office365_trial": false,
+  "warmup_time_minutes": 15,
+  "deployment_time_minutes": 45,
+  "assets": {
+    "icon": null,
+    "intro": {
+      "title": "Introduction",
+      "path": "content/intro.md",
+      "type": "Intro",
+      "persona_role": "Developer"
+    },
+    "conclusion": {
+      "title": "Conclusion",
+      "path": "content/conclusion.md",
+      "type": "Conclusion",
+      "persona_role": "Developer"
+    },
+    "pages": [
+      {
+        "title": "Creating Azure Cosmos DB Graph API and uploading data",
+        "path": "content/0.md",
+        "type": "Page",
+        "persona_role": "Developer"
+      },
+      {
+        "title": "Azure Cosmos Graph DB API to display Flight and Flight Segments details in graphical format using Gremlin",
+        "path": "content/1.md",
+        "type": "Page",
+        "persona_role": "Developer"
+      },
+      {
+        "title": "Graph plotting using Graph API (Gremlin Query) for Code Share and Solo Service Details by launching ContosoAir App",
+        "path": "content/2.md",
+        "type": "Page",
+        "persona_role": "Developer"
+      }
+    ],
+    "clicksteps": [],
+    "scripts": [],
+    "assets": [
+      {
+        "path": "content/img/AllResources.png"
+      },
+      {
+        "path": "content/img/apiUrl.png"
+      },
+      {
+        "path": "content/img/Architecture.png"
+      },
+      {
+        "path": "content/img/availableCodeshares.png"
+      },
+      {
+        "path": "content/img/AvailableFlights.png"
+      },
+      {
+        "path": "content/img/availablesoloservice.png"
+      },
+      {
+        "path": "content/img/AzureLogin.png"
+      },
+      {
+        "path": "content/img/ClickToCopy.png"
+      },
+      {
+        "path": "content/img/CMDIcon.png"
+      },
+      {
+        "path": "content/img/CmdWindow.png"
+      },
+      {
+        "path": "content/img/CodeshareProperties.png"
+      },
+      {
+        "path": "content/img/ContosoAirCmdWindow.png"
+      },
+      {
+        "path": "content/img/ContosoAirWithService.png"
+      },
+      {
+        "path": "content/img/ContosoAppLaunchWindow.png"
+      },
+      {
+        "path": "content/img/ContosoAppMainWindow.png"
+      },
+      {
+        "path": "content/img/ContosoConfigurewithService.png"
+      },
+      {
+        "path": "content/img/CopyFieldPopup.png"
+      },
+      {
+        "path": "content/img/DataMigrationToolPage.png"
+      },
+      {
+        "path": "content/img/DtuiAppIcon.png"
+      },
+      {
+        "path": "content/img/EdgeIcon.png"
+      },
+      {
+        "path": "content/img/EnvironmentsFolder.png"
+      },
+      {
+        "path": "content/img/Firewall.png"
+      },
+      {
+        "path": "content/img/FlightAndSegmentsOutput.png"
+      },
+      {
+        "path": "content/img/FlightDetailsOutput.png"
+      },
+      {
+        "path": "content/img/FlightDetailsWindow.png"
+      },
+      {
+        "path": "content/img/FlightSegmentsDetailsOutput.png"
+      },
+      {
+        "path": "content/img/FlightVerticesOutput.png"
+      },
+      {
+        "path": "content/img/GraphDBCreation.png"
+      },
+      {
+        "path": "content/img/GraphDBCreationOutputWindow.png"
+      },
+      {
+        "path": "content/img/GraphExplorerWindow.png"
+      },
+      {
+        "path": "content/img/GremlinQueryTextbox.png"
+      },
+      {
+        "path": "content/img/GremlinURI.png"
+      },
+      {
+        "path": "content/img/InstallCertificateWindow.png"
+      },
+      {
+        "path": "content/img/KeysIcon.png"
+      },
+      {
+        "path": "content/img/KeysPage.png"
+      },
+      {
+        "path": "content/img/LocalHostCmd.png"
+      },
+      {
+        "path": "content/img/NewImportButton.png"
+      },
+      {
+        "path": "content/img/NewImportPopUp.png"
+      },
+      {
+        "path": "content/img/OverviewIcon.png"
+      },
+      {
+        "path": "content/img/PortNo.png"
+      },
+      {
+        "path": "content/img/PrimaryKey.png"
+      },
+      {
+        "path": "content/img/ResourceGroupsIcon.png"
+      },
+      {
+        "path": "content/img/SaveIcon.png"
+      },
+      {
+        "path": "content/img/SecurityWarningPopUp.png"
+      },
+      {
+        "path": "content/img/ServiceCOnfigurationWindow.png"
+      },
+      {
+        "path": "content/img/SignInButton.png"
+      },
+      {
+        "path": "content/img/SoloServiceProperties.png"
+      },
+      {
+        "path": "content/img/SSLCertificate.png"
+      },
+      {
+        "path": "content/img/StartIcon.png"
+      },
+      {
+        "path": "content/img/URI_Icon.png"
+      },
+      {
+        "path": "content/img/ViewCodeshareLink.png"
+      },
+      {
+        "path": "content/img/ViewSoloSrviceLink.png"
+      }
+    ]
+  },
+  "arm_outputs": [],
+  "hosts_jumphost": true,
+  "jumphost_story": null
+}
