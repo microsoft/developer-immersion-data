@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "apiVersion": {
-            "value": "2016-04-30-preview"
+            "value": "2016-03-31"
         }
     }
 }
