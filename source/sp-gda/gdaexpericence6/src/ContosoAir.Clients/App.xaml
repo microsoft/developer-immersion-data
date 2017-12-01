@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContosoAir.Clients.App" 
+             xmlns:converters="clr-namespace:ContosoAir.Clients.Converters;assembly=ContosoAir.Clients.Core"           
+             xmlns:effects="clr-namespace:ContosoAir.Clients.Effects;assembly=ContosoAir.Clients.Core">
+    <Application.Resources>
+        <ResourceDictionary>
+            
+            <!-- Colors -->
+            <Color x:Key="WhiteColor">#ffffff</Color>
+            <Color x:Key="BlackColor">#000000</Color>
+            <Color x:Key="BlueColor">#32AEE2</Color>
+            <Color x:Key="PinkColor">#DF1D59</Color>
+            <Color x:Key="DarkPinkColor">#7F143A</Color> 
+            <Color x:Key="GrayColor">#E6E6E5</Color>
+            <Color x:Key="SkyBlueColor">#28AAE1</Color>
+            <Color x:Key="MsaLoginBackgroundColor">#287BBD</Color>
+            <Color x:Key="BackgroundColor">#6B9FCD</Color>
+            <Color x:Key="MenuBackgroundColor">#DF1D59</Color>
+            <Color x:Key="ErrorColor">#ff5252</Color>
+            <Color x:Key="StaleBlue">#6A5ACD</Color>
+            <Color x:Key="Sail">#A3CBF1</Color>
+            <Color x:Key="DarkSail">#82A2C1</Color>
+            <Color x:Key="LightGreen">#79BFA1</Color>
+            <Color x:Key="DarkGreen">#3c5f50</Color>
+            <Color x:Key="MidGrayColor">#696969</Color>
+            <Color x:Key="DarkGrayColor">#2E2E2D</Color>
+            
+
+            <!-- Fonts -->
+            <OnPlatform x:Key="KarlaRegular"
+                        x:TypeArguments="x:String"
+                        iOS="Karla-Regular"
+                        Android="Karla-Regular.ttf#Karla"
+                        WinPhone="Assets/Fonts/Karla-Regular.ttf#Karla"/>
+
+            <OnPlatform x:Key="KarlaBold"
+                        x:TypeArguments="x:String"
+                        iOS="Karla-Bold"
+                        Android="Karla-Bold.ttf#Karla"
+                        WinPhone="Assets/Fonts/Karla-Bold.ttf#Karla"/>
+            
+            <OnPlatform x:Key="PoppinsRegular"
+                        x:TypeArguments="x:String"
+                        iOS="Poppins-Regular"
+                        Android="Poppins-Regular.ttf#Poppins"
+                        WinPhone="Assets/Fonts/Poppins-Regular.ttf#Poppins"/>
+            
+            <!-- Font Sizes -->
+            <OnPlatform x:Key="LittleSize"
+                        x:TypeArguments="x:Double"
+                        iOS="11"
+                        Android="12"
+                        WinPhone="12"/>
+
+            <OnPlatform x:Key="MidMediumSize"
+                        x:TypeArguments="x:Double"
+                        iOS="12"
+                        Android="14"
+                        WinPhone="14"/>
+
+            <OnPlatform x:Key="MediumSize"
+                        x:TypeArguments="x:Double"
+                        iOS="14"
+                        Android="16"
+                        WinPhone="16"/>
+
+            <OnPlatform x:Key="LargeSize"
+                        x:TypeArguments="x:Double"
+                        iOS="16"
+                        Android="18"
+                        WinPhone="18"/>
+
+            <OnPlatform x:Key="LargerSize"
+                        x:TypeArguments="x:Double"
+                        iOS="18"
+                        Android="20"
+                        WinPhone="20"/>
+
+            <OnPlatform x:Key="BigSize"
+                        x:TypeArguments="x:Double"
+                        iOS="20"
+                        Android="24"
+                        WinPhone="24"/>
+
+            <OnPlatform x:Key="ExtraBigSize"
+                      x:TypeArguments="x:Double"
+                      iOS="24"
+                      Android="32"
+                      WinPhone="32"/>
+
+            <OnPlatform x:Key="HugeSize"
+                        x:TypeArguments="x:Double"
+                        iOS="32"
+                        Android="48"
+                        WinPhone="48"/>
+
+            <!-- Converters -->
+            <converters:DealImageConverter x:Key="DealImageConverter" />
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converters:InverseNullToBoolConverter x:Key="InverseNullToBoolConverter" />
+			<converters:MenuItemTypeConverter x:Key="MenuItemTypeConverter" />
+            <converters:NullToBoolConverter x:Key="NullToBoolConverter" />
+            <converters:StringEmptyConverter x:Key="StringEmptyConverter" />
+            <converters:StringTimeConverter x:Key="StringTimeConverter" />
+            <converters:FlightStopsConverter x:Key="FlightStopsConverter" />
+            <converters:ByteArrayToImageSourceConverter x:Key="ByToImageConverter" />
+
+            <!-- Styles -->
+            <Style x:Key="BasePageStyle" TargetType="{x:Type ContentPage}">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+
+            <Style x:Key="BaseLabelStyle" TargetType="{x:Type Label}">
+            </Style>
+
+            <Style TargetType="{x:Type Label}"
+                   BasedOn="{StaticResource BaseLabelStyle}" />
+
+            <Style x:Key="BaseEntryStyle"
+                   TargetType="{x:Type Entry}">
+            </Style>
+
+            <Style TargetType="{x:Type Entry}"
+                   BasedOn="{StaticResource BaseEntryStyle}" />
+
+            <Style x:Key="EntryStyle"
+                   TargetType="{x:Type Entry}">
+                <Setter Property="TextColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="PlaceholderColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource LargeSize}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="FontAttributes"
+                        Value="None" />
+                <Setter Property="Opacity"
+                        Value="0.85" />
+                <Setter Property="effects:LineColorEffect.ApplyLineColor"
+                        Value="True" />
+                <Setter Property="effects:LineColorEffect.LineColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Style.Triggers>
+                    <Trigger TargetType="Entry"
+                             Property="IsFocused" 
+                             Value="True">
+                        <Setter Property="Opacity" Value="1" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="UwpEntryStyle"
+                   TargetType="{x:Type Entry}">
+                <Setter Property="WidthRequest"
+                    Value="284" />
+                <Setter Property="FontFamily"
+                    Value="{StaticResource KarlaRegular}" />
+                <Setter Property="TextColor"
+                    Value="{StaticResource WhiteColor}" />
+                <Setter Property="PlaceholderColor"
+                    Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize"
+                    Value="{StaticResource LargeSize}" />
+                <Setter Property="HorizontalOptions"
+                    Value="Center" />
+                <Setter Property="FontAttributes"
+                    Value="Bold" />
+                <Setter Property="BackgroundColor" 
+                    Value="Transparent" />
+                <Setter Property="Opacity"
+                    Value="0.6" />
+                <Setter Property="effects:LineColorEffect.ApplyLineColor"
+                    Value="True" />
+                <Setter Property="effects:LineColorEffect.LineColor"
+                    Value="{StaticResource WhiteColor}" />
+                <Style.Triggers>
+                    <Trigger TargetType="Entry"
+                       Property="IsFocused"
+                       Value="True">
+                        <Setter Property="Opacity" Value="1" />
+                        <Setter Property="effects:LineColorEffect.LineColor"                        
+                                Value="{StaticResource WhiteColor}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            
+            <Style x:Key="BaseButtonStyle"
+                   TargetType="{x:Type Button}">
+                <Setter Property="HeightRequest" Value="50" />
+            </Style>
+
+            <Style TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource BaseButtonStyle}" />
+
+            <Style x:Key="BaseActivityIndicatorStyle" TargetType="{x:Type ActivityIndicator}">
+                <Setter Property="Color" Value="{StaticResource BlackColor}" />
+            </Style>
+
+            <Style TargetType="{x:Type ActivityIndicator}"
+                   BasedOn="{StaticResource BaseActivityIndicatorStyle}" />
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

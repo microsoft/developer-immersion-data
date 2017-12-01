@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContosoAir.Clients.Views.SignUpView"     
+             xmlns:effects="clr-namespace:ContosoAir.Clients.Effects;assembly=ContosoAir.Clients.Core">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="SignUpButtonTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="CancelButtonTextStyle" TargetType="Label"
+                   BasedOn="{StaticResource SignUpButtonTextStyle}">
+                <Setter Property="TextColor" Value="{StaticResource PinkColor}" />
+            </Style>
+
+            <Style x:Key="SignUpHeaderStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="Margin" Value="0, 12" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="SignUpEntryHeaderStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="Margin" Value="4, 0" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="SignUpTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="SignUpEntryStyle"
+                   TargetType="{x:Type Entry}"
+                   BasedOn="{StaticResource EntryStyle}">
+                <Setter Property="TextColor"
+                        Value="{StaticResource BlackColor}" />
+                <Setter Property="PlaceholderColor"
+                        Value="{StaticResource BlackColor}" />
+                <Setter Property="effects:LineColorEffect.LineColor"
+                        Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MidMediumSize}" />
+            </Style>
+
+            <Style x:Key="UwpSignUpEntryStyle"
+                   TargetType="{x:Type Entry}"
+                   BasedOn="{StaticResource UwpEntryStyle}">
+                <Setter Property="TextColor"
+                        Value="{StaticResource BlackColor}" />
+                <Setter Property="PlaceholderColor"
+                        Value="{StaticResource BlackColor}" />
+                <Setter Property="effects:LineColorEffect.LineColor"
+                        Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MidMediumSize}" />
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <!-- BACKGROUND -->
+        <Image 
+            x:Name="UwpBackground" 
+            Aspect="AspectFill"
+            VerticalOptions="Fill"
+            HorizontalOptions="Fill"
+            Source="Assets/background.png">
+            <Image.IsVisible>
+                <OnPlatform           
+                    x:TypeArguments="x:Boolean"
+                    iOS="False"
+                    Android="False"
+                    WinPhone="True"/>
+            </Image.IsVisible>
+        </Image>
+        <Grid   
+            Margin="24, 48">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <!-- SIGN UP FORM -->
+            <Frame         
+                Grid.Row="0"   
+                OutlineColor="#9E9E9E"
+                BackgroundColor="{StaticResource WhiteColor}" 
+                HasShadow="False"
+                Padding="0" 
+                Margin="0, 12, 0, 0">
+                <Grid
+                    Margin="12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="6" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="6" />
+                    </Grid.RowDefinitions>
+                    <Label 
+                        Grid.Row="1"
+                        Text="Sign up"
+                        Style="{StaticResource SignUpHeaderStyle}"/>
+                    <Label 
+                        Grid.Row="2"
+                        Text="Username"
+                        Style="{StaticResource SignUpEntryHeaderStyle}"/>
+                    <Entry 
+                        Grid.Row="3"  
+                        Placeholder="Username">
+                        <Entry.Style>
+                            <OnPlatform 
+                                x:TypeArguments="Style"
+                                iOS="{StaticResource SignUpEntryStyle}"
+                                Android="{StaticResource SignUpEntryStyle}"
+                                WinPhone="{StaticResource UwpSignUpEntryStyle}"/>
+                        </Entry.Style>
+                    </Entry>
+                    <Label 
+                        Grid.Row="4"
+                        Text="Email Address"
+                        Style="{StaticResource SignUpEntryHeaderStyle}" />
+                    <Entry
+                        Grid.Row="5"    
+                        Placeholder="Email Address">
+                        <Entry.Style>
+                            <OnPlatform 
+                                x:TypeArguments="Style"
+                                iOS="{StaticResource SignUpEntryStyle}"
+                                Android="{StaticResource SignUpEntryStyle}"
+                                WinPhone="{StaticResource UwpSignUpEntryStyle}"/>
+                        </Entry.Style>
+                    </Entry>
+                    <Label
+                        Grid.Row="6"
+                        Text="Password" 
+                        Style="{StaticResource SignUpEntryHeaderStyle}" />
+                    <Entry
+                        Grid.Row="7"   
+                        IsPassword="True"
+                        Placeholder="Password">
+                        <Entry.Style>
+                            <OnPlatform 
+                                x:TypeArguments="Style"
+                                iOS="{StaticResource SignUpEntryStyle}"
+                                Android="{StaticResource SignUpEntryStyle}"
+                                WinPhone="{StaticResource UwpSignUpEntryStyle}"/>
+                        </Entry.Style>
+                    </Entry>
+                </Grid>
+            </Frame>
+            <!-- SIGN UP BUTTON -->
+            <Frame         
+                Grid.Row="1"   
+                OutlineColor="#9E9E9E"
+                BackgroundColor="{StaticResource PinkColor}" 
+                HasShadow="False"
+                Padding="0"
+                Margin="0, 12, 0, 0">
+                <Grid>
+                    <Label               
+                        Text="Sign up"
+                        Style="{StaticResource SignUpButtonTextStyle}"/>
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer        
+                        Command="{Binding SignUpCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+            <!-- SIGN UP CANCEL -->
+            <Frame         
+                Grid.Row="2"   
+                OutlineColor="#9E9E9E"
+                BackgroundColor="{StaticResource WhiteColor}" 
+                HasShadow="False"
+                Padding="0"
+                Margin="0, 0, 0, 12">
+                <Grid>
+                    <Label               
+                        Text="Cancel"
+                        Style="{StaticResource CancelButtonTextStyle}"/>
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer                    
+                        Command="{Binding CancelCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+            <!-- MSA SIGN UP -->
+            <Grid
+                Grid.Row="3">
+                <StackLayout   
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                    <Label 
+                        Text="Or sign up with"
+                        Style="{StaticResource SignUpTextStyle}"/>
+                    <Label 
+                        Text="Microsoft"
+                        VerticalOptions="Center"
+                        Style="{StaticResource SignUpTextStyle}">
+                        <Label.Effects>
+                            <effects:UnderlineEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer    
+                            Command="{Binding MicrosoftSignInCommand}" />
+                    </Frame.GestureRecognizers>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

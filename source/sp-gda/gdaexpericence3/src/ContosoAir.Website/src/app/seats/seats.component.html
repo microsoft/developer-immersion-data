@@ -1,0 +1,105 @@
+<div class="footer-background">
+    <div class="container container-footer">
+        <section class="block-seats">
+            <a class="redefine-search" routerLink="/">Shop for another flight <span class="icon icon-arrow-right"></span></a>
+            <hr>
+
+            <div class="block-seats-flight">
+                <div class="row">
+                    <div class="col-12 col-sm-10">
+                        <div class="row block-seats-flight-headings">
+                            <div class="col-3 block-seats-flight-headings-title">
+                                <span [innerText]="flight.fromCode">SEA</span> > <span [innerText]="flight.toCode">BCN</span>
+                            </div>
+                            <div class="col-3">
+                                Flight
+                            </div>
+                            <div class="col-3">
+                                Departs
+                            </div>
+                            <div class="col-3">
+                                Arrives
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <span [innerText]="flight.fromCity"></span> to <span [innerText]="flight.toCity"></span>
+                            </div>
+                            <div class="col-3">
+                                Flight <span [innerText]="flight.flight"></span>
+                            </div>
+                            <div class="col-3">
+                                <span [innerText]="flight.fromCity"></span>
+                            </div>
+                            <div class="col-3">
+                                <span [innerText]="flight.toCity"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+
+                            </div>
+                            <div class="col-3" [innerText]="booking.startDate | utc | date:'EEE, d  MMM y'">
+                            </div>
+                            <div class="col-3" [innerText]="flight.departTime | utc | date:'shortTime'">
+                            </div>
+                            <div class="col-3" [innerText]="flight.arrivalTime | utc | date:'shortTime'">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <div class="row block-seats-flight-headings">
+                            <div class="col-12 col-seats">
+                                Seats
+                            </div>
+                        </div>
+                        <div class="row row-seats">
+                            <div class="col-12 text-center text-sm-left">
+                                Flight 1 of <span [innerText]="booking.there.segments.length"></span> <button type="button" class="btn btn-sm btn-primary mt-1">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-seats-flight-select">
+                    <loading [loaded]="SeatsReady"></loading>
+                    <div class="block-seats-flight-select-legend">
+                        <h3 class="block-seats-flight-select-legend-title">Legend</h3>
+                        <ul class="row block-seats-flight-select-legend-items">
+                            <li class="col-12 col-lg-6 block-seats-flight-select-legend-items-item"><span class="icon-seat icon-seat-sm"></span>Available</li>
+                            <li class="col-12 col-lg-6 block-seats-flight-select-legend-items-item"><span class="icon-seat icon-seat-sm icon-seat-preferred"></span>Selected</li>
+                            <li class="col-12 col-lg-6 block-seats-flight-select-legend-items-item"><span class="icon-seat icon-seat-sm icon-seat-unavailable"></span>Unavailable</li>
+                        </ul>
+                    </div>
+
+                    <div class="block-seats-flight-select-seats">
+                        <ul>
+                            <li>
+                                <span class="column column-letter"><strong>A</strong></span>
+                                <span class="column column-letter"><strong>B</strong></span>
+                                <span class="column column-letter"><strong>C</strong></span>
+                                <span class="column column-letter"></span>
+                                <span class="column column-letter"><strong>D</strong></span>
+                                <span class="column column-letter"><strong>E</strong></span>
+                                <span class="column column-letter"><strong>F</strong></span>
+                            </li>
+                            <li *ngFor="let row of rows; let i = index;">
+                                <span *ngFor="let seat of [row[0], row[1], row[2]]; let j = index;" class="column">
+                                    <span class="icon-seat" [ngClass]="{'icon-seat-available': seat === 0, 'icon-seat-unavailable': seat === 1 || seat === 3, 'icon-seat-preferred': seat === 2, 'icon-seat-active': seat === 4}" (click)="set(seat, i, j)"></span>
+                                </span>
+                                <span class="column"><strong [innerText]="i + 17"></strong></span>
+                                <span *ngFor="let seat of [row[3], row[4], row[5]]; let j = index;" class="column">
+                                    <span class="icon-seat" [ngClass]="{'icon-seat-available': seat === 0, 'icon-seat-unavailable': seat === 1 || seat === 3, 'icon-seat-preferred': seat === 2, 'icon-seat-active': seat === 4}" (click)="set(seat, i, j+3)"></span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center text-md-right">
+                <br>
+                <button type="button" routerLink="/booking" class="btn btn-lg btn-primary">Next</button>
+            </div>
+        </section>
+    </div>
+</div>

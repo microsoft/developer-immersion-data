@@ -1,0 +1,140 @@
+@import 'variables';
+
+.block-navbar {
+    background: $color-white;
+    box-shadow: 0 .2rem .5rem 0 $color-black-alpha-2;
+    color: $color-grey;
+    font-size: .9rem;
+    height: 5.5rem;
+
+    .block-navbar-username {
+            font-size: .8rem;
+            position: absolute;
+            right: .5rem;
+            top: -.5rem;
+            z-index: 10;
+
+        &--name {
+            display: none;
+        }
+
+        &--logout {
+
+            a {
+                color: $color-blue-medium;
+
+                &:hover {
+                    color: $color-blue-medium;
+                }
+            }
+        }
+    }
+
+    .block-navbar-left {
+        text-align: center;
+
+        .block-navbar-left-logo {
+            height: auto;
+            width: 11rem;
+        }
+    }
+
+    .block-navbar-right {
+        justify-content: center;
+
+        .block-navbar-right-menu {
+            flex-direction: row;
+            justify-content: center;
+
+            .block-navbar-right-menu-item {
+                margin: 0 .3rem;
+
+                &__logout {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .block-navbar {
+        font-size: 1.1rem;
+        height: 4.5rem;
+        padding-top: .7rem;
+
+        .block-navbar-username {
+            left: auto;
+            right: 1.7rem;
+            top: -.5rem;
+            transform: none;
+
+            &--name {
+                color: $color-black;
+                display: inline-block;
+            }
+
+            &--logout {
+                display: none;
+            }
+        }
+
+        .block-navbar-left {
+            text-align: left;
+
+            .block-navbar-left-logo {
+                height: auto;
+                width: 14rem;
+            }
+        }
+
+        .block-navbar-right {
+            justify-content: flex-end;
+
+            .block-navbar-right-menu {
+                justify-content: flex-end;
+
+                .block-navbar-right-menu-item {
+                    margin: 0 .5rem;
+
+                    &__logout {
+                        cursor: pointer;
+                        display: inline-block;
+                        font-size: .9rem;
+                        line-height: 2.05rem;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        width: 5rem;
+
+                        a {
+                            color: $color-blue-medium;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .block-navbar {
+
+        .block-navbar-right {
+
+            .block-navbar-right-menu {
+
+                .block-navbar-right-menu-item {
+                    font-size: 1.2rem;
+                    margin-left: 1.2rem;
+                    margin-right: 1.2rem;
+
+                    &__logout {
+                        font-size: 1rem;
+                        line-height: 2.1rem;
+                    }
+                }
+            }
+        }
+    }
+}

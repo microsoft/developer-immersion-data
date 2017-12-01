@@ -1,0 +1,135 @@
+﻿<template>
+    <div id="guide" class.bind="GuideState[State].toLowerCase()">
+        <require from="./guide.css"></require>
+
+        <button class="icon icon-close" click.delegate="close()"></button>
+
+        <div if.bind="Step == 0">
+            <h3>Welcome to the guided tour!</h3>
+
+            <p>Below you will find a list of topics this tour will cover. We will focus on interacting with gremlin to get graph data and modifying existing graph data.</p>
+
+            <h4>Table of contents</h4>
+            <ol>
+                <li repeat.for="page of tableOfContents">
+                    <a href="#" click.delegate="Step = page.step">${page.title}</a>
+                </li>
+            </ol>
+
+            <h4>Gremlin Resources</h4>
+            <ul>
+                <li><a href="http://tinkerpop.apache.org/docs/3.1.0-incubating/tutorials-getting-started.html" target="_blank">Getting Started Tutorial</a></li>
+                <li><a href="http://tinkerpop.apache.org/docs/current/reference/" target="_blank">Reference Guide</a></li>
+            </ul>
+        </div>
+
+        <div if.bind="Step == 1">
+            <h3>Create a collection</h3>
+            <p>The easiest way to create a new collection is through the 'New Collection' link on the user interface below the collection drop-down. Give it a meaningful name and it will quickly be created with default settings!</p>
+
+            <h4>Viewing your graph</h4>
+            <p>To view the entire graph you have created, execute the query:</p>
+
+            <div class="query">
+                g.V(); g.E()
+            </div>
+
+            <p>You should currently see that your queries returned no data. This is expected since this is a blank collection!</p>
+
+            <p>The above query allows you to get all vertices and all edges. The semi-colon allows you to execute multiple queries and combine the results into a single graph view.</p>
+        </div>
+
+        <div if.bind="Step == 2">
+            <h3>Create a node</h3>
+            <p>Your new collection currently has no data in it. To add a node, you will need to execute the following gremlin query:</p>
+
+            <div class="query">
+                g.addV('person')
+            </div>
+
+            <p>The above query will create a new node with the label 'person'. This is essentially the "type" of node you are creating. Feel free to change this to whatever you would like!</p>
+        </div>
+
+        <div if.bind="Step == 3">
+            <h3>Create an edge</h3>
+            <p>An edge requires two nodes to draw a line between, so we'll need to add another node to your graph.</p>
+
+            <div class="query">
+                g.addV('person')
+            </div>
+
+            <p>Now that we have two nodes, we can generate a query to add an edge between the two. Use the user interface to find the id of each node by clicking on the node and finding the IDs in the upper right of the properties pane.</p>
+
+            <label>Edge Label</label><input placeholder="Enter edge label here" ref="edgeLabel" />
+            <label>From node Id</label><input placeholder="Paste From node Id here" ref="id1" />
+            <label>To node Id</label><input placeholder="Paste To node Id here" ref="id2" />
+
+            <label>Execute the query below</label>
+
+            <div class="query">
+                g.V('${id1.value}').addE('${edgeLabel.value}').To(g.V('${id2.value}'))
+            </div>
+
+            <h4>Remember!</h4>
+            <p>To view your entire graph, use the command below. Any command you execute which does not explicitly return nodes and edges will show the result in the console.</p>
+
+            <div class="query">
+                g.V(); g.E()
+            </div>
+        </div>
+
+        <div if.bind="Step == 4">
+            <h3>Add Node Properties</h3>
+            <p>You can add properties either at the time of creating a node or add to existing nodes. Properties can only be primitive types such as numbers, strings or booleans.</p>
+
+            <h4>New Node</h4>
+            <p>When creating a new node with properties, you will <a href="#" click.delegate="Step = 2">create your node</a> but add a .Property('{key}', '{value}') step at the end of your query.</p>
+            <div class="query">
+                g.addV('person')<span class="highlight">.Property('name', 'Joe')</span>
+            </div>
+
+            <p>For multiple properties, you will want to add multiple .Property() steps to the end of the query:</p>
+            <div class="query">
+                g.addV('person')<span class="highlight">.Property('name', 'Joe').Property('age', '32')</span>
+            </div>
+
+            <h4>Existing Node</h4>
+            <p>To add properties to an existing node, you will need to traverse the graph and get the vertex/vertices you would like to add properties to.</p>
+            <p>Find a node id using the user interface and instead of using the g.addV("nodeLabel") step, simply use the following query:</p>
+
+            <div class="query">
+                <span class="highlight">g.V().has('id', '{input Id here}')</span>.Property('name', 'Joe').Property('age', '32')
+            </div>
+
+            <h4>Viewing your properties</h4>
+            <p>To view your node's properties, find your node on the graph and left-click. You will see a properties panel show up on the right with a table showing your properties.</p>
+        </div>
+
+        <div if.bind="Step == 5">
+            <h3>Add Edge Properties</h3>
+            <p>Just as you can with nodes, you can add properties to new edges or existing edges. Properties can only be primitive types such as numbers, strings or booleans.</p>
+
+            <h4>New Edge</h4>
+            <p>Using the query creator on <a href="#" click.delegate="Step = 3">creating an edge</a>, you can add a .Property('{key}', '{value}') step at the end of your query.</p>
+
+            <h4>Existing Edge</h4>
+            <p>To add properties to an existing edge, find the edge using the same sort of query as for nodes:</p>
+
+            <div class="query">
+                <span class="highlight">g.E().has('id', '{input Id here}')</span>.Property('weight', 0.4).Property('isActive', true)
+            </div>
+
+            <h4>Viewing your properties</h4>
+            <p>To view your edge's properties, find your edge on the graph and left-click. You will see a properties panel show up on the right with a table showing your properties.</p>
+        </div>
+
+        <footer>
+            <div id="buttons">
+                <button click.delegate="prev()" disabled.bind="Step <= 0">Previous</button>
+                <button class="primaryButton" click.delegate="next()" disabled.bind="Step >= tableOfContents.length">Next</button>
+            </div>
+
+            <a href="#" click.delegate="Step = 0" show.bind="Step != 0">Back to table of contents</a>
+        </footer>
+    </div>
+</template>

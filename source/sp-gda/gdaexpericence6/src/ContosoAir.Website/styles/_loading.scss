@@ -1,0 +1,136 @@
+$t: 4000ms;
+$d: 40px;
+$r: -14deg;
+$m: 30;
+$color: #4495d1;
+
+.loading-wrapper {
+    background-color: $color-white-alpha-9;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+
+    &.loading-fadeout {
+        opacity: 0;
+        transition: opacity .5s ease-in-out, width 1s ease-in-out;
+    }
+
+    .progress-ring {
+        height: $d;
+        left: 50%;
+        padding-top: $d / 5;
+        position: relative;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: $d;
+
+        .progress-ring-wrap {
+            height: $d - 2;
+            position: absolute;
+            width: $d - 2;
+
+            .progress-ring-circle {
+                animation-duration: $t;
+                animation-iteration-count: infinite;
+                animation-name: orbit;
+                height: $d - 2;
+                opacity: 0;
+                transform: rotate(225deg);
+                width: $d - 2;
+
+                &::after {
+                    background: $color;
+                    border-radius: $d / 8;
+                    box-shadow: 0 0 5% $color;
+                    content: '';
+                    height: $d / 8;
+                    position: absolute;
+                    width: $d / 8;
+                }
+            }
+
+            &:nth-child(2) {
+                transform: rotate($r);
+
+                .progress-ring-circle {
+                    animation-delay: $t / $m;
+                }
+            }
+
+            &:nth-child(3) {
+                transform: rotate($r * 2);
+
+                .progress-ring-circle {
+                    animation-delay: $t / $m * 2;
+                }
+            }
+
+            &:nth-child(4) {
+                transform: rotate($r * 3);
+
+                .progress-ring-circle {
+                    animation-delay: $t / $m * 3;
+                }
+            }
+
+            &:nth-child(5) {
+                transform: rotate($r * 4);
+
+                .progress-ring-circle {
+                    animation-delay: $t / $m * 4;
+                }
+            }
+        }
+    }
+}
+
+@keyframes orbit {
+    0% {
+        animation-timing-function: ease-out;
+        opacity: 1;
+        transform: rotate(225deg);
+    }
+
+    7% {
+        animation-timing-function: linear;
+        transform: rotate(345deg);
+    }
+
+    35% {
+        animation-timing-function: ease-out;
+        transform: rotate(495deg);
+    }
+
+    42% {
+        animation-timing-function: linear;
+        transform: rotate(690deg);
+    }
+
+    70% {
+        animation-timing-function: linear;
+        opacity: 1;
+        transform: rotate(835deg);
+    }
+
+    76% {
+        opacity: 1;
+    }
+
+    77% {
+        animation-timing-function: ease-in;
+        transform: rotate(955deg);
+    }
+
+    78% {
+        opacity: 0;
+        transform: rotate(955deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(955deg);
+    }
+}

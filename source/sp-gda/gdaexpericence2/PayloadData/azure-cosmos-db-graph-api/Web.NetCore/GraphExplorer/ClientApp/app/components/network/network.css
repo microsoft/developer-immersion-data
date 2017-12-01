@@ -1,0 +1,336 @@
+a
+{
+    color: #0078D7;
+}
+
+input,
+select
+{
+    padding: 8px;
+}
+
+.blackBtn
+{
+    background: #000;
+    color: #FFF;
+    padding: 9px 30px;
+    border: none;
+}
+
+.blackBtn:disabled
+{
+    background: gray;
+    color: #CCC;    
+}
+
+.floatLeft
+{
+    float: left;
+}
+
+.floatRight
+{
+    float: right;
+}
+
+.clearFloat
+{
+    clear: both;
+}
+
+label
+{
+    font-weight: 400;
+}
+
+select
+{
+    display: block;
+    width: 100%;
+}
+
+input[type=checkbox]
+{
+    width: 16px;
+    height: 20px;
+    vertical-align: text-bottom;
+}
+
+.ellipsis
+{ 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.queryControl
+{
+	position: relative;
+    padding: 20px 45px 25px 45px;
+    margin: -14px -14px 0 -14px;
+    background: #fff;
+}
+
+.queryControl .inputWrapper
+{
+    width: 50%;
+    margin-right: 15px;
+}
+
+.queryControl .selectWrapper
+{
+    width: 30%;
+}
+
+.queryControl a
+{
+    margin: 0 30px 10px 0;
+    display: inline-block;
+    font-size: 1.2em;
+}
+
+.queryControl .query
+{
+    border: 1px solid #777;
+    margin-right: 15px;
+    flex-grow: .75;
+    width: 100%;
+}
+
+.queryControl .actionsWrapper,
+.queryControl .newCollectionWrapper
+{
+    margin-top: 10px;
+}
+
+.queryControl label
+{
+    font-weight: 500;
+}
+
+.queryControl select
+{
+    width: 100%;
+}
+
+.queryControl .buttons
+{
+    position: absolute;
+    z-index: 100;
+    bottom: 10px;
+    right: 35px;
+}
+
+#graphWorkspace
+{
+    position: relative;
+    flex-grow: 1;
+}
+
+#network
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.progressContainer
+{
+    position: relative;
+    margin: 20% auto 0 auto;
+    width: 400px;
+    border: 1px solid gray;
+    z-index: 999;
+}
+
+.progressBarContainer
+{
+    background: rgba(255,255,255,.5);
+}
+
+.progressText
+{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: -1.5em;
+    color: #808080;
+}
+
+.progressBar
+{
+    min-width: 10%;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: #337ab7;
+}
+
+#loadQuery .savedQueryRow span,
+#loadQuery .savedQueryRow strong
+{
+    display: inline-block;
+    word-break: break-all;
+}
+
+#loadQuery .savedQueryRow
+{
+    padding: 15px 20px;
+    position: relative;
+}
+
+#loadQuery .savedQueryList
+{
+    max-height: 400px;
+    overflow: auto;
+    border: 1px solid #CCC;
+}
+
+#properties td,
+#properties th
+{
+    border: 1px solid #D1D2D4;
+    padding: 5px;
+    word-break: break-all;
+}
+
+#properties th
+{
+    background-color: #E6E7E8;
+}
+
+#properties td:first-child
+{
+    width: 40%; 
+    max-width: 150px;
+}
+
+.showConfigBtn
+{
+    background: #5C2D91;
+    position: absolute;
+    bottom: 10px;
+    z-index: 1;
+}
+
+#graphMetadataTable td,
+#graphMetadataTable th
+{
+    border: 1px solid #D1D2D4;
+    padding: 5px;
+}
+
+#graphMetadataTable th
+{
+    background-color: #E6E7E8;
+}
+
+#graphMetadataTable
+{
+    border-collapse: collapse;
+}
+
+#searchInput
+{
+    border: none;
+    border-left: solid 1px #8E8E8E;
+    margin: 10px;
+    padding-left: 10px;
+    width: 70%;
+}
+
+.floatingPane .glyphicon-search
+{
+    color: #8E8E8E;
+}
+
+.selectBox
+{
+    margin: 0 5px 5px 0;
+    background: none;
+    width: 50px;
+    height: 50px;
+    border: none;
+}
+
+.iconSquare
+{
+    padding: 10px;
+    font-size: 2em;
+    border: 1px solid #dadada;
+}
+
+.configuration .iconSquare
+{
+    position: absolute;
+    right: 0;
+}
+
+.configuration select
+{
+    margin-bottom: 20px;
+}
+
+.configuration .typeSettingsRow
+{
+    height: 50px;
+    position: relative;    
+}
+
+.configuration .typeSettingsRow label
+{
+    max-width: 250px;
+}
+
+.configuration .typeSettingsRow,
+.actionControl {
+    margin: 10px 0;
+}
+
+#propertyPanelLinkBtn 
+{
+    right: 10px;
+    margin-top: 14px;
+    float: right;
+}
+
+#propertyPanelContent
+{
+    clear: both;
+}
+
+.actionControl .warning,
+.actionControl .information
+{
+    margin: 0 5px;
+}
+
+.actionControl .warning
+{
+    color: red;
+}
+
+.actionControl .information
+{
+    color: orange;
+}
+
+.propertyGroup button
+{
+    vertical-align: top;
+}
+
+.propertyGroup .selectBox
+{
+    border: 1px solid #DADADA;
+    color: #0078D7;
+}
+
+.propertyGroup .selectBox.iconSquare
+{
+    color: #333;
+}

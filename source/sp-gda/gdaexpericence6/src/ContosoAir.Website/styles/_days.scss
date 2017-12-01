@@ -1,0 +1,162 @@
+@import 'variables';
+
+.block-flights-days {
+    margin-bottom: 1rem;
+
+    .block-flights-days-title {
+        font-size: 1.2rem;
+    }
+
+    .block-flights-days-slider {
+        overflow-x: auto;
+
+        .block-flights-days-slider-arrow {
+            align-self: center;
+            color: $color-blue-medium;
+            display: none;
+            font-size: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .block-flights-days-slider-items {
+            display: block;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+            list-style: none;
+            padding: 0;
+            width: 46rem;
+
+            .block-flights-days-slider-items-item {
+                align-self: center;
+                display: inline-block;
+                padding: .1rem;
+
+                .block-flights-days-slider-items-item-content {
+                    border: .1rem solid $color-blue-medium;
+                    border-radius: .3rem;
+                    display: block;
+                    font-size: .8rem;
+                    line-height: 1rem;
+                    padding: .7rem 0;
+                    text-align: center;
+                    width: 5.5rem;
+
+                    .block-flights-days-slider-items-item-content-price {
+                        color: $color-blue-medium;
+                        font-size: 1.5rem;
+                        margin-top: 1rem;
+                    }
+
+                    &.active {
+                        background-color: $color-blue-medium;
+                        color: $color-white;
+
+                        .block-flights-days-slider-items-item-content-price {
+                            color: $color-white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-between(md, lg) {
+    .block-flights-days {
+
+        .block-flights-days-slider {
+
+            .block-flights-days-slider-items {
+                .block-flights-days-slider-items-item {
+                    padding: .1rem;
+
+                    .block-flights-days-slider-items-item-content {
+                        border-radius: .3rem;
+                        font-size: .6rem;
+                        line-height: .8rem;
+                        padding: .5rem 0;
+                        width: 3.8rem;
+
+                        .block-flights-days-slider-items-item-content-price {
+                            font-size: 1rem;
+                            margin-top: .5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-between(lg, xl) {
+    .block-flights-days {
+
+        .block-flights-days-slider {
+
+            .block-flights-days-slider-items {
+                .block-flights-days-slider-items-item {
+                    padding: .1rem;
+
+                    .block-flights-days-slider-items-item-content {
+                        border-radius: .3rem;
+                        font-size: .8rem;
+                        line-height: 1rem;
+                        padding: .7rem 0;
+                        width: 5rem;
+
+                        .block-flights-days-slider-items-item-content-price {
+                            font-size: 1.3rem;
+                            margin-top: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .block-flights-days {
+
+        .block-flights-days-slider {
+
+            .block-flights-days-slider-items {
+                display: flex;
+                width: auto;
+            }
+
+            .block-flights-days-slider-arrow {
+                display: block;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .block-flights-days {
+
+        .block-flights-days-slider {
+
+            .block-flights-days-slider-items {
+                .block-flights-days-slider-items-item {
+                    padding: .1rem;
+
+                    .block-flights-days-slider-items-item-content {
+                        border-radius: .3rem;
+                        font-size: .8rem;
+                        line-height: 1rem;
+                        padding: .7rem 0;
+                        width: 5.5rem;
+
+                        .block-flights-days-slider-items-item-content-price {
+                            font-size: 1.5rem;
+                            margin-top: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

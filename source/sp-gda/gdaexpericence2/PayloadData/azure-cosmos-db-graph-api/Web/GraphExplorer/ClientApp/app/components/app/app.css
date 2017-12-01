@@ -1,0 +1,264 @@
+html,
+body,
+div[aurelia-app]
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI","Segoe UI Web","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans", Arial, sans-serif;
+}
+
+html
+{
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+header
+{
+	display: flex;
+	background: #000;
+	color: #fff;    
+    height: 47px;
+}
+
+header .microsoftLogo
+{
+    height: 84px;
+    float: left;
+    position: relative;
+    top: -18px;
+    left: -18px;
+}
+
+header .graph
+{
+    float: left;
+    font-weight: 400;
+    border-left: 1px solid #fff;
+    padding-left: 30px;
+    position: relative;
+    top: -10px;
+    left: -16px;
+}
+
+main.resizeForGuide
+{
+    width: calc(100% - 375px);
+}
+
+main
+{
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	background: #f2f2f2;
+	overflow: hidden;
+	padding: 14px;
+	margin: 0;
+}
+
+.linkBtn
+{
+	background: none;
+	border: none;
+	padding: 0 10px 0 0;
+	margin: 0;
+	color: #337ab7;
+	cursor: pointer;
+}
+
+.linkBtn i
+{
+    margin-right: 5px;
+}
+
+.linkBtn.selected 
+{
+    font-weight: bold;
+}
+
+
+/*CSS for input[range]*/
+input[type=range]
+{
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 3px 0;
+}
+
+input[type=range]:hover,
+input[type=range]:focus
+{
+    outline: none;
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}
+
+input[type=range][disabled]:hover,
+input[type=range][disabled]:focus
+{
+    cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track
+{
+    width: 100%;
+    height: 4px;
+    background: #000;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb
+{
+    height: 22px;
+    width: 5px;
+    border-radius: 3px;
+    background: #000;
+    -webkit-appearance: none;
+    margin-top: -8px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track
+{
+    background: #000;
+}
+
+input[type=range]::-moz-range-track
+{
+    width: 100%;
+    height: 8px;
+    background: #000;
+    border-radius: 3px;
+}
+
+input[type=range]::-moz-range-thumb
+{
+    height: 22px;
+    width: 5px;
+    border-radius: 3px;
+    background: #000;    
+}
+
+input[type=range]::-ms-track
+{
+    width: 100%;
+    height: 4px;        
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower
+{
+    background: #000;
+    border-radius: 3px;
+}
+
+input[type=range]::-ms-fill-upper
+{
+    background: #CCC;
+    border-radius: 3px;
+}
+
+input[type=range]::-ms-thumb
+{
+    height: 40px;
+    width: 5px;
+    border-radius: 3px;
+    background: #000; 
+}
+
+input[type=range]:focus::-ms-fill-lower
+{
+    background: #000;
+}
+
+input[type=range]:focus::-ms-fill-upper
+{
+    background: #CCC;
+}
+
+input[type=range][disabled]::-webkit-slider-runnable-track,
+input[type=range][disabled]::-webkit-slider-thumb
+{
+    background: #CCC;
+}
+
+input[type=range][disabled]::-moz-range-track,
+input[type=range][disabled]::-moz-range-thumb
+{
+    background: #CCC;
+}
+
+input[type=range][disabled]::-ms-thumb,
+input[type=range][disabled]::-ms-fill-lower,
+input[type=range][disabled]::-ms-fill-upper
+{
+    background: #CCC;
+}
+
+/** Add this attribute to the element that needs a tooltip*/
+[data-tooltip]
+{
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}
+
+/* Position tooltip above the element */
+[data-tooltip]:before
+{
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    width: 200px;
+    padding: 7px;
+    background: rgba(0,0,0, 0.8);
+    color: #FFFFFF;
+    font-size: 14px;
+    border-radius: 3px;    
+    pointer-events: none;
+    text-align: center;
+    margin-left: -85px;
+}
+
+[data-tooltip]:after
+{
+    content: "";
+    position: absolute;
+    bottom: 75%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+/* Hide tooltip content by default */
+[data-tooltip]:before,
+[data-tooltip]:after
+{
+    visibility: hidden;
+}
+
+/* Show tooltip content on hover && focus */
+[data-tooltip]:hover:before,
+[data-tooltip]:focus:before,
+[data-tooltip]:hover:after,
+[data-tooltip]:focus:after
+{
+    visibility: visible;
+}
+
+/*Json-formatter styles*/
+.json-formatter-toggler:after 
+{
+    color: gray;
+    font-size:2em;
+}
+
+.json-formatter-constructor-name
+{
+    color: #c3c3c3;
+}
+/*End Json-formatter styles*/

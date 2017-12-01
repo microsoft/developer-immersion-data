@@ -1,0 +1,213 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmLocalUserName": {
+      "type": "string",
+      "defaultValue": "LabUser"
+    },
+    "vmLocalUserPassword": {
+      "type": "string"
+    },
+    "PrimaryStorageAccountName": {
+      "type": "string"
+    },
+    "PrimaryStorageAccountKey": {
+      "type": "string"
+    },
+    "immersionScriptModuleFileLink": {
+      "type": "string"
+    },
+    "postDeployScriptFileLink": {
+      "type": "string"
+    },
+    "storageSentinelName": {
+      "type": "string",
+      "defaultValue": ""
+    }
+  },
+  "variables": {
+    "Botname": "[concat('ContosoAirBot', uniqueString(resourceGroup().id))]",
+    "documentDBAccountName": "[concat('contosoairdocdb', uniqueString(resourceGroup().id))]",
+    "webapiname": "[concat('ContosoAirBoWebApi', uniqueString(resourceGroup().id))]",
+    "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
+    "webhostingPlanName": "[concat('webhostingplan', uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('JumpHostVMName')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "resources": [
+        {
+          "name": "ConfigureJumpHost",
+          "type": "extensions",
+          "location": "[resourceGroup().location]",
+          "apiVersion": "2015-06-15",
+          "dependsOn": [
+            "[concat('Microsoft.Compute/virtualMachines/', parameters('JumpHostVMName'))]"
+          ],
+          "tags": {
+            "displayName": "ConfigureJumpHost"
+          },
+          "properties": {
+            "publisher": "Microsoft.Compute",
+            "type": "CustomScriptExtension",
+            "typeHandlerVersion": "1.9",
+            "autoUpgradeMinorVersion": false,
+            "settings": {
+              "fileUris": [
+                "[parameters('immersionScriptModuleFileLink')]"
+              ],
+              "scriptFileUri": "[parameters('postDeployScriptFileLink')]",
+              "installGuide": true,
+              "storageSentinelName": "[parameters('storageSentinelName')]",
+              "vmLocalUserName": "[parameters('vmLocalUserName')]",
+              "commandToExecute": "powershell -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command \"Import-Module (Get-ChildItem -Recurse -Path Immersion.psm1).FullName; Invoke-CustomScript\""
+            },
+            "protectedSettings": {
+              "storageAccountName": "[parameters('PrimaryStorageAccountName')]",
+              "storageAccountKey": "[parameters('PrimaryStorageAccountKey')]",
+              "vmLocalUserPassword": "[parameters('vmLocalUserPassword')]"
+            }
+          }
+        }
+      ]
+  } ,
+    {
+      "apiVersion": "2015-04-08",
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "name": "[variables('documentDBAccountName')]",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "DocumentDB"
+      },
+      "properties": {
+        "name": "[variables('documentDBAccountName')]",
+        "databaseAccountOfferType": "Standard"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', variables('JumpHostVMName'))]"
+      ]
+    },
+    {
+      "apiVersion": "2015-08-01",
+      "name": "[variables('hostingPlanName')]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "HostingPlan"
+      },
+      "sku": {
+        "name": "S1",
+        "capacity": 0
+      },
+      "properties": {
+        "name": "[variables('hostingPlanName')]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "kind": "app,botapp",
+      "name": "[variables('Botname')]",
+      "apiVersion": "2016-03-01",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty"
+      },
+      "properties": {
+        "name": "[variables('Botname')]",
+        "siteConfig": {
+          "appSettings": [
+            {
+              "name": "WEBSITE_NODE_DEFAULT_VERSION",
+              "value": "6.5.0"
+            }
+          ],
+          "alwaysOn": true
+        },
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', variables('JumpHostVMName'))]",
+        "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('webapiname')]",
+      "apiVersion": "2016-03-01",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('webhostingPlanName'))]": "empty",
+        "displayName": "Website"
+      },
+      "properties": {
+        "name": "[variables('webapiname')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('webhostingPlanName'))]"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverfarms/', variables('webhostingPlanName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "sku": {
+        "Tier": "Standard",
+        "Name": "S1"
+      },
+      "name": "[variables('webhostingPlanName')]",
+      "apiVersion": "2016-09-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "name": "[variables('webhostingPlanName')]",
+        "workerSizeId": "0",
+        "reserved": false,
+        "numberOfWorkers": "1"
+      }
+    }
+  ],
+  "outputs": {
+    "jumphostUsername": {
+      "type": "string",
+      "value": "[concat('contoso\\', parameters('vmLocalUserName'))]"
+    },
+    "jumphostPassword": {
+      "type": "string",
+      "value": "[parameters('vmLocalUserPassword')]"
+    },
+    "storageAccountName": {
+      "type": "string",
+      "value": "[parameters('PrimaryStorageAccountName')]"
+    },
+    "storageAccountKey": {
+      "type": "string",
+      "value": "[parameters('PrimaryStorageAccountKey')]"
+    },
+    "cosmosDBEndpointUri": {
+      "type": "string",
+      "value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('documentDBAccountName'))).documentEndpoint]"
+    },
+    "cosmosDBKey": {
+      "type": "string",
+      "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts/', variables('documentDBAccountName')), '2015-04-08').primaryMasterKey]"
+    },
+    "documentDBAccountName":{
+      "type": "string",
+      "value": "[variables('documentDBAccountName')]"
+    },
+    "webApiEndpoint":{
+      "type": "string",
+      "value": "[variables('webapiname')]"
+    },
+    "contosoAirBot": {
+      "type": "string",
+      "value": "[variables('Botname')]"
+    },
+    "myResourceGroupName": {
+      "type": "string",
+      "value": "[resourcegroup().name]"
+    }
+  }
+}

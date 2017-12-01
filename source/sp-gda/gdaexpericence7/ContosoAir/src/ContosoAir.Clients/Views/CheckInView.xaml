@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContosoAir.Clients.Views.CheckInView"  
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             Style="{StaticResource BasePageStyle}"
+             Title=" ">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="CheckInTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaBold}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="BigCheckInTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="FontSize" Value="48" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaBold}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="CheckInContentTitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="CheckInContentTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="CheckInButtonStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource PinkColor}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid 
+        x:Name="CheckInPanel">
+        <!-- MAIN IMAGE -->
+        <Grid BackgroundColor="#CED3D5"
+            x:Name="CityImage"
+            HeightRequest="300">
+            <Image         
+			    Aspect="AspectFill"			
+			    HorizontalOptions="Fill"
+                VerticalOptions="StartAndExpand">
+                <Image.Source>
+                    <OnPlatform                    
+                        x:TypeArguments="ImageSource"        
+                        Android="placeholder.png"
+                        iOS="placeholder.png"
+                        WinPhone="Assets\placeholder.png"/>
+                </Image.Source>
+            </Image>
+            <Image         
+			    Source="{Binding Flight.CityImage, Converter={StaticResource DealImageConverter}}"
+			    Aspect="AspectFill"			
+			    HorizontalOptions="Fill"
+			    VerticalOptions="StartAndExpand">
+            </Image>
+        </Grid>
+        <ScrollView
+            x:Name="CheckInScrollView">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!-- IMAGE PLACEHOLDER -->
+                <Grid 
+                    Grid.Row="0"
+                    Padding="0"
+                    BackgroundColor="Transparent"/>
+                <Grid
+                    Grid.Row="1"
+                    BackgroundColor="{StaticResource WhiteColor}">
+                    <Grid.Padding>
+                        <OnPlatform
+                            x:TypeArguments="Thickness"
+                            iOS="0, 0, 0, 30"
+                            Android="0"
+                            WinPhone="0"/>
+                    </Grid.Padding>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="24" />
+                    </Grid.RowDefinitions>
+                    <!-- CHECKIN AVAILABLE -->
+                    <Grid	
+                        Grid.Row="0"
+                        Margin="24, 12">
+                        <Label  
+                            AutomationId="checkinAvailable"
+                            Text="Check-in available"
+                            Style="{StaticResource CheckInTextStyle}"/>
+                    </Grid>
+                    <!-- ORIGIN & DESTINATION -->
+                    <Grid
+                        Grid.Row="1"
+                        Margin="24, 12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label  
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            HorizontalOptions="End"
+                            Text="{Binding Flight.FromName}"/>
+                        <Label 
+                            Grid.Column="0"
+                            Grid.Row="1"   
+                            HorizontalOptions="End"
+                            Text="{Binding Flight.FromCode}"
+                            Style="{StaticResource BigCheckInTextStyle}"/>
+                        <Image 
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Aspect="AspectFit"
+                            HorizontalOptions="Center">
+                            <Image.Source>
+                                <OnPlatform 
+                                    x:TypeArguments="ImageSource"
+                                    Android="flight_connecting_black"
+                                    iOS="flight_connecting_black"
+                                    WinPhone="Assets\Login\flight_connecting_black.png" />
+                            </Image.Source>
+                        </Image>
+                        <Label 
+                            Grid.Column="2"
+                            Grid.Row="0"  
+                            HorizontalOptions="Start"
+                            Text="{Binding Flight.ToName}"/>
+                        <Label 
+                            Grid.Column="2"
+                            Grid.Row="1"  
+                            HorizontalOptions="Start"
+                            Text="{Binding Flight.ToCode}"
+                            Style="{StaticResource BigCheckInTextStyle}"/>
+                    </Grid>
+                    <!-- PASSENGER INFORMATION -->
+                    <Grid
+                        Grid.Row="2"
+                        Margin="24, 12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <!-- PASSENGER NAME -->
+                        <StackLayout
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="0"
+                            Margin="0, 0, 0, 12">
+                            <Label 
+                                Text="Passenger Name"
+                                Style="{StaticResource CheckInContentTitleStyle}"/>
+                            <Label 
+                                Text="{Binding Profile.Name}"
+                                Style="{StaticResource CheckInContentTextStyle}"/>
+                        </StackLayout>
+                        <!-- SEAT -->
+                        <StackLayout
+                            Grid.Column="2"
+                            Grid.Row="0">
+                            <Label 
+                                Text="Seat"
+                                Style="{StaticResource CheckInContentTitleStyle}"/>
+                            <Label 
+                                Text="{Binding Flight.Seat}"
+                                Style="{StaticResource CheckInContentTextStyle}" />
+                        </StackLayout>
+                        <!-- FLIGHT -->
+                        <StackLayout
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Margin="0, 0, 0, 12">
+                            <Label 
+                                Text="Flight"
+                                Style="{StaticResource CheckInContentTitleStyle}"/>
+                            <Label 
+                                Text="{Binding Flight.Id}"
+                                Style="{StaticResource CheckInContentTextStyle}"/>
+                        </StackLayout>
+                        <!-- DEPART -->
+                        <StackLayout
+                            Grid.Column="1"
+                            Grid.Row="1">
+                            <Label 
+                                Text="Depart"
+                                Style="{StaticResource CheckInContentTitleStyle}"/>
+                            <Label 
+                                Text="{Binding Flight.DepartDate}"
+                                Style="{StaticResource CheckInContentTextStyle}"/>
+                        </StackLayout>
+                        <!-- HOUR -->
+                        <StackLayout
+                            Grid.Column="2"
+                            Grid.Row="1">
+                            <Label 
+                                Style="{StaticResource CheckInContentTitleStyle}"/>
+                            <Label 
+                                Text="{Binding Flight.DepartTime}"
+                                Style="{StaticResource CheckInContentTextStyle}"/>
+                        </StackLayout>
+                        <!-- TERMINAL -->
+                        <StackLayout
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            Margin="0, 0, 0, 12">
+                            <Label
+                                Text="Terminal"
+                                Style="{StaticResource CheckInContentTitleStyle}"/>
+                            <Label 
+                                Text="{Binding Flight.Terminal}"
+                                Style="{StaticResource CheckInContentTextStyle}"/>
+                        </StackLayout>
+                        <!-- GATE -->
+                        <StackLayout
+                            Grid.Column="1"
+                            Grid.Row="2">
+                            <Label
+                                Text="Gate"
+                                Style="{StaticResource CheckInContentTitleStyle}"/>
+                            <Label 
+                                Text="{Binding Flight.Gate}"
+                                Style="{StaticResource CheckInContentTextStyle}"/>
+                        </StackLayout>
+                        <!-- BOARDING -->
+                        <StackLayout
+                            Grid.Column="2"
+                            Grid.Row="2">
+                            <Label
+                                Text="Boarding"
+                                Style="{StaticResource CheckInContentTitleStyle}"/>
+                            <Label 
+                                Text="{Binding Flight.BoardingTime}"
+                                Style="{StaticResource CheckInContentTextStyle}"/>
+                        </StackLayout>
+                    </Grid>
+                    <!-- STEP INFORMATION -->
+                    <Grid
+                        Grid.Row="3"
+                        Margin="12, 0">
+                        <StackLayout
+                            Orientation="Horizontal"
+                            HorizontalOptions="Center">
+                            <Label
+                                Text="{Binding Step}" 
+                                Style="{StaticResource CheckInContentTitleStyle}"/>
+                            <Label
+                                Text="of" 
+                                Style="{StaticResource CheckInContentTitleStyle}"/>
+                            <Label 
+                                Text="{Binding Count}"  
+                                Style="{StaticResource CheckInContentTitleStyle}"/>
+                        </StackLayout>
+                    </Grid>
+                    <!-- CHECK IN BUTTON -->
+                    <Grid
+                        Grid.Row="4"
+                        Margin="12, 0">
+                        <Button            
+                            AutomationId="confirmCheckin"
+                            Text="Check-in"
+                            Style="{StaticResource CheckInButtonStyle}"
+                            Command="{Binding CheckInCommand}"/>
+                    </Grid>
+                </Grid>
+                <!-- LOADING -->
+                <ActivityIndicator 
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Color="{StaticResource PinkColor}"
+                    IsRunning="{Binding IsBusy}" 
+                    IsVisible="{Binding IsBusy}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center" />
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

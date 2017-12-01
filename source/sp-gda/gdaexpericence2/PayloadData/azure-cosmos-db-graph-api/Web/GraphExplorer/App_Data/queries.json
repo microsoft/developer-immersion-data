@@ -1,0 +1,79 @@
+{
+  "__defaultItem": [
+    {
+      "id": "1",
+      "title": "Get everything",
+      "query": "g.V(); g.E()"
+    },
+    {
+      "id": "2",
+      "title": "Get all vertices",
+      "query": "g.V();"
+    },
+    {
+      "id": "3",
+      "title": "Get all distinct node labels",
+      "query": "g.V().values('label').dedup()"
+    },
+    {
+      "id": "4",
+      "title": "Get all distinct edge labels",
+      "query": "g.E().values('label').dedup()"
+    },
+    {
+      "id": "5",
+      "title": "Get all Organization vertices",
+      "query": "g.V().hasLabel('Organization')"
+    },
+    {
+      "id": "6",
+      "title": "Get count of vertices in graph",
+      "query": "g.V().count()"
+    },
+    {
+      "id": "7",
+      "title": "Get count of edges in graph",
+      "query": "g.E().count()"
+    },
+    {
+      "id": "8",
+      "title": "Get all distinct Organization Names",
+      "query": "g.V().hasLabel('Organization').values('OrganizationName').dedup()"
+    },
+    {
+      "id": "9",
+      "title": "Get first 100 vertices in graph",
+      "query": "g.V().limit(100)"
+    },
+    {
+      "id": "10",
+      "title": "Get number of ACTIVE Agreements",
+      "query": "g.V().hasLabel('Agreement').has('Status', 'ACTIVE').count()"
+    },
+    {
+      "id": "11",
+      "title": "Get all EnterpriseOffers and their Enterprise Subscriptions",
+      "query": "g.V().union(hasLabel('EnterpriseOffer'),hasLabel('EnterpriseSubscription'));g.E();"
+    },
+    {
+      "id": "12",
+      "title": "Get all vertices directly connected to an organization",
+      "query": "g.V().union(hasLabel('Organization'),hasLabel('Organization').in(),hasLabel('Organization').out()); g.E();"
+    },
+    {
+      "id": "13",
+      "title": "Get all organizations which have both an agreement and tenant",
+      "query": "g.V().union(hasLabel('Organization').where(out('OrganizationAgreement').and().out('OrganizationTenant')),hasLabel('Agreement'),hasLabel('Tenant')); g.E();"
+    },
+    {
+      "id": "14",
+      "title": "Get subgraph of a specific enterprise subscription",
+      "query": "g.V().union(has('EnterpriseSubscriptionId', 'O:8E44A22E-A985-44F8-BF8D-13BDAEA5DF89'),has('EnterpriseSubscriptionId', 'O:8E44A22E-A985-44F8-BF8D-13BDAEA5DF89').out(),has('EnterpriseSubscriptionId', 'O:8E44A22E-A985-44F8-BF8D-13BDAEA5DF89').in(),has('TenantId','A:0034E878-B23B-4468-B7E8-9597F3CCBDD1').out(),has('TenantId','A:0034E878-B23B-4468-B7E8-9597F3CCBDD1').in(), has('TenantId','A:00283E9B-FEE2-4E69-8E80-A85C79F306C5').out(),has('TenantId','A:00283E9B-FEE2-4E69-8E80-A85C79F306C5').in()); g.E();"
+    },
+    {
+      "id": "15",
+      "title": "Get all Subscriptions with more than one Tenant",
+      "query": "g.V().has('label','EnterpriseSubscription').where(inE('TenantEnterpriseSubscription').count().is(gt(1))).as('a').union(__.select('a'),__.select('a').repeat(__.in()).times(2).emit(),__.select('a').out()); g.E();"
+    }
+  ]
+}

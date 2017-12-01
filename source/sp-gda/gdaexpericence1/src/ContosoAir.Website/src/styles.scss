@@ -1,0 +1,207 @@
+@import 'styles/_variables.scss';
+//@import 'styles/fonts';
+//@import 'styles/icons';
+@import 'styles/_vendor.scss';
+@import 'styles/_navbar.scss';
+@import 'styles/_footer.scss';
+@import 'styles/_search.scss';
+@import 'styles/_cityinfo.scss';
+@import 'styles/_cities.scss';
+@import 'styles/_deals.scss';
+@import 'styles/_flights.scss';
+@import 'styles/_days.scss';
+@import 'styles/_seats.scss';
+@import 'styles/_booking.scss';
+@import 'styles/_loading.scss';
+
+@font-face {
+    font-family: 'Karla';
+    src: url('assets/fonts/Karla-Regular.ttf');
+}
+
+body {
+    font-family: 'Karla', 'Helvetica', 'Arial';
+    font-size: 12px;
+}
+
+.btn {
+    color: $color-white-alpha-9;
+    cursor: pointer;
+    font-size: .9rem;
+    letter-spacing: .05rem;
+    padding: .2rem 1.2rem;
+
+    &:focus {
+        border-width: 0;
+        box-shadow: none;
+        outline: none;
+    }
+}
+
+.btn-md {
+    padding: .6rem 1.5rem;
+}
+
+.btn-lg {
+    padding: .6rem 4rem;
+}
+
+.btn-cancel {
+    background-color: $color-grey-medium;
+    border: 0;
+
+    &:hover {
+        background-color: $color-grey-dark;
+    }
+}
+
+.pos-r {
+    position: relative;
+}
+
+.form-control {
+    border: .1rem $color-blue-light solid;
+    border-radius: 0;
+    line-height: 1;
+
+    &:focus {
+        border-color: $color-blue;
+    }
+
+    &::placeholder {
+        color: $color-grey;
+    }
+}
+
+.radio-button-square {
+    border: 1px solid $color-blue-light;
+    display: inline-block;
+    height: 14px;
+    margin-right: .4rem;
+    position: relative;
+    top: 2px;
+    width: 14px;
+
+    &.radio-button-square--active {
+
+        &::after {
+            background-color: $color-blue-medium;
+            content: '';
+            display: inline-block;
+            height: 8px;
+            left: 2px;
+            position: absolute;
+            top: 2px;
+            width: 8px;
+        }
+    }
+}
+
+.route-content {
+    min-height: 20rem;
+}
+
+.big-blue-radio {
+    border: 1px solid $color-blue-light;
+    border-radius: 100%;
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 24px;
+
+    &.big-blue-radio--active {
+
+        &::after {
+            background-color: $color-blue-medium;
+            border-radius: 100%;
+            content: '';
+            display: inline-block;
+            height: 16px;
+            left: 3px;
+            position: absolute;
+            top: 3px;
+            width: 16px;
+        }
+    }
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+label {
+    color: $color-blue-medium;
+    margin-bottom: .1rem;
+}
+
+.form-check-label {
+    color: $color-grey-medium;
+}
+
+hr {
+    border-top: 1px solid $color-blue-medium;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+p {
+    line-height: 1.8;
+}
+
+.box {
+    background-color: $color-white;
+    border-radius: .7rem;
+    box-shadow: 0 0 .4rem 0 $color-black-alpha-2;
+    padding: 1.4rem 1.8rem;
+    width: 100%;
+}
+
+.content {
+    margin-bottom: 1.4rem;
+    min-height: 36rem;
+    position: relative;
+
+    &::after {
+        background-image: linear-gradient(to bottom, $color-transparent, $color-white 21rem, $color-white 100%);
+        content: '';
+        display: block;
+        height: 100%;
+        left: -1%;
+        position: absolute;
+        top: 1.4rem;
+        width: 102%;
+        z-index: 0;
+    }
+
+    .content-wrapper {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.content--search {
+    top: -2.5rem;
+}
+
+.redefine-search {
+    color: $color-grey-medium;
+    display: block;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    .icon {
+        font-size: .7rem;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    body {
+        font-size: 14px;
+    }
+}

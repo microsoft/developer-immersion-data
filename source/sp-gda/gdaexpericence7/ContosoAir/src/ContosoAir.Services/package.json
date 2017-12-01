@@ -1,0 +1,19 @@
+{
+  "name": "contoso-air.services",
+  "version": "0.0.0",
+  "description": "ContosoAir.Services",
+  "main": "server.js",
+  "author": {
+    "name": "Microsoft"
+  },
+  "dependencies": {
+    "glob": "^7.1.1",
+    "restify": "^4.3.0",
+    "documentdb": "^1.10.0",
+    "request": "*"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {}
+}

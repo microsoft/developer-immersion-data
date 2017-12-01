@@ -1,0 +1,113 @@
+﻿modal
+{
+    display: table;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.2);
+    z-index: 1000;
+}
+
+modal .modalCell
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+modal .modalContent
+{
+    margin: 0 auto;
+    width: 600px;
+    background: white;
+    border: 2px solid black;
+    padding: 30px;
+    position: relative;
+}
+
+modal .modalContent input
+{
+    display: block; 
+    width: 100%;
+}
+
+modal .modalContent label
+{
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+modal .modalContent .buttonGroup
+{
+    margin-top: 20px;
+}
+
+modal .modalContent button
+{
+    width: 49.6%;
+    font-size: 1.2em;
+    display: inline-block;
+    min-width: 120px;
+    padding: 10px 12px;
+    max-width: 100%;
+    text-align: center;
+    overflow: hidden;
+    vertical-align: middle;
+    color: #000;
+    background: #CCC;
+    border: none;
+    padding: 9px 30px;
+}
+
+modal .modalContent button.primaryButton
+{
+    color: #FFF;
+    background: #0078D7;
+}
+
+modal .modalContent .savedQueryList button
+{
+    width: 20%;
+    padding: 5px;
+}
+
+modal .modalContent h2
+{
+    margin-top: 0;
+    font-weight: 400;
+}
+
+modal .modalContent h5
+{
+    margin: 40px 0;
+}
+
+modal .modalContent .savedQueryList h4
+{
+    margin: 0;
+    font-weight: 500;
+}
+
+modal .modalContent .savedQueryList p
+{
+    margin-top: 10px;
+    word-break: break-all;
+}
+
+modal .modalContent .savedQueryList .active
+{
+    background: #F2F2F2;
+}
+
+modal .modalContent button.icon-close
+{
+    position: absolute;
+    background: none;
+    cursor: pointer;        
+    width: 20px;
+    padding: 0;
+    min-width: 20px;
+    right: 10px;
+    top: 10px;
+}

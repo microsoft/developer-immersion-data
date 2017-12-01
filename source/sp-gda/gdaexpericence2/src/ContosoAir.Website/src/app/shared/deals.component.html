@@ -1,0 +1,21 @@
+<ul class="row block-deals-list">
+    <li *ngFor="let deal of deals" class="col-sm-12 col-lg-6">
+        <span class="block-deals-list-item">
+            <span class="row">
+                <span class="col-7 col-sm-5 block-deals-list-item-col">
+                    <span class="d-block"><span [innerText]="deal.fromName"></span> (<span [innerText]="deal.fromCode"></span>)</span>
+                    <span class="d-block">to <span [innerText]="deal.toName"></span> (<span [innerText]="deal.toCode"></span>)</span>
+                    <span class="block-deals-list-item-col-date">Purchase by <span [innerText] = "date | utc | date:'yMMMMd'">April 13, 2017</span></span>
+                </span>
+                <span class="col-5 col-sm-4 col-md-3 block-deals-list-item-col block-deals-list-item-col--price">
+                    <span class="d-block">FROM $</span>
+                    <span class="block-deals-list-item-col-price" [innerText]="deal.price"></span>
+                    <span class="d-block">ONE WAY</span>
+                </span>
+                <span class="col-12 col-sm-3 col-md-4 block-deals-list-item-col block-deals-list-item-col--button text-center text-sm-left">
+                    <button type="button" href="#" class="btn btn-primary btn-sm block-deals-list-item-col-button">View dates</button>
+                </span>
+            </span>
+        </span>
+    </li>
+</ul>

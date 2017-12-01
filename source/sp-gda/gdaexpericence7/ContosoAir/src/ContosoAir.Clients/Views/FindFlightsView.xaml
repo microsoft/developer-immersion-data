@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContosoAir.Clients.Views.FindFlightsView"
+             xmlns:animations="clr-namespace:ContosoAir.Clients.Animations;assembly=ContosoAir.Clients.Core"
+             xmlns:templates="clr-namespace:ContosoAir.Clients.TemplateSelectors;assembly=ContosoAir.Clients.Core"
+             xmlns:triggers="clr-namespace:ContosoAir.Clients.Triggers;assembly=ContosoAir.Clients.Core"
+             xmlns:views="clr-namespace:ContosoAir.Clients.Views;assembly=ContosoAir.Clients.Core"
+             xmlns:controls="clr-namespace:ContosoAir.Clients.Controls;assembly=ContosoAir.Clients.Core"
+             xmlns:behaviors="clr-namespace:ContosoAir.Clients.Behaviors;assembly=ContosoAir.Clients.Core"  
+             Title=" "
+             Style="{StaticResource BasePageStyle}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="24, 12" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}"/>
+            </Style>
+
+            <Style x:Key="DealsTitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="24, 0" />
+            </Style>
+
+            <Style x:Key="DealsButtonImageStyle" TargetType="Image">
+                <Setter Property="HeightRequest" Value="20" />
+                <Setter Property="WidthRequest" Value="20" />
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="DealsButtonTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="{StaticResource LittleSize}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <AbsoluteLayout>
+        <!-- DEALS -->
+        <ListView 
+                x:Name="Deals"
+                AutomationId="home"
+                ItemsSource="{Binding MyDeals, Mode=OneWay}"             
+                behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding DealSelectedCommand}"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding RefreshCommand}"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                HasUnevenRows="True"
+                SeparatorVisibility="None"
+                CachingStrategy="RecycleElement"
+                BackgroundColor="Transparent"
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All">
+            <ListView.RowHeight>
+                <OnPlatform 
+                    x:TypeArguments="x:Int32"
+                    Android="210"
+                    iOS="210"
+                    WinPhone="240"/>
+            </ListView.RowHeight>
+            <ListView.Header>
+                <StackLayout 
+                    Padding="24, 0, 24, 24">
+                    <Label 
+                        Text="Book a trip"
+                        Margin="0, 8"
+                        Style="{StaticResource TitleStyle}"/>
+                    <Image 
+                        x:Name="BookingForm"                            
+                        Aspect="AspectFit">
+                        <Image.Source>
+                            <OnPlatform 
+                                x:TypeArguments="ImageSource"
+                                iOS="booking_form"
+                                Android="booking_form"
+                                WinPhone="Assets/booking_form.png" />
+                        </Image.Source>
+                    </Image>
+                    <Grid  
+                        Margin="0, 10, 0, 5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label 
+                            Margin="-1, 0, 0, 0"
+                            Text="Recommended for you"
+                            HorizontalOptions="Start"
+                            LineBreakMode="TailTruncation"
+                            Style="{StaticResource DealsTitleStyle}"/>
+                        <StackLayout 
+                            Grid.Column="1"
+                            Orientation="Horizontal">
+                            <Image
+                                Style="{StaticResource DealsButtonImageStyle}">
+                                <Image.Source>
+                                    <OnPlatform 
+                                    x:TypeArguments="ImageSource"        
+                                    Android="sort.png"
+                                    iOS="sort.png"
+                                    WinPhone="Assets\sort.png"/>
+                                </Image.Source>
+                            </Image>
+                            <Label
+                                Text="Sort"
+                                LineBreakMode="TailTruncation"
+                                Style="{StaticResource DealsButtonTextStyle}"/>
+                            <Image 
+                                Style="{StaticResource DealsButtonImageStyle}">
+                                <Image.Source>
+                                    <OnPlatform 
+                                    x:TypeArguments="ImageSource"
+                                    Android="filter.png"
+                                    iOS="filter.png"
+                                    WinPhone="Assets\filter.png"/>
+                                </Image.Source>
+                            </Image>
+                            <Label 
+                               Text="Filter"
+                               LineBreakMode="TailTruncation"
+                               Style="{StaticResource DealsButtonTextStyle}"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <controls:DealControl Deal="{Binding}" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!-- LOADING -->
+        <ActivityIndicator   
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Color="{StaticResource PinkColor}"
+                IsRunning="{Binding IsBusy}" 
+                IsVisible="False"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+    </AbsoluteLayout>
+</ContentPage>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContosoAir.Clients.Views.MenuView"     
+             xmlns:behaviors="clr-namespace:ContosoAir.Clients.Behaviors;assembly=ContosoAir.Clients.Core"   
+             xmlns:views="clr-namespace:ContosoAir.Clients.Views;assembly=ContosoAir.Clients.Core"  
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             BackgroundColor="{StaticResource MenuBackgroundColor}"
+             Title=" ">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="ProfileImageStyle" TargetType="ffimageloading:CachedImage">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="DownsampleToViewSize" Value="true" />
+                <Setter Property="HeightRequest" Value="72" />
+                <Setter Property="WidthRequest" Value="72" />
+                <Setter Property="Margin" Value="12" />
+            </Style>
+            
+            <Style x:Key="ProfileTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    Android="{StaticResource BigSize}"
+                                    iOS="{StaticResource BigSize}"
+                                    WinPhone="{StaticResource LargerSize}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="LogoutItemTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+                <Setter Property="Margin" Value="12" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <!-- PROFILE -->
+        <Grid
+            Grid.Row="0"
+            BackgroundColor="{StaticResource DarkPinkColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ffimageloading:CachedImage
+                Grid.Column="0"
+                Source="{Binding Profile.Image}"
+                Style="{StaticResource ProfileImageStyle}">
+                <ffimageloading:CachedImage.Transformations>
+                    <fftransformations:CircleTransformation />
+                </ffimageloading:CachedImage.Transformations>
+            </ffimageloading:CachedImage>
+            <Label 
+                Grid.Column="1"
+                Text="{Binding Profile.Name}" 
+                Style="{StaticResource ProfileTextStyle}"/>
+        </Grid>
+        <!-- MENU -->
+        <ListView 
+            x:Name="Items"  
+            AutomationId="menu"
+            Grid.Row="1"
+            ItemsSource="{Binding MenuItems, Mode=OneWay}"              
+            behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding ItemSelectedCommand}"
+            SeparatorVisibility="None"
+            CachingStrategy="RecycleElement"
+            BackgroundColor="Transparent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <views:MenuItemTemplate />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!-- SEPARATOR -->
+        <Grid           
+            Grid.Row="2"
+            BackgroundColor="{StaticResource WhiteColor}"
+            Opacity="0.2"
+            HeightRequest="1" />
+        <!-- LOG OUT -->
+        <StackLayout
+            Orientation="Horizontal"
+            Grid.Row="3">
+            <Label 
+                Text="Logout"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Style="{StaticResource LogoutItemTextStyle}">
+                <Label.Margin>
+                    <OnPlatform  
+                        x:TypeArguments="Thickness"
+                        Android="6,0,0,0"
+                        iOS="6,0,0,0"
+                        WinPhone="6,0,0,0"/>
+                </Label.Margin>
+            </Label>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer     
+                    Command="{Binding LogoutCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+    </Grid>
+</ContentPage>

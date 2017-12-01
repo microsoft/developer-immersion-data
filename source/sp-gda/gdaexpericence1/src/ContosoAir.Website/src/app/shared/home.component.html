@@ -1,0 +1,82 @@
+<section class="block-search" [ngClass]="{'block-search--city': CityPage}">
+    <div class="container">
+        <div class="row block-search-row">
+            <div class="block-search-row-logo">
+                <span class="icon icon-logo"></span>
+            </div>
+            <div class="col-sm-12 col-md-5 col-lg-7 align-self-center block-search-right">
+                <div class="block-search-message" [ngClass]="{'block-search-message--video': VideoPage}" >
+                    <h1 *ngIf="!VideoPage" class="block-search-message-title">
+                        <span *ngIf="!CityPage">Where do you<br>want to go?</span>
+                        <span *ngIf="CityPage">Barcelona is<br>waiting for you</span>
+                    </h1>
+
+                    <div *ngIf="VideoPage" class="block-cityinfo-video embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" [src]='url' name="azuremediaplayer" scrolling="no" frameborder="no" align="center" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-sm-12 col-md-7 col-lg-5">
+                <div class="block-search-form box">
+                    <loading [loaded]="SearchReady"></loading>
+                    <h2 class="block-search-form-title">Book a trip</h2>
+                    <search [city]="CurrentCity" (onSearchReady)="onSearchReady($event)"></search>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<main class="container">
+    <div class="content content--search box">
+        <div class="content-wrapper">
+            <div *ngIf="!CityPage" class="block-cities">
+                <h2 class="block-cities-title">Recommended for you</h2>
+                <ul class="row block-cities-list">
+                    <li class="col-sm-12 col-md-4 block-cities-list-item">
+                        <figure class="block-cities-list-item-figure">
+                            <img  class="block-cities-list-item-figure-image block-cities-list-item-figure-image--desktop" src="assets/cities/hawaii.jpg" alt="Hawaii">
+                            <img  class="block-cities-list-item-figure-image" src="assets/cities/hawaii_m.jpg" alt="Hawaii">
+                            <figcaption  class="block-cities-list-item-figure-caption">Hawaii</figcaption>
+                        </figure>
+                    </li>
+                    <li class="col-sm-12 col-md-4 block-cities-list-item">
+                        <figure class="block-cities-list-item-figure">
+                            <img  class="block-cities-list-item-figure-image block-cities-list-item-figure-image--desktop" src="assets/cities/paris.jpg" alt="Paris">
+                            <img  class="block-cities-list-item-figure-image" src="assets/cities/paris_m.jpg" alt="Paris">
+                            <figcaption  class="block-cities-list-item-figure-caption">Paris</figcaption>
+                        </figure>
+                    </li>
+                    <li class="col-sm-12 col-md-4 block-cities-list-item">
+                        <a routerLink="/barcelona-video">
+                            <figure class="block-cities-list-item-figure">
+                                <img  class="block-cities-list-item-figure-image block-cities-list-item-figure-image--desktop" src="assets/cities/barcelona.jpg" alt="Barcelona">
+                                <img  class="block-cities-list-item-figure-image" src="assets/cities/barcelona_m.jpg" alt="Barcelona">
+                                <figcaption  class="block-cities-list-item-figure-caption">Barcelona</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div *ngIf="CityPage" class="block-cityinfo">
+                <div class="row">
+                    <div class="col-12" [ngClass]="{'col-lg-6': VideoPage, 'col-xl-7': VideoPage, 'flex-last': VideoPage, 'flex-lg-first': VideoPage, 'col-md-7': !VideoPage, 'col-lg-8': !VideoPage}">
+                        <h1 class="block-cityinfo-title">Experience Barcelona before our discounted flights end!</h1>
+                        <p>Experience the art, history, and culture of Barcelona with Contoso Air vacation packages. Visit the La Sagrada Familia Church, the Picasso Museum, and the medieval Barrio Gotico. From modern architecture and upscale shopping to fine art and exceptional cuisine, immerse yourself in the spirit of Barcelona. Book now to receive our special discounted rates!</p>
+                    </div>
+                    <div class="col-12" [ngClass]="{'col-lg-6': VideoPage, 'col-xl-5': VideoPage, 'flex-first': VideoPage, 'flex-lg-last': VideoPage, 'col-md-5': !VideoPage, 'col-lg-4': !VideoPage}">
+                        <img class="block-cityinfo-image" src="assets/barcelona.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <div class="block-deals">
+                <loading [loaded]="DealsReady"></loading>
+                <h2 class="block-deals-title">Flight deals</h2>
+                <deals (onDealsReady)="onDealsReady($event)"></deals>
+            </div>
+        </div>
+    </div>
+</main>

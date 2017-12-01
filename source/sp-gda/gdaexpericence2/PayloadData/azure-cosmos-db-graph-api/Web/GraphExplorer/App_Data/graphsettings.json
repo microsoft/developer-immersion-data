@@ -1,0 +1,79 @@
+{
+  "__defaultItem": {
+    "iconGroups": {
+      "Organization": {
+        "shape": "icon",
+        "icon": {
+          "face": "CommercialGraphIcons",
+          "code": "",
+          "size": 25,
+          "color": "#525252"
+        }
+      },
+      "Agreement": {
+        "shape": "icon",
+        "icon": {
+          "face": "CommercialGraphIcons",
+          "code": "",
+          "size": 25,
+          "color": "#006837"
+        }
+      },
+      "AssetPosition": {
+        "shape": "icon",
+        "icon": {
+          "face": "CommercialGraphIcons",
+          "code": "",
+          "size": 25,
+          "color": "#006837"
+        }
+      },
+      "EnterpriseSubscription": {
+        "shape": "icon",
+        "icon": {
+          "face": "CommercialGraphIcons",
+          "code": "",
+          "size": 25,
+          "color": "#1964bc"
+        }
+      },
+      "Tenant": {
+        "shape": "icon",
+        "icon": {
+          "face": "CommercialGraphIcons",
+          "code": "",
+          "size": 25,
+          "color": "#1964bc"
+        }
+      },
+      "EnterpriseOffer": {
+        "shape": "icon",
+        "icon": {
+          "face": "CommercialGraphIcons",
+          "code": "",
+          "size": 25,
+          "color": "#1964bc"
+        }
+      },
+      "ServicePlan": {
+        "shape": "icon",
+        "icon": {
+          "face": "CommercialGraphIcons",
+          "code": "",
+          "size": 25,
+          "color": "#1964bc"
+        }
+      }
+    },
+    "options": {
+      "nodeSize": 25,
+      "edgeSize": 1,
+      "iconSize": 25,
+      "defaultNodeShape": "box",
+      "labelMappings": {},
+      "physicsSolver": "forceAtlas2Based",
+      "edgeColors": {}
+    },
+    "showEdgeLabel": false
+  }
+}

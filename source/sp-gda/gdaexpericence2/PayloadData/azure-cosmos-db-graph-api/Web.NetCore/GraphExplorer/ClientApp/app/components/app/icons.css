@@ -1,0 +1,82 @@
+﻿@font-face
+{
+	font-family: 'SegoeIcons';
+	src: local('☺'), url(../../../fonts/segmdl2.ttf);
+}
+
+@font-face
+{
+    font-family: 'CommercialGraphIcons';
+    src: local('☺'), url(../../../fonts/Commercial-Graph-Icons.ttf);
+}
+
+.icon, .SegoeIcons
+{
+	font-family: 'SegoeIcons';
+	position: relative;
+	top: 1px;
+	display: inline-block;
+	line-height: 1;
+	font-style: normal;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.CommercialGraphIcons
+{
+    font-family: 'CommercialGraphIcons';
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    line-height: 1;
+    font-style: normal;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pencil:before
+{
+	content: "\e104";
+}
+
+.icon-collapse:before
+{
+	content: "\e73f";
+}
+
+.icon-expand:before
+{
+	content: "\e740";
+}
+
+.icon-restore:before
+{
+	content: "\e743";
+}
+
+.icon-formatted:before
+{
+	content: "\e943";
+}
+
+.icon-unformatted:before
+{
+	content: "\ea37";
+}
+
+.icon-close:before
+{
+    content: "\e106";
+}
+
+.icon-arrow:before
+{
+    content: "\e111";
+}
+
+.icon-node:before
+{
+    content: "\e18a";
+}

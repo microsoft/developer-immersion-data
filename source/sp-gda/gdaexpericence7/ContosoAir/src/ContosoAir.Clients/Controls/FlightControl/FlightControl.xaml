@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView   
+    x:Name="Control"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="ContosoAir.Clients.Controls.FlightControl">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            
+            <Style x:Key="FlightContentTitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="FlightContentTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+            
+            <Style x:Key="FlightTitleTextStyle" TargetType="Label"
+                   BasedOn="{StaticResource FlightContentTextStyle}">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+            
+            <Style x:Key="BarCodeImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="60, 12" />
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <!-- BOARDING PASS -->
+        <Grid     
+            Margin="24, 0, 24, 24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid
+                Grid.Row="0">
+                <Label   
+                    Text="{Binding Flight.Title, Source={x:Reference Control}}"
+                    Style="{StaticResource FlightTitleTextStyle}"/>
+            </Grid>
+            <Frame     
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                OutlineColor="{StaticResource WhiteColor}" 
+                BackgroundColor="{StaticResource WhiteColor}" 
+                HasShadow="False"    
+                Padding="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="2" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <!-- PASSENGER INFORMATION -->
+                    <Grid
+                        Grid.Row="0"
+                        Margin="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2">
+                            <Label
+                                Text="Passenger Name"
+                                Style="{StaticResource FlightContentTitleStyle}"/>
+                            <Label   
+                                Text="{Binding Flight.PassengerName, Source={x:Reference Control}}"
+                                Style="{StaticResource FlightContentTextStyle}"/>
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Column="2">
+                            <Label 
+                                Text="Seat" 
+                                Style="{StaticResource FlightContentTitleStyle}"/>
+                            <Label 
+                                Text="{Binding Flight.Seat, Source={x:Reference Control}}"
+                                Style="{StaticResource FlightContentTextStyle}"/>
+                        </StackLayout>
+                    </Grid>
+                    <!-- SEPARATOR -->
+                    <Grid           
+                        Grid.Row="1"
+                        BackgroundColor="{StaticResource BlackColor}"
+                        Opacity="0.2"
+                        HeightRequest="2" />
+                    <!-- FLIGHT INFORMATION -->
+                    <Grid
+                        Grid.Row="2"
+                        Margin="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout
+                            Grid.Column="0">
+                            <Label
+                                Text="Flight" 
+                                Style="{StaticResource FlightContentTitleStyle}"/>
+                            <Label
+                                Text="{Binding Flight.Id, Source={x:Reference Control}}"
+                                Style="{StaticResource FlightContentTextStyle}"/>
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Column="1">
+                            <Label 
+                                Text="Seat"
+                                Style="{StaticResource FlightContentTitleStyle}"/>
+                            <Label  
+                                Text="{Binding Flight.Seat, Source={x:Reference Control}}"
+                                Style="{StaticResource FlightContentTextStyle}"/>
+                        </StackLayout>
+                        <StackLayout    
+                            Grid.Column="2">
+                            <Label 
+                                Style="{StaticResource FlightContentTitleStyle}"/>
+                            <Label 
+                                Text="{Binding Flight.DepartTime, Source={x:Reference Control}}"
+                                Style="{StaticResource FlightContentTextStyle}"/>
+                        </StackLayout>
+                    </Grid>
+                    <!-- SEPARATOR -->
+                    <Grid                      
+                        Grid.Row="3">
+                        <Image
+                            HorizontalOptions="FillAndExpand"
+                            Aspect="AspectFit">
+                            <Image.Source>
+                                <OnPlatform 
+                                    x:TypeArguments="ImageSource"        
+                                    Android="separator.png"
+                                    iOS="separator.png"
+                                    WinPhone="Assets\separator.png"/>
+                            </Image.Source>
+                        </Image>
+                    </Grid>
+                    <!-- BOARDING INFORMATION -->
+                    <Grid
+                        Grid.Row="4"
+                        Margin="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout   
+                            Grid.Column="0">
+                            <Label
+                                Text="Terminal" 
+                                Style="{StaticResource FlightContentTitleStyle}"/>
+                            <Label
+                                Text="{Binding Flight.Terminal, Source={x:Reference Control}}"
+                                Style="{StaticResource FlightContentTextStyle}"/>
+                        </StackLayout>
+                        <StackLayout      
+                            Grid.Column="1">
+                            <Label 
+                                Text="Gate"
+                                Style="{StaticResource FlightContentTitleStyle}"/>
+                            <Label 
+                                Text="{Binding Flight.Gate, Source={x:Reference Control}}"
+                                Style="{StaticResource FlightContentTextStyle}"/>
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Column="2">
+                            <Label 
+                                Text="Boarding"
+                                Style="{StaticResource FlightContentTitleStyle}"/>
+                            <Label 
+                                Text="{Binding Flight.BoardingTime, Source={x:Reference Control}}"
+                                Style="{StaticResource FlightContentTextStyle}"/>
+                        </StackLayout>
+                    </Grid>
+                    <!-- BAR CODE -->
+                    <Grid
+                        Grid.Row="5"
+                        BackgroundColor="{StaticResource GrayColor}">
+                        <Image
+                            Style="{StaticResource BarCodeImageStyle}">
+                            <Image.Source>
+                                <OnPlatform 
+                                    x:TypeArguments="ImageSource"        
+                                    Android="barcode.png"
+                                    iOS="barcode.png"
+                                    WinPhone="Assets\barcode.png"/>
+                            </Image.Source>
+                        </Image>
+                    </Grid>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

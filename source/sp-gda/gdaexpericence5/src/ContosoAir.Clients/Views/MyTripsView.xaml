@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContosoAir.Clients.Views.MyTripsView"
+             xmlns:views="clr-namespace:ContosoAir.Clients.Views;assembly=ContosoAir.Clients.Core"
+             xmlns:controls="clr-namespace:ContosoAir.Clients.Controls;assembly=ContosoAir.Clients.Core"
+             Title=" "
+             Style="{StaticResource BasePageStyle}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="MyTripsTitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="24, 12" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}"/>
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <!-- TRIPS -->
+        <ListView 
+            x:Name="Trips"
+            ItemsSource="{Binding Trips, Mode=OneWay}"             
+            IsPullToRefreshEnabled="True"
+            RefreshCommand="{Binding RefreshCommand}"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            HasUnevenRows="True"
+            SeparatorVisibility="None"
+            CachingStrategy="RecycleElement"
+            BackgroundColor="Transparent">
+            <ListView.RowHeight>
+                <OnPlatform 
+                    x:TypeArguments="x:Int32"
+                    Android="210"
+                    iOS="210"
+                    WinPhone="240"/>
+            </ListView.RowHeight>
+            <ListView.Header>
+                <StackLayout>
+                    <Grid>
+                        <views:CheckIn
+                            CheckInDeal="{Binding CurrentDealStatusViewModel.CheckInDeal}"
+                            IsDelayed="{Binding CurrentDealStatusViewModel.IsDelayed}"
+                            IsVisible="{Binding CurrentDealStatusViewModel.CheckInDone}"/>
+                    </Grid>
+                    <views:CheckInAvailable
+                        CheckInDeal="{Binding CurrentDealStatusViewModel.CheckInDeal}"
+                        CheckInCommand="{Binding CurrentDealStatusViewModel.CheckInCommand}"
+                        IsVisible="{Binding CurrentDealStatusViewModel.CheckInAvailable}"/>
+                    <Label 
+                        Text="My trips"
+                        Style="{StaticResource MyTripsTitleStyle}"/>
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <controls:DealControl Deal="{Binding}" ShowPrice="False" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

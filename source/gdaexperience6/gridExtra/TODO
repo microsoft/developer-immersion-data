@@ -1,0 +1,10 @@
+
+NEW FEATURES
+
+* basic plots (image, plot, É) in grid, using scales and guide packages of Hadley W.
+
+* matrix plot
+
+* clone and export linearised versions of all basic grid grobs, i.e. with full list of arguments (no gp) accessible to vectorisation
+
+* explore the idea of a new unit system based on complex numbers, one part for physical vs relative units

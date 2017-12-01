@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ContosoAir.Clients.Views.MenuItemTemplate">
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="MenuItemTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+                <Setter Property="Margin" Value="12, 0" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout            
+            Orientation="Horizontal">
+            <StackLayout.Margin>
+                <OnPlatform  
+                    x:TypeArguments="Thickness"
+                    Android="36, 9, 0, 0"
+                    iOS="36, 9, 0, 0"
+                    WinPhone="12, 0, 0, 12"/>
+            </StackLayout.Margin>
+            <StackLayout.Triggers>
+                <DataTrigger
+                    TargetType="StackLayout"
+                    Binding="{Binding IsEnabled, Mode=TwoWay}"
+                    Value="False">
+                    <Setter Property="Opacity"             
+                            Value="0.6" />
+                </DataTrigger>
+            </StackLayout.Triggers>
+            <Image 
+                Source="{Binding MenuItemType, Converter={StaticResource MenuItemTypeConverter}}"
+                Aspect="AspectFit"
+                WidthRequest="24"
+                HeightRequest="24"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+            <Label 
+                x:Name="TitleLabel"
+                Text="{Binding Title}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Style="{StaticResource MenuItemTextStyle}">
+                <Label.Margin>
+                    <OnPlatform  
+                        x:TypeArguments="Thickness"
+                        Android="6,0,0,0"
+                        iOS="6,0,0,0"
+                        WinPhone="6,0,0,0"/>
+                </Label.Margin>
+            </Label>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

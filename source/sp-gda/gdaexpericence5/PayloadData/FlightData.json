@@ -1,0 +1,79 @@
+[
+	{
+		"flightId": "AS305",
+		"airlineName": "Alaska Airlines ",
+		"airlineCode": "AS",
+		"source": "Seattle",
+		"destination": " Barcelona"
+	},
+	{
+		"flightId": "AS306",
+		"airlineName": "Alaska Airlines ",
+		"airlineCode": "AS",
+		"source": "Seattle",
+		"destination": " Barcelona"
+	},
+	{
+		"flightId": "AS307",
+		"airlineName": "Alaska Airlines ",
+		"airlineCode": "AS",
+		"source": "Seattle",
+		"destination": " Barcelona"
+	},
+	{
+		"flightId": "AS308",
+		"airlineName": "Alaska Airlines ",
+		"airlineCode": "AS",
+		"source": "Barcelona",
+		"destination": "Seattle"
+	},
+	{
+		"flightId": "AA309",
+		"airlineName": "American Airlines ",
+		"airlineCode": "AA",
+		"source": "Seattle",
+		"destination": "Barcelona"
+	},
+	{
+		"flightId": "AA310",
+		"airlineName": "American Airlines ",
+		"airlineCode": "AA",
+		"source": "Seattle",
+		"destination": " Barcelona"
+	},
+	{
+		"flightId": "AA311",
+		"airlineName": "American Airlines ",
+		"airlineCode": "AA",
+		"source": "Barcelona",
+		"destination": "Seattle"
+	},
+	{
+		"flightId": "AA312",
+		"airlineName": "American Airlines ",
+		"airlineCode": "AA",
+		"source": "Barcelona",
+		"destination": "Seattle"
+	},
+	{
+		"flightId": "AA313",
+		"airlineName": "American Airlines ",
+		"airlineCode": "AA",
+		"source": "Seattle",
+		"destination": "Barcelona"
+	},
+	{
+		"flightId": "AA314",
+		"airlineName": "American Airlines ",
+		"airlineCode": "AA",
+		"source": "Seattle",
+		"destination": "Barcelona"
+	},
+	{
+		"flightId": "AA315",
+		"airlineName": "American Airlines ",
+		"airlineCode": "AA",
+		"source": "Seattle",
+		"destination": "Barcelona"
+	}
+]

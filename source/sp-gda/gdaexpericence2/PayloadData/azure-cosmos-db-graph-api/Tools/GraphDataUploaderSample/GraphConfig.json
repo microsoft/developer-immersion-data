@@ -1,0 +1,73 @@
+﻿{
+  "nodes": [
+    {
+      "Name": "Airline",
+      "PathToData": "..\\..\\..\\..\\GraphData\\Nodes\\Airline\\",
+      "Attributes": [ "AirlineId", "AirlineName", "AirlineCode" ],
+      "PrimaryAttributes": [ "AirlineId" ],
+      "NodeIdAttribute": "AirlineId"
+    },
+    {
+      "Name": "CodeshareCarrier",
+      "PathToData": "..\\..\\..\\..\\GraphData\\Nodes\\CodeshareCarrier\\",
+      "Attributes": [ "CodeshareCarrierId", "CodeShareCode", "CodeshareCarrierName" ],
+      "PrimaryAttributes": [ "CodeshareCarrierId" ],
+      "NodeIdAttribute": "CodeshareCarrierId"
+    },
+    {
+      "Name": "Flight",
+      "PathToData": "..\\..\\..\\..\\GraphData\\Nodes\\Flight\\",
+      "Attributes": [ "FlightId", "Duration", "Price", "FromCode", "ToCode", "Distance", "Stop", "Fldate" ],
+      "PrimaryAttributes": [ "FlightId" ],
+      "NodeIdAttribute": "FlightId"
+    },
+    {
+      "Name": "Segments",
+      "PathToData": "..\\..\\..\\..\\GraphData\\Nodes\\Segments\\",
+      "Attributes": [ "SegmentsId", "Airline", "Flight", "FromCode", "FromCity", "DepartTime", "ToCode", "ToCity", "ArrivalTime" ],
+      "PrimaryAttributes": [ "SegmentsId" ],
+      "NodeIdAttribute": "SegmentsId"
+    },
+    {
+      "Name": "SoloService",
+      "PathToData": "..\\..\\..\\..\\GraphData\\Nodes\\SoloService\\",
+      "Attributes": [ "ServiceId", "Airline", "FirstName", "LastName", "Address", "City", "Country", "State", "Zip", "Phone1", "Phone2", "Email", "IsAvailable" ],
+      "PrimaryAttributes": [ "ServiceId" ],
+      "NodeIdAttribute": "ServiceId"
+    }
+  ],
+  "edges": [
+    {
+      "Name": "AirlineCodeshareCarrier",
+      "PathToData": "..\\..\\..\\..\\GraphData\\Edges\\AirlineCodeshareCarrier\\",
+      "SourceNode": "Airline",
+      "DestinationNode": "CodeshareCarrier",
+      "Attributes": [ "AirlineId", "CodeshareCarrierId" ],
+      "PrimaryAttributes": [ "AirlineId", "CodeshareCarrierId" ]
+    },
+    {
+      "Name": "SegmentsAirline",
+      "PathToData": "..\\..\\..\\..\\GraphData\\Edges\\SegmentsAirline\\",
+      "SourceNode": "Segments",
+      "DestinationNode": "Airline",
+      "Attributes": [ "AirlineId", "SegmentsId" ],
+      "PrimaryAttributes": [ "AirlineId", "SegmentsId" ]
+    },
+    {
+      "Name": "FlightSegments",
+      "PathToData": "..\\..\\..\\..\\GraphData\\Edges\\FlightSegments\\",
+      "SourceNode": "Flight",
+      "DestinationNode": "Segments",
+      "Attributes": [ "FlightId", "SegmentsId" ],
+      "PrimaryAttributes": [ "FlightId", "SegmentsId" ]
+    },
+    {
+      "Name": "AirlineSoloService",
+      "PathToData": "..\\..\\..\\..\\GraphData\\Edges\\AirlineSoloService\\",
+      "SourceNode": "Airline",
+      "DestinationNode": "SoloService",
+      "Attributes": [ "AirlineId", "ServiceId" ],
+      "PrimaryAttributes": [ "AirlineId", "ServiceId" ]
+    }
+  ]
+}

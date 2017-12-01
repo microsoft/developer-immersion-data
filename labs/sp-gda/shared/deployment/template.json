@@ -1,0 +1,235 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+	"parameters": {
+		"AdminUserName": {
+			"type": "string",
+			"defaultValue": "contosoadmin",
+			"minLength": 1
+		  },
+		  "AdminPassword": {
+			"type": "securestring",
+			"defaultValue": "[concat(toUpper(substring(uniqueString(resourceGroup().id, subscription().id),0,6)), '#', substring(uniqueString(resourceGroup().id, subscription().id),6,6) )]"
+			},
+		  "JumpHostOSDiskVhdUri": {
+			"type": "string",
+			"metadata": {
+			  "description": "Uri of the your user image"
+			}
+		  },
+		  "PrimaryStorageAccountName": {
+			"type": "string"
+		  },
+		  "PrimaryStorageAccountKey": {
+			"type": "string"
+		  }
+	},
+    "variables": {
+		"nsgName": "[concat('nsg', uniqueString(resourceGroup().id))]",		
+		"vmStorageAccountContainerName": "vhds",
+		"JumpHostVMName": "[concat('vm', uniqueString(resourceGroup().id))]",
+		"JumphostVhd": "[concat('https://', parameters('PrimaryStorageAccountName'), '.blob.core.windows.net/', variables('vmStorageAccountContainerName'), '/', variables('JumpHostVMName'), '.vhd')]",
+		"JumpHostDnsName": "[concat('vm', uniqueString(resourceGroup().id))]",
+		"JumpHostVNet": "[concat('vnet', uniqueString(resourceGroup().id))]",
+		"JumpHostVNetPrefix": "10.0.0.0/16",
+		"JumpHostVNetSubnet1Name": "Subnet-1",
+		"JumpHostVNetSubnet1Prefix": "10.0.0.0/24",
+		"JumpHostVNetSubnet2Name": "Subnet-2",
+		"JumpHostVNetSubnet2Prefix": "10.0.1.0/24",
+		"JumpHostVMVmSize": "Standard_DS2",
+		"JumpHostVMVnetID": "[resourceId('Microsoft.Network/virtualNetworks/', variables('JumpHostVNet'))]",
+		"JumpHostVMSubnetRef": "[concat(variables('JumpHostVMVnetID'), '/subnets/', variables('JumpHostVNetSubnet1Name'))]",
+		"JumpHostVMNicName": "[concat(variables('JumpHostVMName'), 'NetworkInterface')]",
+		"jumphostpublicipDnsName": "[concat('jumphost', uniqueString(subscription().id, resourceGroup().id))]",		
+		"vmVhd": "[split(parameters('JumpHostOSDiskVhdUri'), '?')[0]]"
+	  },
+	"resources": [
+		{
+			"apiVersion": "2015-06-15",
+			"location": "[resourceGroup().location]",
+			"name": "[variables('nsgName')]",
+			"properties": {
+			  "securityRules": [
+				{
+				  "name": "rdp-rule",
+				  "properties": {
+					"description": "Allow RDP",
+					"protocol": "Tcp",
+					"sourcePortRange": "*",
+					"destinationPortRange": "3389",
+					"sourceAddressPrefix": "Internet",
+					"destinationAddressPrefix": "*",
+					"access": "Allow",
+					"priority": 100,
+					"direction": "Inbound"
+				  }
+				},
+				{
+				  "name": "web-rule",
+				  "properties": {
+					"description": "Allow WEB",
+					"protocol": "Tcp",
+					"sourcePortRange": "*",
+					"destinationPortRange": "80",
+					"sourceAddressPrefix": "Internet",
+					"destinationAddressPrefix": "*",
+					"access": "Allow",
+					"priority": 101,
+					"direction": "Inbound"
+				  }
+				}
+			  ]
+			},
+			"tags": {
+			  "displayName": "Lab NSG"
+			},
+			"type": "Microsoft.Network/networkSecurityGroups"
+		  },	
+		  {
+			"name": "[variables('JumpHostVNet')]",
+			"type": "Microsoft.Network/virtualNetworks",
+			"location": "[resourceGroup().location]",
+			"apiVersion": "2015-06-15",
+			"dependsOn": [
+			  "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
+			],
+			"tags": {
+			  "displayName": "JumpHostVNet"
+			},
+			"properties": {
+			  "addressSpace": {
+				"addressPrefixes": [
+				  "[variables('JumpHostVNetPrefix')]"
+				]
+			  },
+			  "subnets": [
+				{
+				  "name": "[variables('JumpHostVNetSubnet1Name')]",
+				  "properties": {
+					"addressPrefix": "[variables('JumpHostVNetSubnet1Prefix')]"
+				  }
+				},
+				{
+				  "name": "[variables('JumpHostVNetSubnet2Name')]",
+				  "properties": {
+					"addressPrefix": "[variables('JumpHostVNetSubnet2Prefix')]",
+					"networkSecurityGroup": {
+					  "id": "[resourceId('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
+					}
+				  }
+				}
+			  ]
+			}
+		  },
+		  {
+			"name": "[variables('JumpHostVMNicName')]",
+			"type": "Microsoft.Network/networkInterfaces",
+			"location": "[resourceGroup().location]",
+			"apiVersion": "2015-06-15",
+			"dependsOn": [
+			  "[concat('Microsoft.Network/virtualNetworks/', variables('JumpHostVNet'))]",
+			  "[concat('Microsoft.Network/publicIPAddresses/', variables('jumphostpublicipDnsName'))]"
+			],
+			"tags": {
+			  "displayName": "JumpHostVMNic"
+			},
+			"properties": {
+			  "ipConfigurations": [
+				{
+				  "name": "ipconfig1",
+				  "properties": {
+					"privateIPAllocationMethod": "Dynamic",
+					"subnet": {
+					  "id": "[variables('JumpHostVMSubnetRef')]"
+					},
+					"publicIPAddress": {
+					  "id": "[resourceId('Microsoft.Network/publicIPAddresses/', variables('jumphostpublicipDnsName'))]"
+					}
+				  }
+				}
+			  ]
+			}
+		  },
+		{
+			"name": "[variables('JumpHostVMName')]",
+			"type": "Microsoft.Compute/virtualMachines",
+			"location": "[resourceGroup().location]",
+			"apiVersion": "2015-06-15",
+			"dependsOn": [
+			  "[concat('Microsoft.Network/networkInterfaces/', variables('JumpHostVMNicName'))]"
+			],
+			"tags": {
+			  "displayName": "JumpHostVM"
+			},
+			"properties": {
+			  "hardwareProfile": {
+				"vmSize": "[variables('JumpHostVMVmSize')]"
+			  },
+			  "osProfile": {
+				"computerName": "[variables('JumpHostVMName')]",
+				"adminUsername": "[parameters('AdminUsername')]",
+				"adminPassword": "[parameters('AdminPassword')]"
+			  },
+			  "storageProfile": {
+				"osDisk": {
+				  "name": "[concat(variables('JumpHostVMName'),'OSDisk')]",
+				  "osType": "Windows",
+				  "caching": "ReadWrite",
+				  "createOption": "FromImage",
+				  "image": {
+					"uri": "[variables('vmVhd')]"
+				  },
+				  "vhd": {
+					"uri": "[variables('jumphostVhd')]"
+				  }
+				}
+			  },
+			  "networkProfile": {
+				"networkInterfaces": [
+				  {
+					"id": "[resourceId('Microsoft.Network/networkInterfaces/', variables('JumpHostVMNicName'))]"
+				  }
+				]
+			  }
+			}
+		},
+		{
+			"name": "[variables('jumphostpublicipDnsName')]",
+			"type": "Microsoft.Network/publicIPAddresses",
+			"location": "[resourceGroup().location]",
+			"apiVersion": "2015-06-15",
+			"dependsOn": [],
+			"tags": {
+			  "displayName": "JumpHostPublicIP"
+			},
+			"properties": {
+			  "publicIPAllocationMethod": "Dynamic",
+			  "dnsSettings": {
+				"domainNameLabel": "[variables('JumpHostDnsName')]"
+			  }
+			}
+		  }
+	],
+    "outputs": {
+        "resourceGroupName": {
+            "type": "string",
+            "value": "[resourceGroup().name]"
+        },
+        "jumphostVmName": {
+            "type": "string",
+            "value": "[variables('JumpHostVMName')]"
+        },
+        "jumphostDnsName": {
+            "type": "string",
+            "value": "[concat(variables('JumpHostDnsName'), '.', resourceGroup().location, '.cloudapp.azure.com')]"
+        },
+        "jumphostUsername": {
+            "type": "string",
+            "value": "[parameters('AdminUserName')]"
+        },
+        "jumphostPassword": {
+            "type": "string",
+            "value": "[parameters('AdminPassword')]"
+        }
+    }
+}

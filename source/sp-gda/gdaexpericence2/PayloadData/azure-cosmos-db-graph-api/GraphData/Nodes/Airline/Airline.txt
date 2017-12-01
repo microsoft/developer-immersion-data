@@ -1,0 +1,17 @@
+T:1	Turkish Airlines	TA
+T:2	American Airlines	AA
+T:3	KLM Royal Dutch	KL
+T:4	Delta Airlines	DL
+T:5	Alaska Airlines	AS
+T:6	United Airlines	UA
+T:7	JetBlue Airlines	B6
+T:8	Hawaiian Airlines	HA
+T:9	Korean Air	KR
+T:10	Fiji Airways	FJ
+T:11	British Airways	BR
+T:12	Finnair	FA
+T:13	Virgin	VI
+T:14	Air China	CH
+T:15	China Southern	CS
+T:16	China Eastern	CE
+T:17	Asian Airline	AI

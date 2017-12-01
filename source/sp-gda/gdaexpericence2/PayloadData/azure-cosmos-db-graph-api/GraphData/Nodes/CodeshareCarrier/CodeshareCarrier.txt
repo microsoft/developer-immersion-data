@@ -1,0 +1,224 @@
+C:1	V1	Saudia	Barcelona, CA	BCN	Seattle, WA	SEA
+C:2	U2	Tarom	Barcelona, CA	BCN	Seattle, WA	SEA
+C:3	T3	Jet Airways	Barcelona, CA	BCN	Seattle, WA	SEA
+C:4	S4	Kenya Airways  	Barcelona, CA	BCN	Seattle, WA	SEA
+C:5	R5	Hawaiian Airlines 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:6	Q6	Garuda Indonesia 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:7	P7	Fiji Airways 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:8	O8	Aeromexico 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:9	N9	Aeromexico Connect 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:10	M1	Air France 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:11	L1	HOP (AF) 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:12	K2	City Jet (AF) 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:13	J3	Alitalia 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:14	I4	Air One Cityliner (Alitalia) 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:15	H5	CAI First (Alitalia) 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:16	G6	China Airlines 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:17	F7	China Eastern Airlines 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:18	E8	China Southern Airlines 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:19	D9	CSA Czech Airlines 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:20	C1	GOL Airlines 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:21	B2	KLM Royal Dutch Airlines 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:22	A3	KLM Cityhopper 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:23	Z4	Korean Airlines 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:24	Y5	Olympic Air 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:25	X6	Horizon Air 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:26	W7	ERA Aviation 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:27	V8	AeroMexico	Barcelona, CA	BCN	Seattle, WA	SEA
+C:28	U9	Air France	Barcelona, CA	BCN	Seattle, WA	SEA
+C:29	T1	American Airlines	Barcelona, CA	BCN	Seattle, WA	SEA
+C:30	S2	British Airways	Barcelona, CA	BCN	Seattle, WA	SEA
+C:31	R3	Cathay Pacific	Barcelona, CA	BCN	Seattle, WA	SEA
+C:32	Q4	Emirates	Barcelona, CA	BCN	Seattle, WA	SEA
+C:33	P5	Fiji Airways	Barcelona, CA	BCN	Seattle, WA	SEA
+C:34	O6	Icelandair	Barcelona, CA	BCN	Seattle, WA	SEA
+C:35	N7	Japan Airlines	Barcelona, CA	BCN	Seattle, WA	SEA
+C:36	M8	KLM	Barcelona, CA	BCN	Seattle, WA	SEA
+C:37	L9	Korean Air	Barcelona, CA	BCN	Seattle, WA	SEA
+C:38	K1	LAN	Barcelona, CA	BCN	Seattle, WA	SEA
+C:39	J2	Qantas	Barcelona, CA	BCN	Seattle, WA	SEA
+C:40	I3	Virgin America	Barcelona, CA	BCN	Seattle, WA	SEA
+C:41	H4	Piedmont 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:42	G5	PSA 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:43	F6	Trans States 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:44	E7	Sky West 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:45	D8	Mesa Airlines 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:46	C9	Republic Airways 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:47	B1	Air Wisconsin 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:48	A2	Express Jet 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:49	Z3	Envoy Air Inc. 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:50	Y4	Compass Airlines 	Barcelona, CA	BCN	Seattle, WA	SEA
+C:51	X5	Saudia 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:52	W6	Tarom 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:53	V7	Jet Airways 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:54	U8	Kenya Airways  	Seattle, WA	SEA	Barcelona, CA	BCN
+C:55	T9	Hawaiian Airlines 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:56	S1	Garuda Indonesia 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:57	R2	Fiji Airways 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:58	Q3	Aeromexico 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:59	P4	Aeromexico Connect 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:60	O5	Air France 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:61	N6	HOP (AF) 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:62	M7	City Jet (AF) 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:63	L8	Alitalia 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:64	K9	Air One Cityliner (Alitalia) 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:65	J1	CAI First (Alitalia) 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:66	I2	China Airlines 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:67	H3	China Eastern Airlines 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:68	G4	China Southern Airlines 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:69	F5	CSA Czech Airlines 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:70	E6	GOL Airlines 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:71	D7	KLM Royal Dutch Airlines 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:72	C8	KLM Cityhopper 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:73	B9	Korean Airlines 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:74	A1	Olympic Air 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:75	Z2	Horizon Air 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:76	Y3	ERA Aviation 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:77	X4	AeroMexico	Seattle, WA	SEA	Barcelona, CA	BCN
+C:78	W5	Air France	Seattle, WA	SEA	Barcelona, CA	BCN
+C:79	V6	American Airlines	Seattle, WA	SEA	Barcelona, CA	BCN
+C:80	U7	British Airways	Seattle, WA	SEA	Barcelona, CA	BCN
+C:81	T8	Cathay Pacific	Seattle, WA	SEA	Barcelona, CA	BCN
+C:82	S9	Emirates	Seattle, WA	SEA	Barcelona, CA	BCN
+C:83	R1	Fiji Airways	Seattle, WA	SEA	Barcelona, CA	BCN
+C:84	Q2	Icelandair	Seattle, WA	SEA	Barcelona, CA	BCN
+C:85	P3	Japan Airlines	Seattle, WA	SEA	Barcelona, CA	BCN
+C:86	O4	KLM	Seattle, WA	SEA	Barcelona, CA	BCN
+C:87	N5	Korean Air	Seattle, WA	SEA	Barcelona, CA	BCN
+C:88	M6	LAN	Seattle, WA	SEA	Barcelona, CA	BCN
+C:89	L7	Qantas	Seattle, WA	SEA	Barcelona, CA	BCN
+C:90	K8	Virgin America	Seattle, WA	SEA	Barcelona, CA	BCN
+C:91	J9	Piedmont 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:92	I1	PSA 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:93	H2	Trans States 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:94	G3 	Sky West 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:95	F4	Mesa Airlines 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:96	E5	Republic Airways 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:97	D6	Air Wisconsin 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:98	C7	Express Jet 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:99	B8	Envoy Air Inc. 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:100	A9	Compass Airlines 	Seattle, WA	SEA	Barcelona, CA	BCN
+C:101	OO 	Sky West 	Boston, MA	BOS	Los Angeles, CA	LAX
+C:102	KS 	Peninsula Airways (dba) PenAir  	Boston, MA	BOS	Los Angeles, CA	LAX
+C:103	QX 	Horizon Air 	Boston, MA	BOS	Los Angeles, CA	LAX
+C:104	7H 	ERA Aviation 	Boston, MA	BOS	Los Angeles, CA	LAX
+C:105	5A	AeroMexico	Boston, MA	BOS	Los Angeles, CA	LAX
+C:106	6B	Air France	Boston, MA	BOS	Los Angeles, CA	LAX
+C:107	7C	American Airlines	Boston, MA	BOS	Los Angeles, CA	LAX
+C:108	8D	British Airways	Boston, MA	BOS	Los Angeles, CA	LAX
+C:109	9E 	Cathay Pacific	Boston, MA	BOS	Los Angeles, CA	LAX
+C:110	1F	Emirates	Boston, MA	BOS	Los Angeles, CA	LAX
+C:111	2G	Fiji Airways	Boston, MA	BOS	Los Angeles, CA	LAX
+C:112	3H	Icelandair	Boston, MA	BOS	Los Angeles, CA	LAX
+C:113	4I	Japan Airlines	Boston, MA	BOS	Los Angeles, CA	LAX
+C:114	5J	KLM	Boston, MA	BOS	Los Angeles, CA	LAX
+C:115	6K	Korean Air	Boston, MA	BOS	Los Angeles, CA	LAX
+C:116	7L	LAN	Boston, MA	BOS	Los Angeles, CA	LAX
+C:117	8M	Qantas	Boston, MA	BOS	Los Angeles, CA	LAX
+C:118	8N	Virgin America	Boston, MA	BOS	Los Angeles, CA	LAX
+C:119	PT 	Piedmont 	Boston, MA	BOS	Los Angeles, CA	LAX
+C:120	OH 	PSA 	Boston, MA	BOS	Los Angeles, CA	LAX
+C:121	AX 	Trans States 	Boston, MA	BOS	Los Angeles, CA	LAX
+C:122	OO 	Sky West 	Boston, MA	BOS	Los Angeles, CA	LAX
+C:123	YV 	Mesa Airlines 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:124	YX 	Republic Airways 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:125	ZW 	Air Wisconsin 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:126	EV 	Express Jet 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:127	MQ 	Envoy Air Inc. 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:128	CP 	Compass Airlines 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:129	BA 	British Airways 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:130	IB 	Iberia 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:131	AY 	Finair 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:132	EY 	Etihad 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:133	QR 	Qatar Airlines 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:134	MH 	Malaysia Airlines 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:135	RJ 	Royal Jordanian 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:136	HU 	Hainan Airlines 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:137	QF 	Qantas 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:138	CX 	Cathay Pacific Airlines 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:139	JL 	Japan (JAL) Airlines 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:140	GK 	Jetstar Japan Co. 	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:141	9O	LAN	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:142	FJ 	Finnair	Dallas/Fort Worth, TX	DFW	Indianapolis, IN	IND
+C:143	1P	TAM	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:144	2Q	Air Tahiti Nui	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:145	3R	 Alaska Airlines	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:146	4S	Cape Air	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:147	5T	Etihad Airways	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:148	6U	Fiji Airlines	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:149	7V	Hawaiian Airlines	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:150	8W	Jet Airways	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:151	9X	Seabourne 	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:152	1Y	WestJet	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:153	ME	MEA 	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:154	SV	Saudia 	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:155	RO	Tarom 	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:156	9W	Jet Airways 	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:157	KQ	Kenya Airways  	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:158	HA	Hawaiian Airlines 	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:159	GA	Garuda Indonesia 	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:160	AM 	Fiji Airways 	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:161	5D 	Aeromexico 	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:162	AF 	Aeromexico Connect 	Indianapolis, IN	IND	Dallas/Fort Worth, TX	DFW
+C:163	A5 	Air France 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:164	WX 	HOP (AF) 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:165	AZ 	City Jet (AF) 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:166	CT 	Alitalia 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:167	XM 	Air One Cityliner (Alitalia) 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:168	CI 	CAI First (Alitalia) 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:169	MU 	China Airlines 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:170	CZ 	China Eastern Airlines 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:171	OK 	China Southern Airlines 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:172	G3 	CSA Czech Airlines 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:173	KL 	GOL Airlines 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:174	KL 	KLM Royal Dutch Airlines 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:175	KE 	KLM Cityhopper 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:176	OA 	Korean Airlines 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:177	VN 	Olympic Air 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:178	VA 	Vietnam Airlines 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:179	EV 	Virgin Australia 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:180	OO 	Express Jet 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:181	S5 	Skywest 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:182	CP 	Shuttle America 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:183	9E 	Compass Airlines 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:184	G7 	Endeavor Air 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:185	SU 	GoJet Airlines 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:186	UX 	Aeroflot 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:187	QX 	Air Europa 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:188	WS 	Horizon Air 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:189	WR 	WestJet 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:190	HV 	WestJet Encore 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:191	BB 	Transavia 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:192	AU 	Seaborne 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:193	VS 	Austral 	Denver, CO	DEN	Phoenix, AZ	PHX
+C:194	FM 	Virgin Atlantic 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:195	AR 	Shanghai Airlines 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:196	9W 	Aerolineas Argentinas 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:197	NH 	Jet Airways, India LTD 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:198	CA	Air China (CA)	Phoenix, AZ	PHX	Portland, OR	PDX
+C:199	NH 	All Nippon Airways (NH)	Phoenix, AZ	PHX	Portland, OR	PDX
+C:200	CI 	China Airlines (CI)	Phoenix, AZ	PHX	Portland, OR	PDX
+C:201	B6	JetBlue Airways (B6)	Phoenix, AZ	PHX	Portland, OR	PDX
+C:202	KE 	Korean Air (KE)	Phoenix, AZ	PHX	Portland, OR	PDX
+C:203	VX	Virgin America (VX)	Phoenix, AZ	PHX	Portland, OR	PDX
+C:204	EK 	All Nippon Airways 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:205	SA 	Emirates Air 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:206	AX 	South African Airways 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:207	C5 	Trans States Holdings 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:208	EV 	Commute Air 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:209	G7 	ExpressJet 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:210	OO 	GoJet 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:211	AC 	SkyWest 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:212	YV 	Air Canada	Phoenix, AZ	PHX	Portland, OR	PDX
+C:213	RX 	Mesa 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:214	OS 	Republic 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:215	NH 	Austrian  	Phoenix, AZ	PHX	Portland, OR	PDX
+C:216	LH 	All Nippon  	Phoenix, AZ	PHX	Portland, OR	PDX
+C:217	SN 	Lufthansa Group 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:218	LX 	Brussels Airlines 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:219	OZ 	Swiss International 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:220	SA 	Asiana	Phoenix, AZ	PHX	Portland, OR	PDX
+C:221	ET 	South African Airways	Phoenix, AZ	PHX	Portland, OR	PDX
+C:222	NZ 	Ethiopian	Phoenix, AZ	PHX	Portland, OR	PDX
+C:223	CA 	Air New Zealand 	Phoenix, AZ	PHX	Portland, OR	PDX
+C:224	OO 	Air China	Phoenix, AZ	PHX	Portland, OR	PDX

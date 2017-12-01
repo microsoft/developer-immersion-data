@@ -1,0 +1,128 @@
+@import 'variables';
+
+.block-cities {
+
+    .block-cities-title {
+        color: $color-blue;
+        font-size: 1.4rem;
+        padding-bottom: .5rem;
+    }
+
+    .block-cities-list {
+        list-style: none;
+        padding-left: 0;
+
+        .block-cities-list-item {
+
+            .block-cities-list-item-figure {
+                background-color: $color-grey-light;
+                display: block;
+                position: relative;
+
+                .block-cities-list-item-figure-image {
+                    height: auto;
+                    width: 100%;
+
+                    &--desktop {
+                        display: none;
+                    }
+                }
+
+                .block-cities-list-item-figure-caption {
+                    background: $color-white-alpha-8;
+                    bottom: 0;
+                    color: $color-blue-medium;
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                    line-height: 2rem;
+                    position: absolute;
+                    text-align: center;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .block-cities {
+
+        .block-cities-list {
+
+            .block-cities-list-item {
+
+                .block-cities-list-item-figure {
+
+                    .block-cities-list-item-figure-image {
+                        display: none;
+
+                        &--desktop{
+                            display: inline;
+                        }
+                    }
+
+                    .block-cities-list-item-figure-image {
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-between(md, lg) {
+    .block-cities {
+
+        .block-cities-list {
+
+            .block-cities-list-item {
+
+                .block-cities-list-item-figure {
+
+                    .block-cities-list-item-figure-caption {
+                        font-size: 1.5rem;
+                        line-height: 3.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-between(lg, xl) {
+    .block-cities {
+
+        .block-cities-list {
+
+            .block-cities-list-item {
+
+                .block-cities-list-item-figure {
+
+                    .block-cities-list-item-figure-caption {
+                        font-size: 1.5rem;
+                        line-height: 4.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .block-cities {
+
+        .block-cities-list {
+
+            .block-cities-list-item {
+
+                .block-cities-list-item-figure {
+
+                    .block-cities-list-item-figure-caption {
+                        font-size: 2rem;
+                        line-height: 5.2rem;
+                    }
+                }
+            }
+        }
+    }
+}

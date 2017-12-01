@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"            
+             xmlns:controls="clr-namespace:ContosoAir.Clients.Controls;assembly=ContosoAir.Clients.Core"    
+             xmlns:effects="clr-namespace:ContosoAir.Clients.Effects;assembly=ContosoAir.Clients.Core"
+             x:Class="ContosoAir.Clients.Views.FeedbackView"
+             Style="{StaticResource BasePageStyle}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="CameraColor">#949494</Color>
+
+            <Style x:Key="SubmitHeaderTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+                <Setter Property="Margin" Value="0, 0, 0, 12" />
+            </Style>
+
+            <Style x:Key="SubmitButtonTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="CancelButtonTextStyle" TargetType="Label"
+                   BasedOn="{StaticResource SubmitButtonTextStyle}">
+                <Setter Property="TextColor" Value="{StaticResource PinkColor}" />
+            </Style>
+
+            <Style x:Key="CameraImageStyle" TargetType="Image">
+                <Setter Property="WidthRequest" Value="60" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0, 48, 0, 6" />
+            </Style>
+
+            <Style x:Key="CameraTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource CameraColor}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+                <Setter Property="Margin" Value="0, 6, 0, 24" />
+            </Style>
+
+            <Style x:Key="FeedbackTitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="EditorStyle" TargetType="Editor">
+                <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HeightRequest" Value="80" />
+                <Setter Property="TextColor" Value="#9BA7B9" />
+                <Setter Property="effects:LineColorEffect.ApplyLineColor"
+                    Value="True" />
+                <Setter Property="effects:LineColorEffect.LineColor"
+                    Value="Transparent" />
+            </Style>
+
+            <Style x:Key="RatingStyle" TargetType="controls:RatingStars">
+                <Setter Property="Precision" Value="Full" />
+                <Setter Property="Rating" Value="0" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HeightRequest" Value="28" />
+                <Setter Property="Margin" Value="-60, 0, 0, 12" />
+            </Style>
+
+            <Style x:Key="MicStyle" TargetType="controls:ToggleButton">
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="HeightRequest" Value="36" />
+                <Setter Property="WidthRequest" Value="36" />
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <!-- BACKGROUND -->
+        <Image 
+            x:Name="UwpBackground" 
+            Aspect="AspectFill"
+            VerticalOptions="Fill"
+            HorizontalOptions="Fill"
+            Source="Assets/background.png">
+            <Image.IsVisible>
+                <OnPlatform           
+                    x:TypeArguments="x:Boolean"
+                    iOS="False"
+                    Android="False"
+                    WinPhone="True"/>
+            </Image.IsVisible>
+        </Image>
+        <ScrollView>
+            <Grid
+                Margin="0, 24">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+                <Grid
+                    Grid.Row="0">
+                    <Label 
+                        Text="Tell us about your flight"
+                        Style="{StaticResource SubmitHeaderTextStyle}"/>
+                </Grid>
+                <!-- FEEDBACK FORM -->
+                <Frame      
+                    Grid.Row="1" 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    OutlineColor="{StaticResource WhiteColor}" 
+                    BackgroundColor="{StaticResource WhiteColor}" 
+                    HasShadow="False"         
+                    Padding="0"
+                    Margin="24, 4">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid
+                            Grid.Row="0"
+                            BackgroundColor="{StaticResource GrayColor}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image
+                                Grid.Row="0"
+								IsVisible="{Binding Image, Converter={StaticResource InverseNullToBoolConverter}}"
+                                Style="{StaticResource CameraImageStyle}">
+                                <Image.Source>
+                                    <OnPlatform                  
+                                        x:TypeArguments="ImageSource"        
+                                        Android="camera.png"
+                                        iOS="camera.png"
+                                        WinPhone="Assets\camera.png"/>
+                                </Image.Source>
+                            </Image>
+                            <Label 
+                                Grid.Row="1" 
+                                Text="Did you have a good flight? &#10;Show us with a photo!"
+                                HorizontalTextAlignment="Center"
+								IsVisible="{Binding Image, Converter={StaticResource InverseNullToBoolConverter}}"
+                                Style="{StaticResource CameraTextStyle}" />
+                            <Image 
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Source="{Binding Image}"
+                                Aspect="AspectFit"
+                                Margin="0, 4"
+                                HeightRequest="150"/>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer                    
+                                    Command="{Binding CameraCommand}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                        <Grid
+                            Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <StackLayout
+                                Grid.Row="0"
+                                Margin="24, 4">
+                                <Label 
+                                    Text="Rate it"
+                                    Style="{StaticResource FeedbackTitleStyle}"/>
+                                <controls:RatingStars
+                                    Rating="{Binding Rating, Mode=TwoWay}"
+                                    Style="{StaticResource RatingStyle}" />
+                            </StackLayout>
+                            <StackLayout
+                                Grid.Row="1"
+                                Margin="24, 0, 24, 24">
+                                <Label 
+                                    Text="Description"
+                                    Style="{StaticResource FeedbackTitleStyle}"/>
+                                <Grid
+                                    BackgroundColor="#B9DCEC"
+                                    Padding="1">
+                                    <StackLayout 
+                                        BackgroundColor="White" 
+                                        Padding="10">
+                                        <Editor 
+                                            AutomationId="description"
+                                            Text="{Binding Description.Value, Mode=TwoWay}"
+                                            BackgroundColor="{StaticResource WhiteColor}"
+                                            Style="{StaticResource EditorStyle}" />
+                                    </StackLayout>
+                                </Grid>
+                                <controls:ToggleButton 
+                                    Animate="True"
+                                    Checked="{Binding IsRecording, Mode=TwoWay}"
+                                    Command="{Binding MicCommand}"
+                                    Style="{StaticResource MicStyle}">
+                                    <controls:ToggleButton.CheckedImage>
+                                        <OnPlatform
+                                            x:TypeArguments="ImageSource"
+                                            Android="mic_off_icon"
+                                            iOS="mic_off_icon"
+                                            WinPhone="Assets/mic_off_icon.png"/>
+                                    </controls:ToggleButton.CheckedImage>
+                                    <controls:ToggleButton.UnCheckedImage>
+                                        <OnPlatform
+                                            x:TypeArguments="ImageSource"
+                                            Android="mic_on_icon"
+                                            iOS="mic_on_icon"
+                                            WinPhone="Assets/mic_on_icon.png"/>
+                                    </controls:ToggleButton.UnCheckedImage>
+                                </controls:ToggleButton>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+                </Frame>
+                <!-- SUBMIT FEEDBACK -->
+                <Frame         
+                    AutomationId="submitfeedback"
+                    Grid.Row="2"   
+                    OutlineColor="#9E9E9E"
+                    BackgroundColor="{StaticResource PinkColor}" 
+                    HasShadow="False"
+                    Padding="0"
+                    Margin="24, 12, 24, 0">
+                    <Grid>
+                        <Label               
+                            Text="Submit feedback"
+                            Style="{StaticResource SubmitButtonTextStyle}"/>
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer                    
+                            Command="{Binding SubmitCommand}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <!-- CANCEL -->
+                <Frame         
+                    Grid.Row="3"   
+                    OutlineColor="#9E9E9E"
+                    BackgroundColor="{StaticResource WhiteColor}" 
+                    HasShadow="False"
+                    Padding="0"
+                    Margin="24, 0, 24, 12">
+                    <Grid>
+                        <Label               
+                            Text="Cancel"
+                            Style="{StaticResource CancelButtonTextStyle}"/>
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer                    
+                            Command="{Binding CancelCommand}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

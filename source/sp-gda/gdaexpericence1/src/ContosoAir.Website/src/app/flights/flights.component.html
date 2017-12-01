@@ -1,0 +1,59 @@
+<div class="footer-background">
+    <div class="container container-footer">
+        <section class="block-flights">
+            <a class="redefine-search" routerLink="/">Change your search <span class="icon icon-arrow-right"></span></a>
+            <hr>
+            <h1 class="block-flights-title">Available flights</h1>
+            <form>
+                <div *ngIf="time_status" class="alert alert-info alert-dismissable">
+                   <button aria-label="Close" class="close" type="button" (click)="close()">
+                        <span>x</span>
+                    </button>
+                    The time required to fetch flights records from <strong> {{preferredRegion}}</strong> is <strong>{{ realTIme }} ms.</strong>
+                </div>
+
+                <h2 class="block-flights-title2">Select departing flight</h2>
+                <div class="row">
+                    <div class="col-12 col-md-2">
+                        <h3 class="block-flights-title3">{{booking.fromCode + ' to '+ booking.toCode}}</h3>
+                    </div>
+                    <div class="col-12 col-md-10">
+                        <days [flights_days]="flightsthere" [date]="booking.fromDate" [fromCode]="booking.fromCode" [toCode]="booking.toCode"></days>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-12 col-md-2">
+                        <options></options>
+                    </div>
+                    <div class="col-12 col-md-10">
+                        <loading [loaded]="FlightsReady"></loading>
+                        <results [flights]="flights_there" [direction]="'there'"></results>
+                    </div>
+                </div>
+                <h2 class="block-flights-title2">Select return flight</h2>
+                <div class="row">
+                    <div class="col-12 col-md-2">
+                        <h3 class="block-flights-title3">{{booking.toCode + ' to '+ booking.fromCode}}</h3>
+                    </div>
+                    <div class="col-12 col-md-10">
+                        <days [flights_days]="flightsback" [date]="booking.endDate" [fromCode]="booking.toCode" [toCode]="booking.fromCode"></days>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-2 visible-sm-up">
+                        <options></options>
+                    </div>
+                    <div class="col-12 col-md-10">
+                        <loading [loaded]="FlightsReady"></loading>
+                        <results [flights]="flights_back" [direction]="'back'"></results>
+                    </div>
+                </div>
+                <div class="text-center text-md-right">
+                    <br>
+                    <button routerLink="/seats" class="btn btn-lg btn-primary" type="button">Next</button>
+                </div>
+
+            </form>
+        </section>
+    </div>
+</div>

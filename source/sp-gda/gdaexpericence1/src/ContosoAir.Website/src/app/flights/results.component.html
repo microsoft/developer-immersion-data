@@ -1,0 +1,52 @@
+<!-- popup -->
+<popup #popup1>
+    <loading [loaded]="LoaderVisibility"></loading>
+    <div style="display: block">
+        <canvas baseChart
+                [options]="doughnutChartOptions"
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+    </div>
+</popup>
+<!-- end  -->
+<ul class="block-flights-results">
+    <li *ngFor="let flight of flights" class="row block-flights-results-list-item" (click)="set(flight)">
+        <span class="col-9">
+            <ul class="block-flights-results-list-item-flights">
+                <li *ngFor="let segment of flight.segments" class="row justify-content-start flex-nowrap block-flights-results-list-item-flights-flight">
+                    <span class="col-4 col-lg-3">
+                        <!-- display flight feedback on click -->
+                        <a (click)="ClickButton(segment)">
+                            Flight
+                            <span [innerText]="segment.flight"></span>
+                        </a>
+                        <!-- end -->
+                    </span>
+                    <span class="col-4 col-lg-3">
+                        <span [innerText]="segment.fromCode"></span>
+                        <span [innerText]="segment.departTime | utc | date:'shortTime'"></span>
+                    </span>
+                    <span class="col-4 col-lg-3">
+                        <span [innerText]="segment.toCode"></span>
+                        <span [innerText]="segment.arrivalTime | utc | date:'shortTime'"></span>
+                    </span>
+                </li>
+            </ul>
+            <span class="row">
+                <span class="col-12">
+                    <span [innerText]="flight.duration"></span> | <a href="#">{{flight.stop}} stop</a>
+                </span>
+            </span>
+        </span>
+        <span class="col-3 text-center text-md-right">
+            <label class="block-flights-results-list-item-price">
+                <span [innerText]="'$' + flight.price"></span>
+                <span class="big-blue-radio" [ngClass]="{'big-blue-radio--active': flight.id === selected }"></span>
+            </label>
+        </span>
+
+    </li>
+</ul>

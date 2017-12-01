@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContosoAir.Clients.Views.SettingsView"      
+             xmlns:triggers="clr-namespace:ContosoAir.Clients.Triggers;assembly=ContosoAir.Clients.Core"               
+             xmlns:animations="clr-namespace:ContosoAir.Clients.Animations;assembly=ContosoAir.Clients.Core"
+             Title=" ">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            
+            <Style x:Key="SettingsTitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="SettingsSectionHeaderStyle" TargetType="Label"
+                   BasedOn="{StaticResource SettingsTitleStyle}">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource PinkColor}" />
+            </Style>
+            
+            <Style x:Key="SettingsHeaderStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
+            
+            <Style x:Key="DelayedSliderStyle"  TargetType="Slider">
+                <Setter Property="Maximum" Value="240" />
+                <Setter Property="Minimum" Value="20" />
+            </Style>
+            
+            <Style x:Key="FeedbackSliderStyle"  TargetType="Slider">
+                <Setter Property="Maximum" Value="300" />
+                <Setter Property="Minimum" Value="30" />
+            </Style>
+
+            <Style x:Key="CancelButtonTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource PinkColor}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+            
+            <Style x:Key="AcceptButtonTextStyle" TargetType="Label"
+                   BasedOn="{StaticResource CancelButtonTextStyle}">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+            </Style>
+            
+            <animations:StoryBoard 
+                x:Key="SettingsAnimation"           
+                Target="{x:Reference SettingsPanel}">
+                <animations:FadeInAnimation 
+                    Direction="Up"
+                    Duration="1000" />
+            </animations:StoryBoard>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Triggers>
+        <EventTrigger
+            Event="Appearing">
+            <triggers:BeginAnimation   
+                Animation="{StaticResource SettingsAnimation}" />
+        </EventTrigger>
+    </ContentPage.Triggers>
+    <ScrollView>
+        <Grid
+            x:Name="SettingsPanel">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="48" />
+            </Grid.RowDefinitions>
+            <!-- BACKGROUND -->
+            <Image 
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                x:Name="UwpBackground" 
+                Aspect="AspectFill"
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill"
+                Source="Assets/background.png">
+                <Image.IsVisible>
+                    <OnPlatform           
+                        x:TypeArguments="x:Boolean"
+                        iOS="False"
+                        Android="False"
+                        WinPhone="True"/>
+                </Image.IsVisible>
+            </Image>
+            <Label 
+                Grid.Row="0"
+                
+                Text="Settings"
+                Style="{StaticResource SettingsTitleStyle}"
+                Margin="12, 24, 12, 12"/>
+            <StackLayout
+                Grid.Row="1"
+                Margin="0, 12, 0, 0">
+                <Label               
+                    Text="Notifications"
+                    Style="{StaticResource SettingsSectionHeaderStyle}"/>
+                <BoxView 
+                    HeightRequest="1"
+                    Color="{StaticResource PinkColor}" />
+            </StackLayout>
+            <Grid
+                Grid.Row="2"
+                Margin="12, 0"
+                RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="Flight delayed delay time"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Label 
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Text="{Binding DelayedTime, StringFormat='{0} seconds'}}" 
+                    HorizontalOptions="End"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Slider 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="1"
+                    Value="{Binding DelayedTime, Mode=TwoWay}"
+                    Style="{StaticResource DelayedSliderStyle}"/>
+            </Grid>
+            <Grid
+                Grid.Row="3" 
+                Margin="12, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label    
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="Feedback delay time"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Label 
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Text="{Binding FeedbackTime, StringFormat='{0} seconds'}}" 
+                    HorizontalOptions="End"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Slider    
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="1"
+                    Value="{Binding FeedbackTime, Mode=TwoWay}"
+                    Style="{StaticResource FeedbackSliderStyle}"/>
+            </Grid>
+
+            <StackLayout
+                Grid.Row="4"
+                Margin="0, 12, 0, 0">
+                <Label               
+                    Text="Endpoints"
+                    Style="{StaticResource SettingsSectionHeaderStyle}"/>
+                <BoxView 
+                    HeightRequest="1"
+                    Color="{StaticResource PinkColor}" />
+            </StackLayout>
+            <Grid
+                Grid.Row="5" 
+                Margin="12, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label    
+                    Grid.Row="0"
+                    Text="Web API URL"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Entry    
+                    Grid.Row="1"
+                    Text="{Binding ContosoAirEndpoint, Mode=TwoWay}"
+                    Style="{StaticResource EntryStyle}" />
+                <Label    
+                    Grid.Row="2"
+                    Text="Tenant"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Entry    
+                    Grid.Row="3"
+                    Text="{Binding Tenant, Mode=TwoWay}"
+                    Style="{StaticResource EntryStyle}" />
+                <Label    
+                    Grid.Row="4"
+                    Text="Client ID"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Entry    
+                    Grid.Row="5"
+                    Text="{Binding ClientId, Mode=TwoWay}"
+                    Style="{StaticResource EntryStyle}" />
+                <Label    
+                    Grid.Row="6"
+                    Text="Sign-up or sign-in policy"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Entry    
+                    Grid.Row="7"
+                    Text="{Binding SignUpSignInPolicy, Mode=TwoWay}"
+                    Style="{StaticResource EntryStyle}" />
+            </Grid>
+
+            <StackLayout
+                Grid.Row="6"
+                Margin="0, 12, 0, 0">
+                <Label               
+                    Text="Bots"
+                    Style="{StaticResource SettingsSectionHeaderStyle}"/>
+                <BoxView 
+                    HeightRequest="1"
+                    Color="{StaticResource PinkColor}" />
+            </StackLayout>
+
+            <Grid
+                Grid.Row="7" 
+                Margin="12, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label    
+                    Grid.Row="0"
+                    Text="Skype bot account"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Entry    
+                    Grid.Row="1"
+                    Text="{Binding SkypeBotAccount, Mode=TwoWay}"
+                    Style="{StaticResource EntryStyle}" />
+                <Label    
+                    Grid.Row="2"
+                    Text="Facebook bot account id"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Entry    
+                    Grid.Row="3"
+                    Text="{Binding FacebookBotAccountId, Mode=TwoWay}"
+                    Style="{StaticResource EntryStyle}" />
+            </Grid>
+
+            <StackLayout
+                Grid.Row="8"
+                Margin="0, 12, 0, 0">
+                <Label               
+                    Text="Api keys"
+                    Style="{StaticResource SettingsSectionHeaderStyle}"/>
+                <BoxView 
+                    HeightRequest="1"
+                    Color="{StaticResource PinkColor}" />
+            </StackLayout>
+
+            <Grid
+                Grid.Row="9" 
+                Margin="12, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label    
+                    Grid.Row="0"
+                    Text="Cognitive services key"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Entry    
+                    Grid.Row="1"
+                    Text="{Binding CognitiveServicesKey, Mode=TwoWay}"
+                    Style="{StaticResource EntryStyle}" />
+                <Label    
+                    Grid.Row="2"
+                    Text="Bing speech api key"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Entry    
+                    Grid.Row="3"
+                    Text="{Binding BingSpeechApiKey, Mode=TwoWay}"
+                    Style="{StaticResource EntryStyle}" />
+            </Grid>
+
+            <StackLayout
+                Grid.Row="10"
+                Margin="0, 12, 0, 0">
+                <Label               
+                    Text="Notification hub"
+                    Style="{StaticResource SettingsSectionHeaderStyle}"/>
+                <BoxView 
+                    HeightRequest="1"
+                    Color="{StaticResource PinkColor}" />
+            </StackLayout>
+
+            <Grid
+                Grid.Row="11" 
+                Margin="12, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label    
+                    Grid.Row="0"
+                    Text="Notification hub name"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Entry    
+                    Grid.Row="1"
+                    Text="{Binding NotificationHubName, Mode=TwoWay}"
+                    Style="{StaticResource EntryStyle}" />
+                <Label    
+                    Grid.Row="2"
+                    Text="Notification hub connection"
+                    Style="{StaticResource SettingsHeaderStyle}"/>
+                <Entry    
+                    Grid.Row="3"
+                    Text="{Binding NotificationHubConnectionString, Mode=TwoWay}"
+                    Style="{StaticResource EntryStyle}" />
+                <Label    
+                    Grid.Row="4"
+                    Text="Android Sender ID"
+                    Style="{StaticResource SettingsHeaderStyle}">
+                    <Label.IsVisible>
+                        <OnPlatform           
+                            x:TypeArguments="x:Boolean"
+                            iOS="False"
+                            Android="True"
+                            WinPhone="False"/>
+                    </Label.IsVisible>
+                </Label>
+                <Entry    
+                    Grid.Row="5"
+                    Text="{Binding AndroidProjectNumber, Mode=TwoWay}"
+                    Style="{StaticResource EntryStyle}">
+                    <Entry.IsVisible>
+                        <OnPlatform           
+                            x:TypeArguments="x:Boolean"
+                            iOS="False"
+                            Android="True"
+                            WinPhone="False"/>
+                    </Entry.IsVisible>
+                </Entry>
+            </Grid>
+            
+            <!-- SIGN UP BUTTON -->
+            <Frame         
+                Grid.Row="12"   
+                OutlineColor="#9E9E9E"
+                BackgroundColor="{StaticResource PinkColor}" 
+                HasShadow="False"
+                Padding="0"
+                Margin="0, 12, 0, 0">
+                <Grid>
+                    <Label               
+                        Text="Accept"
+                        Style="{StaticResource AcceptButtonTextStyle}"/>
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer        
+                        Command="{Binding AcceptCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </Grid>
+    </ScrollView>
+</ContentPage>

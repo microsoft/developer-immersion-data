@@ -1,0 +1,50 @@
+<!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
+<div class="footer-background">
+    <div class="container container-footer">
+        <section class="block-flights">
+            <a class="redefine-search" routerLink="/">Shop for another flight<span class="icon icon-arrow-right"></span></a>
+            <a class="redefine-flight" (click)="GoBackToFlightView()">Go back to flight<span class="icon icon-arrow-right"></span></a>
+            <hr>
+            <h1 class="block-flights-title">Available {{serviceName}}</h1>
+            <form>
+                <div>
+                    <!-- popup -->
+                    <popup #nodedetails>
+                        <div class="row">
+                            <table id="Main">
+                                <tr *ngFor="let graphMetadata of graphMetadataItems">
+                                    <td title="Id">
+                                        <table id="details">
+                                            <tr>
+                                                <td title=""><strong>{{graphMetadata.type}}:</strong></td>
+                                                <td><strong>{{graphMetadata._displayLabel}}</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="Id"><strong>Id:</strong></td>
+                                                <td><strong>{{graphMetadata.id}}</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <table id="Properties">
+                                                        <tr if.bind="graphMetadata.properties"><th colspan="2">Properties</th></tr>
+                                                        <tr *ngFor="let entry of graphMetadataProperties[0] | keys">
+                                                            <td><strong>{{entry.key}}:</strong></td>
+                                                            <td>{{entry.value}}</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </popup>
+                    <div id="network" ref="networkContainer" class="container-fluid" style="height:350px;">
+                        <loading [loaded]="LoaderVisibility"></loading>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

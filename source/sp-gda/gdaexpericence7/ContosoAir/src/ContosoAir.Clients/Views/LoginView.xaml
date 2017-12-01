@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContosoAir.Clients.Views.LoginView" 
+             xmlns:triggers="clr-namespace:ContosoAir.Clients.Triggers;assembly=ContosoAir.Clients.Core"               
+             xmlns:animations="clr-namespace:ContosoAir.Clients.Animations;assembly=ContosoAir.Clients.Core"
+             xmlns:effects="clr-namespace:ContosoAir.Clients.Effects;assembly=ContosoAir.Clients.Core"
+             Style="{StaticResource BasePageStyle}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+           
+            <Style x:Key="SignInButtonTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+            
+            <Style x:Key="SignInButtonImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="Margin" Value="6" />
+            </Style>
+            
+            <Style x:Key="LogoImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="WidthRequest" Value="84" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+            
+            <Style x:Key="NameImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+
+            <Style x:Key="LoginEntryHeaderStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="Margin" Value="4, 0" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+            
+            <Style x:Key="SignUpTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+            
+            <animations:StoryBoard 
+                x:Key="LoginAnimation"           
+                Target="{x:Reference LoginPanel}">
+                <animations:FadeInAnimation 
+                    Direction="Up"
+                    Duration="1000" />
+            </animations:StoryBoard>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Triggers>
+        <EventTrigger
+            Event="Appearing">
+            <triggers:BeginAnimation   
+                Animation="{StaticResource LoginAnimation}" />
+        </EventTrigger>
+    </ContentPage.Triggers>
+    <Grid>
+        <!-- BACKGROUND -->
+        <Image 
+            x:Name="UwpBackground" 
+            Aspect="AspectFill"
+            VerticalOptions="Fill"
+            HorizontalOptions="Fill"
+            Source="Assets/background.png">
+            <Image.IsVisible>
+                <OnPlatform           
+                    x:TypeArguments="x:Boolean"
+                    iOS="False"
+                    Android="False"
+                    WinPhone="True"/>
+            </Image.IsVisible>
+        </Image>
+        <!-- CONTENT -->
+        <Grid   
+            x:Name="LoginPanel"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Margin="48, 24, 48, 48">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <!-- LOGO -->
+            <Image 
+                Grid.Row="0" 
+                Style="{StaticResource LogoImageStyle}">
+                <Image.Source>
+                    <OnPlatform 
+                        x:TypeArguments="ImageSource"
+                        Android="login_icon"
+                        iOS="login_icon"
+                        WinPhone="Assets\Login\icon.png" />
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Command="{Binding SettingsCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <!-- NAME -->
+            <Image 
+                Grid.Row="1"
+                Style="{StaticResource NameImageStyle}"                          
+                WidthRequest="300">
+                <Image.Source>
+                    <OnPlatform 
+                        x:TypeArguments="ImageSource"
+                        Android="contosoair_name"
+                        iOS="contosoair_name"
+                        WinPhone="Assets\Login\contosoair_name.png" />
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Command="{Binding SettingsCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <!-- STANDARD SIGN IN -->
+            <Grid
+                Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="48" />
+                    <RowDefinition Height="48" />
+                </Grid.RowDefinitions>
+                <Label 
+                    Grid.Row="0"
+                    Text="Email Address"
+                    Style="{StaticResource LoginEntryHeaderStyle}"/>
+                <Entry 
+                    Grid.Row="1"
+                    Text="{Binding Email.Value}"  
+                    AutomationId="username"
+                    Placeholder="Email">
+                    <Entry.Style>
+                        <OnPlatform 
+                            x:TypeArguments="Style"
+                            iOS="{StaticResource EntryStyle}"
+                            Android="{StaticResource EntryStyle}"
+                            WinPhone="{StaticResource UwpEntryStyle}"/>
+                    </Entry.Style>
+                    <Entry.Triggers>
+                        <DataTrigger TargetType="Entry" 
+                         Binding="{Binding Email.IsValid}" 
+                         Value="False">
+                            <Setter Property="effects:LineColorEffect.LineColor" Value="{StaticResource ErrorColor}" />
+                        </DataTrigger>
+                    </Entry.Triggers>
+                </Entry>
+                <Label 
+                    Grid.Row="2"
+                    Text="Password"
+                    Style="{StaticResource LoginEntryHeaderStyle}"
+                    Margin="4, 24, 4, 0"/>
+                <Entry 
+                    Grid.Row="3"
+                    Text="{Binding Password.Value}"   
+                    AutomationId="password"
+                    Placeholder="Password"
+                    IsPassword="True">
+                    <Entry.Style>
+                        <OnPlatform 
+                            x:TypeArguments="Style"
+                            iOS="{StaticResource EntryStyle}"
+                            Android="{StaticResource EntryStyle}"
+                            WinPhone="{StaticResource UwpEntryStyle}"/>
+                    </Entry.Style>
+                    <Entry.Triggers>
+                        <DataTrigger TargetType="Entry" 
+                         Binding="{Binding Password.IsValid}" 
+                         Value="False">
+                            <Setter Property="effects:LineColorEffect.LineColor" Value="{StaticResource ErrorColor}" />
+                        </DataTrigger>
+                    </Entry.Triggers>
+                </Entry>
+                <!-- SIGN IN BUTTON -->
+                <Frame  
+                    Grid.Row="4"    
+                    AutomationId="signin"
+                    OutlineColor="#9E9E9E"
+                    BackgroundColor="{StaticResource PinkColor}" 
+                    HasShadow="False"
+                    Padding="0"
+                    Margin="0, 12, 0, 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label 
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Text="Sign in"
+                            Style="{StaticResource SignInButtonTextStyle}"/>
+                        <Image 
+                            Grid.Column="1"
+                            Style="{StaticResource SignInButtonImageStyle}">
+                            <Image.Source>
+                                <OnPlatform
+                                    x:TypeArguments="ImageSource"
+                                    Android="right_chevron_white"
+                                    iOS="right_chevron_white"
+                                    WinPhone="Assets\right_chevron_white.png" />
+                            </Image.Source>
+                        </Image>
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding SignInCommand}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <!-- MSA SIGN IN BUTTON -->
+                <Frame  
+                    Grid.Row="5"           
+                    AutomationId="msa"
+                    OutlineColor="#9E9E9E"
+                    BackgroundColor="{StaticResource MsaLoginBackgroundColor}" 
+                    HasShadow="False"
+                    Padding="0"
+                    Margin="0, 12, 0, 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="96" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image 
+                            Grid.Column="0"
+                            HorizontalOptions="End"
+                            Style="{StaticResource SignInButtonImageStyle}">
+                            <Image.Source>
+                                <OnPlatform
+                                    x:TypeArguments="ImageSource"
+                                    Android="msa"
+                                    iOS="msa"
+                                    WinPhone="Assets\msa.png" />
+                            </Image.Source>
+                        </Image>
+                        <Label 
+                            Grid.Column="1"
+                            Text="Sign in with Microsoft"
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource SignInButtonTextStyle}"/>
+                        <Image 
+                            Grid.Column="2" 
+                            Style="{StaticResource SignInButtonImageStyle}">
+                            <Image.Source>
+                                <OnPlatform
+                                    x:TypeArguments="ImageSource"
+                                    Android="right_chevron_white"
+                                    iOS="right_chevron_white"
+                                    WinPhone="Assets\Login\right_chevron_white.png" />
+                            </Image.Source>
+                        </Image>
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding MicrosoftSignInCommand}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+            <!-- SIGN UP -->
+            <Grid
+                Grid.Row="3"
+                Margin="0, 12, 0, 0">
+                <StackLayout 
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                    <Label 
+                        Text="Don't have an account?"
+                        Style="{StaticResource SignUpTextStyle}"/>
+                    <Label 
+                        Text="Sign up"
+                        VerticalOptions="Center"
+                        Style="{StaticResource SignUpTextStyle}">
+                        <Label.Effects>
+                            <effects:UnderlineEffect />
+                        </Label.Effects>
+                    </Label>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding SignUpCommand}" />
+                    </Frame.GestureRecognizers>
+                </StackLayout>
+            </Grid>
+            <!-- LOADING -->
+            <ActivityIndicator 
+                Grid.Row="0"
+                Grid.RowSpan="4"
+                Color="{StaticResource PinkColor}"
+                IsRunning="{Binding IsBusy}" 
+                IsVisible="{Binding IsBusy}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+        </Grid>
+    </Grid>
+</ContentPage>
