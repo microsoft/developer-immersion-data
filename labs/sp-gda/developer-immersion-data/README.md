@@ -20,7 +20,7 @@ Get hands-on and learn Azure Cosmos DB services. The Azure Cosmos DB is Microsof
 
 ### Experiences ###
 
-<a href="labs/gdaexperience1/story_a_gda_using_cosmosdb/">Experience 1: Build globally distributed applications using Azure Cosmos DB</a>
+<a href="./labs/gdaexperience1/story_a_gda_using_cosmosdb/">Experience 1: Build globally distributed applications using Azure Cosmos DB</a>
     
     In this experience you will come across the power of Azure Cosmos DB's features such as Turnkey global distribution, Consistency, Multi-model API, Partitioning, Failover mechanism and SLA's using ContosoAir website along with SQL DB API, Mongo DB API and Azure Functions.
     
