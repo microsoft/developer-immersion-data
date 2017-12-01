@@ -1,0 +1,192 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmLocalUserName": {
+      "type": "string",
+      "defaultValue": "LabUser"
+    },
+    "vmLocalUserPassword": {
+      "type": "string"
+    },
+    "PrimaryStorageAccountName": {
+      "type": "string"
+    },
+    "PrimaryStorageAccountKey": {
+      "type": "string"
+    },
+    "immersionScriptModuleFileLink": {
+      "type": "string"
+    },
+    "postDeployScriptFileLink": {
+      "type": "string"
+    },
+    "storageSentinelName": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "JumpHostVMName":
+    { 
+      "type":"string",
+       "minValue": 1 
+    }
+  },
+  "variables": {
+    "CosmosDBWithMongoDB": "[concat('feedbackdb', uniqueString(resourceGroup().id))]",
+    "CosmosDBWithDocumentDB": "[concat('contosoairdb', uniqueString(resourceGroup().id))]",
+    "AzureFunctionName": "[concat('AzureFunctionForDeals', uniqueString(resourceGroup().id))]",
+    "storageNames": "[concat('storage', uniqueString(resourceGroup().id))]"
+    },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('JumpHostVMName')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "resources": [
+        {
+          "name": "ConfigureJumpHost",
+          "type": "extensions",
+          "location": "[resourceGroup().location]",
+          "apiVersion": "2015-06-15",
+          "dependsOn": [
+            "[concat('Microsoft.Compute/virtualMachines/', parameters('JumpHostVMName'))]"
+          ],
+          "tags": {
+            "displayName": "ConfigureJumpHost"
+          },
+          "properties": {
+            "publisher": "Microsoft.Compute",
+            "type": "CustomScriptExtension",
+            "typeHandlerVersion": "1.9",
+            "autoUpgradeMinorVersion": false,
+            "settings": {
+              "fileUris": [
+                "[parameters('immersionScriptModuleFileLink')]"
+              ],
+              "scriptFileUri": "[parameters('postDeployScriptFileLink')]",
+              "installGuide": true,
+              "storageSentinelName": "[parameters('storageSentinelName')]",
+              "vmLocalUserName": "[parameters('vmLocalUserName')]",
+              "commandToExecute": "powershell -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command \"Import-Module (Get-ChildItem -Recurse -Path Immersion.psm1).FullName; Invoke-CustomScript\""
+            },
+            "protectedSettings": {
+              "storageAccountName": "[parameters('PrimaryStorageAccountName')]",
+              "storageAccountKey": "[parameters('PrimaryStorageAccountKey')]",
+              "vmLocalUserPassword": "[parameters('vmLocalUserPassword')]"
+            }
+          }
+        }
+      ]
+  } ,    
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "kind": "MongoDB",
+      "name": "[toLower(variables('CosmosDBWithMongoDB'))]",
+      "apiVersion": "2015-04-08",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "properties": {
+        "databaseAccountOfferType": "Standard",
+        "name": "[toLower(variables('CosmosDBWithMongoDB'))]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "kind": "functionapp",
+      "name": "[variables('AzureFunctionName')]",
+      "apiVersion": "2015-08-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "name": "[variables('AzureFunctionName')]",
+        "siteConfig": {
+          "appSettings": [
+            {
+              "name": "AzureWebJobsDashboard",
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageNames'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts/', variables('storageNames')), '2015-05-01-preview').key1)]"
+            },
+            {
+              "name": "AzureWebJobsStorage",
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageNames'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts/', variables('storageNames')), '2015-05-01-preview').key1)]"
+            },
+            {
+              "name": "FUNCTIONS_EXTENSION_VERSION",
+              "value": "~1"
+            },
+            {
+              "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageNames'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts/', variables('storageNames')), '2015-05-01-preview').key1)]"
+            },
+            {
+              "name": "WEBSITE_CONTENTSHARE",
+              "value": "[concat(toLower(variables('AzureFunctionName')), '9868')]"
+            },
+            {
+              "name": "WEBSITE_NODE_DEFAULT_VERSION",
+              "value": "6.5.0"
+            }
+          ]
+        },
+        "clientAffinityEnabled": false
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageNames'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageNames')]",
+      "apiVersion": "2015-05-01-preview",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
+    }
+  ],
+  "outputs": {
+    "subscriptionId": {
+      "type": "string",
+      "value": "[subscription().subscriptionId]"
+    },
+    "jumphostUsername": {
+      "type": "string",
+      "value": "[concat('contoso\\', parameters('vmLocalUserName'))]"
+    },
+    "jumphostPassword": {
+      "type": "string",
+      "value": "[parameters('vmLocalUserPassword')]"
+    },
+    "storageAccountName": {
+      "type": "string",
+      "value": "[parameters('PrimaryStorageAccountName')]"
+    },
+    "storageAccountKey": {
+      "type": "string",
+      "value": "[parameters('PrimaryStorageAccountKey')]"
+    },
+    "cosmosDBEndpointUriForMongo": {
+      "type": "string",
+      "value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('CosmosDBWithMongoDB'))).documentEndpoint]"
+    },
+    "cosmosDBKeyForMongo": {
+      "type": "string",
+      "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts/', variables('CosmosDBWithMongoDB')), '2015-04-08').primaryMasterKey]"
+    },
+    "cosmosDBWithMongoDBName": {
+      "type": "string",
+      "value": "[variables('CosmosDBWithMongoDB')]"
+    },
+    "cosmosDBWithSQLDBName": {
+      "type": "string",
+      "value": "[variables('CosmosDBWithDocumentDB')]"
+    },
+    "azureFunctionName": {
+      "type": "string",
+      "value": "[variables('AzureFunctionName')]"
+    },
+    "myResourceGroupName": {
+      "type": "string",
+      "value": "[resourcegroup().name]"
+    }
+  }
+}

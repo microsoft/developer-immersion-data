@@ -1,0 +1,46 @@
+{
+    "$schema": "https://immtest-web.azurewebsites.net/schemas/0.0.1/ImmersionStoryMetadata.json",
+    "title": "Developing real-time experience using Xamarin App, Cognitive Services and Azure Cosmos DB",
+    "description": "After completing the journey, passenger can give the feedback about there traveling experience to the respective Airlines",
+    "date_created": "2017-10-23",
+    "regions": [
+        "southcentralus"
+    ],
+    "topics": [
+        "Database",
+        "Language support",
+        "Collections" 
+    ],
+    "products": [
+        "Azure Document DB",
+        "Emotion API",
+        "Text Analytics API"
+    ],
+    "jobroles": [
+        "Application Developer"
+    ],
+    "persona_role": "Developer",
+    "audiences": ["Developer"],
+    "level": "Intermediate",
+    "duration_minutes": 90,
+    "access_time_minutes": 120,
+    "warmup_time_minutes": 15,
+    "deployment_time_minutes": 45,
+    "permissions": [ "everybody" ],
+    "primary_template": "template.json",
+    "parameters": {
+		"standalone": "template_facilitator.parameters.json",
+		"student": "template_facilitator.parameters.json",
+        "facilitator": "template_facilitator.parameters.json"        
+    },
+    "post_deploy_script": "SetUserRole.ps1",
+    "resources": {
+        "launch_azure_portal": {
+            "helper": "launchie",
+            "arguments": [
+                "https://portal.azure.com/"
+            ]
+        }
+    },
+    "depends_on": [ "story://Content-Private/content/dfd/SP-GDA/shared" ]
+}

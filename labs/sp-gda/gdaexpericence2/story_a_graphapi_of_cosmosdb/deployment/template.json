@@ -1,0 +1,157 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmLocalUserName": {
+      "type": "string",
+      "defaultValue": "LabUser"
+    },
+    "vmLocalUserPassword": {
+      "type": "string"
+    },
+    "PrimaryStorageAccountName": {
+      "type": "string"
+    },
+    "PrimaryStorageAccountKey": {
+      "type": "string"
+    },
+    "immersionScriptModuleFileLink": {
+      "type": "string"
+    },
+    "postDeployScriptFileLink": {
+      "type": "string"
+    },
+    "storageSentinelName": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "JumpHostVMName":
+    { 
+      "type":"string",
+       "minValue": 1 
+    }
+  },
+  "variables": {
+    "databaseAccounts_graphdb_name": "[concat('graphcosmosdb', uniqueString(resourceGroup().id))]",
+    "databaseAccounts_flightsdb_name": "[concat('flightdetailsdb', uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('JumpHostVMName')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "resources": [
+        {
+          "name": "ConfigureJumpHost",
+          "type": "extensions",
+          "location": "[resourceGroup().location]",
+          "apiVersion": "2015-06-15",
+          "dependsOn": [
+            "[concat('Microsoft.Compute/virtualMachines/', parameters('JumpHostVMName'))]"
+          ],
+          "tags": {
+            "displayName": "ConfigureJumpHost"
+          },
+          "properties": {
+            "publisher": "Microsoft.Compute",
+            "type": "CustomScriptExtension",
+            "typeHandlerVersion": "1.9",
+            "autoUpgradeMinorVersion": false,
+            "settings": {
+              "fileUris": [
+                "[parameters('immersionScriptModuleFileLink')]"
+              ],
+              "scriptFileUri": "[parameters('postDeployScriptFileLink')]",
+              "installGuide": true,
+              "storageSentinelName": "[parameters('storageSentinelName')]",
+              "vmLocalUserName": "[parameters('vmLocalUserName')]",
+              "commandToExecute": "powershell -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command \"Import-Module (Get-ChildItem -Recurse -Path Immersion.psm1).FullName; Invoke-CustomScript\""
+            },
+            "protectedSettings": {
+              "storageAccountName": "[parameters('PrimaryStorageAccountName')]",
+              "storageAccountKey": "[parameters('PrimaryStorageAccountKey')]",
+              "vmLocalUserPassword": "[parameters('vmLocalUserPassword')]"
+            }
+          }
+        }
+      ]
+  } ,   
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "kind": "GlobalDocumentDB",
+      "name": "[variables('databaseAccounts_graphdb_name')]",
+      "apiVersion": "2015-04-08",
+      "location": "South Central US",
+      "tags": {
+        "defaultExperience": "Graph"
+      },
+      "properties": {
+        "databaseAccountOfferType": "Standard",
+        "name": "[variables('databaseAccounts_graphdb_name')]"
+      },
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "kind": "GlobalDocumentDB",
+      "name": "[variables('databaseAccounts_flightsdb_name')]",
+      "apiVersion": "2015-04-08",
+      "location": "South Central US",
+      "tags": {
+        "defaultExperience": "DocumentDB"
+      },
+      "properties": {
+        "databaseAccountOfferType": "Standard",
+        "name": "[variables('databaseAccounts_flightsdb_name')]"
+      },
+      "dependsOn": []
+    }
+  ],
+  "outputs": {
+    "jumphostUsername": {
+      "type": "string",
+      "value": "[concat('contoso\\', parameters('vmLocalUserName'))]"
+    },
+    "jumphostPassword": {
+      "type": "string",
+      "value": "[parameters('vmLocalUserPassword')]"
+    },
+    "storageAccountName": {
+      "type": "string",
+      "value": "[parameters('PrimaryStorageAccountName')]"
+    },
+    "storageAccountKey": {
+      "type": "string",
+      "value": "[parameters('PrimaryStorageAccountKey')]"
+    },
+    "cosmosDBEndpointUriForSQL": {
+      "type": "string",
+      "value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('databaseAccounts_flightsdb_name'))).documentEndpoint]"
+    },
+    "cosmosDBKeyForSQL": {
+      "type": "string",
+      "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('databaseAccounts_flightsdb_name')), '2015-04-08').primaryMasterKey]"
+    },
+    "cosmosDBEndpointUriForGraph": {
+      "type": "string",
+      "value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('databaseAccounts_graphdb_name'))).documentEndpoint]"
+    },
+    "cosmosDBKeyForGraph": {
+      "type": "string",
+      "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', variables('databaseAccounts_graphdb_name')), '2015-04-08').primaryMasterKey]"
+    },
+    "cosmosDbAcc": {
+      "type": "string",
+      "value": "[variables('databaseAccounts_flightsdb_name')]"
+    },
+    "cosmosGraphDb": {
+      "type": "string",
+      "value": "[variables('databaseAccounts_graphdb_name')]"
+    },
+    "myResourceGroupName": {
+      "type": "string",
+      "value": "[resourcegroup().name]"
+    }
+  }
+}

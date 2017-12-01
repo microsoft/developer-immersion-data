@@ -1,0 +1,9 @@
+{
+  "$schema": "https://immtest-web.azurewebsites.net/schemas/0.0.1/ImmersionExperienceMetadata.json",
+  "title": "Globally distributed application",
+  "description": "Get hands-on and learn how to use Azure Cosmos DB, Azure Function.",
+  "story_ids": [
+    "story://Content-Private/content/dfd/SP-GDA/gdaexpericence1/story_a_gda_using_cosmosdb"
+  ],
+  "permissions": [ "everybody" ]
+}
