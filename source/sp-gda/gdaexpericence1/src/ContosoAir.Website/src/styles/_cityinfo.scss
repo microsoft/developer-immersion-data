@@ -1,0 +1,51 @@
+@import 'variables';
+
+.block-cityinfo {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+
+    &-image {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    &-video {
+        display: none;
+    }
+
+    &-title {
+        color: $color-blue-medium;
+        font-size: 1.7rem;
+        margin-bottom: 1rem;
+    }
+
+}
+
+@include media-breakpoint-up(md) {
+
+    .block-cityinfo {
+        margin-bottom: 1rem;
+
+        &-video {
+            animation: show-video 2s forwards;
+            background-color: $color-white;
+            display: block;
+            opacity: 0;
+            position: absolute;
+            top: -9vw;
+            width: 90%;
+
+            @keyframes show-video {
+                0% {
+                    background-color: $color-white;
+                    opacity: 0;
+                }
+
+                100% {
+                    background-color: transparent;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

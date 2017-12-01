@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+             xmlns:animations="clr-namespace:ContosoAir.Clients.Animations;assembly=ContosoAir.Clients.Core"
+             xmlns:triggers="clr-namespace:ContosoAir.Clients.Triggers;assembly=ContosoAir.Clients.Core"  
+             xmlns:effects="clr-namespace:ContosoAir.Clients.Effects;assembly=ContosoAir.Clients.Core"
+             x:Class="ContosoAir.Clients.Views.BotView"
+             Style="{StaticResource BasePageStyle}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="LogoImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="WidthRequest" Value="84" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+
+            <Style x:Key="NameImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+
+            <Style x:Key="BotButtonStyle" TargetType="Button">
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource PinkColor}" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Margin" Value="24, 12" />
+            </Style>
+
+            <Style x:Key="FeedbackButtonStyle" TargetType="Button"
+                   BasedOn="{StaticResource BotButtonStyle}">
+                <Setter Property="BackgroundColor" Value="{StaticResource MsaLoginBackgroundColor}" />
+            </Style>
+
+            <Style x:Key="OrFeedbackTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+                <Setter Property="VerticalOptions"
+                        Value="Fill" />
+            </Style>
+
+            <animations:StoryBoard
+                x:Key="BotButtonAnimation"      
+                Target="{x:Reference BotButton}">
+                <animations:FadeInAnimation 
+                    Direction="Up"
+                    Duration="1000"/>
+            </animations:StoryBoard>
+
+            <animations:StoryBoard
+                x:Key="FeedbackBlockButtonAnimation"      
+                Target="{x:Reference FeedbackBlock}">
+                <animations:FadeInAnimation 
+                    Direction="Up"
+                    Duration="1000"/>
+            </animations:StoryBoard>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Triggers>
+        <EventTrigger Event="Appearing">
+            <triggers:BeginAnimation   
+                Animation="{StaticResource BotButtonAnimation}" />
+            <triggers:BeginAnimation   
+                Animation="{StaticResource FeedbackBlockButtonAnimation}" />
+        </EventTrigger>
+    </ContentPage.Triggers>
+    <Grid>
+        <!-- BACKGROUND -->
+        <Image 
+            x:Name="UwpBackground" 
+            Aspect="AspectFill"
+            VerticalOptions="Fill"
+            HorizontalOptions="Fill"
+            Source="Assets/background.png">
+            <Image.IsVisible>
+                <OnPlatform           
+                    x:TypeArguments="x:Boolean"
+                    iOS="False"
+                    Android="False"
+                    WinPhone="True"/>
+            </Image.IsVisible>
+        </Image>
+        <!-- CONTENT -->
+        <Grid   
+            AutomationId="contact"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Margin="48">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!-- LOGO -->
+            <Image 
+                Grid.Row="0" 
+                Style="{StaticResource LogoImageStyle}">
+                <Image.Source>
+                    <OnPlatform 
+                        x:TypeArguments="ImageSource"
+                        Android="login_icon"
+                        iOS="login_icon"
+                        WinPhone="Assets\Login\icon.png" />
+                </Image.Source>
+            </Image>
+            <!-- NAME -->
+            <Image 
+                Grid.Row="1" 
+                Style="{StaticResource NameImageStyle}"             
+                WidthRequest="300">
+                <Image.Source>
+                    <OnPlatform 
+                        x:TypeArguments="ImageSource"
+                        Android="contosoair_name"
+                        iOS="contosoair_name"
+                        WinPhone="Assets\Login\contosoair_name.png" />
+                </Image.Source>
+            </Image>
+            <Grid
+                Grid.Row="2">
+                <Button 
+                    x:Name="BotButton"
+                    Text="Customer service" 
+                    Command="{Binding OpenBotCommand}"
+                    Style="{StaticResource BotButtonStyle}">
+                    <Button.Image>
+                        <OnPlatform
+					    x:TypeArguments="FileImageSource"
+					    Android="report_open_bot"
+					    iOS="report_open_bot"
+					    WinPhone="Assets\report_open_bot.png" />
+                    </Button.Image>
+                </Button>
+            </Grid>
+            <!-- FEEDBACK -->
+            <Grid
+                x:Name="FeedbackBlock"
+                Grid.Row="3"
+                Margin="0, 12, 0, 0">
+                <StackLayout 
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                    <Label 
+                        Text="or give us "
+                        Style="{StaticResource OrFeedbackTextStyle}"/>
+                    <Label 
+                        Text="feedback!"
+                        Style="{StaticResource OrFeedbackTextStyle}">
+                        <Label.Effects>
+                            <effects:UnderlineEffect />
+                        </Label.Effects>
+                        <Label.Margin>
+                            <OnPlatform
+                                x:TypeArguments="Thickness"
+                                Android="-6, 0, 0, 0"
+                                iOS="-5, 0, 0, 0"
+                                WinPhone="-4, 0, 0, 0" />
+                        </Label.Margin>
+                    </Label>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding FeedbackCommand}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

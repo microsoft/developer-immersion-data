@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContosoAir.Clients.Views.ThankView"  
+             xmlns:animations="clr-namespace:ContosoAir.Clients.Animations;assembly=ContosoAir.Clients.Core"
+             xmlns:triggers="clr-namespace:ContosoAir.Clients.Triggers;assembly=ContosoAir.Clients.Core"  
+             Style="{StaticResource BasePageStyle}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="LogoImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="WidthRequest" Value="84" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+
+            <Style x:Key="NameImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+            
+            <Style x:Key="ThanksTitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+                <Setter Property="Margin" Value="0, 48, 0, 24" />
+            </Style>
+
+            <Style x:Key="ThanksSubTitleStyle" TargetType="Label"
+                   BasedOn="{StaticResource ThanksTitleStyle}">
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+            
+            <Style x:Key="RightChevronImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="WidthRequest" Value="12" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+
+            <animations:StoryBoard
+                x:Key="ThanksTextAnimation"      
+                Target="{x:Reference ThanksText}">
+                <animations:FadeInAnimation 
+                    Direction="Up"
+                    Duration="500"/>
+            </animations:StoryBoard>
+
+            <animations:StoryBoard
+                x:Key="ShopTextAnimation"      
+                Target="{x:Reference ShopText}">
+                <animations:FadeInAnimation 
+                    Direction="Up"
+                    Duration="1000"/>
+            </animations:StoryBoard>
+                       
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Triggers>
+        <EventTrigger Event="Appearing">
+            <triggers:BeginAnimation   
+                Animation="{StaticResource ThanksTextAnimation}" />
+            <triggers:BeginAnimation   
+                Animation="{StaticResource ShopTextAnimation}" />
+        </EventTrigger>
+    </ContentPage.Triggers>
+    <Grid>
+        <!-- BACKGROUND -->
+        <Image 
+            x:Name="UwpBackground" 
+            Aspect="AspectFill"
+            VerticalOptions="Fill"
+            HorizontalOptions="Fill"
+            Source="Assets/background.png">
+            <Image.IsVisible>
+                <OnPlatform           
+                    x:TypeArguments="x:Boolean"
+                    iOS="False"
+                    Android="False"
+                    WinPhone="True"/>
+            </Image.IsVisible>
+        </Image>
+        <!-- CONTENT -->
+        <Grid   
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Margin="48">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <!-- LOGO -->
+            <Image 
+                Grid.Row="0" 
+                Style="{StaticResource LogoImageStyle}">
+                <Image.Source>
+                    <OnPlatform 
+                        x:TypeArguments="ImageSource"
+                        Android="login_icon"
+                        iOS="login_icon"
+                        WinPhone="Assets\Login\icon.png" />
+                </Image.Source>
+            </Image>
+            <!-- NAME -->
+            <Image 
+                Grid.Row="1" 
+                Style="{StaticResource NameImageStyle}"             
+                WidthRequest="300">
+                <Image.Source>
+                    <OnPlatform 
+                        x:TypeArguments="ImageSource"
+                        Android="contosoair_name"
+                        iOS="contosoair_name"
+                        WinPhone="Assets\Login\contosoair_name.png" />
+                </Image.Source>
+            </Image>
+            <Grid
+                x:Name="ThanksText"
+                Grid.Row="2">
+                <Label
+                    x:Name="ThanksTextLabels"
+                    Style="{StaticResource ThanksTitleStyle}"/>
+            </Grid>
+            <Grid
+                x:Name="ShopText"
+                HorizontalOptions="Center"
+                Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label 
+                    Grid.Column="0"
+                    Text="Shop for more flights"
+                    Style="{StaticResource ThanksSubTitleStyle}"/>
+                <Image 
+                    Grid.Column="1"
+                    Style="{StaticResource RightChevronImageStyle}">
+                    <Image.Source>
+                        <OnPlatform 
+                            x:TypeArguments="ImageSource"
+                            Android="right_chevron_white"
+                            iOS="right_chevron_white"
+                            WinPhone="Assets\right_chevron_white.png" />
+                    </Image.Source>
+                </Image>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer                      
+                        Command="{Binding ThanksCommand}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

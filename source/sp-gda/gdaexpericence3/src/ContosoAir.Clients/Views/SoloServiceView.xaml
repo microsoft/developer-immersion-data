@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             x:Class="ContosoAir.Clients.Views.SoloServiceView"
+             xmlns:controls="clr-namespace:ContosoAir.Clients.Controls;assembly=ContosoAir.Clients.Core"
+             xmlns:animations="clr-namespace:ContosoAir.Clients.Animations;assembly=ContosoAir.Clients.Core"
+             xmlns:triggers="clr-namespace:ContosoAir.Clients.Triggers;assembly=ContosoAir.Clients.Core"   
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             Title=" "
+             Style="{StaticResource BasePageStyle}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="SoloServiceImageStyle" TargetType="ffimageloading:CachedImage">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="DownsampleToViewSize" Value="true" />
+                <Setter Property="HeightRequest" Value="120" />
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="24" />
+            </Style>
+            
+            <Style x:Key="SoloServiceHeaderStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource MidGrayColor}" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="SoloServiceTextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="{StaticResource DarkGrayColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+
+            <Style x:Key="AirlineTextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontFamily" Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="AirlineSubHeadStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="TextColor" Value="{StaticResource MidGrayColor}"/>
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="SoloServiceHeadingStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily" Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="RatingStyle" TargetType="controls:RatingStars">
+                <Setter Property="Precision" Value="Full" />
+                <Setter Property="Rating" Value="0" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HeightRequest" Value="28" />
+            </Style>
+
+            <animations:StoryBoard
+                x:Key="SourceSoloServiceAnimation"      
+                Target="{x:Reference SourceSoloService}">
+                <animations:FadeInAnimation 
+                    Direction="Up"
+                    Duration="750"/>
+            </animations:StoryBoard>
+
+            <animations:StoryBoard
+                x:Key="DestSoloServiceAnimation"      
+                Target="{x:Reference DestSoloService}">
+                <animations:FadeInAnimation 
+                    Direction="Up"
+                    Duration="750"/>
+            </animations:StoryBoard>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Triggers>
+        <EventTrigger Event="Appearing">
+            <triggers:BeginAnimation   
+                Animation="{StaticResource SourceSoloServiceAnimation}" />
+        </EventTrigger>
+        <EventTrigger Event="Appearing">
+            <triggers:BeginAnimation   
+                Animation="{StaticResource DestSoloServiceAnimation}" />
+        </EventTrigger>
+    </ContentPage.Triggers>
+    <ScrollView>
+
+        <Grid>
+            
+            <Image 
+                x:Name="UwpBackground" 
+                Aspect="AspectFill"
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill"
+                Source="Assets/background.png">
+                <Image.IsVisible>
+                    <OnPlatform           
+                            x:TypeArguments="x:Boolean"
+                            iOS="False"
+                            Android="False"
+                            WinPhone="True"/>
+                </Image.IsVisible>
+            </Image>          
+            
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid  BackgroundColor="{StaticResource WhiteColor}" IsVisible="{Binding SoloServiceProviders.ShowHideIcon}">
+                <StackLayout   HorizontalOptions="Center" >
+                    <Image                         
+                        Source="Assets/gifimage.gif">
+                    </Image>
+                </StackLayout>
+            </Grid>
+
+                <!-- Airline Information -->
+            <Grid
+                Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20*"></RowDefinition>
+                        <RowDefinition Height="20*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+              
+               
+                <StackLayout  Grid.ColumnSpan="2">                    
+                    <Label 
+                        Text="{Binding SoloServiceProviders.Source_SoloService_AirlineName, Converter={StaticResource StringEmptyConverter}}"
+                        Style="{StaticResource AirlineTextStyle}"/>
+                </StackLayout>
+                <StackLayout Grid.Row="1">
+                    <Label 
+                        Text="{Binding SoloServiceProviders.Source_SoloService_Code, Converter={StaticResource StringEmptyConverter}}"
+                        Style="{StaticResource AirlineSubHeadStyle}"/>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <Label 
+                        Text="{Binding SoloServiceProviders.Source_SoloService_End_Date, Converter={StaticResource StringEmptyConverter}}"
+                        Style="{StaticResource AirlineSubHeadStyle}"/>
+                </StackLayout>
+            </Grid>
+            
+            <!-- Solo Service Provider Information -->
+            <Grid
+                x:Name="SoloServiceProviderInfo"
+                Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*" />
+                    <RowDefinition Height="50*" />
+                </Grid.RowDefinitions>
+
+                <StackLayout 
+                    x:Name="SourceSoloService"
+                    Grid.Row="0"
+                    Margin="20,10">
+                    <Label
+                        Text="Source Solo Service Provider"                                      
+                        Style="{StaticResource SoloServiceHeadingStyle}"/>
+                    <Grid
+                         BackgroundColor="{StaticResource WhiteColor}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*" />
+                            <RowDefinition Height="35*" />
+                            <RowDefinition Height="20*" />
+                            <RowDefinition Height="20*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <ffimageloading:CachedImage     
+                            x:Name="AirlineInfo"
+                            Grid.RowSpan="3"
+                            Margin="10"
+                            Source="{Binding SoloServiceProviders.Source_SoloService_Photo, Converter={StaticResource ByToImageConverter}}"
+                            Style="{StaticResource SoloServiceImageStyle}">
+                            <ffimageloading:CachedImage.Transformations>
+                                <fftransformations:CircleTransformation />
+                            </ffimageloading:CachedImage.Transformations>
+                        </ffimageloading:CachedImage>
+                      
+                        <controls:RatingStars
+                            Grid.Row="3"
+                            Margin="-20, 0, 0, 5"
+                            Rating="{Binding SoloServiceProviders.Source_SoloService_Score, Mode=OneWay}"
+                            Style="{StaticResource RatingStyle}" />
+
+                        <StackLayout
+                            Grid.Column="1"
+                            Margin="10, 10, 10, 5">
+                            <Label
+                                Text="Name"
+                                AutomationId="source_solo_service"
+                                Style="{StaticResource SoloServiceHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding SoloServiceProviders.Source_SoloService_Name, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource SoloServiceTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10, 5, 10, 5">
+                            <Label
+                                Text="Address"
+                                AutomationId="source_solo_address"
+                                Style="{StaticResource SoloServiceHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding SoloServiceProviders.Source_SoloService_Address, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource SoloServiceTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="10, 5, 10, 5">
+                            <Label
+                                Text="Contact No. 1"
+                                AutomationId="source_solo_contact_1"
+                                Style="{StaticResource SoloServiceHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding SoloServiceProviders.Source_SoloService_Phone_1, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource SoloServiceTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Margin="10, 5, 10, 10">
+                            <Label
+                                Text="Contact No. 2"
+                                AutomationId="source_solo_contact_2"
+                                Style="{StaticResource SoloServiceHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding SoloServiceProviders.Source_SoloService_Phone_2, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource SoloServiceTextStyle}"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+                <StackLayout 
+                    x:Name="DestSoloService"
+                    Grid.Row="1" 
+                    Margin="20,10">                    
+                   <Label
+                        Text="Destination Solo Service Provider"                                      
+                        Style="{StaticResource SoloServiceHeadingStyle}"/>
+                    <Grid
+                        BackgroundColor="{StaticResource WhiteColor}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20*" />
+                            <RowDefinition Height="35*" />
+                            <RowDefinition Height="20*" />
+                            <RowDefinition Height="20*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <ffimageloading:CachedImage     
+                            Grid.Column="1"
+                            Grid.RowSpan="3"
+                            Margin="10"
+                            Source="{Binding SoloServiceProviders.Dest_SoloService_Photo, Converter={StaticResource ByToImageConverter}}"
+                            Style="{StaticResource SoloServiceImageStyle}">
+                            <ffimageloading:CachedImage.Transformations>
+                                <fftransformations:CircleTransformation />
+                            </ffimageloading:CachedImage.Transformations>
+                        </ffimageloading:CachedImage>
+                        
+                        <controls:RatingStars
+                            Grid.Column="1"
+                            Grid.Row="3"
+                            Margin="-70, 0, 0, 5"
+                            Rating="{Binding SoloServiceProviders.Dest_SoloService_Score, Mode=OneWay}"
+                            Style="{StaticResource RatingStyle}" />
+
+                        <StackLayout 
+                            Margin="10, 10, 10, 5">
+                            <Label
+                                Text="Name"
+                                AutomationId="dest_solo_service"
+                                Style="{StaticResource SoloServiceHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding SoloServiceProviders.Dest_SoloService_Name, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource SoloServiceTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="1"
+                            Margin="10, 5, 10, 5">
+                            <Label
+                                Text="Address"
+                                AutomationId="dest_solo_address"
+                                Style="{StaticResource SoloServiceHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding SoloServiceProviders.Dest_SoloService_Address, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource SoloServiceTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="2"
+                            Margin="10, 5, 10, 5">
+                            <Label
+                                Text="Contact No. 1"
+                                AutomationId="dest_solo_contact_1"
+                                Style="{StaticResource SoloServiceHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding SoloServiceProviders.Dest_SoloService_Phone_1, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource SoloServiceTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="3"
+                            Margin="10, 5, 10, 10">
+                            <Label
+                                Text="Contact No. 2"
+                                AutomationId="dest_solo_contact_2"
+                                Style="{StaticResource SoloServiceHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding SoloServiceProviders.Dest_SoloService_Phone_2, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource SoloServiceTextStyle}"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </Grid>
+
+        </Grid>
+
+    </ScrollView>
+</ContentPage>

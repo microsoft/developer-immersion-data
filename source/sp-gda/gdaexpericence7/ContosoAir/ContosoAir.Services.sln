@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "ContosoAir.Services", "src\ContosoAir.Services\ContosoAir.Services.njsproj", "{A9CC5D29-D90B-4A74-B508-46860C4B9FC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9CC5D29-D90B-4A74-B508-46860C4B9FC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9CC5D29-D90B-4A74-B508-46860C4B9FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9CC5D29-D90B-4A74-B508-46860C4B9FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9CC5D29-D90B-4A74-B508-46860C4B9FC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51714EC1-AFAE-43AF-87BF-ADEC808ECD56}
+	EndGlobalSection
+EndGlobal

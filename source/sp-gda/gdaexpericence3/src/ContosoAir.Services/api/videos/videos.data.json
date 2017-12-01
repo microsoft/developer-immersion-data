@@ -1,0 +1,10 @@
+﻿{
+  "formats": {
+    "desktop": "(format=mpd-time-csf)",
+    "mobile": "(format=m3u8-aapl)"
+  },
+  "links": {
+    "barcelona": "https://contosoairmedia.streaming.mediaservices.windows.net/f15cdbdb-f715-4527-b329-19884c592163/barcelona-with-audio.ism/manifest"
+  }
+
+}

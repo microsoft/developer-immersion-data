@@ -1,0 +1,238 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmLocalUserName": {
+      "type": "string",
+      "defaultValue": "LabUser"
+    },
+    "vmLocalUserPassword": {
+      "type": "string"
+    },
+    "PrimaryStorageAccountName": {
+      "type": "string"
+    },
+    "PrimaryStorageAccountKey": {
+      "type": "string"
+    },
+    "immersionScriptModuleFileLink": {
+      "type": "string"
+    },
+    "postDeployScriptFileLink": {
+      "type": "string"
+    },
+    "storageSentinelName": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "JumpHostVMName":
+    { 
+      "type":"string",
+       "minValue": 1 
+    }
+  },
+  "variables": {
+    "CosmosDBName": "[concat('feedbackcosmosdv', uniqueString(resourceGroup().id))]",
+    "logicAppName": "[concat('feedbacklogicapp', uniqueString(resourceGroup().id))]",
+    "CognitiveServiceWithTextAnalyticsAPI": "[concat('FeedbackTextAnalyticsAPI', uniqueString(resourceGroup().id))]",
+    "CognitiveServiceWithEmotionAPI": "[concat('FeedbackEmotionAPI', uniqueString(resourceGroup().id))]",
+    "CognitiveServiceWithBingSpeechAPI": "[concat('FeedbackBingSpeechAPI', uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('JumpHostVMName')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "resources": [
+        {
+          "name": "ConfigureJumpHost",
+          "type": "extensions",
+          "location": "[resourceGroup().location]",
+          "apiVersion": "2015-06-15",
+          "dependsOn": [
+            "[concat('Microsoft.Compute/virtualMachines/', parameters('JumpHostVMName'))]"
+          ],
+          "tags": {
+            "displayName": "ConfigureJumpHost"
+          },
+          "properties": {
+            "publisher": "Microsoft.Compute",
+            "type": "CustomScriptExtension",
+            "typeHandlerVersion": "1.9",
+            "autoUpgradeMinorVersion": false,
+            "settings": {
+              "fileUris": [
+                "[parameters('immersionScriptModuleFileLink')]"
+              ],
+              "scriptFileUri": "[parameters('postDeployScriptFileLink')]",
+              "installGuide": true,
+              "storageSentinelName": "[parameters('storageSentinelName')]",
+              "vmLocalUserName": "[parameters('vmLocalUserName')]",
+              "commandToExecute": "powershell -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command \"Import-Module (Get-ChildItem -Recurse -Path Immersion.psm1).FullName; Invoke-CustomScript\""
+            },
+            "protectedSettings": {
+              "storageAccountName": "[parameters('PrimaryStorageAccountName')]",
+              "storageAccountKey": "[parameters('PrimaryStorageAccountKey')]",
+              "vmLocalUserPassword": "[parameters('vmLocalUserPassword')]"
+            }
+          }
+        }
+      ]
+  } ,
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "kind": "GlobalDocumentDB",
+      "name": "[variables('CosmosDBName')]",
+      "apiVersion": "2015-04-08",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "properties": {
+        "databaseAccountOfferType": "Standard",
+        "name": "[variables('CosmosDBName')]"
+      },
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "S1"
+      },
+      "kind": "TextAnalytics",
+      "name": "[variables('CognitiveServiceWithTextAnalyticsAPI')]",
+      "apiVersion": "2016-02-01-preview",
+      "location": "West US",
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "S0"
+      },
+      "kind": "Emotion",
+      "name": "[variables('CognitiveServiceWithEmotionAPI')]",
+      "apiVersion": "2016-02-01-preview",
+      "location": "West US",
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "S0"
+      },
+      "kind": "Bing.Speech",
+      "name": "[variables('CognitiveServiceWithBingSpeechAPI')]",
+      "apiVersion": "2016-02-01-preview",
+      "location": "global",
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "name": "[variables('logicAppName')]",
+      "apiVersion": "2016-06-01",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "LogicApp"
+      },
+      "properties": {
+        "definition": {
+          "$schema": "http://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "$connections": {
+              "defaultValue": {},
+              "type": "Object"
+            }
+          },
+          "triggers": {
+            "request": {
+              "type": "Request",
+              "kind": "Http",
+              "inputs": {
+                "method": "POST",
+                "schema": {
+                  "properties": {
+                    "feedbackText": {
+                      "type": "string"
+                    },
+                    "flightId": {
+                      "type": "string"
+                    },
+                    "ratingOnEmotion": {
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "actions": {
+            "Response": {
+              "runAfter": {},
+              "type": "Response",
+              "inputs": {
+                "statusCode": 200
+              }
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    }
+  ],
+  "outputs": {
+    "jumphostUsername": {
+      "type": "string",
+      "value": "[concat('contoso\\', parameters('vmLocalUserName'))]"
+    },
+    "jumphostPassword": {
+      "type": "string",
+      "value": "[parameters('vmLocalUserPassword')]"
+    },
+    "storageAccountName": {
+      "type": "string",
+      "value": "[parameters('PrimaryStorageAccountName')]"
+    },
+    "storageAccountKey": {
+      "type": "string",
+      "value": "[parameters('PrimaryStorageAccountKey')]"
+    },
+    "cosmosDBEndpointUri": {
+      "type": "string",
+      "value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('CosmosDBName'))).documentEndpoint]"
+    },
+    "cosmosDBKey": {
+      "type": "string",
+      "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts/', variables('CosmosDBName')), '2015-04-08').primaryMasterKey]"
+    },
+    "myResourceGroupName": {
+      "type": "string",
+      "value": "[resourcegroup().name]"
+    },
+    "cosmosDbAcc": {
+      "type": "string",
+      "value": "[variables('CosmosDBName')]"
+    },
+    "logicApp": {
+      "type": "string",
+      "value": "[variables('logicAppName')]"
+    },
+    "cognitiveServiceEmotionAPI": {
+      "type": "string",
+      "value": "[variables('CognitiveServiceWithEmotionAPI')]"
+    },
+    "cognitiveServiceBingSpeechAPI": {
+      "type": "string",
+      "value": "[variables('CognitiveServiceWithBingSpeechAPI')]"
+    },
+    "cognitiveServiceTextAnalyticsAPI": {
+      "type": "string",
+      "value": "[variables('CognitiveServiceWithTextAnalyticsAPI')]"
+    }
+  }
+}

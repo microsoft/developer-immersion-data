@@ -1,0 +1,27 @@
+// sass-lint:disable-all
+
+.<%= className %> {
+    display: inline-block;
+    font: normal normal normal 14px/1 <%= fontName %>;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.<%= className %>-lg {
+  font-size: 1.3333333333333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.<%= className %>-2x { font-size: 2em; }
+.<%= className %>-3x { font-size: 3em; }
+.<%= className %>-4x { font-size: 4em; }
+.<%= className %>-5x { font-size: 5em; }
+.<%= className %>-fw {
+  width: 1.2857142857142858em;
+  text-align: center;
+}
+
+<% _.each(glyphs, function(glyph) { %>.<%= className %>-<%= glyph.name %>:before { content: "\<%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %>" }
+<% }); %>

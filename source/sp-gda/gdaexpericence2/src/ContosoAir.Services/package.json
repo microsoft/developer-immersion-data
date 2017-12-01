@@ -1,0 +1,24 @@
+{
+  "name": "contoso-air.services",
+  "version": "0.0.0",
+  "description": "ContosoAir.Services",
+  "main": "server.js",
+  "author": {
+    "name": "Microsoft"
+  },
+  "dependencies": {
+    "azure": "^1.2.0-preview",
+    "body-parser": "^1.18.2",
+    "documentdb": "*",
+    "glob": "^7.1.1",
+    "request": "^2.83.0",
+    "restify": "^4.3.0",
+    "web-request": "^1.0.7",
+    "mongodb": "*",
+    "gremlin": "^2.6.0",
+    "gremlin-secure": "^1.1.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

@@ -1,0 +1,22 @@
+﻿@using GraphExplorer.Configuration;
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Microsoft Azure GraphExplorer</title>
+
+		<link rel="stylesheet" href="~/ClientApp/vis/vis.min.css" asp-append-version="true" />
+		<link rel="stylesheet" href="~/wwwroot/dist/vendor.css" asp-append-version="true" />
+	</head>
+	<body>
+		@RenderBody()
+
+		<script type="text/javascript" src="~/ClientApp/vis/vis.min.js" asp-append-version="true"></script>
+		<script type="text/javascript" src="~/wwwroot/dist/vendor.js" asp-append-version="true"></script>
+		<script type="text/javascript" src="~/wwwroot/dist/app.js?ver=@AppSettings.Instance.Version" asp-append-version="true"></script>
+
+		@RenderSection("scripts", required: false)
+	</body>
+</html>

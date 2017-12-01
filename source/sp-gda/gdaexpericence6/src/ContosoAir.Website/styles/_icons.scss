@@ -1,0 +1,29 @@
+// sass-lint:disable-all
+
+.icon {
+    display: inline-block;
+    font: normal normal normal 14px/1 icons;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-lg {
+  font-size: 1.3333333333333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.icon-2x { font-size: 2em; }
+.icon-3x { font-size: 3em; }
+.icon-4x { font-size: 4em; }
+.icon-5x { font-size: 5em; }
+.icon-fw {
+  width: 1.2857142857142858em;
+  text-align: center;
+}
+
+.icon-arrow-left:before { content: "\EA01" }
+.icon-arrow-right:before { content: "\EA02" }
+.icon-calendar:before { content: "\EA03" }
+.icon-logo:before { content: "\EA04" }

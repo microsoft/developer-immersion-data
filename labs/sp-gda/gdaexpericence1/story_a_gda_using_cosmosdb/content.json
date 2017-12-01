@@ -1,0 +1,55 @@
+{
+    "$schema": "https://immtest-web.azurewebsites.net/schemas/0.0.1/ImmersionStoryMetadata.json",
+    "title": "Build globally distributed applications using Azure Cosmos DB",
+    "description": "Discover Azure Cosmos DB’s features such as Globally distributed, Consistency, Multi-model API and Partitioning using ContosoAir website along with SQL DB, Mongo DB and Azure Functions.",
+    "date_created": "2017-10-23",
+    "regions": [
+        "southcentralus"
+    ],
+    "topics": [
+        "Azure Functions",
+        "Cosmos DB with SQL API",
+        "Cosmos DB with Mongo API"
+    ],
+    "products": [
+        "Azure Cosmos DB",
+        "Azure Functions"
+    ],
+    "jobroles": [
+        "Application Developer"
+    ],
+    "persona_role": "Developer",
+    "audiences": [
+        "Developer"
+    ],
+    "level": "Intermediate",
+    "duration_minutes": 120,
+    "access_time_minutes": 150,
+    "warmup_time_minutes": 15,
+    "deployment_time_minutes": 45,
+    "permissions": [
+        "everybody"
+    ],
+    "primary_template": "template.json",
+    "post_deploy_script": "SetUserRole.ps1",
+    "parameters": {
+        "facilitator": "template_facilitator.parameters.json",
+        "standalone": "template_facilitator.parameters.json",
+        "student": "template_facilitator.parameters.json"
+    },
+    "resources": {
+        "launch_azure_portal": {
+            "helper": "launchie",
+            "arguments": [
+                "https://portal.azure.com/"
+            ]
+        },
+		"launch_visual_studio": {
+			"helper": "launchvisualstudio",
+            "reset_to": "generaldevelopmentprofile",
+            "solution_file": "C:\\source\\contosoair\\ContosoAir.Website_and_Services.sln"
+
+        }
+    },
+    "depends_on": [ "story://Content-Private/content/dfd/SP-GDA/shared" ]
+}

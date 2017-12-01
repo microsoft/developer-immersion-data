@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContosoAir.Clients.Views.ProfileView"   
+             xmlns:animations="clr-namespace:ContosoAir.Clients.Animations;assembly=ContosoAir.Clients.Core"
+             xmlns:triggers="clr-namespace:ContosoAir.Clients.Triggers;assembly=ContosoAir.Clients.Core"   
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             Title=" "
+             Style="{StaticResource BasePageStyle}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            
+            <Style x:Key="ProfileImageStyle" TargetType="ffimageloading:CachedImage">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="DownsampleToViewSize" Value="true" />
+                <Setter Property="HeightRequest" Value="120" />
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="24" />
+            </Style>
+
+            <Style x:Key="ProfileHeaderStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="ProfileTextStyle" TargetType="Label"
+                   BasedOn="{StaticResource ProfileHeaderStyle}">
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+
+            <animations:StoryBoard
+                x:Key="ProfilePictureAnimation"      
+                Target="{x:Reference ProfilePicture}">
+                <animations:FadeInAnimation 
+                    Direction="Up"
+                    Duration="750"/>
+            </animations:StoryBoard>
+            
+            <animations:StoryBoard
+                x:Key="ProfileInformationAnimation"      
+                Target="{x:Reference ProfileInformation}">
+                <animations:FadeInAnimation 
+                    Direction="Up"
+                    Duration="1000"/>
+            </animations:StoryBoard>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Triggers>
+        <EventTrigger Event="Appearing">
+            <triggers:BeginAnimation   
+                Animation="{StaticResource ProfilePictureAnimation}" />
+            <triggers:BeginAnimation   
+                Animation="{StaticResource ProfileInformationAnimation}" />
+        </EventTrigger>
+    </ContentPage.Triggers>
+    <ContentPage.ToolbarItems>
+        <!-- EDIT PROFILE -->
+        <ToolbarItem 
+            Text="Edit" />
+        <ToolbarItem 
+            x:Name="LogoutToolbarItem"
+            Text="Logout"
+            Command="{Binding LogoutCommand}" />
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <Grid
+            BackgroundColor="{StaticResource PinkColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!-- PROFILE PICTURE -->
+            <Grid
+                Grid.Row="0"  
+                BackgroundColor="{StaticResource DarkPinkColor}">
+                <ffimageloading:CachedImage     
+                    x:Name="ProfilePicture"
+                    Source="{Binding Profile.Image}"
+                    Style="{StaticResource ProfileImageStyle}">
+                    <ffimageloading:CachedImage.Transformations>
+                        <fftransformations:CircleTransformation />
+                    </ffimageloading:CachedImage.Transformations>
+                </ffimageloading:CachedImage>
+            </Grid>
+            <!-- PROFILE INFORMATION -->
+            <Grid
+                x:Name="ProfileInformation"
+                Grid.Row="1"
+                Margin="24">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackLayout
+                    Grid.Row="0"
+                    Margin="0, 0, 0, 12">
+                    <Label
+                        Text="Name"
+                        AutomationId="profileusername"
+                        Style="{StaticResource ProfileHeaderStyle}"/>
+                    <Label 
+                        Text="{Binding Profile.Name, Converter={StaticResource StringEmptyConverter}}"
+                        Style="{StaticResource ProfileTextStyle}"/>
+                </StackLayout>
+                <StackLayout
+                    Grid.Row="2" 
+                    Margin="0, 0, 0, 12">
+                    <Label 
+                        Text="Email"
+                        Style="{StaticResource ProfileHeaderStyle}"/>
+                    <Label 
+                        Text="{Binding Profile.Email, Converter={StaticResource StringEmptyConverter}}"
+                        Style="{StaticResource ProfileTextStyle}"/>
+                </StackLayout>
+                <StackLayout
+                    Grid.Row="3" 
+                    Margin="0, 0, 0, 12">
+                    <Label 
+                        Text="Skype"
+                        Style="{StaticResource ProfileHeaderStyle}"/>
+                    <Label 
+                        Text="{Binding Profile.Skype, Converter={StaticResource StringEmptyConverter}}"
+                        Style="{StaticResource ProfileTextStyle}"/>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

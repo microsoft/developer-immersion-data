@@ -7,7 +7,7 @@
         }
     },
     "variables": {
-        "CosmosDBWithDocumentDB": "[concat('contosoairdbansible', uniqueString(resourceGroup().id))]"
+        "CosmosDBWithDocumentDB": "[concat('contosoairdb', uniqueString(resourceGroup().id))]"
     },  
     "resources": [
         {

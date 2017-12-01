@@ -1,0 +1,81 @@
+@import 'variables';
+
+.footer {
+    background-color: transparent;
+    background-image: url('assets/b-footer.jpg');
+    background-position: center 85%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 4rem;
+    padding-top: 3rem;
+
+    .menu {
+        display: none;
+
+        h4 {
+            font-size: .8rem;
+            font-weight: 600;
+        }
+
+        ul {
+            li {
+                a {
+                    color: $color-black;
+                }
+            }
+        }
+    }
+
+    &-ms {
+        height: auto;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        width: 10rem;
+    }
+
+    &-copyright {
+        font-size: .7rem;
+        font-weight: 600;
+        margin-top: .8rem;
+    }
+}
+
+.route,
+.route-barcelona {
+
+    .footer {
+        background-image: none;
+        margin-top: -3rem;
+        padding-bottom: 5rem;
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .footer {
+        padding-bottom: 10rem;
+
+        .menu {
+            display: flex;
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .footer {
+
+        .footer--col--1 {
+            flex: 0 0 38%;
+            max-width: 38%;
+        }
+
+        .footer--col--2 {
+            flex: 0 0 38%;
+            max-width: 38%;
+        }
+
+        .footer--col--3 {
+            flex: 0 0 24%;
+            max-width: 24%;
+        }
+    }
+}

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    x:Name="Control"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="ContosoAir.Clients.Views.CheckIn">
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="CheckInTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaBold}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="BigCheckInTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaBold}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="CheckInButtonStyle" TargetType="Button">
+                <Setter Property="HeightRequest" Value="60" />
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource PinkColor}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="BarCodeImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="60, 12" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Frame   
+            HeightRequest="240"
+            OutlineColor="#9E9E9E"
+            BackgroundColor="{StaticResource WhiteColor}"
+            HasShadow="False" 
+            Padding="0"
+            Margin="20, 0, 20, 20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid    
+                    BackgroundColor="{StaticResource GrayColor}"
+                    Grid.Row="0">
+                    <Image 
+                        Style="{StaticResource BarCodeImageStyle}">
+                        <Image.Source>
+                            <OnPlatform 
+                                x:TypeArguments="ImageSource"
+                                Android="barcode"
+                                iOS="barcode"
+                                WinPhone="Assets\barcode.png" />
+                        </Image.Source>
+                    </Image>
+                </Grid>
+                <StackLayout            
+                    Grid.Row="1">
+                    <Label 
+                        IsVisible="{Binding IsDelayed, Source={x:Reference Control}, Converter={StaticResource InverseBoolConverter}}"
+                        Text="Check-in done successfully"
+                        Style="{StaticResource CheckInTextStyle}"/>
+                    <Label 
+                        IsVisible="{Binding IsDelayed, Source={x:Reference Control}}"
+                        Text="The flight has been delayed"
+                        TextColor="Red"
+                        Style="{StaticResource CheckInTextStyle}"/>
+                    <Grid
+                        Margin="24, 12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label  
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            HorizontalOptions="End"
+                            Text="{Binding CheckInDeal.FromName, Source={x:Reference Control}}"/>
+                        <Label 
+                            Grid.Column="0"
+                            Grid.Row="1"  
+                            HorizontalOptions="End"
+                            Text="{Binding CheckInDeal.FromCode, Source={x:Reference Control}}"
+                            Style="{StaticResource BigCheckInTextStyle}"/>
+                        <Image 
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Aspect="AspectFit"
+                            HorizontalOptions="Center">
+                            <Image.Source>
+                                <OnPlatform 
+                                    x:TypeArguments="ImageSource"
+                                    Android="flight_connecting_black"
+                                    iOS="flight_connecting_black"
+                                    WinPhone="Assets\Login\flight_connecting_black.png" />
+                            </Image.Source>
+                        </Image>
+                        <Label 
+                            Grid.Column="2"
+                            Grid.Row="0"   
+                            HorizontalOptions="Start"
+                            Text="{Binding CheckInDeal.ToName, Source={x:Reference Control}}"/>
+                        <Label 
+                            Grid.Column="2"
+                            Grid.Row="1"   
+                            HorizontalOptions="Start"
+                            Text="{Binding CheckInDeal.ToCode, Source={x:Reference Control}}"
+                            Style="{StaticResource BigCheckInTextStyle}"/>
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

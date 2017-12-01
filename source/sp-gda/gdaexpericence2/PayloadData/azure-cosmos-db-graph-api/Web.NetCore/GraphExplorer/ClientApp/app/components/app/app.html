@@ -1,0 +1,15 @@
+<template>
+    <require from="./app.css"></require>
+	<require from="./icons.css"></require>
+	
+	<header>
+        <div class="logoWrapper">
+            <img src="../../images/microsoft_logo.png" alt="Microsoft Logo" class="microsoftLogo">
+		    <h3 class="graph">Graph</h3>
+        </div>		
+	</header>
+
+	<main class="${showGuide ? 'resizeForGuide' : ''}">
+		<router-view style="display: flex; flex-direction: column; flex-grow: 1;"></router-view>
+	</main>
+</template>

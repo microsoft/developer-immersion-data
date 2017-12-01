@@ -1,0 +1,33 @@
+<nav class="navbar navbar-light block-navbar">
+    <div class="container">
+        <div *ngIf="name" class="block-navbar-username"><span class="block-navbar-username--logout"> <a (click)="logout()" href="#" class="logout ml-2">Hi, <span [innerText]="name"></span></a></span>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-5 col-lg-5 block-navbar-left">
+                <a routerLink="/" class="navbar-brand">
+                    <img class="block-navbar-left-logo" src="assets/logo_contoso_air.svg">
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-7 col-lg-7 block-navbar-right">
+                <ul class="navbar-nav block-navbar-right-menu">
+                    <li class="nav-item active block-navbar-right-menu-item">
+                        <a class="nav-link" routerLink="/">Book</a>
+                    </li>
+                    <li class="nav-item  block-navbar-right-menu-item">
+                        <a class="nav-link" routerLink="/">Explore</a>
+                    </li>
+                    <li class="nav-item  block-navbar-right-menu-item">
+                        <a class="nav-link" routerLink="/">Travel Info</a>
+                    </li>
+                    <li class="nav-item  block-navbar-right-menu-item">
+                        <a class="nav-link" routerLink="/">Miles</a>
+                    </li>
+                    <li *ngIf="name" class="nav-item  block-navbar-right-menu-item block-navbar-right-menu-item__logout">
+                        <a class="nav-link" (click)="logout()">Hi, <span [innerText]="name"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</nav>

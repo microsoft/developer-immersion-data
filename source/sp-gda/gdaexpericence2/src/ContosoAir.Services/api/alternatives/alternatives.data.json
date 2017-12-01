@@ -1,0 +1,37 @@
+﻿{
+  "from": "Paris",
+  "to": "Barcelona",
+  "boardingpass": "$/documents/boarding-311718169315b.png",
+  "map": "$/documents/map-311718169315.png",
+  "coupon": "$/documents/drink-311718169315.png",
+  "flights": [
+    {
+      "id": 1,
+      "departure": "02:40pm",
+      "arrival": "05:40pm",
+      "stops": 0,
+      "image": "$/documents/alternatives-option1b.png"
+    },
+    {
+      "id": 2,
+      "departure": "12:15pm",
+      "arrival": "02:40pm",
+      "stops": 0,
+      "image": "$/documents/alternatives-option2b.png"
+    },
+    {
+      "id": 3,
+      "departure": "04:20pm",
+      "arrival": "07:40pm",
+      "stops": 0,
+      "image": "$/documents/alternatives-option3b.png"
+    },
+    {
+      "id": 4,
+      "departure": "03:20pm",
+      "arrival": "06:30pm",
+      "stops": 1,
+      "image": "$/documents/alternatives-option4b.png"
+    }
+  ]
+}

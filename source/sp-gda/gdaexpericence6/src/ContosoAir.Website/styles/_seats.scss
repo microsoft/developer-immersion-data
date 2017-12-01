@@ -1,0 +1,302 @@
+@import 'variables';
+
+.block-seats {
+
+    .col-seats {
+        display: none;
+    }
+
+    .row-seats {
+        margin-top: 1rem;
+
+        button {
+            margin-left: .5rem;
+        }
+    }
+
+    .block-seats-flight {
+
+        .block-seats-flight-headings {
+            color: $color-blue-medium;
+            font-size: 1rem;
+
+            .block-seats-flight-headings-title {
+                font-size: 1rem;
+            }
+        }
+
+        .icon-seat {
+            background-color: $color-white;
+            border-color: $color-blue-medium;
+            border-radius: .2rem;
+            border-style: solid;
+            border-width: 1px;
+            display: inline-block;
+            height: 1.4rem;
+            overflow: hidden;
+            width: 1.2rem;
+
+            &::after {
+                border-color: $color-blue-medium;
+                border-radius: 3rem;
+                border-style: solid;
+                border-width: 1px;
+                content: '';
+                display: block;
+                height: 3rem;
+                transform: translate(-.9rem, .85rem);
+                width: 3rem;
+            }
+        }
+
+        .icon-seat-sm {
+            height: 1.5rem;
+            width: 1.3rem;
+
+            &::after {
+                height: 3rem;
+                transform: translate(-.9rem, .85rem);
+                width: 3rem;
+            }
+        }
+
+        .icon-seat-active {
+            background-color: $color-red;
+        }
+
+        .icon-seat-available {
+            cursor: pointer;
+        }
+
+        .icon-seat-unavailable {
+            background-color: $color-grey;
+        }
+
+        .icon-seat-preferred {
+            background-color: $color-red;
+        }
+
+        .icon-seat-company {
+            background-color: $color-blue-light;
+        }
+
+        .block-seats-flight-select {
+            background-color: $color-blue-light;
+            background-image: url('/assets/plane.png');
+            background-position: 51.5% 43.5%;
+            background-repeat: no-repeat;
+            background-size: 270% 500%;
+            height: 16.7rem;
+            margin-top: 2rem;
+            overflow-y: scroll;
+            position: relative;
+
+            .block-seats-flight-select-legend {
+                background: $color-white;
+                box-shadow: 0 0 5px $color-black-alpha-2;
+                display: none;
+                font-size: .7rem;
+                padding: 1rem;
+                position: absolute;
+                right: 1rem;
+                top: 1rem;
+
+                .block-seats-flight-select-legend-items {
+
+                    .block-seats-flight-select-legend-items-item {
+                        line-height: 1.5rem;
+                        vertical-align: middle;
+
+                        .icon-seat {
+                            margin-right: .3rem;
+                            position: relative;
+                            top: .5rem;
+                        }
+                    }
+                }
+            }
+
+            .block-seats-flight-select-seats {
+                color: $color-white;
+                height: 40rem;
+                margin: 0 auto;
+                position: relative;
+                text-align: center;
+
+                .column {
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 8%;
+                }
+
+                .column-letter {
+                    width: 7.5%;
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .block-seats {
+
+        .col-seats {
+            display: block;
+        }
+
+        .row-seats {
+            margin-top: 0;
+
+            button {
+                display: block;
+                margin-left: 0;
+            }
+        }
+
+        .block-seats-flight {
+
+            .icon-seat {
+                height: 1.8rem;
+                width: 1.6rem;
+
+                &::after {
+                    border-radius: 3rem;
+                    height: 5rem;
+                    transform: translate(-1.75rem, 1rem);
+                    width: 5rem;
+                }
+            }
+
+            .icon-seat-sm {
+                height: 1.5rem;
+                width: 1.3rem;
+
+                &::after {
+                    height: 3rem;
+                    transform: translate(-.9rem, .85rem);
+                    width: 3rem;
+                }
+            }
+
+            .block-seats-flight-select {
+                height: 20rem;
+
+                .block-seats-flight-select-seats {
+                    height: 40rem;
+                    width: 20rem;
+
+                    .column {
+                        width: 13%;
+                    }
+
+                    .column-letter {
+                        width: 12.4%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-between(sm, md) {
+    .block-seats {
+
+        .block-seats-flight {
+
+            .block-seats-flight-select {
+                background-position: 51.5% 43%;
+                background-size: 240%;
+                height: 20rem;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .block-seats {
+
+        .block-seats-flight {
+
+            .block-seats-flight-headings {
+                font-size: 1.2rem;
+
+                .block-seats-flight-headings-title {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-between(md, lg) {
+    .block-seats {
+
+        .block-seats-flight {
+
+            .block-seats-flight-select {
+                background-position: 58.7% 43%;
+                background-size: 185%;
+                height: 20.7rem;
+
+                .block-seats-flight-select-seats {
+                    margin-left: 20%;
+                }
+
+                .block-seats-flight-select-legend {
+                    display: block;
+                    width: 8rem;
+
+                    .block-seats-flight-select-legend-title {
+                        color: $color-blue-medium;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-between(lg, xl) {
+    .block-seats {
+
+        .block-seats-flight {
+
+            .block-seats-flight-select {
+                background-position: 74% 43%;
+                background-size: 135%;
+                height: 20.7rem;
+
+                .block-seats-flight-select-seats {
+                    margin-left: 25%;
+                }
+
+                .block-seats-flight-select-legend {
+                    display: block;
+                    width: 17rem;
+
+                    .block-seats-flight-select-legend-title {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .block-seats {
+
+        .block-seats-flight {
+
+            .block-seats-flight-select {
+                background-position: 107% 43%;
+                background-size: 115%;
+                height: 20.7rem;
+
+                .block-seats-flight-select-seats {
+                    margin-left: 27.6%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "pnrCode": "contoso123",
+	"fromCode": "SEA",
+    "toCode": "BCN",
+    "startDate": "2017-09-21T13:40:00Z",
+    "endDate": "2017-09-21T13:40:00Z",
+    "fromRouteId": "1",
+	"toRouteId": "",
+    "isE_Checkin": false,
+    "isCancel": false
+	},
+	  {
+    "pnrCode": "contoso456",
+	"fromCode": "SEA",
+    "toCode": "BCN",
+    "startDate": "2017-09-21T13:40:00Z",
+    "endDate": "2017-09-21T13:40:00Z",
+    "fromRouteId": "1",
+	"toRouteId": "",
+    "isE_Checkin": false,
+    "isCancel": false
+	}
+	
+]
+	

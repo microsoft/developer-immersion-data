@@ -1,0 +1,152 @@
+﻿#console
+{
+	position: absolute;
+	height: 15em;
+	overflow: hidden;
+	background: #333;
+	margin: 0 -14px;
+	border-top: 2px solid #ddd;
+	box-shadow: 0 7px 7px -4px #ddd;
+	transition: all 500ms ease-in-out;
+	z-index: 101;
+	width: 100%;
+	color: #ccc;
+}
+
+#console.resizeForGuide
+{
+    width: calc(100% - 375px);
+}
+
+#console.collapsed
+{
+	height: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+#console.full
+{
+	height: calc(100vh - 200px);
+}
+
+
+/*
+Need this, along with the transition on #stateLinks and #modeLinks 
+because of an IE/Edge quirk where these items never snap back to their
+default height when their containing element (whose overflow is set to hidden)
+animates from height 0 to whatever.
+
+Transitioning min-height from 0 to 1 over a duration at least as long as it
+takes for these items to be revealed solves the problem
+*/
+#console.collapsed #stateLinks,
+#console.collapsed #modeLinks
+{
+	min-height: 0;
+}
+
+#modeLinks,
+#stateLinks
+{
+	position: absolute;
+	background: #333;
+	padding: 2px 0;
+	top: 2px;
+	z-index: 200;
+	transition: min-height linear 1s;
+	min-height: 1px;
+}
+
+#stateLinks
+{
+	right: 20px;
+}
+
+#modeLinks
+{
+	left: 2px;
+}
+
+#modeLinks .linkBtn,
+#stateLinks .linkBtn
+{
+	margin: 0 3px;
+	padding: 4px;
+    color: white;
+}
+
+#consoleOutput
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 30px 25px;
+	font-family: monospace;
+	font-weight: 400;
+	line-height: 1.5em;
+	font-size: 1.2em;
+	overflow-y: scroll;
+    word-wrap: break-word;
+}
+
+#consoleOutput .input:before,
+#consoleOutput .output:before
+{
+	margin-right: 10px;
+}
+
+#consoleOutput .input
+{
+	color: lightgreen;
+}
+#consoleOutput .input:before
+{
+	content: "gremlin>";
+}
+
+#consoleOutput .output
+{
+	color: lightblue;
+}
+
+#consoleOutput .output:before
+{
+	content: "==>";
+}
+
+.intro
+{
+	background: transparent;
+	color: #ccc;
+	border: none;
+	font-size: 0.5em;
+}
+
+@keyframes pulse
+{
+	0%
+	{
+		transform: scale(1)
+	}
+
+	50%
+	{
+		transform: scale(1.5)
+	}
+
+	100%
+	{
+		transform: scale(1)
+	}
+}
+
+.pulseAnimation
+{
+	animation-name: pulse;
+	animation-duration: 300ms;
+	animation-timing-function: cubic-bezier(.36,.07,.19,.97);
+}
