@@ -13,7 +13,7 @@ Get hands-on and learn Azure Cosmos DB services. The Azure Cosmos DB is Microsof
 - Microsoft Power BI Desktop 2.51.4885.701
 - Microsoft R Open 3.4.2
 - SQL Migration Tool(dtui)
-- SP-DGA (Deploy Bot Packages)
+- SP-GDA (Deploy Bot Packages)
 - Ubuntu bash on Windows
 - Install Ansible Azure 2.4.1.0 on Ubuntu Bash
 - Visual Studio Community 2017
