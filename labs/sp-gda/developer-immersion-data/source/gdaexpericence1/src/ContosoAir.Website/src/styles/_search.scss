@@ -1,0 +1,154 @@
+@import 'variables';
+
+.block-search {
+    background-color: $color-grey-light;
+    background-image: url('assets/b-home.jpg');
+    background-position: center bottom;
+    background-repeat: repeat-x;
+    padding: 2rem 0 4rem;
+    position: relative;
+
+    .loading-wrapper {
+        left: 5%;
+        width: 90%;
+    }
+
+    .block-search-row {
+        position: relative;
+
+            .block-search-row-logo {
+            color: $color-blue-alpha-2;
+            font-size: 8rem;
+            left: 40%;
+            line-height: 7rem;
+            position: absolute;
+            top: 0;
+        }
+    }
+
+    .block-search-message {
+        border-bottom: .4rem solid $color-white;
+        color: $color-blue;
+        display: inline-block;
+        margin-bottom: 2rem;
+        position: relative;
+
+        .block-search-message-title {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 2.2rem;
+        }
+
+        &--video {
+            border-bottom: 0;
+            width: 100%;
+        }
+    }
+
+    .block-search-form {
+
+        .block-search-form-title {
+            color: $color-blue-medium;
+            font-size: 1.4rem;
+            margin-bottom: .9rem;
+        }
+
+        .block-search-form-options {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: .5rem;
+
+            .block-search-form-options-option {
+                border: 1px $color-grey solid;
+                border-radius: 5px;
+                color: $color-grey;
+                display: inline-block;
+                margin-bottom: .5rem;
+                padding: .2rem 0;
+                text-align: center;
+                width: 100%;
+            }
+
+            .block-search-form-options-option--active {
+                border-color: $color-blue-medium;
+                color: $color-blue-medium;
+            }
+        }
+
+        .block-search-form-date {
+            position: relative;
+
+            .block-search-form-date-button {
+                bottom: 0;
+                cursor: pointer;
+                display: block;
+                font-size: 1.2rem;
+                position: absolute;
+                right: .6rem;
+            }
+        }
+
+        .block-search-form-button {
+            width: 100%;
+        }
+    }
+}
+
+.block-search--city {
+    background-image: url('assets/b-barcelona.jpg');
+    background-position: center center;
+
+    .block-search-row {
+
+        .block-search-row-logo {
+            color: $color-white-alpha-2;
+        }
+    }
+
+    .block-search-message {
+        border-color: $color-blue;
+        color: $color-white;
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .block-search {
+
+        .block-search-form {
+
+            .block-search-form-options {
+                flex-direction: row;
+                justify-content: space-between;
+
+                .block-search-form-options-option {
+                    width: 32%;
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .block-search {
+        background-size: cover;
+        padding: 6rem 0 8rem;
+
+        .block-search-message {
+
+            .block-search-message-title {
+                font-size: 3.2rem;
+                line-height: 3.4rem;
+            }
+        }
+
+        .block-search-row {
+
+                .block-search-row-logo {
+                font-size: 20rem;
+                left: 25%;
+                line-height: 20rem;
+                top: 20%;
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+﻿[
+  {
+    "booking_id": "i9WMDb",
+    "userName": "John Smith",
+    "seatNumber": "21B",
+    "fromCode": "BCN",
+    "toCode": "SEA",
+    "startDate": "2017-01-28",
+    "endDate": "2017-01-28",
+    "thereId": "145",
+    "backId": "148"
+  }
+]

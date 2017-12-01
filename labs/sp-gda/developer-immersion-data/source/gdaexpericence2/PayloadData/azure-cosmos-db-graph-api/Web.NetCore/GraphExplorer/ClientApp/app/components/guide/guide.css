@@ -1,0 +1,97 @@
+﻿#guide
+{
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding: 10px;
+    background: white;
+    border-left: 2px solid #ddd;
+    z-index: 1000;
+    transition: all 500ms ease-in-out;
+    overflow: auto;
+}
+
+#guide.collapsed
+{
+    width: 0px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#guide.shown
+{
+    width: 375px;
+}
+
+footer
+{
+    text-align: center;
+}
+
+#buttons button
+{
+    width: 130px;
+    padding: 9px 30px;
+    border: none;
+}
+
+#guide button.primaryButton
+{
+    color: #FFF;
+    background: #0078D7;
+}
+
+#guide button.primaryButton[disabled]
+{
+    background: #71a9d6;
+}
+
+#guide button[disabled]
+{
+    background: #f3f3f3;
+}
+
+#guide button.icon-close
+{
+    position: absolute;
+    background: none;
+    cursor: pointer;
+    width: 20px;
+    padding: 0;
+    min-width: 20px;
+    right: 10px;
+    top: 10px;
+    border: none;
+}
+
+#guide.collapsed button.icon-close
+{
+    display: none;
+}
+
+#guide .query
+{
+    background: #eee;
+    border: 1px solid #aaa;
+    padding: 10px;
+    margin: 10px 0;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+#guide label
+{
+    font-weight: 600;
+    display: block;
+}
+
+#guide input 
+{
+    width: 100%;
+}
+
+#guide .highlight
+{
+    background: yellow;
+}

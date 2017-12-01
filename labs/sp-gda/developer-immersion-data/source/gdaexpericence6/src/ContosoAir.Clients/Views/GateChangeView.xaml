@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContosoAir.Clients.Views.GateChangeView"
+             xmlns:controls="clr-namespace:ContosoAir.Clients.Controls;assembly=ContosoAir.Clients.Core"
+             xmlns:animations="clr-namespace:ContosoAir.Clients.Animations;assembly=ContosoAir.Clients.Core"
+             xmlns:triggers="clr-namespace:ContosoAir.Clients.Triggers;assembly=ContosoAir.Clients.Core"   
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             Title=" "
+             Style="{StaticResource BasePageStyle}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+
+            <Style x:Key="FlightDelayHeaderStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource MidGrayColor}" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="FlightDelayTextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="{StaticResource DarkGrayColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+
+            <Style x:Key="AirlineTextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontFamily" Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="AirlineSubHeadStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="TextColor" Value="{StaticResource MidGrayColor}"/>
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="FlightDelayHeadingStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily" Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <animations:StoryBoard
+                x:Key="DepartingFlightAnimation"      
+                Target="{x:Reference DepartingFlight}">
+                <animations:FadeInAnimation 
+                    Direction="Up"
+                    Duration="750"/>
+            </animations:StoryBoard>
+
+            <animations:StoryBoard
+                x:Key="ReturnFlightAnimation"      
+                Target="{x:Reference ReturnFlight}">
+                <animations:FadeInAnimation 
+                    Direction="Up"
+                    Duration="750"/>
+            </animations:StoryBoard>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Triggers>
+        <EventTrigger Event="Appearing">
+            <triggers:BeginAnimation   
+                Animation="{StaticResource DepartingFlightAnimation}" />
+        </EventTrigger>
+        <EventTrigger Event="Appearing">
+            <triggers:BeginAnimation   
+                Animation="{StaticResource ReturnFlightAnimation}" />
+        </EventTrigger>
+    </ContentPage.Triggers>
+    <ScrollView>
+
+        <Grid>
+            <Image 
+                x:Name="UwpBackground" 
+                Aspect="AspectFill"
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill"
+                Source="Assets/background.png">
+                <Image.IsVisible>
+                    <OnPlatform           
+                            x:TypeArguments="x:Boolean"
+                            iOS="False"
+                            Android="False"
+                            WinPhone="True"/>
+                </Image.IsVisible>
+            </Image>
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid  BackgroundColor="{StaticResource WhiteColor}" IsVisible="{Binding FlightDelayDetails.LodingIcon}">
+                <StackLayout   HorizontalOptions="Center" >
+                    <Image                         
+                        Source="Assets/gifimage.gif">
+                    </Image>
+                </StackLayout>
+            </Grid>
+
+            <Grid
+                Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                </Grid>
+                <StackLayout>
+                    <Label 
+                        Text="Gate Change Details"
+                        Style="{StaticResource AirlineTextStyle}"/>
+                </StackLayout>               
+            </Grid>
+
+            <!-- Flight Delay Information -->
+            <Grid
+                x:Name="FlightDelayInfo"
+                Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*" />
+                    <RowDefinition Height="50*" />
+                </Grid.RowDefinitions>
+
+                <StackLayout 
+                    x:Name="DepartingFlight"
+                    Grid.Row="0"
+                    Margin="20,10">
+                    <Label
+                        Text="{Binding FlightDelayDetails.DepartingFlightName, Converter={StaticResource StringEmptyConverter}}"                                      
+                        Style="{StaticResource FlightDelayHeadingStyle}"/>
+                    <Grid
+                         BackgroundColor="{StaticResource WhiteColor}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="18*" />
+                            <RowDefinition Height="18*" />
+                            <RowDefinition Height="18*" />
+                            <RowDefinition Height="18*" />
+                            <RowDefinition Height="28*" />
+                        </Grid.RowDefinitions>
+
+                        <StackLayout
+                            Margin="10, 10, 10, 5"
+                            >
+                            <Label
+                                Text="Source"
+                                AutomationId="source_solo_service"
+                                Style="{StaticResource FlightDelayHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding FlightDelayDetails.DepartingFlightSorce, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource FlightDelayTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="1"
+                            Margin="10, 5, 10, 5">
+                            <Label
+                                Text="Destination"
+                                AutomationId="source_solo_address"
+                                Style="{StaticResource FlightDelayHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding FlightDelayDetails.DepartingFlightDest, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource FlightDelayTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="2"
+                            Margin="10, 5, 10, 5">
+                            <Label
+                                Text="Flight Timing Before Delay"
+                                AutomationId="source_solo_contact_1"
+                                Style="{StaticResource FlightDelayHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding FlightDelayDetails.DepartingFlightDTimeBD, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource FlightDelayTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="3"
+                            Margin="10, 5, 10, 5">
+                            <Label
+                                Text="Flight Timing After Delay"
+                                AutomationId="source_solo_contact_2"
+                                Style="{StaticResource FlightDelayHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding FlightDelayDetails.DepartingFlightDTimeAD, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource FlightDelayTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="4"
+                            Margin="10, 5, 10, 10">
+                            <Label 
+                                Text="{Binding FlightDelayDetails.DepartingFlightMsg, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource FlightDelayHeaderStyle}"/>
+                        </StackLayout>
+
+                    </Grid>
+                </StackLayout>
+                <StackLayout 
+                    Grid.Row="1"
+                    x:Name="ReturnFlight"                    
+                    Margin="20,10">
+                    <Label
+                        Text="{Binding FlightDelayDetails.ReturnFlightName, Converter={StaticResource StringEmptyConverter}}"                                      
+                        Style="{StaticResource FlightDelayHeadingStyle}"/>
+                    <Grid
+                         BackgroundColor="{StaticResource WhiteColor}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="18*" />
+                            <RowDefinition Height="18*" />
+                            <RowDefinition Height="18*" />
+                            <RowDefinition Height="18*" />
+                            <RowDefinition Height="28*" />
+                        </Grid.RowDefinitions>
+
+                        <StackLayout
+                            Margin="10, 10, 10, 5">
+                            <Label
+                                Text="Source"
+                                AutomationId="source_solo_service"
+                                Style="{StaticResource FlightDelayHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding FlightDelayDetails.ReturnFlightSorce, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource FlightDelayTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="1"
+                            Margin="10, 5, 10, 5">
+                            <Label
+                                Text="Destination"
+                                AutomationId="source_solo_address"
+                                Style="{StaticResource FlightDelayHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding FlightDelayDetails.ReturnFlightDest, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource FlightDelayTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="2"
+                            Margin="10, 5, 10, 5">
+                            <Label
+                                Text="Flight Timing Before Delay"
+                                AutomationId="source_solo_contact_1"
+                                Style="{StaticResource FlightDelayHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding FlightDelayDetails.ReturnFlightDTimeBD, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource FlightDelayTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="3"
+                            Margin="10, 5, 10, 5">
+                            <Label
+                                Text="Flight Timing After Delay"
+                                AutomationId="source_solo_contact_2"
+                                Style="{StaticResource FlightDelayHeaderStyle}"/>
+
+                            <Label 
+                                Text="{Binding FlightDelayDetails.ReturnFlightDTimeAD, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource FlightDelayTextStyle}"/>
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="4"
+                            Margin="10, 5, 10, 10">
+                            <Label 
+                                Text="{Binding FlightDelayDetails.ReturnFlightMsg, Converter={StaticResource StringEmptyConverter}}"
+                                Style="{StaticResource FlightDelayHeaderStyle}"/>
+                        </StackLayout>
+
+
+                    </Grid>
+                </StackLayout>
+            </Grid>
+
+        </Grid>
+
+    </ScrollView>
+</ContentPage>

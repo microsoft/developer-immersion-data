@@ -1,0 +1,25 @@
+<div class="block-flights-days">
+    <div class="row">
+        <div class="col-12 block-flights-days-slider">
+            <div class="row">
+                <div class="col-12 col-sm-1 block-flights-days-slider-arrow">
+                    <img src="../../icons/arrow-left.svg" style="padding-bottom: 10px;" />
+                </div>
+                <div class="col-12 col-sm-10">
+                    <ul class="block-flights-days-slider-items">
+                        <li *ngFor="let day of days; let i = index" class="block-flights-days-slider-items-item">
+                            <span class="block-flights-days-slider-items-item-content" [ngClass]="{'active': i === 3}">
+                                <span class="d-block" [innerText]="day.date | date:'EEEE'"></span>
+                                <span class="d-block" [innerText]="day.date | date:'MMM d'"></span>
+                                <span class="d-block block-flights-days-slider-items-item-content-price" [innerText]="'$' + day.price"></span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-1 block-flights-days-slider-arrow">
+                    <img src="../../icons/arrow-right.svg" style="padding-bottom: 10px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

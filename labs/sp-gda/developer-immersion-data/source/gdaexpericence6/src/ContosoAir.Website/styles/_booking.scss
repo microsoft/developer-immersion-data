@@ -1,0 +1,146 @@
+@import 'variables';
+
+.block-booking {
+
+    .cities--indicator {
+        color: $color-blue-medium;
+        margin-bottom: 1rem;
+        text-align: center;
+        width: 15rem;
+
+        &--line {
+            background-color: $color-blue-medium;
+            display: block;
+            height: 2px;
+            margin: 0 auto;
+            position: relative;
+            top: .8rem;
+            width: 80%;
+
+            &::before {
+                border-color: $color-blue-medium;
+                border-radius: 5px;
+                border-style: solid;
+                border-width: 2px;
+                box-sizing: content-box;
+                content: ' ';
+                display: block;
+                height: 4px;
+                left: -6px;
+                position: absolute;
+                top: -3px;
+                width: 4px;
+            }
+
+            &::after {
+                border-color: $color-blue-medium;
+                border-radius: 5px;
+                border-style: solid;
+                border-width: 2px;
+                box-sizing: content-box;
+                content: ' ';
+                display: block;
+                height: 4px;
+                position: absolute;
+                right: -6px;
+                top: -3px;
+                width: 4px;
+            }
+        }
+
+        .cell {
+            font-size: .8rem;
+            width: 33.33333%;
+
+            &--letters {
+                font-size: 2.5rem;
+                font-weight: 600;
+                line-height: .8;
+            }
+        }
+    }
+
+    .receipt-summary {
+        line-height: 1;
+        margin-bottom: 2rem;
+
+        h2 {
+            color: $color-blue-medium;
+            font-size: .9rem;
+            margin-bottom: .3rem;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+
+    .block-booking-title {
+        color: $color-blue-medium;
+        font-size: 1.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .block-booking-title2 {
+        color: $color-grey-dark;
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .block-booking-title3 {
+        color: $color-blue-medium;
+        font-size: 1.3rem;
+    }
+
+    .block-booking-passenger {
+        color: $color-grey-dark;
+        font-size: 1rem;
+    }
+
+    .block-booking-total {
+        color: $color-grey-dark;
+        font-size: 1.2rem;
+        margin-bottom: .5rem;
+    }
+
+    .block-booking-underline {
+        border-bottom: 1px solid $color-blue-light;
+        border-top: 0;
+        display: block;
+        margin-bottom: .5rem;
+        margin-top: 0;
+    }
+
+    .block-booking-link {
+        color: $color-blue-medium;
+        text-decoration: underline;
+    }
+
+     .block-booking-buttons {
+
+            .btn {
+                font-size: .8rem;
+                margin-bottom: .5rem;
+                margin-left: auto;
+                margin-right: auto;
+                padding: .6rem 0;
+                width: 80%;
+            }
+     }
+}
+
+@include media-breakpoint-up(sm) {
+    .block-booking {
+        .block-booking-buttons {
+
+            .btn {
+                font-size: .9rem;
+                margin-bottom: 0;
+                margin-left: .5rem;
+                margin-right: 0;
+                padding: .6rem 4rem;
+                width: auto;
+            }
+        }
+    }
+}

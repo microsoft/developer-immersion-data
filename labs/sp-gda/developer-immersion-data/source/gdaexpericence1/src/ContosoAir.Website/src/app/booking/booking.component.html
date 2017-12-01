@@ -1,0 +1,97 @@
+<div class="container container-footer">
+    <section class="block-booking">
+        <a class="redefine-search" routerLink="/">Shop for another flight <span class="icon icon-arrow-right"></span></a>
+        <hr>
+        <div class="pos-r">
+            <loading [loaded]="BookingReady"></loading>
+            <h1 *ngIf="!PurchaseReady" class="block-booking-title">Flight Summary</h1>
+            <h1 *ngIf="PurchaseReady" class="block-booking-title">Flight booked!</h1>
+            <div *ngIf="PurchaseReady" class="cities--indicator text-center">
+                <div class="d-flex">
+                    <div class="cell">{{booking.fromCode}}</div>
+                    <div class="cell"></div>
+                    <div class="cell">{{booking.toCode}}</div>
+                </div>
+                <div class="d-flex">
+                    <div class="cell cell--letters">{{booking.fromCode}}</div>
+                    <div class="cell"><span class="cities--indicator--line"></span></div>
+                    <div class="cell cell--letters">{{booking.toCode}}</div>
+                </div>
+            </div>
+            <h2 *ngIf="!PurchaseReady" class="block-booking-title2">Please review the information below before confirming your booking.</h2>
+            <div *ngIf="PurchaseReady" class="receipt-summary">
+                <h2 class="block-booking-title2">Your receipt has been sent to you via email.</h2>
+                <p>Please note that this is not a boarding pass.</p>
+                <p>You may check in for your flight up to 24 hours in advance of your departure.</p>
+            </div>
+            <span *ngIf="name">
+                <h3 class="block-booking-title3">Passenger Name</h3>
+                <p class="block-booking-passenger" [innerText]="name"></p>
+            </span>
+            <div class="row">
+                <div class="col-12 col-md-10">
+                    <h2 class="block-booking-title3 mb-4 mt-3" [innerText]="booking.fromDate | date:'yMMMMd'"></h2>
+                    <ul>
+                        <li class="row">
+                            <span class="col-3">FLIGHT</span>
+                            <span class="col-3">DEPARTS</span>
+                            <span class="col-3">ARRIVES</span>
+                            <span class="col-3">SEAT</span>
+                            <span class="col-12 mt-1">
+                                <hr class="block-booking-underline">
+                            </span>
+                        </li>
+                        <li *ngFor="let segment of booking.there.segments" class="row mb-3">
+                            <span class="col-3" [innerText]="'Flight ' + segment.flight"></span>
+                            <span class="col-3"><span [innerText]="segment.fromCity"></span><br><span [innerText]="segment.departTime | utc | date:'shortTime'"></span></span>
+                            <span class="col-3"><span [innerText]="segment.toCity"></span><br>2:00 PM</span>
+                            <span class="col-3" [innerText]="segment.seat"></span>
+                        </li>
+                    </ul>
+                    <div>
+                        <span class="block-booking-link">Distance:</span> <span [innerText]="booking.there.distance"></span> mi | <span class="block-booking-link">Duration:</span> <span [innerText]="booking.there.duration">13h 00m</span>
+                    </div>
+                    <span class="row mt-3">
+                        <span class="col-12">
+                            <hr class="block-booking-underline">
+                        </span>
+                    </span>
+
+                    <h2 class="block-booking-title3 mb-4 mt-3" [innerText]="booking.endDate | date:'yMMMMd'"></h2>
+                    <ul>
+                        <li *ngFor="let segment of booking.back.segments" class="row">
+                            <span class="col-3" [innerText]="'Flight ' + segment.flight"></span>
+                            <span class="col-3"><span [innerText]="segment.fromCity">Seattle</span><br><span [innerText]="segment.departTime | utc | date:'shortTime'"></span></span>
+                            <span class="col-3"><span [innerText]="segment.toCity"></span><br>2:00 PM</span>
+                            <span class="col-3" [innerText]="segment.seat"></span>
+                        </li>
+                    </ul>
+                    <span class="block-booking-link">Distance:</span> <span [innerText]="booking.back.distance"></span> mi | <span class="block-booking-link">Duration:</span> <span [innerText]="booking.back.duration"></span>
+                </div>
+                <div class="col-12 col-md-2 mt-3">
+                    <div class="mb-4">
+                        <h2 class="block-booking-title3">Total price</h2>
+                        <span class="row">
+                            <span class="col-12">
+                                <hr class="block-booking-underline">
+                            </span>
+                        </span>
+                        <h3 class="block-booking-total" [innerText]="'$'+price">$442.00</h3>
+                        <h3 class="block-booking-total">for 1 passenger</h3>
+                    </div>
+                    <span class="block-booking-link">Taxes, fees and charges</span>
+                    <br>
+                    <span class="block-booking-link">Low-price guarantee</span>
+                </div>
+                <span class="col-12 mt-3">
+                    <hr class="block-booking-underline">
+                </span>
+            </div>
+            <div *ngIf="!PurchaseReady" class="text-center text-md-right block-booking-buttons">
+                <br>
+                <button type="button" href="#" class="btn btn-lg btn-primary" (click)="complete()">Purchase</button>
+                <button type="button" routerLink="/" href="#" class="btn btn-lg btn-primary btn-cancel">Cancel</button>
+            </div>
+        </div>
+    </section>
+</div>

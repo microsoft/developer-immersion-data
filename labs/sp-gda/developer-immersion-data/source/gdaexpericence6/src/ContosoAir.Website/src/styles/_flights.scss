@@ -1,0 +1,82 @@
+@import 'variables';
+
+.block-flights {
+
+    .block-flights-title {
+        color: $color-blue-medium;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .block-flights-title2 {
+        color: $color-blue-medium;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .block-flights-title3 {
+        color: $color-grey-dark;
+        font-size: 1.2rem;
+    }
+
+    .block-flights-options {
+        display: none;
+
+        .block-flights-options-title {
+            color: $color-blue-medium;
+            font-size: 1.3rem;
+        }
+
+        .block-flights-options-label {
+            padding-left: 0;
+        }
+
+    }
+
+    .block-flights-results {
+        margin: 0 .5rem;
+        padding-left: 0;
+
+        .block-flights-results-list-item {
+            border-bottom: .1rem solid $color-blue-light;
+            cursor: pointer;
+            padding: .5rem 0;
+
+            a {
+                color: $color-blue-medium;
+            }
+
+            .block-flights-results-list-item-flights {
+                padding-left: 0;
+            }
+
+            &:nth-child(1) {
+                border-top: .1rem solid $color-blue-light;
+            }
+
+            .block-flights-results-list-item-price {
+                color: $color-blue-medium;
+                display: inline-block;
+                font-size: 1.5rem;
+                text-align: center;
+                width: 4rem;
+
+                input {
+                    display: block;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+
+}
+
+@include media-breakpoint-up(md) {
+    .block-flights {
+        margin: 0;
+
+        .block-flights-options {
+            display: block;
+        }
+    }
+}

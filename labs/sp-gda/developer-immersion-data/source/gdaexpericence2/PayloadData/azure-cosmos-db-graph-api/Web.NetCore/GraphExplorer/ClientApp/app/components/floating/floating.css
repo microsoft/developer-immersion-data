@@ -1,0 +1,61 @@
+floating
+{
+    position: absolute;
+    width: 350px;
+    background: white;
+    padding: 20px 15px 30px;
+    z-index: 1;
+    overflow-y: auto;
+    height: calc(100vh - 175px);
+    transition: all 500ms ease-in-out;
+}
+
+floating.configuration,
+floating.autoHeight
+{
+    left: -11px;
+}
+
+floating.rightPane
+{
+    right: -14px;
+}
+
+floating.autoHeight
+{
+    height: auto;
+    width: 360px;
+}
+
+floating h3
+{
+    margin-top: 0;
+}
+
+floating .propertyGroup
+{
+    margin: 20px 0 10px;
+}
+
+floating .propertyGroup label
+{
+    margin: 10px 0;
+}
+
+floating #properties
+{
+    margin-top: 10px;
+}
+
+floating .icon-close
+{
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 20px;
+    padding: 0;
+    min-width: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}

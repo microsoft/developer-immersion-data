@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContosoAir.Clients.Views.ConfirmationView"            
+             xmlns:controls="clr-namespace:ContosoAir.Clients.Controls;assembly=ContosoAir.Clients.Core"      
+             Style="{StaticResource BasePageStyle}"
+             Title=" ">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="ConfirmationTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaBold}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="SmallConfirmationTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="BigConfirmationTextStyle" TargetType="Label"
+                   BasedOn="{StaticResource SmallConfirmationTextStyle}">
+                <Setter Property="FontSize" Value="48" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaBold}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Done"
+            Command="{Binding DoneCommand}">
+            <ToolbarItem.Icon>
+                <OnPlatform                      
+                    x:TypeArguments="FileImageSource"        
+                    Android="check.png"
+                    iOS="check.png"
+                    WinPhone="Assets\check.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <!-- BACKGROUND -->
+        <Image 
+            x:Name="UwpBackground" 
+            Aspect="AspectFill"
+            VerticalOptions="Fill"
+            HorizontalOptions="Fill"
+            Source="Assets/background.png">
+            <Image.IsVisible>
+                <OnPlatform           
+                    x:TypeArguments="x:Boolean"
+                    iOS="False"
+                    Android="False"
+                    WinPhone="True"/>
+            </Image.IsVisible>
+        </Image>
+        <Grid
+            Margin="0, 48, 0, 0">
+            <ListView    
+                ItemsSource="{Binding Flights, Mode=OneWay}"
+                HasUnevenRows="True"
+                SeparatorVisibility="None"
+                CachingStrategy="RecycleElement"
+                BackgroundColor="Transparent">
+                <ListView.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <!-- CONFIRMATION TEXT -->
+                        <Grid
+                            Grid.Row="0">
+                            <Label      
+                                Text="You're checked in!"
+                                Style="{StaticResource ConfirmationTextStyle}"/>
+                        </Grid>
+                        <!-- FLY INFORMATION -->
+                        <Grid
+                            Grid.Row="1"
+                            Margin="0, 12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label  
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Text="{Binding FromName}"  
+                                HorizontalOptions="End"
+                                Style="{StaticResource SmallConfirmationTextStyle}"/>
+                            <Label 
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Text="{Binding FromCode}" 
+                                HorizontalOptions="End"
+                                Style="{StaticResource BigConfirmationTextStyle}"/>
+                            <Image 
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Aspect="AspectFit"
+                                HorizontalOptions="Center">
+                                <Image.Source>
+                                    <OnPlatform    
+                                        x:TypeArguments="ImageSource"
+                                        Android="flight_connecting_white"
+                                        iOS="flight_connecting_white"
+                                        WinPhone="Assets\Login\flight_connecting_white.png" />
+                                </Image.Source>
+                            </Image>
+                            <Label 
+                                Grid.Column="2"
+                                Grid.Row="0"
+                                Text="{Binding ToName}"    
+                                HorizontalOptions="Start"
+                                Style="{StaticResource SmallConfirmationTextStyle}"/>
+                            <Label 
+                                Grid.Column="2"
+                                Grid.Row="1"
+                                Text="{Binding ToCode}"
+                                HorizontalOptions="Start"
+                                Style="{StaticResource BigConfirmationTextStyle}"/>
+                        </Grid>
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!-- BOARDING PASS -->
+                            <controls:FlightControl      
+                                Flight="{Binding}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</ContentPage>

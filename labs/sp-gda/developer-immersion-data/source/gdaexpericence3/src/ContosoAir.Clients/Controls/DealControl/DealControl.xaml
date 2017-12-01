@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    x:Name="Control"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ContosoAir.Clients.Controls.DealControl"
+    xmlns:controls="clr-namespace:ContosoAir.Clients.Controls;assembly=ContosoAir.Clients.Core"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    BackgroundColor="Transparent">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DefaultDetailLabelStyle"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="#919191" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MediumSize}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="CityNameStyle"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource LargerSize}" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaBold}" />
+            </Style>
+
+            <Style x:Key="PriceStyle"
+                   TargetType="Label"
+                   BasedOn="{StaticResource CityNameStyle}">
+                <Setter Property="FontAttributes"
+                        Value="None" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource LargerSize}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource KarlaRegular}" />
+            </Style>
+
+            <Style x:Key="InfoPanelStyle"
+                   TargetType="Grid">
+                <Setter Property="Margin">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="Thickness"
+                                    Android="15, 0"
+                                    iOS="20, 0"
+                                    WinPhone="15, 0" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid>
+            <controls:ContentViewRoundedCorners HeightRequest="210"
+                                                CornerRadius="10"
+                                                BackgroundColor="{StaticResource WhiteColor}"
+                                                Margin="20, 0, 20, 20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="6.5*" />
+                        <RowDefinition Height="1.75*" />
+                        <RowDefinition Height="1.5*" />
+                        <RowDefinition Height="0.25*" />
+                    </Grid.RowDefinitions>
+                    <ffimageloading:CachedImage Grid.Row="0"
+                                                Source="{Binding Deal.CityImage, Source={x:Reference Control}, Converter={StaticResource DealImageConverter}}"
+                                                Aspect="AspectFill"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="StartAndExpand" />
+                    <Grid Grid.Row="1"
+                          VerticalOptions="Center"
+                          Style="{StaticResource InfoPanelStyle}">
+                        <!-- CITY NAME -->
+                        <Label HorizontalOptions="Start"
+                               Text="{Binding Deal.CityName, Source={x:Reference Control}}"
+                               Style="{StaticResource CityNameStyle}"
+                               Margin="0" />
+                        <!-- PRICE -->
+                        <Label HorizontalOptions="End"
+                               Text="{Binding Deal.Price, Source={x:Reference Control}, StringFormat='${0}'}"
+                               Style="{StaticResource PriceStyle}"
+                               Margin="0"
+                               IsVisible="{Binding ShowPrice, Source={x:Reference Control}}"/>
+                        <!-- DEPART DATE -->
+                        <Label HorizontalOptions="End"
+                               Text="{Binding DepartDate, Source={x:Reference Control}, StringFormat='{0:dd MMM yy}'}"
+                               Style="{StaticResource PriceStyle}"
+                               Margin="0"
+                               IsVisible="{Binding ShowPrice, Source={x:Reference Control}, Converter={StaticResource InverseBoolConverter}}" />
+                    </Grid>
+                    <Grid Grid.Row="2"
+                          VerticalOptions="Center"
+                          Style="{StaticResource InfoPanelStyle}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!-- ORIGIN -->
+                        <StackLayout Grid.Column="0"
+                                     Orientation="Horizontal">
+                            <Label Text="{Binding Deal.DepartTime, Source={x:Reference Control}, Converter={StaticResource StringTimeConverter}}"
+                                   Style="{StaticResource DefaultDetailLabelStyle}" />
+                            <Label Text="{Binding Deal.FromCode, Source={x:Reference Control}}"
+                                   Style="{StaticResource DefaultDetailLabelStyle}" />
+                        </StackLayout>
+                        <!-- SEPARATOR -->
+                        <BoxView Grid.Column="1"
+                                 BackgroundColor="#919191"
+                                 HeightRequest="0.5"
+                                 VerticalOptions="Start"
+                                 Margin="0, 8, 0, 0"
+                                 WidthRequest="18">
+                            <BoxView.WidthRequest>
+                                <OnPlatform x:TypeArguments="x:Double"
+                                            Android="15"
+                                            iOS="18"
+                                            WinPhone="15" />
+                            </BoxView.WidthRequest>
+                        </BoxView>
+                        <!-- DESTINATION -->
+                        <StackLayout Grid.Column="2"
+                                     Orientation="Horizontal">
+                            <Label Text="{Binding Deal.ArrivalTime, Source={x:Reference Control}, Converter={StaticResource StringTimeConverter}}"
+                                   Style="{StaticResource DefaultDetailLabelStyle}" />
+                            <Label Text="{Binding Deal.ToCode, Source={x:Reference Control}}"
+                                   Style="{StaticResource DefaultDetailLabelStyle}" />
+                        </StackLayout>
+                        <!-- TIME -->
+                        <Label Grid.Column="4"
+                               Text="{Binding Deal.Hours, Source={x:Reference Control}}"
+                               Style="{StaticResource DefaultDetailLabelStyle}" />
+                        <!-- STOPS -->
+                        <Label Grid.Column="6"
+                               Text="{Binding Deal.Stops, Source={x:Reference Control}, Converter={StaticResource FlightStopsConverter}}"
+                               Style="{StaticResource DefaultDetailLabelStyle}"
+                               LineBreakMode="TailTruncation"/>
+                    </Grid>
+                </Grid>
+            </controls:ContentViewRoundedCorners>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

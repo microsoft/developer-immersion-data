@@ -1,0 +1,70 @@
+<div class="block-search-form-options">
+    <div class="block-search-form-options-option  block-search-form-options-option--active">
+        Round trip
+    </div>
+    <div class="block-search-form-options-option">
+        One way
+    </div>
+    <div class="block-search-form-options-option">
+        Multi-city
+    </div>
+</div>
+<form>
+    <fieldset>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="fromDestination">From</label>
+                    <select name="fromDestination" class="form-control" id="fromDestination" [(ngModel)]="airportsService.destination.fromAirport" #fromDestination>
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="toDestination">To</label>
+                    <select id="airports" name="fromDestination" class="form-control" id="toDestination" [(ngModel)]="airportsService.destination.toAirport" #toDestination>
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group block-search-form-date">
+                    <label for="startDate">Depart date</label>
+                    <input id="startDate" class="form-control" placeholder="yyyy-mm-dd" name="dpa" [(ngModel)]="startDate" ngbDatepicker #a="ngbDatepicker" #fromDate>
+                    <span class="block-search-form-date-button" (click)="a.toggle()"  style="display:inline-block; top: 27px;">
+                        <!-- <span class="icon icon-calendar"></span> -->
+                        <img src="../../icons/calendar.svg">
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group block-search-form-date">
+                    <label for="endDate">Return Date</label>
+                    <input id="endDate" class="form-control" placeholder="yyyy-mm-dd" name="dpb" [(ngModel)]="endDate" ngbDatepicker #b="ngbDatepicker" #toDate>
+                    <span class="block-search-form-date-button" (click)="b.toggle()"  style="display:inline-block; top: 27px;">
+                        <!-- <span class="icon icon-calendar"></span> -->
+                        <img src="../../icons/calendar.svg">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="passengers">Passengers</label>
+                    <select class="form-control" id="passengers">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button type="button" (click)="setBooking()" class="btn btn-md btn-primary block-search-form-button">Find flights</button>
+    </fieldset>
+</form>

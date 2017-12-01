@@ -1,0 +1,8 @@
+{
+  rules: {
+    'indentation': 0,
+    'nesting-depth': 0,
+    'class-name-format': 0,
+    'single-line-per-selector': 0
+  }
+}
