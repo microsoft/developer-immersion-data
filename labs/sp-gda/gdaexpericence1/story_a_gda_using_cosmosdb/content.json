@@ -44,12 +44,13 @@
                 "https://portal.azure.com/"
             ]
         },
-		"launch_visual_studio": {
-			"helper": "launchvisualstudio",
+        "launch_visual_studio": {
+            "helper": "launchvisualstudio",
             "reset_to": "generaldevelopmentprofile",
             "solution_file": "C:\\source\\contosoair\\ContosoAir.Website_and_Services.sln"
-
         }
     },
-    "depends_on": [ "story://Content-Private/content/dfd/SP-GDA/shared" ]
+    "depends_on": [
+        "story://Content-Private/content/dfd/SP-GDA/shared"
+    ]
 }
