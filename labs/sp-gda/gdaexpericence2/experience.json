@@ -1,9 +1,9 @@
 {
   "$schema": "https://immtest-web.azurewebsites.net/schemas/0.0.1/ImmersionExperienceMetadata.json",
-  "title": "Globally distributed application",
-  "description": "Get hands-on and learn how to use Azure Cosmos DB.",
-  "story_ids": [ 
+  "title": "Understand data relationship with Azure Cosmos DB Graph API",
+  "description": "Explore the power of Azure Cosmos DB Graph API to plot the relationship between flight code sharing and solo service providers in graphical format.",
+  "story_ids": [
     "story://Content-Private/content/dfd/SP-GDA/gdaexpericence2/story_a_graphapi_of_cosmosdb"
   ],
-  "permissions": [ "everybody" ]
+  "permissions": ["everybody"]
 }

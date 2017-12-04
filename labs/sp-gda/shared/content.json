@@ -1,6 +1,6 @@
 {
     "$schema": "https://immtest-web.azurewebsites.net/schemas/0.0.1/ImmersionStoryMetadata.json",
-     "title": "Jumphost deployment ",
+    "title": "Jumphost deployment ",
     "short_title": "JH",
     "description": "Deploy a Jumphost to connect to labs.",
     "date_created": "2017-06-28",
@@ -14,9 +14,7 @@
     "access_time_minutes": 150,
     "warmup_time_minutes": 15,
     "deployment_time_minutes": 45,
-    "permissions": [
-        "everybody"
-    ],
+    "permissions": ["everybody"],
     "persona_role": "DatacenterAdmin",
     "primary_template": "template.json",
     "parameters": {

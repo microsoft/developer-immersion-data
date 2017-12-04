@@ -1,15 +1,24 @@
-{ 
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "PrimaryStorageAccountName": {
-            "value": "config:PrimaryStorageAccountName"
-          },
-          "PrimaryStorageAccountKey": {
-            "value": "config:PrimaryStorageAccountKey"
-          },
-          "JumpHostOSDiskVhdUri": {
-            "value": "blob:awb/20171124/jumphost.vhd"
-          }
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "PrimaryStorageAccountName": {
+      "value": "config:PrimaryStorageAccountName"
+    },
+    "PrimaryStorageAccountKey": {
+      "value": "config:PrimaryStorageAccountKey"
+    },
+    "JumpHostOSDiskVhdUri": {
+      "value": "blob:awb/20171124/jumphost.vhd"
+    },
+    "vmLocalUserPassword": {
+      "value": "config:AzureAdPassword"
+    },
+    "immersionScriptModuleFileLink": {
+      "value": "blob:platform/20171109/Immersion.psm1"
+    },
+    "postDeployScriptFileLink": {
+      "value": "asset:scripts/PostDeploy.ps1"
     }
+  }
 }

@@ -13,7 +13,7 @@ Get hands-on and learn Azure Cosmos DB services. The Azure Cosmos DB is Microsof
 - Microsoft Power BI Desktop 2.51.4885.701
 - Microsoft R Open 3.4.2
 - SQL Migration Tool(dtui)
-- SP-GDA (Deploy Bot Packages)
+- Nuget package for .NET Microsoft.Bot.Builder.Azure
 - Ubuntu bash on Windows
 - Install Ansible Azure 2.4.1.0 on Ubuntu Bash
 - Visual Studio Community 2017
@@ -47,6 +47,5 @@ Get hands-on and learn Azure Cosmos DB services. The Azure Cosmos DB is Microsof
 <a href="./labs/gdaexpericence7/story_a_azurebotservice_with_cosmosdb">Experience 7: Building Intelligent Bot using Azure Bot Service and Cosmos DB</a>
 
     In this experience you will come across Azure Bot Service, Cosmos DB to get flight assistance using ContosoAir applicaton. Azure Bot Service creates an intelligent bot to interact with users naturally wherever they are.
-
 
 

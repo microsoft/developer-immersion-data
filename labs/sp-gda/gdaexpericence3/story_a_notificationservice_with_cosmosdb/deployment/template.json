@@ -1,304 +1,203 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "vmLocalUserName": {
-      "type": "string",
-      "defaultValue": "LabUser"
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {
+        "databaseAccounts_soloservicee_name": "[concat('contosoairsqlapi', uniqueString(resourceGroup().id))]",
+        "workflows_AnalyzeReviews_name": "AnalyzeReviews",
+        "connections_cognitiveservicestextanalytics_name": "cognitiveservicestextanalytics",
+        "accounts_SoloServiceCognitiveService_name": "SoloServiceCognitiveService"
     },
-    "vmLocalUserPassword": {
-      "type": "string"
-    },
-    "PrimaryStorageAccountName": {
-      "type": "string"
-    },
-    "PrimaryStorageAccountKey": {
-      "type": "string"
-    },
-    "immersionScriptModuleFileLink": {
-      "type": "string"
-    },
-    "postDeployScriptFileLink": {
-      "type": "string"
-    },
-    "storageSentinelName": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "JumpHostVMName":
-    { 
-      "type":"string",
-       "minValue": 1 
-    },
-    "databaseAccounts_soloservicee_name": {
-        "defaultValue": "soloservicesata",
-        "type": "string"
-    },
-    "workflows_AnalyzeReviews_name": {
-        "defaultValue": "AnalyzeReviews",
-        "type": "string"
-    },        
-    "connections_cognitiveservicestextanalytics_name": {
-        "defaultValue": "cognitiveservicestextanalytics",
-        "type": "string"
-    },
-    "accounts_SoloServiceCognitiveService_name": {
-        "defaultValue": "SoloServiceCognitiveService",
-        "type": "string"
-    }
-  },
-  "variables": {
-  },
-  "resources": [
-    {
-        "type": "Microsoft.Compute/virtualMachines",
-        "name": "[parameters('JumpHostVMName')]",
-        "apiVersion": "2015-06-15",
-        "location": "[resourceGroup().location]",
-        "resources": [
-          {
-            "name": "ConfigureJumpHost",
-            "type": "extensions",
+    "resources": [
+        {
+            "type": "Microsoft.CognitiveServices/accounts",
+            "sku": {
+                "name": "S1"
+            },
+            "kind": "TextAnalytics",
+            "name": "[variables('accounts_SoloServiceCognitiveService_name')]",
+            "apiVersion": "2016-02-01-preview",
+            "location": "westus",
+            "properties": {},
+            "dependsOn": []
+        },
+        {
+            "apiVersion": "2015-04-08",
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "name": "[variables('databaseAccounts_soloservicee_name')]",
             "location": "[resourceGroup().location]",
-            "apiVersion": "2015-06-15",
-            "dependsOn": [
-              "[concat('Microsoft.Compute/virtualMachines/', parameters('JumpHostVMName'))]"
-            ],
             "tags": {
-              "displayName": "ConfigureJumpHost"
+                "displayName": "DocumentDB"
             },
             "properties": {
-              "publisher": "Microsoft.Compute",
-              "type": "CustomScriptExtension",
-              "typeHandlerVersion": "1.9",
-              "autoUpgradeMinorVersion": false,
-              "settings": {
-                "fileUris": [
-                  "[parameters('immersionScriptModuleFileLink')]"
-                ],
-                "scriptFileUri": "[parameters('postDeployScriptFileLink')]",
-                "installGuide": true,
-                "storageSentinelName": "[parameters('storageSentinelName')]",
-                "vmLocalUserName": "[parameters('vmLocalUserName')]",
-                "commandToExecute": "powershell -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command \"Import-Module (Get-ChildItem -Recurse -Path Immersion.psm1).FullName; Invoke-CustomScript\""
-              },
-              "protectedSettings": {
-                "storageAccountName": "[parameters('PrimaryStorageAccountName')]",
-                "storageAccountKey": "[parameters('PrimaryStorageAccountKey')]",
-                "vmLocalUserPassword": "[parameters('vmLocalUserPassword')]"
-              }
+                "name": "[variables('databaseAccounts_soloservicee_name')]",
+                "databaseAccountOfferType": "Standard"
             }
-          }
-        ]
-    } ,  
-  {
-    "type": "Microsoft.CognitiveServices/accounts",
-    "sku": {
-        "name": "S1"
-    },
-    "kind": "TextAnalytics",
-    "name": "[parameters('accounts_SoloServiceCognitiveService_name')]",
-    "apiVersion": "2016-02-01-preview",
-    "location": "westus",
-    "properties": {},
-    "dependsOn": []
-},     
-{
-    "apiVersion": "2015-04-08",
-    "type": "Microsoft.DocumentDB/databaseAccounts",
-    "name": "[parameters('databaseAccounts_soloservicee_name')]",
-    "location": "[resourceGroup().location]",
-    "tags": {
-      "displayName": "DocumentDB"
-    },
-    "properties": {
-      "name": "[parameters('databaseAccounts_soloservicee_name')]",
-      "databaseAccountOfferType": "Standard"
-    },
-    "dependsOn": [
-      "[concat('Microsoft.Compute/virtualMachines/', parameters('JumpHostVMName'))]"
-    ]
-  },
-{
-    "type": "Microsoft.Logic/workflows",
-    "name": "[parameters('workflows_AnalyzeReviews_name')]",
-    "apiVersion": "2016-06-01",
-    "location": "southcentralus",
-    "properties": {
-        "state": "Enabled",
-        "definition": {
-            "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-            "contentVersion": "1.0.0.0",
-            "parameters": {
-                "$connections": {
-                    "defaultValue": {},
-                    "type": "Object"
-                }
-            },
-            "triggers": {
-                "manual": {
-                    "type": "Request",
-                    "kind": "Http",
-                    "inputs": {
-                        "schema": {
-                            "items": {
-                                "properties": {
-                                    "review": {
-                                        "type": "string"
-                                    }
-                                },
-                                "required": [
-                                    "review"
-                                ],
-                                "type": "object"
-                            },
-                            "type": "array"
+        },
+        {
+            "type": "Microsoft.Logic/workflows",
+            "name": "[variables('workflows_AnalyzeReviews_name')]",
+            "apiVersion": "2016-06-01",
+            "location": "southcentralus",
+            "properties": {
+                "state": "Enabled",
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "$connections": {
+                            "defaultValue": {},
+                            "type": "Object"
                         }
-                    }
-                }
-            },
-            "actions": {
-                "For_each": {
-                    "foreach": "@triggerBody()",
-                    "actions": {
-                        "Detect_Sentiment": {
-                            "runAfter": {},
-                            "type": "ApiConnection",
+                    },
+                    "triggers": {
+                        "manual": {
+                            "type": "Request",
+                            "kind": "Http",
                             "inputs": {
-                                "body": {
-                                    "text": "@{item()['Review']}"
-                                },
-                                "host": {
-                                    "connection": {
-                                        "name": "@parameters('$connections')['cognitiveservicestextanalytics']['connectionId']"
+                                "schema": {
+                                    "items": {
+                                        "properties": {
+                                            "review": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "review"
+                                        ],
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    },
+                    "actions": {
+                        "For_each": {
+                            "foreach": "@triggerBody()",
+                            "actions": {
+                                "Detect_Sentiment": {
+                                    "runAfter": {},
+                                    "type": "ApiConnection",
+                                    "inputs": {
+                                        "body": {
+                                            "text": "@{item()['Review']}"
+                                        },
+                                        "host": {
+                                            "connection": {
+                                                "name": "@parameters('$connections')['cognitiveservicestextanalytics']['connectionId']"
+                                            }
+                                        },
+                                        "method": "post",
+                                        "path": "/sentiment"
                                     }
                                 },
-                                "method": "post",
-                                "path": "/sentiment"
-                            }
-                        },
-                        "Increment_variable": {
+                                "Increment_variable": {
+                                    "runAfter": {
+                                        "Detect_Sentiment": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "IncrementVariable",
+                                    "inputs": {
+                                        "name": "Total_Score",
+                                        "value": "@body('Detect_Sentiment')?['score']"
+                                    }
+                                }
+                            },
                             "runAfter": {
-                                "Detect_Sentiment": [
+                                "Initialize_variable": [
                                     "Succeeded"
                                 ]
                             },
-                            "type": "IncrementVariable",
+                            "type": "Foreach"
+                        },
+                        "Initialize_variable": {
+                            "runAfter": {},
+                            "type": "InitializeVariable",
                             "inputs": {
-                                "name": "Total_Score",
-                                "value": "@body('Detect_Sentiment')?['score']"
+                                "variables": [
+                                    {
+                                        "name": "Total_Score",
+                                        "type": "Float",
+                                        "value": 0
+                                    }
+                                ]
+                            }
+                        },
+                        "Response": {
+                            "runAfter": {
+                                "For_each": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Response",
+                            "inputs": {
+                                "statusCode": 200
                             }
                         }
                     },
-                    "runAfter": {
-                        "Initialize_variable": [
-                            "Succeeded"
-                        ]
-                    },
-                    "type": "Foreach"
+                    "outputs": {}
                 },
-                "Initialize_variable": {
-                    "runAfter": {},
-                    "type": "InitializeVariable",
-                    "inputs": {
-                        "variables": [
-                            {
-                                "name": "Total_Score",
-                                "type": "Float",
-                                "value": 0
+                "parameters": {
+                    "$connections": {
+                        "value": {
+                            "cognitiveservicestextanalytics": {
+                                "connectionId": "[resourceId('Microsoft.Web/connections', variables('connections_cognitiveservicestextanalytics_name'))]",
+                                "connectionName": "cognitiveservicestextanalytics",
+                                "id": "/subscriptions/',subscription().subscriptionId,'/providers/Microsoft.Web/locations/',resourceGroup().location,'/managedApis/cognitiveservicestextanalytics"
                             }
-                        ]
-                    }
-                },
-                "Response": {
-                    "runAfter": {
-                        "For_each": [
-                            "Succeeded"
-                        ]
-                    },
-                    "type": "Response",
-                    "inputs": {
-                        "statusCode": 200
+                        }
                     }
                 }
             },
-            "outputs": {}
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/connections', variables('connections_cognitiveservicestextanalytics_name'))]"
+            ]
         },
-        "parameters": {
-            "$connections": {
-                "value": {
-                    "cognitiveservicestextanalytics": {
-                        "connectionId": "[resourceId('Microsoft.Web/connections', parameters('connections_cognitiveservicestextanalytics_name'))]",
-                        "connectionName": "cognitiveservicestextanalytics",
-                        "id": "/subscriptions/',subscription().subscriptionId,'/providers/Microsoft.Web/locations/',resourceGroup().location,'/managedApis/cognitiveservicestextanalytics"
-                    }
+        {
+            "type": "Microsoft.Web/connections",
+            "name": "[variables('connections_cognitiveservicestextanalytics_name')]",
+            "apiVersion": "2016-06-01",
+            "location": "southcentralus",
+            "properties": {
+                "displayName": "SoloServiceCognitiveService",
+                "customParameterValues": {},
+                "api": {
+                    "id": "[concat('/subscriptions/',subscription().subscriptionId,'/providers/Microsoft.Web/locations/',resourceGroup().location,'/managedApis/', variables('connections_cognitiveservicestextanalytics_name'))]"
                 }
-            }
+            },
+            "dependsOn": []
         }
-    },
-    "dependsOn": [
-        "[resourceId('Microsoft.Web/connections', parameters('connections_cognitiveservicestextanalytics_name'))]"
-    ]
-},
-{
-    "type": "Microsoft.Web/connections",
-    "name": "[parameters('connections_cognitiveservicestextanalytics_name')]",
-    "apiVersion": "2016-06-01",
-    "location": "southcentralus",
-    "properties": {
-        "displayName": "SoloServiceCognitiveService",
-        "customParameterValues": {},
-        "api": {
-            "id": "[concat('/subscriptions/',subscription().subscriptionId,'/providers/Microsoft.Web/locations/',resourceGroup().location,'/managedApis/', parameters('connections_cognitiveservicestextanalytics_name'))]"
+    ],
+    "outputs": {
+        "cosmosDBEndpointUri": {
+            "type": "string",
+            "value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', variables('databaseAccounts_soloservicee_name'))).documentEndpoint]"
+        },
+        "cosmosDBKey": {
+            "type": "string",
+            "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts/', variables('databaseAccounts_soloservicee_name')), '2015-04-08').primaryMasterKey]"
+        },
+        "cosmosDbAcc": {
+            "type": "string",
+            "value": "[variables('databaseAccounts_soloservicee_name')]"
+        },
+        "logicApp": {
+            "type": "string",
+            "value": "[variables('workflows_AnalyzeReviews_name')]"
+        },
+        "textAnalytics": {
+            "type": "string",
+            "value": "[variables('connections_cognitiveservicestextanalytics_name')]"
+        },
+        "cognitiveService": {
+            "type": "string",
+            "value": "[variables('accounts_SoloServiceCognitiveService_name')]"
+        },
+        "myResourceGroupName": {
+            "type": "string",
+            "value": "[resourcegroup().name]"
         }
-    },
-    "dependsOn": []
-}
-  ],
-  "outputs": {
-    "jumphostUsername": {
-      "type": "string",
-      "value": "[concat('contoso\\', parameters('vmLocalUserName'))]"
-    },
-    "jumphostPassword": {
-      "type": "string",
-      "value": "[parameters('vmLocalUserPassword')]"
-    },
-    "storageAccountName": {
-      "type": "string",
-      "value": "[parameters('PrimaryStorageAccountName')]"
-    },
-    "storageAccountKey": {
-      "type": "string",
-      "value": "[parameters('PrimaryStorageAccountKey')]"
-    },
-    "cosmosDBEndpointUri": {
-      "type": "string",
-      "value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', parameters('databaseAccounts_soloservicee_name'))).documentEndpoint]"
-    },
-    "cosmosDBKey": {
-      "type": "string",
-      "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts/', parameters('databaseAccounts_soloservicee_name')), '2015-04-08').primaryMasterKey]"
-    },
-    "cosmosDbAcc": {
-      "type": "string",
-      "value": "[parameters('databaseAccounts_soloservicee_name')]"
-    },
-    "logicApp": {
-      "type": "string",
-      "value": "[parameters('workflows_AnalyzeReviews_name')]"
-    },
-    "textAnalytics": {
-      "type": "string",
-      "value": "[parameters('connections_cognitiveservicestextanalytics_name')]"
-    },
-    "cognitiveService": {
-      "type": "string",
-      "value": "[parameters('accounts_SoloServiceCognitiveService_name')]"
-    },
-    "myResourceGroupName": {
-      "type": "string",
-      "value": "[resourcegroup().name]"
     }
-  }
 }
