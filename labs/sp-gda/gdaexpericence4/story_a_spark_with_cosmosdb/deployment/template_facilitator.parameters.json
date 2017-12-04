@@ -1,28 +1,5 @@
 ﻿{
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {  
-    "vmLocalUserPassword": {
-      "value": "config:AzureAdPassword"
-    },
-    "PrimaryStorageAccountName": {
-      "value": "config:PrimaryStorageAccountName"
-    },
-    "PrimaryStorageAccountKey": {
-      "value": "config:PrimaryStorageAccountKey"
-    },
-    "immersionScriptModuleFileLink": {
-      "value": "blob:platform/20171109/Immersion.psm1"
-    },
-    "postDeployScriptFileLink": {
-      "value": "asset:scripts/PostDeploy.ps1"
-    },
-    "jumphostName": {
-      "value":{
-          "story_id": "story://Content-Private/content/dfd/SP-GDA/shared",
-          "output": "jumphostVmName",
-          "source": "dependency"
-      }
-  }
-  }
+  "parameters": {}
 }
