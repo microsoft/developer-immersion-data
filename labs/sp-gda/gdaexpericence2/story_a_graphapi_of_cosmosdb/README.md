@@ -15,4 +15,26 @@ Consider the user scenario, Kevin and his daughter Alina went for holidays and s
 So, to accomplish this scenario, we will use the **ContosoAir** demo app to learn **Cosmos DB Graph API(Gremlin query)** by searching the flights to check Codeshare and Solo Service Details in graphical format.
 
 
+### Provision the Azure Resources ###
 
+1. Create the Azure resources.
+    
+  Simply click the Deploy to Azure button below and follow the wizard to create the resources. You will need to log in to the Azure Portal.
+                                                                     
+  <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/Microsoft/developer-immersion-data/master/labs/sp-gda/gdaexpericence2/story_a_graphapi_of_cosmosdb/deployment/template.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
+  </a>
+
+  The resources will be deployed to a Resource Group. You can delete the resource group in order to remove all the created resources at any time.
+
+### Scenarios ###
+
+<a href="./story_a_graphapi_of_cosmosdb/content/intro.md">Intro</a>
+
+<a href="./story_a_graphapi_of_cosmosdb/content/0.md">Scenario 1: Creating Azure Cosmos DB Graph API and uploading data</a>
+
+<a href="./story_a_graphapi_of_cosmosdb/content/1.md">Scenario 2: Azure Cosmos Graph DB API to display Flight and Flight Segments details in graphical format using Gremlin</a>
+
+<a href="./story_a_graphapi_of_cosmosdb/content/2.md">Scenario 3: Graph plotting using Graph API (Gremlin Query) for Code Share and Solo Service Details by launching ContosoAir App</a>
+
+<a href="./story_a_graphapi_of_cosmosdb/content/conclusion.md">Conclusion</a>   

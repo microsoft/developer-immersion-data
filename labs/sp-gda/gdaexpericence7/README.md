@@ -16,3 +16,28 @@ Consider the user scenario, Kevin is driving towards the airport and due to some
 Using **ContosoAir** application you will come across **Azure Bot Service**, **Cosmos DB** to get flight assistance. Azure Bot Service creates an intelligent bot to interact with users naturally wherever they are.
 
 
+### Provision the Azure Resources ###
+
+1. Create the Azure resources.
+    
+  Simply click the Deploy to Azure button below and follow the wizard to create the resources. You will need to log in to the Azure Portal.
+                                                                     
+  <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/Microsoft/developer-immersion-data/master/labs/sp-gda/gdaexpericence7/story_a_azurebotservice_with_cosmosdb/deployment/template.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
+  </a>
+
+  The resources will be deployed to a Resource Group. You can delete the resource group in order to remove all the created resources at any time.
+
+### Scenarios ###
+
+<a href="./story_a_azurebotservice_with_cosmosdb/content/intro.md">Intro</a>
+
+<a href="./story_a_azurebotservice_with_cosmosdb/content/0.md">Scenario 1 -  Creating Azure Bot</a>
+
+<a href="./story_a_azurebotservice_with_cosmosdb/content/1.md">Scenario 2 - Creating Cosmos DB collection</a>
+
+<a href="./story_a_azurebotservice_with_cosmosdb/content/2.md">Scenario 3 – Playing around the Visual Studio code</a>
+
+<a href="./story_a_azurebotservice_with_cosmosdb/content/conclusion.md">Conclusion</a>   
+
+
