@@ -22,30 +22,39 @@ Get hands-on and learn Azure Cosmos DB services. The Azure Cosmos DB is Microsof
 
 <a href="./gdaexpericence1/story_a_gda_using_cosmosdb">Experience 1: Build globally distributed applications using Azure Cosmos DB</a>
     
-    In this experience you will come across the power of Azure Cosmos DB's features such as Turnkey global distribution, Consistency, Multi-model API, Partitioning, Failover mechanism and SLA's using ContosoAir website along with SQL DB API, Mongo DB API and Azure Functions.
+    In this experience you will come across the power of Azure Cosmos DB's features such as Turnkey global 
+    distribution, Consistency, Multi-model API, Partitioning, Failover mechanism and SLA's using ContosoAir 
+    website along with SQL DB API, Mongo DB API and Azure Functions.
     
 <a href="./gdaexpericence2/story_a_graphapi_of_cosmosdb">Experience 2: Analyzing Data relationship using the Power of Azure Cosmos DB Graph API (Gremlin Query)</a>
     
-    In this scenario you will use the ContosoAir demo app to learn Cosmos DB Graph API(Gremlin query) by searching the flights to check Codeshare and Solo Service Details in graphical format.
+    In this scenario you will use the ContosoAir demo app to learn Cosmos DB Graph API(Gremlin query) by searching 
+    the flights to check Codeshare and Solo Service Details in graphical format.
 
 <a href="./gdaexpericence3/story_a_notificationservice_with_cosmosdb">Experience 3: Developing Xamarin Apps with Azure Cosmos DB and Notification Services</a>
     
-    In this experience you will come across Azure Notification APIs, Text Analytics API, Azure Function, Logic App and Cosmos DB. Using ContosoAir application you will get the reviews of staff serving flying solo service through push notifications.
+    In this experience you will come across Azure Notification APIs, Text Analytics API, Azure Function, 
+    Logic App and Cosmos DB. Using ContosoAir application you will get the reviews of staff serving flying solo 
+    service through push notifications.
 
 <a href="./gdaexpericence4/story_a_spark_with_cosmosdb">Experience 4: Flight Delay analysis using Cosmos DB, Spark Cluster in HDInsight and Power BI</a>
 
-    In this experience you will perfrom predicitive analytics by using Azure Cosmos DB, Spark Cluster in HDInsight and Interactive Power BI dashboard.
+    In this experience you will perfrom predicitive analytics by using Azure Cosmos DB, Spark Cluster in 
+    HDInsight and Interactive Power BI dashboard.
 
 <a href="./gdaexpericence5/story_a_azurefunction_with_cosmosdb">Experience 5: Integrating Cosmos DB (SQL API) and Cognitive Services with Universal Windows Platform Application</a>
 
-    In this experience you will use the ContosoAir app to learn the Azure Congnitive Services like Emotion API, Text Analytics API, Bing Speech API, Azure Function, Logic App and Cosmos DB.
+    In this experience you will use the ContosoAir app to learn the Azure Congnitive Services like 
+    Emotion API, Text Analytics API, Bing Speech API, Azure Function, Logic App and Cosmos DB.
 
 <a href="./gdaexpericence6/story_a_azure_notification_for_gate_change">Experience 6: Gate change notification to the user for specific flight using Azure Cosmos DB with Notification service</a>
-
-   In this experience you will come across Cosmos DB, Azure functions and Notification Service to receive gate change notification through ContosoAir application. 
+    
+    In this experience you will come across Cosmos DB, Azure functions and Notification Service to receive gate 
+    change notification through ContosoAir application. 
 
 <a href="./gdaexpericence7/story_a_azurebotservice_with_cosmosdb">Experience 7: Building Intelligent Bot using Azure Bot Service and Cosmos DB</a>
 
-    In this experience you will come across Azure Bot Service, Cosmos DB to get flight assistance using ContosoAir applicaton. Azure Bot Service creates an intelligent bot to interact with users naturally wherever they are.
+    In this experience you will come across Azure Bot Service, Cosmos DB to get flight assistance using ContosoAir 
+    applicaton. Azure Bot Service creates an intelligent bot to interact with users naturally wherever they are.
 
 
