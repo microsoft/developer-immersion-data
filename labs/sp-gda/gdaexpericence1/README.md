@@ -6,7 +6,6 @@ In this experience you will come across the power of Azure Cosmos DB's features 
 
 - NodeJS 6.11.12
 - Angular CLI 2-1.0.0-alpha6
-- SQL Migration Tool(dtui)
 - Ubuntu bash on Windows
 - Install Ansible Azure 2.4.1.0 on Ubuntu Bash
 - Visual Studio Community 2017
