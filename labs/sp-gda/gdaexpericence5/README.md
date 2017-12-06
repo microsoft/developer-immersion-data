@@ -18,7 +18,7 @@ To solve this problem, we will use the ContosoAir app to learn the services like
     
   Simply click the Deploy to Azure button below and follow the wizard to create the resources. You will need to log in to the Azure Portal.
                                                                      
-  <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/Microsoft/developer-immersion-data/master/labs/sp-gda/gdaexpericence5/story_a_azurefunction_with_cosmosdb/deployment/template.json" target="_blank">
+  <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fdeveloper-immersion-data%2Fmaster%2Flabs%2Fsp-gda%2Fgdaexpericence5%2Fstory_a_azurefunction_with_cosmosdb%2Fdeployment%2Ftemplate.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
   </a>
 
