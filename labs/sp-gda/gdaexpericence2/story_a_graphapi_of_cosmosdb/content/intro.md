@@ -31,7 +31,7 @@ So, to accomplish this scenario, we will use the **ContosoAir** demo app to lear
 - Creating **Azure Cosmos DB Service** using **Graph API**.
 - Playing around the code in **Visual Studio 2017 IDE** for creating collection.
 - Playing around the code in **Visual Studio 2017 IDE** for uploading data into **Azure Cosmos Graph DB**.
-- Fetching flight details from **Azure Cosmos Graph DB** using **Gremlin Query** andgraph plottingusing **Graph Explorer** feature.
+- Fetching flight details from **Azure Cosmos Graph DB** using **Gremlin Query** and graph plotting using **Graph Explorer** feature.
 - Fetching Codeshare and Solo Service details from **Azure Cosmos Graph DB** using **Gremlin Query.**
 - Playing with **ContosoAir** app for Graph plotting of Codeshare and Solo Service details using **Graph API**.
 

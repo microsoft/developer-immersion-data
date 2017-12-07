@@ -3,11 +3,12 @@
     "contentVersion": "0.0.1.0",
     "parameters": {
         "apiVersion": {
+            "defaultValue": "2015-04-08",
             "type": "string"
         }
     },
     "variables": {
-        "CosmosDBWithDocumentDB": "[concat('contosoairdb', uniqueString(resourceGroup().id))]"
+        "CosmosDBWithDocumentDB": "[concat('contosoairsqlapi', uniqueString(resourceGroup().id))]"
     },  
     "resources": [
         {

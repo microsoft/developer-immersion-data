@@ -5,5 +5,5 @@ In this experience, you have explored the configuration of **Azure Bot Service, 
 Now you know how to
 
 - Create **Bot** using **Azure Bot Services**
-- Create collection and insert data in **Cosmos DB** using **Data Migration Tool**.
-- Playing around the code using **Visual Studio 2017** IDE.
+- Create a collection and insert data in **Cosmos DB** using **Data Migration Tool**.
+- Played with the code using **Visual Studio 2017** IDE.

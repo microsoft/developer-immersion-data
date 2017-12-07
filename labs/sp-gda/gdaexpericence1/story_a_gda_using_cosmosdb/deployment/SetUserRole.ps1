@@ -23,5 +23,6 @@ function Start-ImmersionPostDeployScript {
 	AssignUserRole -RoleDefinitionName 'Storage Account Contributor'
     AssignUserRole -RoleDefinitionName 'DocumentDB Account Contributor'
     AssignUserRole -RoleDefinitionName 'Website Contributor'
+    AssignUserRole -RoleDefinitionName 'Storage Account Contributor'
     AssignUserRole -RoleDefinitionName '[Hands-on Labs] Data Factory Contributor Additional Permissions'
 }
