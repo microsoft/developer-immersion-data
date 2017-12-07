@@ -1,7 +1,7 @@
 {
   "$schema": "https://immtest-web.azurewebsites.net/schemas/0.0.1/ImmersionExperienceMetadata.json",
   "title": "Discover Azure Cosmos DB features",
-  "description": "Discover Azure Cosmos DB’s features such as Globally distributed, Consistency, Multi-model API and Partitioning using ContosoAir website along with SQL DB, Mongo DB and Azure Functions.",
+  "description": "Discover Azure Cosmos DB features such as Globally distributed, Consistency, Multi-model API and Partitioning using ContosoAir website along with SQL DB, Mongo DB and Azure Functions.",
   "story_ids": [
     "story://Content-Private/content/dfd/SP-GDA/gdaexpericence1/story_a_gda_using_cosmosdb"
   ],

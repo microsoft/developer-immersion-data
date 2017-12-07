@@ -24,4 +24,5 @@ function Start-ImmersionPostDeployScript {
     AssignUserRole -RoleDefinitionName 'DocumentDB Account Contributor'
     AssignUserRole -RoleDefinitionName 'Website Contributor'
     AssignUserRole -RoleDefinitionName 'Web Plan Contributor'
+    AssignUserRole -RoleDefinitionName 'Storage Account Contributor'
 }

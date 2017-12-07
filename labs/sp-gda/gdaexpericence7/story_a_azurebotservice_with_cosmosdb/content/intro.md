@@ -1,10 +1,8 @@
-# Building Intelligent Bot using Azure Bot Service and Cosmos DB
-
 ## User Story
 
-Consider the user scenario, Kevin is driving towards the airport and due to some reasons, he would get late to catch up his flight. He wants immediate help regarding flight schedule, alternate flight options and E check-in to get boarding pass. He also need airport terminal map, so that he can save his time to find out the route of boarding gate. 
+Consider the user scenario, Kevin is driving towards the airport and due to some reasons, he would get late to catch up his flight. He wants immediate help regarding flight schedule, alternate flight options and E check-in to get the boarding pass. He also needs airport terminal map, so that he can save his time to find out the route of boarding gate. 
 
-Using **ContosoAir** application you will come across **Azure Bot Service**, **Cosmos DB** to get flight assistance. Azure Bot Service creates an intelligent bot to interact with users naturally wherever they are.
+Using **ContosoAir** application you will explore about **Azure Bot Service** and **Cosmos DB** to get flight assistance. Azure Bot Service creates an intelligent bot to interact with users naturally wherever they are.
 
 ## Components Used in This Scenario
 
@@ -16,7 +14,7 @@ Using **ContosoAir** application you will come across **Azure Bot Service**, **C
 ## What you will learn from this lab
 
 - Creating a Bot using **Azure Bot Service**.
-- Create collection and insert data in **Cosmos DB** using **Data Migration Tool.**
+- Create a collection and insert data in **Cosmos DB** using **Data Migration Tool.**
 - Playing around code in **Visual Studio 2017** IDE.
 
 >_**Ready? Let's get started!**_
