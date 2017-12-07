@@ -1,10 +1,9 @@
-# Build globally distributed applications using Azure Cosmos DB
-
 ## User Story
 
-It used to take extensive time and monotonous efforts to build a Globally Distributed Database conventionally. Also, there were some issues of **Latency** and **Consistency** in case of the data stored in a centralized location. So, to unravel this we will use the **Azure Cosmos Database**.
+It used to take extensive time and monotonous efforts to build a Globally Distributed Database conventionally. Also, there were some issues of **Latency** and **Consistency** in case of the data stored in a centralized location. So, to unravel this we will use the **Azure Cosmos DB**.
 
-You will come across the power of **Azure Cosmos DB's** features such as **Turnkey global distribution**, **Consistency**, **Multi-model API**, **Partitioning**, **Failover mechanism** and **SLA's** using **ContosoAir** website along with **SQL DB API**, **Mongo DB API** and **Azure** **Functions**.
+You will learn the **Azure Cosmos DB** features such as **turnkey global distribution**, **consistency**, **multi-model API**, **partitioning**, **failover mechanism** and **SLA** by developing **ContosoAir** app along with **SQL DB API**, **Mongo DB API** and **Azure** **Functions**.
+<br/><br/>
     ![](img/Intro.jpg)
 
 ## Components Used in Scenario
@@ -19,11 +18,11 @@ You will come across the power of **Azure Cosmos DB's** features such as **Turnk
 ## What you will learn from this experience
 
 - Deployment of **Azure resources** through **Ansible playbook**.
-- Easily build **globally-distributed** applications without the hassle of complex, multiple-datacenter configurations.
-- Walk through different **Consistency Levels** available in **Azure Cosmos DB.**
-- Real time example of **Multi-Model API** of **Azure Cosmos DB.**
-- Handling **Automatic regional failover** for business continuity in **Azure Cosmos DB**.
-- In depth analysis of **Partitioning**.
+- Easily build **globally-distributed** application without the hassle of complex, multiple-datacenter configurations.
+- Walk through different **consistency levels** available in **Azure Cosmos DB.**
+- Real-time example of **multi-model API** of **Azure Cosmos DB.**
+- Handling **automatic regional failover** for business continuity in **Azure Cosmos DB**.
+- In-depth understanding of **partitioning**.
 - **SLA** (Service Level Agreement) for **Azure Cosmos DB**
 
   > _**Ready? Let's get started!**_

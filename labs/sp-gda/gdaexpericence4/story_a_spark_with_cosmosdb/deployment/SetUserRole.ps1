@@ -20,7 +20,8 @@ function Start-ImmersionPostDeployScript {
     } 
 	   
     #Assign roles required for the current story	
-	AssignUserRole -RoleDefinitionName 'Storage Account Contributor'
+    AssignUserRole -RoleDefinitionName 'Storage Account Contributor'
+    AssignUserRole -RoleDefinitionName 'Storage Account Contributor'
     AssignUserRole -RoleDefinitionName '[Hands-on Labs] HDInsight Contributor Additional Permissions'
 
 }
