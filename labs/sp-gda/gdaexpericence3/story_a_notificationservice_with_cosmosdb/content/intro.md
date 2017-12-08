@@ -11,7 +11,7 @@ Using **ContosoAir app** you will come across **Azure Notification APIs**, **Tex
 
    ![](img/architecture_diagram.png)
 
-- **Notification Hubs** / **Azure Notification APIs** , a multi-platform, scalable push-notification engine for quickly sending millions of messages. ([Notification API](https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-push-notification-overview))
+- **Notification Hubs** / **Azure Notification APIs**, a multi-platform, scalable push-notification engine for quickly sending millions of messages. ([Notification API](https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-push-notification-overview))
 - **Text Analytics API** is a cloud-based service that provides advanced natural language processing over raw text, and includes three main functions: sentiment analysis, key phrase extraction, and language detection. ([Text Analytics API](https://docs.microsoft.com/en-in/azure/cognitive-services/text-analytics/overview))
 - **Azure Functions** is a serverless compute service that enables you to run code on-demand without having to explicitly provision or manage infrastructure. Use Azure Functions to run a script or piece of code in response to a variety of events. ([Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/))
 - **Logic Apps** provide a way to simplify and implement scalable integrations and workflows in the cloud. It provides a visual designer to model and automate your process as a series of steps known as a workflow. ([Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/))
