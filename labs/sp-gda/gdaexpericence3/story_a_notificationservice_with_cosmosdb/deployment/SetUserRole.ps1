@@ -24,4 +24,6 @@ function Start-ImmersionPostDeployScript {
     AssignUserRole -RoleDefinitionName 'Website Contributor'
     AssignUserRole -RoleDefinitionName 'Web Plan Contributor'
     AssignUserRole -RoleDefinitionName 'Storage Account Contributor'
+    AssignUserRole -RoleDefinitionName '[Hands-on Labs] Notification Hubs Additional Permissions'
+    AssignUserRole -RoleDefinitionName '[Hands-on Labs] Cognitive Services Additional Permissions'
 }

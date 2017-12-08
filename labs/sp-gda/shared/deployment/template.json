@@ -39,6 +39,10 @@
 		"storageSentinelName": {
 			"type": "string",
 			"defaultValue": ""
+		},
+		"skipWebProxyInstall": {
+			"defaultValue": "true",
+			"type": "string"
 		}
 	},
 	"variables": {
@@ -232,6 +236,7 @@
 							],
 							"scriptFileUri": "[parameters('postDeployScriptFileLink')]",
 							"installGuide": true,
+							"skipInstallWebProxy": "[parameters('skipWebProxyInstall')]",
 							"storageSentinelName": "[parameters('storageSentinelName')]",
 							"vmLocalUserName": "[parameters('vmLocalUserName')]",
 							"commandToExecute": "powershell -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command \"Import-Module (Get-ChildItem -Recurse -Path Immersion.psm1).FullName; Invoke-CustomScript\""
