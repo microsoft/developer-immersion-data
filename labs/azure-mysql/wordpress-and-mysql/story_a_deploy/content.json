@@ -1,0 +1,34 @@
+{
+    "$schema": "https://immtest-web.azurewebsites.net/schemas/0.0.1/ImmersionStoryMetadata.json",
+    "title": "Create a new Azure Database for MySQL and Wordpress app",
+    "description": "This topic explains how to deploy and manage an Azure Database for MySQL.",
+    "date_created": "2017-07-04",
+    "regions": ["eastus2", "westus"],
+    "topics": [
+        "Azure Database for MySQL",
+        "Azure App Services"
+    ],
+    "products": [
+        "Azure Database for MySQL"
+    ],
+    "jobroles": [
+        "Application Developer"
+    ],
+    "persona_role": "Developer",
+    "audiences": [
+        "Developer"
+    ],
+    "level": "200",
+    "duration_minutes": 60,
+    "access_time_minutes": 120,
+    "warmup_time_minutes": 1,
+    "permissions": ["everybody"],
+    "primary_template": "template.json",
+    "requires_long_running_script_sentinel": false,
+    "post_deploy_script": "postdeploy.ps1",
+    "parameters": {
+        "standalone": "template_facilitator.parameters.json",
+        "facilitator": "template_facilitator.parameters.json",
+        "student": "template_facilitator.parameters.json"
+    }
+}
