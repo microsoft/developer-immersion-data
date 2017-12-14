@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "PrimaryStorageAccountName": {
+      "value": "config:PrimaryStorageAccountName"
+    },
+    "PrimaryStorageAccountKey": {
+      "value": "config:PrimaryStorageAccountKey"
+    },
+    "JumpHostOSDiskVhdUri": {
+      "value": "blob:sp-dfd/20171102/jumphost-2.vhd"
+    },
+    "immersionScriptModuleFileLink" : {
+      "value": "blob:platform/20170927/Immersion.psm1"
+    },
+    "AdminPassword": { 
+      "value": "config:AzureAdPassword" 
+    },
+    "configureJumphostScriptFileLink": {
+      "value": "asset:scripts/ConfigureJumpHost.ps1"
+    }
+  }
+}

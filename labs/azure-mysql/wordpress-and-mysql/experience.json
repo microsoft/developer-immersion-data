@@ -1,0 +1,9 @@
+{
+    "$schema": "https://immtest-web.azurewebsites.net/schemas/0.0.1/ImmersionExperienceMetadata.json",
+    "title": "Deploy and manage a WordPress site using Azure Database for MySQL",
+    "description": "This topic explains how to deploy and manage an Azure Database for MySQL.",
+    "story_ids": [
+      "story://Content-Private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql/story_a_deploy"
+    ],
+    "permissions": [ "everybody" ]
+}

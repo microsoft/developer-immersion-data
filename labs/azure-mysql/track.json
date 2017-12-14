@@ -1,0 +1,11 @@
+﻿{
+    "$schema": "https://immtest-web.azurewebsites.net/schemas/0.0.1/ImmersionTrackMetadata.json",
+    "title": "Data for Development - Developing apps with Azure Database for MySQL",
+    "short_title": "Developing apps with Azure Database for MySQL",
+    "description": "Deploy and manage Azure Database for MySQL for use in with apps in Azure",
+    "category": "data",
+    "experience_ids": [
+      "experience://Content-Private/content/dfd/SP-OSS/azure-mysql/wordpress-and-mysql"
+    ],
+    "permissions": [ "everybody" ]
+}
