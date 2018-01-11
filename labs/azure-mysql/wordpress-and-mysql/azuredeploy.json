@@ -41,13 +41,6 @@
                 "S1"
             ],
             "defaultValue": "F1"
-        },
-        "repoUrl": {
-            "type": "string"
-        },
-        "branch": {
-            "type": "string",
-            "defaultValue": "master"
         }
     },
     "variables": {
