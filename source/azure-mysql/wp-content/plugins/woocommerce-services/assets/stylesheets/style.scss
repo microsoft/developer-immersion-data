@@ -1,0 +1,461 @@
+// Only nest imports that conflict with WP core style or apply
+// to elements rendered as a child of our React container
+@import 'shared/functions'; // functions that we've used from Compass, ported over
+@import 'shared/functions/functions'; // sass functions for z-index, etc.
+@import 'colors'; // import wcc colors
+//@import 'shared/colors'; // import all of our wpcom colors
+@import 'components/dialog/style';
+@import 'components/popover/style';
+@import 'components/tooltip/style';
+
+.wc-connect-admin-container,
+.wcc-modal {
+	// Shared
+	@import 'shared/reset'; // css reset before the rest of the styles are defined
+	@import 'shared/utilities'; // Helper classes
+	@import 'shared/typography'; // all the typographic rules, variables, etc.
+	@import 'shared/mixins/mixins'; // sass mixins for gradients, bordius radii, etc.
+	@import 'shared/extends'; // sass extends for commonly used styles
+	@import 'shared/animation'; // all UI animation
+	@import 'shared/forms'; // form styling
+	@import 'shared/dropdowns'; // dropdown styling
+	//@import 'shared/toolbar-bulk'; // The toolbar used for bulk actions including bulk selecting and deselecting
+	//@import 'shared/livechat'; // styles for the popup livechat box
+	//@import 'shared/welcome'; // welcome messages
+	//@import 'shared/infinite-scroll-end'; // Last page marker once infinite scroll has reached end
+
+	@import 'shipping-services'; // Shipping Services Groups, Group and Entry Component styles
+	@import 'shipping-label'; // Shipping Labels specific styles
+
+	// Main
+	@import 'main'; // global layout and responsive styles
+
+	// Components
+	@import 'components';
+
+	// Breakpoints
+	$breakpoints: 480px, 660px, 780px, 960px, 1040px; // adds wp-admin specific breakpoints
+
+    // Buttons
+    .button {
+        background: $gray-light;
+        box-shadow: none;
+        padding: 5px 14px 7px;
+    }
+
+	.button.is-primary {
+		background: $blue-wordpress;
+		border-color: $blue-dark;
+		&:hover {
+			background: $button-hover;
+		}
+		// overwrite core styles
+		&:disabled {
+			background: tint( $blue-light, 50% ) !important;
+			border-color: tint( $blue-wordpress, 55% ) !important;
+			color: $white !important;
+			text-shadow: none !important;
+		}
+
+	}
+
+    // Forms
+    input[type="text"],
+    input[type="search"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"],
+    input[type=checkbox],
+    input[type=radio],
+    input[type="tel"],
+    input[type="url"],
+    textarea {
+        @extend %form-field;
+    }
+
+	%form-field {
+		box-shadow: none;
+		&::placeholder {
+			color: lighten( $gray, 10% );
+		}
+	}
+
+	.settings-group-header {
+		width: 22%;
+		@include breakpoint( '<660px' ) {
+			width: 100%;
+		}
+	}
+
+	.settings-group-header {
+		font-size: 16px;
+		font-weight: 600;
+		color: darken( $gray, 20% );
+	}
+
+	.settings-group-content {
+		width: 78%;
+		@include breakpoint( '<660px' ) {
+			width: 100%;
+		}
+	}
+
+	.form-input-validation {
+		padding: 4px 0 4px 32px;
+		.gridicon {
+			float: none;
+			vertical-align: middle;
+		}
+	}
+
+	.settings-form-row {
+		display: flex;
+
+		& > * {
+			flex-grow: 1;
+			margin-right: 16px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+
+	.settings-steps-summary {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		.settings-step-summary {
+			background-color: $gray-light;
+			border-radius: 5px;
+			border: 1px $gray-dark solid;
+			padding: 12px;
+			margin-bottom: 12px;
+			flex-basis: 44%;
+
+			h4 {
+				font-weight: bold;
+			}
+		}
+	}
+
+	// Cards
+	.card.is-compact {
+		&.settings-group-card {
+			margin-left: 0;
+			margin-right: 0;
+			max-width: 100%;
+			display: flex;
+			padding-top: 24px;
+
+			@include breakpoint( '<660px' ) {
+				flex-wrap: wrap;
+			}
+		}
+		&.save-button-bar {
+			background: $gray-light;
+			padding: 16px 24px;
+			margin-right: 0;
+			margin-left: 0;
+			max-width: 100%;
+		}
+	}
+
+	// Dialog
+	&.dialog.card {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		max-width: none;
+		padding: 0;
+
+		&.wcc-shipping-add-edit-package-dialog {
+			@include breakpoint( ">480px" ) {
+				top: 10%;
+				right: calc(50% - 250px);
+				bottom: 10%;
+				left: calc(50% - 250px);
+				width: 500px;
+			}
+		}
+
+		&.wcc-label-packages-dialog {
+			top: -46px;
+
+			@include breakpoint( ">480px" ) {
+				top: 10%;
+				right: calc(50% - 200px);
+				bottom: 10%;
+				left: calc(50% - 200px);
+				width: 400px;
+			}
+		}
+
+		@include breakpoint( ">480px" ) {
+			top: 5%;
+			bottom: 5%;
+			left: 5%;
+			right: 5%;
+			width: 90%;
+		}
+
+		@include breakpoint( ">960px" ) {
+			left: 12.5%;
+			right: 12.5%;
+			width: 75%;
+		}
+
+		.form-section-heading {
+			padding: 24px 16px 0;
+			@include breakpoint( ">480px" ) {
+				padding: 0;
+			}
+		}
+
+		&.wcc-shipping-add-edit-package-dialog .form-section-heading {
+			padding: 0;
+		}
+
+		&.wcc-shipping-label-refund {
+			@include breakpoint( ">480px" ) {
+				top: calc(50% - 175px);
+				right: calc(50% - 250px);
+				bottom: calc(50% - 175px);
+				left: calc(50% - 250px);
+				width: 500px;
+				height: 350px;
+			}
+		}
+
+		&.wcc-shipping-label-reprint {
+			@include breakpoint( ">480px" ) {
+				top: calc(50% - 175px);
+				right: calc(50% - 250px);
+				bottom: calc(50% - 175px);
+				left: calc(50% - 250px);
+				width: 500px;
+				height: 350px;
+			}
+		}
+
+		.dialog__content {
+			height: calc( 100% - 90px );
+			overflow-y: auto;
+
+			@include breakpoint( ">480px" ) {
+				padding: 32px;
+			}
+		}
+
+		&.wcc-shipping-add-edit-package-dialog .dialog__content {
+			padding: 32px;
+		}
+
+		.form-buttons-bar,
+		.dialog__action-buttons {
+			position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0;
+			margin: 0;
+			padding: 12px 16px;
+			background-color: $gray-light;
+			border-top: 1px solid lighten( $gray, 20 );
+		}
+	}
+
+	.share-package-option {
+		display: inline-block;
+		margin-top: 8px;
+		text-align: left;
+		font-size: 13px;
+	}
+
+	// Global notices
+
+	.notice.is-warning {
+		margin-bottom: 0;
+	}
+
+	.global-notices {
+		z-index: 999999; // Make sure notices are shown on top of modals
+		top: 16px;
+		right: 16px;
+		@include breakpoint( '<660px' ) {
+			top: -4px;
+			right: 0;
+		}
+
+		.notice {
+			margin-left: 164px;
+			max-width: 740px;
+
+			@include breakpoint( '<960px' ) {
+				margin-left: 36px;
+			}
+
+			@include breakpoint( '<780px' ) {
+				margin-left: 0;
+			}
+		}
+
+		// adjust until system fonts get in wp-admin
+		.notice__text {
+			padding: 10px 8px 8px;
+
+			@include breakpoint( '<660px' ) {
+				padding: 16px;
+			}
+		}
+	}
+
+	// Custom styles
+	max-width: 700px;
+
+	// WP style conflict resets
+	.card {
+		min-width: initial;
+		max-width: initial;
+	}
+
+	.wp-admin & {
+		select {
+			height: auto;
+			box-shadow: none;
+			width: 100%;
+			line-height: 18px;
+			padding: 9px 32px 12px 14px;
+		}
+	}
+
+	.wp-core-ui & {
+		.button {
+			height: auto;
+		}
+	}
+
+	// .spinner is used both for the Calypso <Spinner> component and WP-admin. This rules revert the WP-Admin ones
+	.spinner {
+		background: none;
+		visibility: visible;
+		float: none;
+		vertical-align: inherit;
+		opacity: 1;
+		width: inherit;
+		height: inherit;
+	}
+
+	.wcc-bulk-checkbox-container {
+		margin-right: 8px;
+		cursor: pointer;
+		display: inline-flex;
+		align-items: center;
+		position: relative;
+
+		input {
+			margin: 0;
+		}
+
+		.gridicon {
+			color: #00a0d2;
+			height: 16px;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			width: 16px;
+		}
+	}
+
+	.wcc-nux-notice {
+		background: lighten( $blue-light, 22% );
+		border: 1px solid lighten( $blue-light, 15% );
+		padding: 16px;
+		margin-bottom: 8px;
+		display: flex;
+
+		.wcc-nux-notice__copy {
+			margin-top: 3px;
+		}
+
+		svg {
+			margin-right: 8px;
+		}
+
+		a {
+			text-decoration: none;
+			margin-left: auto;
+			margin-top: 3px;
+		}
+	}
+
+	// WCC Components
+	@import '../../client/account-settings/views/payment-method/style';
+	@import '../../client/account-settings/views/payment-method-selector/style';
+	@import '../../client/components/indicators/style';
+	@import '../../client/components/info-tooltip/style';
+	@import '../../client/components/text/style';
+	@import '../../client/components/text-area/style';
+	@import '../../client/components/toggle/style';
+	@import '../../client/shipping-label/views/purchase/steps/packages/style.scss';
+	@import '../../client/packages/views/style';
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.wc-connect-admin-container .form-troubles {
+	opacity: 0;
+	animation: fadeIn ease-in 1;
+	animation-fill-mode: forwards;
+	animation-duration: .5s;
+	animation-delay: 3s;
+}
+
+.wc-connect-admin-container .wc-connect-no-priv-settings {
+	background: $white;
+	padding: 20px;
+}
+
+#woocommerce-order-label .inside {
+	margin: 0;
+	padding: 0;
+}
+
+.tooltip.popover.wc-connect-popover {
+	.popover__inner {
+		background: $gray-dark;
+	}
+
+	.popover__arrow {
+		border-top-color: $gray-dark;
+	}
+
+	.wc-connect-popover-contents {
+		padding: 4px;
+		color: $white;
+
+		h1, h2, h3 {
+			margin: 0 0 8px 0;
+			color: $white;
+		}
+		p {
+			margin-top: 0;
+			margin-bottom: 8px;
+		}
+		ul {
+			list-style: disc;
+			padding-left: 16px;
+		}
+	}
+}
+
+.wc-connect-admin-dev-notice {
+	width: 700px;
+
+	p {
+		font-style: italic;
+		color: $gray;
+	}
+}
