@@ -43,7 +43,9 @@ Throughout this lab, we will use the **Azure Command Line Interface** or Azure C
 #### Create an Azure PostGreSQL Database Server
 
 1. A server contains a group of databases. You can create an **Azure Database for PostgreSQL server** using the **az postgres server create** command.  
-     
+
+    > **Note: You will need to change the name of the instance and also include your existing resource group.
+
     Type or copy and paste the following into the Azure command line:
 
      <span style="color:blue"> az postgres server create --resource-group <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" /> --name postgresql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" /> --location southcentralus --admin-user pgsqluser --admin-password P@ssword1 --performance-tier Basic --compute-units 50 --version 9.6
