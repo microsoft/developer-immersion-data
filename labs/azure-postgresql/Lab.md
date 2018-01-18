@@ -6,7 +6,7 @@
 
 
 An **Azure Resource Group** is a logical container into which Azure resources are deployed and managed. A **Resource Group** and a **Storage Account** must exist before any virtual machines can be created. 
-In this example, a resource group named **rg123456** (where **123456** is the number in your username) is created in the southcentralus region. You will need to use this group name when creating your Database and Server.
+In this example, a resource group named **rg123456** (where **123456** is the number in your username) is created in the southcentralus or any region you have chosen to delploy the resources to. You will need to create adn use this group name when creating your Database and Server.
 
 Throughout this lab, we will use the **Azure Command Line Interface** or Azure CLI using the Cloud Shell feature in the Azure Portal.   
 
@@ -27,14 +27,14 @@ Throughout this lab, we will use the **Azure Command Line Interface** or Azure C
     > The button launches an interactive shell that you can use to run all of the steps required to create and manage an Ubuntu Linux VM.
 
 2. Once the shell launches, you will see **"Welcome to Azure Cloud Shell"**.  Click on the **Bash (Linux)** option at the bottom
-![Create Storage](imgs/cli-storage.png)   
+![Create Storage](imgs/cli-storage.PNG)   
 
 3. In the **"You have no storage mounted"** tab, click **Show Advanced Settings**
 4. In the **Advanced Settings** tab, use the existing **Resource Group** and enter a unique name for the **Storage Account** and **File Share**
 5. Click **Create Storage** 
 6. Once the storage gets created, your **Cloud Shell** will initialize and very shortly be ready to use
 
-    ![Shell is Ready](imgs/shell.png)      
+    ![Shell is Ready](imgs/shell.PNG)      
     
     > Note: the Resource Group name, the Storage Account, and the File Share you created are displayed in the CLI while it initializes.
     > 
