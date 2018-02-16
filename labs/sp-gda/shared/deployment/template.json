@@ -41,7 +41,7 @@
 			"defaultValue": ""
 		},
 		"skipWebProxyInstall": {
-			"defaultValue": "true",
+			"defaultValue": "false",
 			"type": "string"
 		}
 	},

@@ -14,7 +14,7 @@
     "access_time_minutes": 150,
     "warmup_time_minutes": 15,
     "deployment_time_minutes": 45,
-    "permissions": ["everybody"],
+    "permissions": [],
     "persona_role": "DatacenterAdmin",
     "primary_template": "template.json",
     "parameters": {
