@@ -48,19 +48,19 @@ Throughout this lab, we will use the **Azure Command Line Interface** or Azure C
 
     Type or copy and paste the following into the Azure command line:
 
-     <span style="color:blue"> az postgres server create --resource-group <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" /> --name postgresql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" /> --location southcentralus --admin-user pgsqluser --admin-password P@ssword1 --performance-tier Basic --compute-units 50 --version 9.6
+     <span style="color:blue"> az postgres server create --resource-group [ResourceGroupName] <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" /> --name [PostGreSQLName]<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" /> --location southcentralus --admin-user pgsqluser --admin-password P@ssword1 --performance-tier Basic --compute-units 50 --version 9.6
 
     > **Note:** Be sure to remember your **user name** and **password** as you will need to use it later for your connection information.
 
 2. Hit **Enter**
 3. Create an Azure PostgreSQL server-level firewall rule with the **az postgres server firewall-rule create** command. A server-level firewall rule allows an external application, such as psql or PgAdmin to connect to your server through the Azure PostgreSQL service firewall.
     
-     <span style="color:blue"> az postgres server firewall-rule create --resource-group <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" /> --server postgresql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" /> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255      
+     <span style="color:blue"> az postgres server firewall-rule create --resource-group [ResourceGroupName]<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" /> --server postgresql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" /> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255      
   
 4. Hit **Enter**
 5. Now let's get the connection information for your new PostGreSQL Azure Database Server. To connect to your server, you need to provide host information and access credentials.
     
-    <span style="color:blue"> az postgres server show --resource-group <inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" /> --name postgresql<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" />
+    <span style="color:blue"> az postgres server show --resource-group [ResourceGroupName]<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" /> --name [PostGreSQLName]<inject story-id="story://Content-Private/content/dfd/SP-OSS/postgresql/ossexperience1/story_a_postgresql" key="resourceGroupName" />
   
 6. Hit **Enter**
 
