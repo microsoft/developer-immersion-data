@@ -2,7 +2,7 @@
 
 In this scenario we will build an e-Commerce retail based SaaS (Software as a Service) application using Azure database services (Azure SQL Database).
 
-###Pre-requisites for the lab###
+### Pre-requisites for the lab
 
 -   [Visual Studio 2015 Update 3] (https://msdn.microsoft.com/en-in/library/mt613162.aspx)
 
@@ -24,7 +24,7 @@ In this scenario we will build an e-Commerce retail based SaaS (Software as a Se
         - npm install bower -g
         - npm install gulp -g
 
-### Provision the Azure Resources ###
+### Provision the Azure Resources
 
 1. Create the Azure resources.
     
@@ -38,7 +38,7 @@ In this scenario we will build an e-Commerce retail based SaaS (Software as a Se
 
   ![](img/rg.png)
 
-###Modules###
+### Modules
 
 <a href="./story_a_elasticdatabasepools/intro.md">Module 1: Azure SQL Database, the developers' cloud database</a>
     
