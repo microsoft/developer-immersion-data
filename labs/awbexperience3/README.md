@@ -21,8 +21,8 @@ In this scenario we will build an e-Commerce retail based SaaS (Software as a Se
 -   [Azure Data Lake Tools for Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=49504)
 
 -   gulp and bower installed as global  
-        - `npm install bower -g`
-        - `npm install gulp -g`
+    - `npm install bower -g`  
+    - `npm install gulp -g`  
 
 ### Provision the Azure Resources
 
