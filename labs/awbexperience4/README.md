@@ -3,7 +3,7 @@
 In this scenario we will evolve and grow the e-Commerce web application by adding datalake, data warehouse, Cosmos DB, 
 Azure Search capabilities.
 
-###Pre-requisites for the lab###
+### Pre-requisites for the lab
 
 -   [Visual Studio 2015 Update 3] (https://msdn.microsoft.com/en-in/library/mt613162.aspx)
 
@@ -25,7 +25,7 @@ Azure Search capabilities.
         - npm install bower -g
         - npm install gulp -g
 
-### Provision the Azure Resources###
+### Provision the Azure Resources
 
 1. Create the Azure resources.
     
@@ -41,7 +41,7 @@ Azure Search capabilities.
 
   ![](img/rg.png)
 
-###Modules###
+### Modules
 
 <a href="./story_a_cosmosdb/Intro.md">Module 1: Build globally-distributed, multi-model database service for mission-critical applications using Cosmos DB</a>
     
