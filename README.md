@@ -8,17 +8,17 @@ and re-architect on-premises ISV/SaaS apps to Azure for scale, reach.
 
 ### Pre-requisites for the lab ###
 
--   [Visual Studio 2015 Update 3] (https://msdn.microsoft.com/en-in/library/mt613162.aspx)
+-   [Visual Studio 2015 Update 3](https://msdn.microsoft.com/en-in/library/mt613162.aspx)
 
--   [Latest Microsoft Azure SDK] (https://azure.microsoft.com/en-us/downloads/)
+-   [Latest Microsoft Azure SDK](https://azure.microsoft.com/en-us/downloads/)
 
--   [.NET Core SDK Visual Studio Tools] (https://www.microsoft.com/net/core#windows)
+-   [.NET Core SDK Visual Studio Tools](https://www.microsoft.com/net/core#windows)
 
--   [Latest version of Node.js] (https://nodejs.org/en/download/)
+-   [Latest version of Node.js](https://nodejs.org/en/download/)
 
 -   An active Microsoft Azure Subscription for deployments
 
--  [SQL Server Management Studio or SQL Data Tools for Visual Studio] (http://go.microsoft.com/fwlink/?LinkID=824938)
+-  [SQL Server Management Studio or SQL Data Tools for Visual Studio](http://go.microsoft.com/fwlink/?LinkID=824938)
 
 ### Experiences ###
 
