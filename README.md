@@ -6,21 +6,21 @@ Get hands-on and learn how to build secure, performant, scalable and predictive 
 around data-driven intelligent apps (using SQL Server 2016 and Azure Database Services), 
 and re-architect on-premises ISV/SaaS apps to Azure for scale, reach.
 
-### Pre-requisites for the lab ###
+### Pre-requisites for the lab
 
--   [Visual Studio 2015 Update 3] (https://msdn.microsoft.com/en-in/library/mt613162.aspx)
+-   [Visual Studio 2015 Update 3](https://msdn.microsoft.com/en-in/library/mt613162.aspx)
 
--   [Latest Microsoft Azure SDK] (https://azure.microsoft.com/en-us/downloads/)
+-   [Latest Microsoft Azure SDK](https://azure.microsoft.com/en-us/downloads/)
 
--   [.NET Core SDK Visual Studio Tools] (https://www.microsoft.com/net/core#windows)
+-   [.NET Core SDK Visual Studio Tools](https://www.microsoft.com/net/core#windows)
 
--   [Latest version of Node.js] (https://nodejs.org/en/download/)
+-   [Latest version of Node.js](https://nodejs.org/en/download/)
 
 -   An active Microsoft Azure Subscription for deployments
 
--  [SQL Server Management Studio or SQL Data Tools for Visual Studio] (http://go.microsoft.com/fwlink/?LinkID=824938)
+-  [SQL Server Management Studio or SQL Data Tools for Visual Studio](https://go.microsoft.com/fwlink/?LinkID=824938)
 
-### Experiences ###
+### Experiences
 
 <a href="./labs/awbexperience1">Experience 1: Develop with SQL Server 2016</a>
     
