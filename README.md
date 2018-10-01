@@ -18,7 +18,7 @@ and re-architect on-premises ISV/SaaS apps to Azure for scale, reach.
 
 -   An active Microsoft Azure Subscription for deployments
 
--  [SQL Server Management Studio or SQL Data Tools for Visual Studio](http://go.microsoft.com/fwlink/?LinkID=824938)
+-  [SQL Server Management Studio or SQL Data Tools for Visual Studio](https://go.microsoft.com/fwlink/?LinkID=824938)
 
 ### Experiences ###
 
