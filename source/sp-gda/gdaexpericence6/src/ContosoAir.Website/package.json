@@ -42,14 +42,14 @@
     "zone.js": "0.7.2"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0-beta.31",
+    "@angular/cli": "15.2.6",
     "@angular/compiler-cli": "2.4.0",
     "@types/adal": "1.0.25",
     "@types/jasmine": "2.5.38",
     "@types/node": "6.0.42",
     "codelyzer": "~2.0.0-beta.1",
     "gulp": "3.9.1",
-    "gulp-autoprefixer": "3.1.1",
+    "gulp-autoprefixer": "8.0.0",
     "gulp-consolidate": "0.2.0",
     "gulp-iconfont": "8.0.1",
     "gulp-inline-fonts": "1.0.3",
