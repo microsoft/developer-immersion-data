@@ -3,29 +3,29 @@
 In this scenario we will evolve and grow the e-Commerce web application by adding datalake, data warehouse, Cosmos DB, 
 Azure Search capabilities.
 
-###Pre-requisites for the lab###
+### Pre-requisites for the lab
 
--   [Visual Studio 2015 Update 3] (https://msdn.microsoft.com/en-in/library/mt613162.aspx)
+-   [Visual Studio 2015 Update 3](https://msdn.microsoft.com/en-in/library/mt613162.aspx)
 
--   [Latest Microsoft Azure SDK] (https://azure.microsoft.com/en-us/downloads/)
+-   [Latest Microsoft Azure SDK](https://azure.microsoft.com/en-us/downloads/)
 
--   [.NET Core SDK Visual Studio Tools] (https://www.microsoft.com/net/core#windows)
+-   [.NET Core SDK Visual Studio Tools](https://www.microsoft.com/net/core#windows)
 
--   [Latest version of Node.js] (https://nodejs.org/en/download/)
+-   [Latest version of Node.js](https://nodejs.org/en/download/)
 
 -   An active Microsoft Azure Subscription for deployments
 
--  [SQL Server Management Studio or SQL Data Tools for Visual Studio] (http://go.microsoft.com/fwlink/?LinkID=824938)
+-  [SQL Server Management Studio or SQL Data Tools for Visual Studio](https://go.microsoft.com/fwlink/?LinkID=824938)
 
--   [NPM Task Runner extension for Visual Studio] (https://visualstudiogallery.msdn.microsoft.com/8f2f2cbc-4da5-43ba-9de2-c9d08ade4941)
+-   [NPM Task Runner extension for Visual Studio](https://visualstudiogallery.msdn.microsoft.com/8f2f2cbc-4da5-43ba-9de2-c9d08ade4941)
 
--   [Azure Data Lake Tools for Visual Studio 2015] (https://www.microsoft.com/en-us/download/details.aspx?id=49504)
+-   [Azure Data Lake Tools for Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=49504)
 
--   gulp and bower installed as global 
-        - npm install bower -g
-        - npm install gulp -g
+-   gulp and bower installed as global  
+    - `npm install bower -g`
+    - `npm install gulp -g`
 
-### Provision the Azure Resources###
+### Provision the Azure Resources
 
 1. Create the Azure resources.
     
@@ -41,7 +41,7 @@ Azure Search capabilities.
 
   ![](img/rg.png)
 
-###Modules###
+### Modules
 
 <a href="./story_a_cosmosdb/Intro.md">Module 1: Build globally-distributed, multi-model database service for mission-critical applications using Cosmos DB</a>
     
