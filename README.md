@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Get hands-on and learn how to build secure, performant, scalable and predictive application modernization practice centered 
+Get hands-on experience and learn how to build secure, performant, scalable and predictive application modernization practice centered 
 around data-driven intelligent apps (using SQL Server 2016 and Azure Database Services), 
 and re-architect on-premises ISV/SaaS apps to Azure for scale, reach.
 
